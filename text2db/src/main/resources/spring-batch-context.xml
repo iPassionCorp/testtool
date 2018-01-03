@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:batch="http://www.springframework.org/schema/batch"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
@@ -23,66 +21,79 @@
 
 	<bean id="nameItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/name.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/name.dat" />
 		<property name="delegate" ref="nameFlatFileItemReader" />
 	</bean>
 
-	<bean id="nameFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="nameFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.NameFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.NameFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="nameid,personid,prename,firstname,lastname,startdate" />
+						<property name="columns" value="1-13,14-26,27-57,58-87,88-117,118-125" />
 					</bean>
 				</property>
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="personItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/person.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/person.dat" />
 		<property name="delegate" ref="personFlatFileItemReader" />
 	</bean>
 
-	<bean id="personFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="personFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.PersonFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.PersonFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="personid,referenceid,referencetype,birthdate,sex,customerid,bluecard,reserve" />
-						<property name="columns" value="1-13,14-26,27-28,29-36,37-37,38-50,51-51,52-57" />
+						<property name="names"
+							value="personid,referenceid,referencetype,birthdate,sex,customerid,bluecard,reserve" />
+						<property name="columns"
+							value="1-13,14-26,27-28,29-36,37-37,38-50,51-51,52-57" />
 					</bean>
 				</property>
 			</bean>
 		</property>
-	</bean>	
+	</bean>
 
 	<bean id="policyItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mortpolicy1.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mortpolicy1.dat" />
 		<property name="delegate" ref="policyFlatFileItemReader" />
 	</bean>
 
-	<bean id="policyFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="policyFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.PolicyFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.PolicyFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="policyno,rate,name,type,effectivedate,planname,riderplan,tlbranch" />
+						<property name="names"
+							value="policyno,rate,name,type,effectivedate,planname,riderplan,tlbranch" />
 						<property name="columns" value="4,6,56,57,65,125,126,129" />
 					</bean>
 				</property>
@@ -92,84 +103,106 @@
 
 	<bean id="certItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/newcert.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/newcert.dat" />
 		<property name="delegate" ref="certFlatFileItemReader" />
 	</bean>
 
-	<bean id="certFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="certFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.CertFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.CertFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="policyno,certno,appno,reqdate,nameid,age,smi,lifesum,accidentsum,period,loan_term,lifepremium,extrapremium,tpdpremium,extratpdpremium,addpremium,
+em,tpd,effectivedate,maturedate,premiumdate,certyyyymm,statcer,statcer2,statdate2,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate,endownmentyear,deadcause,
+receiptflag,referenceno,reserve" />
+						<property name="columns"
+							value="1-4,5-12,13-25,26-33,34-47,48-49,50-58,59-67,68-76,77-78,79-80,81-90,91-100,101-110,111-120,121-130,131-133,134-137,138-145,146-153,154-161,162-167,
+168-168,169-169,170-177,178-185,186-193,194-203,204-211,212-219,220-229,230-237,238-244,245-248,249-249,250-269,270-271" />
 					</bean>
 				</property>
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="detCertItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/newdetcert2.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/newdetcert2.dat" />
 		<property name="delegate" ref="detCertFlatFileItemReader" />
 	</bean>
 
-	<bean id="detCertFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="detCertFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.DetCertFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.DetCertFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="policyno,certno,code,address1,address2,telephoneno,mariagestatus,recname1,percent1,relationshipcode1,recname2,percent2,relationshipcode2,recname3,percent3,
+relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
+						<property name="columns"
+							value="1-4,5-12,13-22,23-92,93-162,163-222,223-223,224-323,324-328,329-330,331-430,431-435,436-437,438-537,538-542,543-544,545-554,555-566,567-578,579-579,580-580,581-581" />
 					</bean>
 				</property>
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="certRiderItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/newcert.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/newcert.dat" />
 		<property name="delegate" ref="certRiderFlatFileItemReader" />
 	</bean>
 
-	<bean id="certRiderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="certRiderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.CertRiderFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.CertRiderFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="policyno,certno,ridertype,sum,premium,extrapremium,riderstatus,riderstatusdate,reserve" />
+						<property name="columns"
+							value="1-4,5-12,13-15,16-24,25-34,35-44,45-45,46-53,54-54" />
 					</bean>
 				</property>
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="certLinkerItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/certlinker.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/certlinker.dat" />
 		<property name="delegate" ref="certLinkerFlatFileItemReader" />
 	</bean>
 
-	<bean id="certLinkerFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="certLinkerFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.CertLinkerFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.CertLinkerFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
@@ -184,15 +217,18 @@
 
 	<bean id="certMappingItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/certmapping.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/certmapping.dat" />
 		<property name="delegate" ref="certMappingFlatFileItemReader" />
 	</bean>
 
-	<bean id="certMappingFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="certMappingFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.CertMappingFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.CertMappingFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
@@ -207,22 +243,27 @@
 
 	<bean id="mgClaimItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mgclaim.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mgclaim.dat" />
 		<property name="delegate" ref="mgClaimFlatFileItemReader" />
 	</bean>
 
-	<bean id="mgClaimFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="mgClaimFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.MgClaimFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.MgClaimFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="certno,accidentdate,receivedate,claimtype,sectioncode,orderno,referenceno,linkerno,okdate,policyno" />
-						<property name="columns" value="1-8,9-16,17-24,25-25,26-27,28-35,36-45,46-52,53-60,61-64" />
-						
+						<property name="names"
+							value="certno,accidentdate,receivedate,claimtype,sectioncode,orderno,referenceno,linkerno,okdate,policyno" />
+						<property name="columns"
+							value="1-8,9-16,17-24,25-25,26-27,28-35,36-45,46-52,53-60,61-64" />
+
 					</bean>
 				</property>
 			</bean>
@@ -231,21 +272,26 @@
 
 	<bean id="mgOrderItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mgorder*.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mgorder*.dat" />
 		<property name="delegate" ref="mgOrderFlatFileItemReader" />
 	</bean>
 
-	<bean id="mgOrderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="mgOrderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.MgOrderFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.MgOrderFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="sectioncode,orderno,receivetime,causecode,causedetail,receiverid,considerid,admitdate,admitflag,billingorderno,interimflag,hospitalcode,receivedocdate" />
+						<property name="columns"
+							value="1-2,3-10,11-16,17-22,23-72,73-79,80-86,87-94,95-95,96-105,106-106,107-111,112-119" />
 					</bean>
 				</property>
 			</bean>
@@ -254,21 +300,27 @@
 
 	<bean id="mgPayItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mgpay*.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mgpay*.dat" />
 		<property name="delegate" ref="mgPayFlatFileItemReader" />
 	</bean>
 
-	<bean id="mgPayFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="mgPayFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.MgPayFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.MgPayFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="certno,receivedate, accidentdate,sectioncode,orderno,policystatus,policystatusdate,policystatus2,policystatusdate2,branchcode,servicebranch,claimtype,paytype,proofinsuredage,disabilitytype,disnumber,
+payrate,payamount,accdamount,surrenderamount,returnamount,deductamount,claimokdate,claimpaydate,allowtype" />
+						<property name="columns"
+							value="1-8,9-16,17-24,25-26,27-34,35-35,36-43,44-44,45-52,53-55,56-58,59-59,60-60,61-62,63-63,64-64,65-67,68-79,80-91,92-103,104-115,116-127,128-135,136-143,144-144" />
 					</bean>
 				</property>
 			</bean>
@@ -277,21 +329,27 @@
 
 	<bean id="mgPayRiderItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mgpayrider*.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mgpayrider*.dat" />
 		<property name="delegate" ref="mgPayFlatFileItemReader" />
 	</bean>
 
-	<bean id="mgPayRiderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="mgPayRiderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.MgPayRiderFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.MgPayRiderFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="certno,accidentdate, receivedate, sectioncode,orderno,policystatus,policystatusdate,policystatus2,policystatusdate2,branchcode,servicebranch,amestartdate,ameday,
+ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voiddate,claimokdate,claimpaydate" />
+						<property name="columns"
+							value="1-8,9-16,17-24,25-26,27-34,35-35,36-43,44-44,45-52,53-55,56-58,59-66,67-69,70-78,79-87,88-90,91-98,99-107,108-119,120-131,132-139,140-147,148-155" />
 					</bean>
 				</property>
 			</bean>
@@ -300,101 +358,123 @@
 
 	<bean id="mgHisItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mghis*.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mghis*.dat" />
 		<property name="delegate" ref="mgHisFlatFileItemReader" />
 	</bean>
 
-	<bean id="mgHisFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="mgHisFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.MgHisFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.MgHisFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="certno,accidentdate,receivedate,claimtype,seqno,remarkdate,remarkno,remark,employeeid,rectime" />
-						<property name="columns" value="1-8,9-16,17-24,25-25,26-27,28-35,36-37,38-137,138-144,145-150" />
+						<property name="names"
+							value="certno,accidentdate,receivedate,claimtype,seqno,remarkdate,remarkno,remark,employeeid,rectime" />
+						<property name="columns"
+							value="1-8,9-16,17-24,25-25,26-27,28-35,36-37,38-137,138-144,145-150" />
 					</bean>
 				</property>
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="mgInsMemoItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mginsmemo.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mginsmemo.dat" />
 		<property name="delegate" ref="mgInsMemoFlatFileItemReader" />
 	</bean>
 
-	<bean id="mgInsMemoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="mgInsMemoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.MgInsMemoFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.MgInsMemoFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
-					<bean class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+					<bean
+						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+						<property name="names"
+							value="certno,accidentdate,receivedate,memocode,detail1,detail2,savedate" />
+						<property name="columns"
+							value="1-8,9-16,17-24,25-27,28-127,128-227,228-235" />
 					</bean>
 				</property>
 			</bean>
 		</property>
-	</bean>	
+	</bean>
 
 	<bean id="mgInterestItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mginterest*.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mginterest*.dat" />
 		<property name="delegate" ref="mgInterestFlatFileItemReader" />
 	</bean>
 
-	<bean id="mgInterestFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="mgInterestFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.MgInterestFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.MgInterestFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="certno,accidentdate,receivedate,ridertype,paytype,startdate,enddate,day,payamount,interestamount" />
+						<property name="columns"
+							value="1-8,9-16,17-24,25-26,27-27,28-35,36-43,44-47,48-59,60-70" />
 					</bean>
 				</property>
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="mgReceiverItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="file:/Users/samart/EDM/masic-original/mgreceiver*.dat" />
+		<property name="resources"
+			value="file:/Users/samart/EDM/masic-original/mgreceiver*.dat" />
 		<property name="delegate" ref="mgReceiverFlatFileItemReader" />
 	</bean>
 
-	<bean id="mgReceiverFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+	<bean id="mgReceiverFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
-					<bean class="th.co.ipassion.testtool.job.mapper.tlitext.MgReceiverFieldSetMapper" />
+					<bean
+						class="th.co.ipassion.testtool.job.mapper.tlitext.MgReceiverFieldSetMapper" />
 				</property>
 				<property name="lineTokenizer">
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="names" value="" />
-						<property name="columns" value="" />
+						<property name="names"
+							value="certno,accidentdate,receivedate,seqno,prename,firstname, lastname,type,payamount,address,tumbon,zipcode,mobilephone,citizenid,paytype,banktype,bankcode,
+bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpaydate, bookstatus,chqdate,chqno,docno,isbeneficiarykilled,birthdate" />
+						<property name="columns"
+							value="1-8,9-16,17-24,25-25,26-55,56-115,116-175,176-176,177-188,189-316,317-321,322-326,327-336,337-349,350-350,351-351,352-361,362-396,397-411,412-491,492-492,493-493,
+494-496,497-504,505-505,506-513,514-523,524-528,529-529,530-537" />
 					</bean>
 				</property>
 			</bean>
 		</property>
-	</bean>	
+	</bean>
 
 	<bean id="tlitextDatabaseItemWriter"
 		class="org.springframework.batch.item.database.HibernateItemWriter">
 		<property name="sessionFactory" ref="tlitextSessionFactory" />
 	</bean>
 
-	<bean id="jobListener"
-		class="th.co.ipassion.testtool.job.listener.CommonJobListener" />
-	
+	<bean id="jobListener" class="th.co.ipassion.testtool.job.listener.CommonJobListener" />
+
 </beans>
