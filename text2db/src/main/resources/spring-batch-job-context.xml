@@ -51,7 +51,7 @@
 	<batch:job id="importCertJob">
 		<batch:step id="certStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="certItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
+				<batch:chunk reader="certItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -62,7 +62,7 @@
 	<batch:job id="importDetCertJob">
 		<batch:step id="detCertStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="detCertItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
+				<batch:chunk reader="detCertItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -73,7 +73,7 @@
 	<batch:job id="importCertRiderJob">
 		<batch:step id="certRiderStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="certRiderItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
+				<batch:chunk reader="certRiderItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
