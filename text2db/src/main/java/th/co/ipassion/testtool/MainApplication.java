@@ -12,13 +12,13 @@ public class MainApplication {
 
 	public static void main(String[] args) {
 		
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-batch-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-batch-job-context.xml");
         
         JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
         //Job job = (Job) context.getBean("importPolicyJob");
-        Job job = (Job) context.getBean("importPersonJob");
-        //Job job = (Job) context.getBean("importCertlinkerJob");
-        //Job job = (Job) context.getBean("importCertmappingJob");
+        Job job = (Job) context.getBean(args[0]);
+        //Job job = (Job) context.getBean("importCertLinkerJob");
+        //Job job = (Job) context.getBean("importCertMappingJob");
         //Job job = (Job) context.getBean("importMgClaimJob");
         //Job job = (Job) context.getBean("importMgHisJob");
       
@@ -27,7 +27,7 @@ public class MainApplication {
             System.out.println("Job Exit Status : "+ execution.getStatus());
       
         } catch (JobExecutionException e) {
-            System.out.println("Job ExamResult failed");
+            System.out.println("Job " + args[0] + " failed");
             e.printStackTrace();
         } finally {
         	
