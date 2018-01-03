@@ -10,6 +10,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<import resource="classpath:context-model.xml" />
+	
+	<context:property-placeholder location="classpath:text2db.properties" />
 
 	<bean id="jobRepository"
 		class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean" />
@@ -22,7 +24,7 @@
 	<bean id="nameItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/name.dat" />
+			value="${source.file.path}/name.dat" />
 		<property name="delegate" ref="nameFlatFileItemReader" />
 	</bean>
 
@@ -49,7 +51,7 @@
 	<bean id="personItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/person.dat" />
+			value="${source.file.path}/person.dat" />
 		<property name="delegate" ref="personFlatFileItemReader" />
 	</bean>
 
@@ -77,7 +79,7 @@
 	<bean id="policyItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mortpolicy1.dat" />
+			value="${source.file.path}/mortpolicy1.dat" />
 		<property name="delegate" ref="policyFlatFileItemReader" />
 	</bean>
 
@@ -104,7 +106,7 @@
 	<bean id="certItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/newcert.dat" />
+			value="${source.file.path}/newcert.dat" />
 		<property name="delegate" ref="certFlatFileItemReader" />
 	</bean>
 
@@ -135,7 +137,7 @@ receiptflag,referenceno,reserve" />
 	<bean id="detCertItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/newdetcert2.dat" />
+			value="${source.file.path}/newdetcert2.dat" />
 		<property name="delegate" ref="detCertFlatFileItemReader" />
 	</bean>
 
@@ -164,7 +166,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="certRiderItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/certrider.dat" />
+			value="${source.file.path}/certrider.dat" />
 		<property name="delegate" ref="certRiderFlatFileItemReader" />
 	</bean>
 
@@ -192,7 +194,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="certLinkerItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/certlinker.dat" />
+			value="${source.file.path}/certlinker.dat" />
 		<property name="delegate" ref="certLinkerFlatFileItemReader" />
 	</bean>
 
@@ -218,7 +220,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="certMappingItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/certmapping.dat" />
+			value="${source.file.path}/certmapping.dat" />
 		<property name="delegate" ref="certMappingFlatFileItemReader" />
 	</bean>
 
@@ -244,7 +246,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="mgClaimItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mgclaim.dat" />
+			value="${source.file.path}/mgclaim.dat" />
 		<property name="delegate" ref="mgClaimFlatFileItemReader" />
 	</bean>
 
@@ -273,7 +275,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="mgOrderItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mgorder*.dat" />
+			value="${source.file.path}/mgorder*.dat" />
 		<property name="delegate" ref="mgOrderFlatFileItemReader" />
 	</bean>
 
@@ -301,7 +303,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="mgPayItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mgpay*.dat" />
+			value="${source.file.path}/mgpay*.dat" />
 		<property name="delegate" ref="mgPayFlatFileItemReader" />
 	</bean>
 
@@ -330,7 +332,7 @@ payrate,payamount,accdamount,surrenderamount,returnamount,deductamount,claimokda
 	<bean id="mgPayRiderItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mgpayrider*.dat" />
+			value="${source.file.path}/mgpayrider*.dat" />
 		<property name="delegate" ref="mgPayRiderFlatFileItemReader" />
 	</bean>
 
@@ -359,7 +361,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 	<bean id="mgHisItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mghis*.dat" />
+			value="${source.file.path}/mghis*.dat" />
 		<property name="delegate" ref="mgHisFlatFileItemReader" />
 	</bean>
 
@@ -387,7 +389,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 	<bean id="mgInsMemoItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mginsmemo.dat" />
+			value="${source.file.path}/mginsmemo.dat" />
 		<property name="delegate" ref="mgInsMemoFlatFileItemReader" />
 	</bean>
 
@@ -415,7 +417,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 	<bean id="mgInterestItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mginterest*.dat" />
+			value="${source.file.path}/mginterest*.dat" />
 		<property name="delegate" ref="mgInterestFlatFileItemReader" />
 	</bean>
 
@@ -443,7 +445,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 	<bean id="mgReceiverItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/mgreceiver*.dat" />
+			value="${source.file.path}/mgreceiver*.dat" />
 		<property name="delegate" ref="mgReceiverFlatFileItemReader" />
 	</bean>
 

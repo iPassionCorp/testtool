@@ -23,6 +23,8 @@
 		<c3p0.version>0.9.5-pre8</c3p0.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
+		<text2db.properties>${project.build.outputDirectory}/text2db.properties</text2db.properties>
+		<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties>
 	</properties>
 
 	<build>
@@ -35,24 +37,59 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<delete file="${text2db.properties}" />
+								<copy file="${text2db.env.properties}" tofile="${text2db.properties}" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>						
 		</plugins>
 	</build>
 
 	<profiles>
 		<profile>
-			<id>cloud-java7</id>
+			<id>local2cloud-java7</id>
 			<properties>
 				<postgresql.version>42.1.4.jre7</postgresql.version>
 				<java.version>1.7</java.version>
+				<text2db.env.properties>${project.build.outputDirectory}/text2db.local2cloud.properties</text2db.env.properties>
+			</properties>
+		</profile>	
+		<profile>
+			<id>cloud2cloud-java7</id>
+			<properties>
+				<postgresql.version>42.1.4.jre7</postgresql.version>
+				<java.version>1.7</java.version>
+				<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties>
 			</properties>
 		</profile>
 		<profile>
-			<id>cloud-java8</id>
+			<id>local2cloud-java8</id>
 			<properties>
 				<postgresql.version>42.1.4</postgresql.version>
 				<java.version>1.8</java.version>
+				<text2db.env.properties>${project.build.outputDirectory}/text2db.local2cloud.properties</text2db.env.properties>
 			</properties>
 		</profile>
+		<profile>
+			<id>cloud2cloud-java8</id>
+			<properties>
+				<postgresql.version>42.1.4</postgresql.version>
+				<java.version>1.8</java.version>
+				<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties>
+			</properties>
+		</profile>		
 	</profiles>
 
 	<dependencies>
