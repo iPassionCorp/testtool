@@ -117,7 +117,7 @@
 	<batch:job id="importMgOrderJob">
 		<batch:step id="mgOrderStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgOrderItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
+				<batch:chunk reader="mgOrderItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -128,7 +128,7 @@
 	<batch:job id="importMgPayJob">
 		<batch:step id="mgPayStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgPayItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
+				<batch:chunk reader="mgPayItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -139,7 +139,7 @@
 	<batch:job id="importMgPayRiderJob">
 		<batch:step id="mgPayRiderStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgPayRiderItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
+				<batch:chunk reader="mgPayRiderItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -150,7 +150,7 @@
 	<batch:job id="importMgHisJob">
 		<batch:step id="mgHisStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgHisItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
+				<batch:chunk reader="mgHisItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -161,7 +161,7 @@
 	<batch:job id="importMgInsMemoJob">
 		<batch:step id="mgInsMemoStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgInsMemoItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
+				<batch:chunk reader="mgInsMemoItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -172,7 +172,7 @@
 	<batch:job id="importMgInterestJob">
 		<batch:step id="mgInterestStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgInterestItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
+				<batch:chunk reader="mgInterestItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -183,7 +183,7 @@
 	<batch:job id="importMgReceivertJob">
 		<batch:step id="mgReceiverStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgReceiverItemReader" writer="tlitextDatabaseItemWriter" commit-interval="1000" />
+				<batch:chunk reader="mgReceiverItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>

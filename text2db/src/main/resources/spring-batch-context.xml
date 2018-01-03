@@ -164,7 +164,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="certRiderItemReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="file:/Users/samart/EDM/masic-original/newcert.dat" />
+			value="file:/Users/samart/EDM/masic-original/certrider.dat" />
 		<property name="delegate" ref="certRiderFlatFileItemReader" />
 	</bean>
 
@@ -291,7 +291,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 						<property name="names"
 							value="sectioncode,orderno,receivetime,causecode,causedetail,receiverid,considerid,admitdate,admitflag,billingorderno,interimflag,hospitalcode,receivedocdate" />
 						<property name="columns"
-							value="1-2,3-10,11-16,17-22,23-72,73-79,80-86,87-94,95-95,96-105,106-106,107-111,112-119" />
+							value="1-2,3-10,11-16,17-22,23-72,73-79,80-86,87-94,95-95,96-105,106-106,107-110,111-118" />
 					</bean>
 				</property>
 			</bean>
@@ -331,7 +331,7 @@ payrate,payamount,accdamount,surrenderamount,returnamount,deductamount,claimokda
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
 			value="file:/Users/samart/EDM/masic-original/mgpayrider*.dat" />
-		<property name="delegate" ref="mgPayFlatFileItemReader" />
+		<property name="delegate" ref="mgPayRiderFlatFileItemReader" />
 	</bean>
 
 	<bean id="mgPayRiderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
