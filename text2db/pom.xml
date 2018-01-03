@@ -37,6 +37,7 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
@@ -52,7 +53,48 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>						
+			</plugin>
+			
+			<!-- Make this jar executable -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+				  <excludes>
+					<exclude>**/text2db.local2cloud.properties</exclude>
+					<exclude>**/text2db.cloud2cloud.properties</exclude>
+				  </excludes>
+				  <archive>
+				    <manifest>
+					<addClasspath>true</addClasspath>
+					<mainClass>th.co.ipassion.testtool.MainApplication</mainClass>
+					<classpathPrefix>dependency-jars/</classpathPrefix>
+				    </manifest>
+				  </archive>
+				</configuration>
+			</plugin>
+
+			<!-- Copy project dependency -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
+				<executions>
+				  <execution>
+					<id>copy-dependencies</id>
+					<phase>package</phase>
+					<goals>
+						<goal>copy-dependencies</goal>
+					</goals>
+					<configuration>
+					  <!-- exclude junit, we need runtime dependency only -->
+					  <includeScope>runtime</includeScope>
+					  <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
+					</configuration>
+				  </execution>
+				</executions>
+			</plugin>
+															
 		</plugins>
 	</build>
 
@@ -95,27 +137,27 @@
 		<dependency>
 			<groupId>org.springframework.batch</groupId>
 			<artifactId>spring-batch-core</artifactId>
-			<version>${spring.batch.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${spring.batch.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.batch</groupId>
 			<artifactId>spring-batch-infrastructure</artifactId>
-			<version>${spring.batch.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${spring.batch.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -124,17 +166,17 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>${javassist.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${javassist.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>${postgresql.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${postgresql.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.mchange</groupId>
@@ -144,7 +186,7 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>${joda-time.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${joda-time.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -154,7 +196,7 @@
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>${commons-dbcp.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${commons-dbcp.version}</version>
 		</dependency>
 	</dependencies>
 
