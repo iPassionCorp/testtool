@@ -22,11 +22,11 @@
 	</jdbc:embedded-database> -->
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-        <property name="driverClass" value="org.postgresql.Driver" />
-        <property name="jdbcUrl" value="jdbc:postgresql://206.1.2.61:5432/edm1" />
-        <property name="user" value="postgres" />
-        <property name="password" value="123456" />
-<!--         <property name="minPoolSize" value="${dataSource.minPoolSize}" />
+        <property name="driverClass" value="${dataSource.driverClass}" />
+        <property name="jdbcUrl" value="${dataSource.jdbcUrl}" />
+        <property name="user" value="${dataSource.user}" />
+        <property name="password" value="${dataSource.password}" />
+<!--    <property name="minPoolSize" value="${dataSource.minPoolSize}" />
         <property name="maxPoolSize" value="${dataSource.maxPoolSize}" />
         <property name="maxIdleTime" value="${dataSource.maxIdleTime}" />  -->       
     </bean>
