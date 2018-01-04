@@ -180,7 +180,7 @@
 		</batch:listeners>
 	</batch:job>	
 
-	<batch:job id="importMgReceivertJob">
+	<batch:job id="importMgReceiverJob">
 		<batch:step id="mgReceiverStep1">
 			<batch:tasklet transaction-manager="transactionManager">
 				<batch:chunk reader="mgReceiverItemReader" writer="tlitextDatabaseItemWriter" commit-interval="100" />
