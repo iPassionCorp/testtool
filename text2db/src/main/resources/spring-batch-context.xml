@@ -85,6 +85,7 @@
 
 	<bean id="policyFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
 		scope="step">
+		<property name="encoding" value="" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -96,7 +97,7 @@
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
 						<property name="names"
 							value="policyno,rate,name,type,effectivedate,planname,riderplan,tlbranch" />
-						<property name="columns" value="4,6,56,57,65,125,126,129" />
+						<property name="columns" value="1-4,5-6,7-56,57-57,58-65,66-125,126-126,127-129" />
 					</bean>
 				</property>
 			</bean>
@@ -141,8 +142,7 @@ receiptflag,referenceno,reserve" />
 		<property name="delegate" ref="detCertFlatFileItemReader" />
 	</bean>
 
-	<bean id="detCertFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
-		scope="step">
+	<bean id="detCertFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
