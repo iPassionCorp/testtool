@@ -23,8 +23,8 @@
 		<c3p0.version>0.9.5-pre8</c3p0.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
-		<text2db.properties>${project.build.outputDirectory}/text2db.properties</text2db.properties>
-		<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties>
+<!-- 		<text2db.properties>${project.build.outputDirectory}/text2db.properties</text2db.properties>
+		<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties> -->
 	</properties>
 
 	<build>
@@ -64,6 +64,7 @@
 				  <excludes>
 					<exclude>**/text2db.local2cloud.properties</exclude>
 					<exclude>**/text2db.cloud2cloud.properties</exclude>
+					<exclude>**/text2db.sit.properties</exclude>
 				  </excludes>
 				  <archive>
 				    <manifest>
@@ -105,7 +106,7 @@
 			<properties>
 				<postgresql.version>42.1.4.jre7</postgresql.version>
 				<java.version>1.7</java.version>
-				<text2db.env.properties>${project.build.outputDirectory}/text2db.local2cloud.properties</text2db.env.properties>
+				<!-- <text2db.env.properties>${project.build.outputDirectory}/text2db.local2cloud.properties</text2db.env.properties> -->
 			</properties>
 		</profile>	
 		<profile>
@@ -113,7 +114,7 @@
 			<properties>
 				<postgresql.version>42.1.4.jre7</postgresql.version>
 				<java.version>1.7</java.version>
-				<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties>
+				<!-- <text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties> -->
 			</properties>
 		</profile>
 		<profile>
@@ -121,7 +122,7 @@
 			<properties>
 				<postgresql.version>42.1.4</postgresql.version>
 				<java.version>1.8</java.version>
-				<text2db.env.properties>${project.build.outputDirectory}/text2db.local2cloud.properties</text2db.env.properties>
+				<!-- <text2db.env.properties>${project.build.outputDirectory}/text2db.local2cloud.properties</text2db.env.properties> -->
 			</properties>
 		</profile>
 		<profile>
@@ -129,7 +130,7 @@
 			<properties>
 				<postgresql.version>42.1.4</postgresql.version>
 				<java.version>1.8</java.version>
-				<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties>
+				<!-- <text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties> -->
 			</properties>
 		</profile>		
 	</profiles>
