@@ -26,9 +26,9 @@
         <property name="jdbcUrl" value="${dataSource.driverClass}" />
         <property name="user" value="${dataSource.user}" />
         <property name="password" value="${dataSource.password}" />
-        <property name="minPoolSize" value="${dataSource.minPoolSize}" />
+<!--         <property name="minPoolSize" value="${dataSource.minPoolSize}" />
         <property name="maxPoolSize" value="${dataSource.maxPoolSize}" />
-        <property name="maxIdleTime" value="${dataSource.maxIdleTime}" />        
+        <property name="maxIdleTime" value="${dataSource.maxIdleTime}" />  -->       
     </bean>
  
 </beans>  
