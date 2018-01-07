@@ -27,11 +27,118 @@
 	</batch:job>	
 
 	<batch:job id="importPersonJob">
-		<batch:step id="personStep1">
+<!-- 		<batch:step id="personStep1">
 			<batch:tasklet transaction-manager="transactionManager">
 				<batch:chunk reader="personItemReader" writer="tlitextDatabaseItemWriter" commit-interval="10000" />
 			</batch:tasklet>
-		</batch:step>
+		</batch:step> -->
+		<batch:split id="splitPerson" task-executor="asyncTaskExecutor">
+			<batch:flow>
+				<batch:step id="personStep1">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader1" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep2">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader2" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep3">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader3" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep4">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader4" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep5">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader5" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+<!-- 			<batch:flow>
+				<batch:step id="personStep6">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader6" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep7">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader7" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep8">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader8" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep9">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader9" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep10">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader10" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep11">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader11" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep12">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader12" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep13">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader13" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep14">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader14" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="personStep15">
+					<batch:tasklet transaction-manager="transactionManager">
+						<batch:chunk reader="personItemReader15" writer="tlitextDatabaseItemWriter" commit-interval="5000" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow> -->
+		</batch:split>		
 		<batch:listeners>
 			<batch:listener ref="jobListener" />
 		</batch:listeners>

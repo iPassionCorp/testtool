@@ -48,13 +48,96 @@
 		</property>
 	</bean>
 
-	<bean id="personItemReader"
+	<bean id="personItemReader1"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="${source.file.path}/person.dat" />
+			value="${source.file.path}/person/person.dat.01*" />
 		<property name="delegate" ref="personFlatFileItemReader" />
 	</bean>
-
+	<bean id="personItemReader2"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.02*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader3"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.03*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader4"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.04*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader5"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.05*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader6"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.06*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader7"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.07*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader8"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.08*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader9"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.09*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader10"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.10*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader11"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.11*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader12"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.12*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader13"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.13*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader14"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.14*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>
+	<bean id="personItemReader15"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources"
+			value="${source.file.path}/person/person.dat.15*" />
+		<property name="delegate" ref="personFlatFileItemReader" />
+	</bean>										
 	<bean id="personFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
 		scope="step">
 		<property name="lineMapper">

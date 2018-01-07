@@ -11,10 +11,10 @@ public class CertLinkerFieldSetMapper implements FieldSetMapper<Certlinker> {
 	public Certlinker mapFieldSet(FieldSet fieldSet) throws BindException {
 		Certlinker result = new Certlinker();
 		CertlinkerId id = new CertlinkerId();
-		id.setCertnocp(fieldSet.readString(0));
+		id.setPolicynohp(fieldSet.readString(0));
 		id.setCertnohp(fieldSet.readString(1));
 		id.setPolicynocp(fieldSet.readString(2));
-		id.setPolicynohp(fieldSet.readString(3));
+		id.setCertnocp(fieldSet.readString(3));
 		result.setId(id);
 		return result;
 	}

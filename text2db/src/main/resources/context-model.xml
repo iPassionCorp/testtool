@@ -78,6 +78,8 @@
 		<property name="sessionFactory" ref="tlitextSessionFactory" />
 	</bean>
 
+	<bean id="asyncTaskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor" />
+
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>
