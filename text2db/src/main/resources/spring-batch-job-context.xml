@@ -14,6 +14,28 @@
 	<import resource="classpath:spring-batch-context.xml" />
 
 	<!-- Jobs -->
+
+	<batch:job id="importCompensateidJob">
+		<batch:step id="compensateidStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="compensateidItemReader" writer="tlitextDatabaseItemWriter" commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>	
+	
+	<batch:job id="importCustomerJob">
+		<batch:step id="customerStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="customerItemReader" writer="tlitextDatabaseItemWriter" commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>	
 	
 	<batch:job id="importNameJob">
 		<batch:step id="nameStep1">
