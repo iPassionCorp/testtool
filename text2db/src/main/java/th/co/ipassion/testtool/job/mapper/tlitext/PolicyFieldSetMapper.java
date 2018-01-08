@@ -18,7 +18,7 @@ public class PolicyFieldSetMapper implements FieldSetMapper<Policy> {
 		id.setEffectivedate(fieldSet.readString(4));
 		id.setPlanname(fieldSet.readString(5));
 		id.setRiderplan(fieldSet.readString(6));
-		id.setTlbranch(fieldSet.readString(7));		
+		//id.setTlbranch(fieldSet.readString(7));		
 		result.setId(id);
 		return result;
 	}

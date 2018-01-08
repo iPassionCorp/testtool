@@ -21,6 +21,7 @@ public class MgClaimFieldSetMapper implements FieldSetMapper<Mgclaim> {
 		id.setLinkerno(fieldSet.readString(7));
 		id.setOkdate(fieldSet.readString(8));
 		id.setPolicyno(fieldSet.readString(9));
+		id.setIsmigration(fieldSet.readString(10));
 		result.setId(id);
 		return result;
 	}

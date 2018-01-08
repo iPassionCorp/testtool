@@ -22,11 +22,12 @@ public class MgclaimId  implements java.io.Serializable {
      private String linkerno;
      private String okdate;
      private String policyno;
+     private String ismigration;
 
     public MgclaimId() {
     }
 
-    public MgclaimId(String certno, String accidentdate, String receivedate, String claimtype, String sectioncode, String orderno, String referenceno, String linkerno, String okdate, String policyno) {
+    public MgclaimId(String certno, String accidentdate, String receivedate, String claimtype, String sectioncode, String orderno, String referenceno, String linkerno, String okdate, String policyno, String ismigration) {
        this.certno = certno;
        this.accidentdate = accidentdate;
        this.receivedate = receivedate;
@@ -37,6 +38,7 @@ public class MgclaimId  implements java.io.Serializable {
        this.linkerno = linkerno;
        this.okdate = okdate;
        this.policyno = policyno;
+       this.ismigration = ismigration;
     }
    
 
@@ -129,9 +131,17 @@ public class MgclaimId  implements java.io.Serializable {
     public void setPolicyno(String policyno) {
         this.policyno = policyno;
     }
+ 
+   @Column(name="ismigration")
+   public String getIsmigration() {
+		return ismigration;
+	}
 
+	public void setIsmigration(String ismigration) {
+		this.ismigration = ismigration;
+	}
 
-   public boolean equals(Object other) {
+public boolean equals(Object other) {
          if ( (this == other ) ) return true;
 		 if ( (other == null ) ) return false;
 		 if ( !(other instanceof MgclaimId) ) return false;
@@ -146,7 +156,9 @@ public class MgclaimId  implements java.io.Serializable {
  && ( (this.getReferenceno()==castOther.getReferenceno()) || ( this.getReferenceno()!=null && castOther.getReferenceno()!=null && this.getReferenceno().equals(castOther.getReferenceno()) ) )
  && ( (this.getLinkerno()==castOther.getLinkerno()) || ( this.getLinkerno()!=null && castOther.getLinkerno()!=null && this.getLinkerno().equals(castOther.getLinkerno()) ) )
  && ( (this.getOkdate()==castOther.getOkdate()) || ( this.getOkdate()!=null && castOther.getOkdate()!=null && this.getOkdate().equals(castOther.getOkdate()) ) )
- && ( (this.getPolicyno()==castOther.getPolicyno()) || ( this.getPolicyno()!=null && castOther.getPolicyno()!=null && this.getPolicyno().equals(castOther.getPolicyno()) ) );
+ && ( (this.getPolicyno()==castOther.getPolicyno()) || ( this.getPolicyno()!=null && castOther.getPolicyno()!=null && this.getPolicyno().equals(castOther.getPolicyno()) ) )
+ && ( (this.getIsmigration()==castOther.getIsmigration()) || ( this.getIsmigration()!=null && castOther.getIsmigration()!=null && this.getIsmigration().equals(castOther.getIsmigration()) ) )
+ ;
    }
    
    public int hashCode() {
@@ -162,6 +174,7 @@ public class MgclaimId  implements java.io.Serializable {
          result = 37 * result + ( getLinkerno() == null ? 0 : this.getLinkerno().hashCode() );
          result = 37 * result + ( getOkdate() == null ? 0 : this.getOkdate().hashCode() );
          result = 37 * result + ( getPolicyno() == null ? 0 : this.getPolicyno().hashCode() );
+         result = 37 * result + ( getIsmigration() == null ? 0 : this.getIsmigration().hashCode() );
          return result;
    }   
 
