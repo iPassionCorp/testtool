@@ -27,6 +27,7 @@ public class MgOrderFieldSetMapper implements FieldSetMapper<Mgorder> {
 		id.setInterimflag(fs.readString(10));
 		id.setHospitalcode(fs.readString(11));
 		id.setReceivedocdate(fs.readString(12));
+		id.setCalsurdate(fs.readString(13));
 		
 		result.setId(id);
 		return result;

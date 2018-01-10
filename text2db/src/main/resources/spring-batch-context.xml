@@ -436,9 +436,9 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 					<bean
 						class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
 						<property name="names"
-							value="sectioncode,orderno,receivetime,causecode,causedetail,receiverid,considerid,admitdate,admitflag,billingorderno,interimflag,hospitalcode,receivedocdate" />
+							value="sectioncode,orderno,receivetime,causecode,causedetail,receiverid,considerid,admitdate,admitflag,billingorderno,interimflag,hospitalcode,receivedocdate,calsurdate" />
 						<property name="columns"
-							value="1-2,3-10,11-16,17-22,23-72,73-79,80-86,87-94,95-95,96-105,106-106,107-110,111-118" />
+							value="1-2,3-10,11-16,17-22,23-72,73-79,80-86,87-94,95-95,96-105,106-106,107-110,111-118,119-126" />
 					</bean>
 				</property>
 			</bean>

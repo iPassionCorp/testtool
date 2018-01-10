@@ -25,11 +25,13 @@ public class MgorderId  implements java.io.Serializable {
      private String interimflag;
      private String hospitalcode;
      private String receivedocdate;
+     private String calsurdate;
 
     public MgorderId() {
     }
 
-    public MgorderId(String sectioncode, String orderno, String receivetime, String causecode, String causedetail, String receiverid, String considerid, String admitdate, String admitflag, String billingorderno, String interimflag, String hospitalcode, String receivedocdate) {
+    public MgorderId(String sectioncode, String orderno, String receivetime, String causecode, String causedetail, String receiverid, String considerid, 
+    		String admitdate, String admitflag, String billingorderno, String interimflag, String hospitalcode, String receivedocdate, String calsurdate) {
        this.sectioncode = sectioncode;
        this.orderno = orderno;
        this.receivetime = receivetime;
@@ -43,6 +45,7 @@ public class MgorderId  implements java.io.Serializable {
        this.interimflag = interimflag;
        this.hospitalcode = hospitalcode;
        this.receivedocdate = receivedocdate;
+       this.calsurdate = calsurdate;
     }
    
 
@@ -162,9 +165,17 @@ public class MgorderId  implements java.io.Serializable {
     public void setReceivedocdate(String receivedocdate) {
         this.receivedocdate = receivedocdate;
     }
+    
+    @Column(name="calsurdate")
+   public String getCalsurdate() {
+		return calsurdate;
+	}
 
+	public void setCalsurdate(String calsurdate) {
+		this.calsurdate = calsurdate;
+	}
 
-   public boolean equals(Object other) {
+public boolean equals(Object other) {
          if ( (this == other ) ) return true;
 		 if ( (other == null ) ) return false;
 		 if ( !(other instanceof MgorderId) ) return false;
@@ -182,7 +193,8 @@ public class MgorderId  implements java.io.Serializable {
  && ( (this.getBillingorderno()==castOther.getBillingorderno()) || ( this.getBillingorderno()!=null && castOther.getBillingorderno()!=null && this.getBillingorderno().equals(castOther.getBillingorderno()) ) )
  && ( (this.getInterimflag()==castOther.getInterimflag()) || ( this.getInterimflag()!=null && castOther.getInterimflag()!=null && this.getInterimflag().equals(castOther.getInterimflag()) ) )
  && ( (this.getHospitalcode()==castOther.getHospitalcode()) || ( this.getHospitalcode()!=null && castOther.getHospitalcode()!=null && this.getHospitalcode().equals(castOther.getHospitalcode()) ) )
- && ( (this.getReceivedocdate()==castOther.getReceivedocdate()) || ( this.getReceivedocdate()!=null && castOther.getReceivedocdate()!=null && this.getReceivedocdate().equals(castOther.getReceivedocdate()) ) );
+ && ( (this.getReceivedocdate()==castOther.getReceivedocdate()) || ( this.getReceivedocdate()!=null && castOther.getReceivedocdate()!=null && this.getReceivedocdate().equals(castOther.getReceivedocdate()) ) )
+ && ( (this.getCalsurdate()==castOther.getCalsurdate()) || ( this.getCalsurdate()!=null && castOther.getCalsurdate()!=null && this.getCalsurdate().equals(castOther.getCalsurdate()) ) ) ;
    }
    
    public int hashCode() {
@@ -200,7 +212,9 @@ public class MgorderId  implements java.io.Serializable {
          result = 37 * result + ( getBillingorderno() == null ? 0 : this.getBillingorderno().hashCode() );
          result = 37 * result + ( getInterimflag() == null ? 0 : this.getInterimflag().hashCode() );
          result = 37 * result + ( getHospitalcode() == null ? 0 : this.getHospitalcode().hashCode() );
-         result = 37 * result + ( getReceivedocdate() == null ? 0 : this.getReceivedocdate().hashCode() );
+         result = 37 * result + ( getReceivedocdate() == null ? 0 : this.getReceivedocdate().hashCode() );         
+         result = 37 * result + ( getCalsurdate() == null ? 0 : this.getCalsurdate().hashCode() );
+         
          return result;
    }   
 
