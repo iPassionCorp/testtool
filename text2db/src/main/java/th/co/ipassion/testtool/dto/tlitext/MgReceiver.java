@@ -1,6 +1,6 @@
 package th.co.ipassion.testtool.dto.tlitext;
 
-public class Mgreceiver {
+public class MgReceiver {
     private String certno;
     private String accidentdate;
     private String receivedate;
