@@ -12,5 +12,6 @@
 	<import resource="classpath:context-model.xml" />
 	
 	<import resource="classpath:context-batch-tlitext.xml" />
-	
+	<import resource="classpath:context-batch-dm.xml" />
+		
 </beans>
