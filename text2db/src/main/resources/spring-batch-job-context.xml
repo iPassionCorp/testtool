@@ -15,7 +15,7 @@
 
 	<batch:job id="tlitextCompensateIdJob">
 		<batch:step id="tlitextCompensateIdStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextCompensateIdReader" writer="tlitextCompensateIdWriter" commit-interval="10000"/>
 			</batch:tasklet>
 		</batch:step>
@@ -26,7 +26,7 @@
 
 	<batch:job id="tlitextCustomerJob">
 		<batch:step id="tlitextCustomerStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextCustomerReader" writer="tlitextCustomerWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
@@ -38,7 +38,7 @@
 
 	<batch:job id="tlitextNameJob">
 		<batch:step id="tlitextNameStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextNameReader" writer="tlitextNameWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
@@ -50,7 +50,7 @@
 
 	<batch:job id="tlitextPersonJob">
 		<batch:step id="tlitextPersonStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextPersonReader" writer="tlitextPersonWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
@@ -62,7 +62,7 @@
 
 	<batch:job id="tlitextPolicyJob">
 		<batch:step id="tlitextPolicyStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextPolicyReader" writer="tlitextPolicyWriter"
 					commit-interval="100" />
 			</batch:tasklet>
@@ -74,7 +74,7 @@
 
 	<batch:job id="tlitextCertJob">
 		<batch:step id="tlitextCertStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextCertReader" writer="tlitextCertWriter"
 					commit-interval="10000">
 				</batch:chunk>
@@ -87,7 +87,7 @@
 
 	<batch:job id="tlitextDetCertJob">
 		<batch:step id="tlitextDetCertStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextDetCertReader" writer="tlitextDetCertWriter" commit-interval="10000">
 				</batch:chunk>
 			</batch:tasklet>
@@ -99,7 +99,7 @@
 
 	<batch:job id="tlitextCertRiderJob">
 		<batch:step id="tlitextCertRiderStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextCertRiderReader" writer="tlitextCertRiderWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
@@ -111,7 +111,7 @@
 
 	<batch:job id="tlitextCertLinkerJob">
 		<batch:step id="tlitextCertLinkerStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextCertLinkerReader" writer="tlitextCertLinkerWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
@@ -123,7 +123,7 @@
 
 	<batch:job id="tlitextCertMappingJob">
 		<batch:step id="tlitextCertMappingStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextCertMappingReader" writer="tlitextCertMappingWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
@@ -135,7 +135,7 @@
 
 	<batch:job id="tlitextMgClaimJob">
 		<batch:step id="tlitextMgClaimStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextMgClaimReader" writer="tlitextMgClaimWriter"
 					commit-interval="100" />
 			</batch:tasklet>
@@ -147,7 +147,7 @@
 
 	<batch:job id="tlitextMgOrderJob">
 		<batch:step id="tlitextMgOrderStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextMgOrderReader" writer="tlitextMgOrderWriter"
 					commit-interval="100" />
 			</batch:tasklet>
@@ -159,7 +159,7 @@
 
 	<batch:job id="tlitextMgPayJob">
 		<batch:step id="tlitextMgPayStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextMgPayReader" writer="tlitextMgPayWriter"
 					commit-interval="100" />
 			</batch:tasklet>
@@ -171,7 +171,7 @@
 
 	<batch:job id="tlitextMgPayRiderJob">
 		<batch:step id="tlitextMgPayRiderStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextMgPayRiderReader" writer="tlitextMgPayRiderWriter"
 					commit-interval="100" />
 			</batch:tasklet>
@@ -183,7 +183,7 @@
 
 	<batch:job id="tlitextMgHisJob">
 		<batch:step id="tlitextMgHisStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextMgHisReader" writer="tlitextMgHisWriter"
 					commit-interval="100" />
 			</batch:tasklet>
@@ -195,7 +195,7 @@
 
 	<batch:job id="tlitextMgInsMemoJob">
 		<batch:step id="tlitextMgInsMemoStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextMgInsMemoReader" writer="tlitextMgInsMemoWriter"
 					commit-interval="100" />
 			</batch:tasklet>
@@ -207,7 +207,7 @@
 
 	<batch:job id="tlitextMgInterestJob">
 		<batch:step id="tlitextMgInterestStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextMgInterestReader" writer="tlitextMgInterestWriter"
 					commit-interval="100" />
 			</batch:tasklet>
@@ -219,7 +219,7 @@
 
 	<batch:job id="tlitextMgReceiverJob">
 		<batch:step id="tlitextMgReceiverStep1">
-			<batch:tasklet transaction-manager="transactionManager">
+			<batch:tasklet>
 				<batch:chunk reader="tlitextMgReceiverReader" writer="tlitextMgReceiverWriter"
 					commit-interval="100" />
 			</batch:tasklet>
