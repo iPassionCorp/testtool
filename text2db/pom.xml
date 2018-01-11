@@ -40,7 +40,8 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>process-resources</phase>
+						<id>copy-project-properties</id>
+						<phase>compile</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -107,8 +108,6 @@
 		<profile>
 			<id>sit</id>
 			<properties>
-				<postgresql.version>42.1.4</postgresql.version>
-				<java.version>1.8</java.version>
 				<text2db.env.properties>${project.build.outputDirectory}/text2db.sit.properties</text2db.env.properties>
 			</properties>
 		</profile>		
