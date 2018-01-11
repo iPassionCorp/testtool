@@ -21,9 +21,8 @@
 		<javassist.version>3.18.1-GA</javassist.version>
 		<c3p0.version>0.9.5-pre8</c3p0.version>
 		<commons-logging.version>1.2</commons-logging.version>
-		<commons-dbcp.version>1.4</commons-dbcp.version>
-<!-- 		<text2db.properties>${project.build.outputDirectory}/text2db.properties</text2db.properties>
-		<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties> -->
+ 		<text2db.properties>${project.build.outputDirectory}/text2db.properties</text2db.properties>
+		<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud.properties</text2db.env.properties>
 	</properties>
 
 	<build>
@@ -37,7 +36,7 @@
 				</configuration>
 			</plugin>
 			
-<!-- 			<plugin>
+			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
@@ -53,7 +52,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
 			
 			<!-- Make this jar executable -->
 			<plugin>
@@ -61,8 +60,7 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 				  <excludes>
-					<exclude>**/text2db.local2cloud.properties</exclude>
-					<exclude>**/text2db.cloud2cloud.properties</exclude>
+					<exclude>**/text2db.cloud.properties</exclude>
 					<exclude>**/text2db.sit.properties</exclude>
 				  </excludes>
 				  <archive>
@@ -101,35 +99,17 @@
 
 	<profiles>
 		<profile>
-			<id>local2cloud-java7</id>
+			<id>cloud</id>
 			<properties>
-				<postgresql.version>42.1.4.jre7</postgresql.version>
-				<java.version>1.7</java.version>
-				<!-- <text2db.env.properties>${project.build.outputDirectory}/text2db.local2cloud.properties</text2db.env.properties> -->
-			</properties>
-		</profile>	
-		<profile>
-			<id>cloud2cloud-java7</id>
-			<properties>
-				<postgresql.version>42.1.4.jre7</postgresql.version>
-				<java.version>1.7</java.version>
-				<!-- <text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties> -->
+				<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud.properties</text2db.env.properties>
 			</properties>
 		</profile>
 		<profile>
-			<id>local2cloud-java8</id>
+			<id>sit</id>
 			<properties>
 				<postgresql.version>42.1.4</postgresql.version>
 				<java.version>1.8</java.version>
-				<!-- <text2db.env.properties>${project.build.outputDirectory}/text2db.local2cloud.properties</text2db.env.properties> -->
-			</properties>
-		</profile>
-		<profile>
-			<id>cloud2cloud-java8</id>
-			<properties>
-				<postgresql.version>42.1.4</postgresql.version>
-				<java.version>1.8</java.version>
-				<!-- <text2db.env.properties>${project.build.outputDirectory}/text2db.cloud2cloud.properties</text2db.env.properties> -->
+				<text2db.env.properties>${project.build.outputDirectory}/text2db.sit.properties</text2db.env.properties>
 			</properties>
 		</profile>		
 	</profiles>
@@ -188,11 +168,6 @@
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>${commons-logging.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>${commons-dbcp.version}</version>
 		</dependency>
 	</dependencies>
 
