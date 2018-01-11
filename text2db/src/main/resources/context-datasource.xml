@@ -21,7 +21,7 @@
 		<jdbc:script location= "classpath:/db/sampledb.sql"/>
 	</jdbc:embedded-database> -->
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+<!--     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="${dataSource.driverClass}" />
         <property name="jdbcUrl" value="${dataSource.jdbcUrl}" />
         <property name="user" value="${dataSource.user}" />
@@ -29,6 +29,13 @@
 	    <property name="minPoolSize" value="${dataSource.minPoolSize}" />
         <property name="maxPoolSize" value="${dataSource.maxPoolSize}" />
         <property name="maxIdleTime" value="${dataSource.maxIdleTime}" />        
+    </bean> -->
+    
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${dataSource.driverClass}" />
+        <property name="url" value="${dataSource.jdbcUrl}" />
+        <property name="username" value="${dataSource.user}" />
+        <property name="password" value="${dataSource.password}" />       
     </bean>
  
 </beans>  
