@@ -21,6 +21,7 @@
 		<javassist.version>3.18.1-GA</javassist.version>
 		<c3p0.version>0.9.5-pre8</c3p0.version>
 		<commons-logging.version>1.2</commons-logging.version>
+		<server.deploy.path>/home/ubuntu/text2db</server.deploy.path>
  		<text2db.properties>${project.build.outputDirectory}/text2db.properties</text2db.properties>
 		<text2db.env.properties>${project.build.outputDirectory}/text2db.cloud.properties</text2db.env.properties>
 	</properties>
@@ -92,6 +93,26 @@
 					  <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
 					</configuration>
 				  </execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-final-jar</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<delete file="${server.deploy.path}/${project.artifactId}-${project.version}.jar" />
+								<copy file="${project.build.directory}/${project.artifactId}-${project.version}.jar" 
+									  tofile="${server.deploy.path}/${project.artifactId}-${project.version}.jar" />
+							</tasks>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 															
