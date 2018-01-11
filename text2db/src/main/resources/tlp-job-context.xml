@@ -22,7 +22,7 @@
 		</batch:listeners>
 	</batch:job>
 
-<!-- 	<batch:job id="tlpCustomerInfoJob">
+	<batch:job id="tlpCustomerInfoJob">
 		<batch:step id="tlpCustomerInfoStep1">
 			<batch:tasklet>
 				<batch:chunk reader="tlpCustomerInfoReader" writer="tlpCustomerInfoWriter"
@@ -68,6 +68,6 @@
 		<batch:listeners>
 			<batch:listener ref="jobListener" />
 		</batch:listeners>
-	</batch:job> -->
+	</batch:job>
 	
 </beans>
