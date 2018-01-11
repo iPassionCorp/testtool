@@ -13,16 +13,10 @@
 
 	<!-- Jobs -->
 
-	<batch:job id="importCompensateidJob">
-		<batch:step id="compensateidStep1">
+	<batch:job id="tlitextCompensateIdJob">
+		<batch:step id="tlitextCompensateIdStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="compensateidItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="10000" skip-limit="630">
-					<batch:skippable-exception-classes>
-						<batch:include
-							class="org.springframework.batch.item.file.transform.IncorrectLineLengthException" />
-					</batch:skippable-exception-classes>
-				</batch:chunk>
+				<batch:chunk reader="tlitextCompensateIdReader" writer="tlitextCompensateIdWriter" commit-interval="10000"/>
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
@@ -30,10 +24,10 @@
 		</batch:listeners>
 	</batch:job>
 
-	<batch:job id="importCustomerJob">
-		<batch:step id="customerStep1">
+	<batch:job id="tlitextCustomerJob">
+		<batch:step id="tlitextCustomerStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="customerItemReader" writer="tlitextDatabaseItemWriter"
+				<batch:chunk reader="tlitextCustomerReader" writer="tlitextCustomerWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
 		</batch:step>
@@ -42,196 +36,10 @@
 		</batch:listeners>
 	</batch:job>
 
-	<batch:job id="importNameJob">
-		<batch:split id="splitName" task-executor="asyncTaskExecutor">
-			<batch:flow>
-				<batch:step id="nameStep0">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader0" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="nameStep1">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader1" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="nameStep2">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader2" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="nameStep3">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader3" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="nameStep4">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader4" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="nameStep5">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader5" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="nameStep6">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader6" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="nameStep7">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader7" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="nameStep8">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="nameItemReader8" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-		</batch:split>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importPersonJob">
-		<batch:split id="splitPerson" task-executor="asyncTaskExecutor">
-			<batch:flow>
-				<batch:step id="personStep1">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="personItemReader1" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="personStep2">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="personItemReader2" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="personStep3">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="personItemReader3" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="personStep4">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="personItemReader4" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="personStep5">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="personItemReader5" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="personStep6">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="personItemReader6" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-			<batch:flow>
-				<batch:step id="personStep7">
-					<batch:tasklet transaction-manager="transactionManager">
-						<batch:chunk reader="personItemReader7" writer="tlitextDatabaseItemWriter"
-							commit-interval="5000" />
-					</batch:tasklet>
-				</batch:step>
-			</batch:flow>
-		</batch:split>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importPolicyJob">
-		<batch:step id="policyStep1">
+	<batch:job id="tlitextNameJob">
+		<batch:step id="tlitextNameStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="policyItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importCertJob">
-		<batch:step id="certStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="certItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="10000">
-					<!-- <batch:skippable-exception-classes> <batch:include class="org.springframework.batch.item.file.transform.IncorrectLineLengthException"/> 
-						</batch:skippable-exception-classes> -->
-				</batch:chunk>
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importDetCertJob">
-		<batch:step id="detCertStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="detCertItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="10000">
-					<!-- <batch:skippable-exception-classes> <batch:include class="org.springframework.batch.item.file.transform.IncorrectLineLengthException"/> 
-						</batch:skippable-exception-classes> -->
-				</batch:chunk>
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importCertRiderJob">
-		<batch:step id="certRiderStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="certRiderItemReader" writer="tlitextDatabaseItemWriter"
+				<batch:chunk reader="tlitextNameReader" writer="tlitextNameWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
 		</batch:step>
@@ -240,10 +48,22 @@
 		</batch:listeners>
 	</batch:job>
 
-	<batch:job id="importCertLinkerJob">
-		<batch:step id="certLinkerStep1">
+	<batch:job id="tlitextPersonJob">
+		<batch:step id="tlitextPersonStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="certLinkerItemReader" writer="tlitextDatabaseItemWriter"
+				<batch:chunk reader="tlitextPersonReader" writer="tlitextPersonWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextPolicyJob">
+		<batch:step id="tlitextPolicyStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextPolicyReader" writer="tlitextPolicyWriter"
 					commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
@@ -252,121 +72,156 @@
 		</batch:listeners>
 	</batch:job>
 
-	<batch:job id="importCertMappingJob">
-		<batch:step id="certMappingStep1">
+	<batch:job id="tlitextCertJob">
+		<batch:step id="tlitextCertStep1">
 			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="certMappingItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="1000" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importMgClaimJob">
-		<batch:step id="mgClaimStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgClaimItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importMgOrderJob">
-		<batch:step id="mgOrderStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgOrderItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importMgPayJob">
-		<batch:step id="mgPayStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgPayItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importMgPayRiderJob">
-		<batch:step id="mgPayRiderStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgPayRiderItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importMgHisJob">
-		<batch:step id="mgHisStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgHisItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importMgInsMemoJob">
-		<batch:step id="mgInsMemoStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgInsMemoItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importMgInterestJob">
-		<batch:step id="mgInterestStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgInterestItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<batch:job id="importMgReceiverJob">
-		<batch:step id="mgReceiverStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="mgReceiverItemReader" writer="tlitextDatabaseItemWriter"
-					commit-interval="100" />
-			</batch:tasklet>
-		</batch:step>
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
-
-	<!-- Strat POC with JdbcBatchItemWriter -->
-
-	<batch:job id="newCertJob">
-		<batch:step id="newCertStep1">
-			<batch:tasklet transaction-manager="transactionManager">
-				<batch:chunk reader="certReader" writer="certWriter" commit-interval="10000">
+				<batch:chunk reader="tlitextCertReader" writer="tlitextCertWriter"
+					commit-interval="10000">
 				</batch:chunk>
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextDetCertJob">
+		<batch:step id="tlitextDetCertStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextDetCertReader" writer="tlitextDetCertWriter" commit-interval="10000">
+				</batch:chunk>
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextCertRiderJob">
+		<batch:step id="tlitextCertRiderStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextCertRiderReader" writer="tlitextCertRiderWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextCertLinkerJob">
+		<batch:step id="tlitextCertLinkerStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextCertLinkerReader" writer="tlitextCertLinkerWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextCertMappingJob">
+		<batch:step id="tlitextCertMappingStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextCertMappingReader" writer="tlitextCertMappingWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextMgClaimJob">
+		<batch:step id="tlitextMgClaimStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextMgClaimReader" writer="tlitextMgClaimWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextMgOrderJob">
+		<batch:step id="tlitextMgOrderStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextMgOrderReader" writer="tlitextMgOrderWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextMgPayJob">
+		<batch:step id="tlitextMgPayStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextMgPayReader" writer="tlitextMgPayWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextMgPayRiderJob">
+		<batch:step id="tlitextMgPayRiderStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextMgPayRiderReader" writer="tlitextMgPayRiderWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextMgHisJob">
+		<batch:step id="tlitextMgHisStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextMgHisReader" writer="tlitextMgHisWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextMgInsMemoJob">
+		<batch:step id="tlitextMgInsMemoStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextMgInsMemoReader" writer="tlitextMgInsMemoWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextMgInterestJob">
+		<batch:step id="tlitextMgInterestStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextMgInterestReader" writer="tlitextMgInterestWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlitextMgReceiverJob">
+		<batch:step id="tlitextMgReceiverStep1">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="tlitextMgReceiverReader" writer="tlitextMgReceiverWriter"
+					commit-interval="100" />
 			</batch:tasklet>
 		</batch:step>
 		<batch:listeners>
