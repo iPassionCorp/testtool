@@ -31,7 +31,7 @@
 	<bean id="tlitextPolicy" class="th.co.ipassion.testtool.dto.tlitext.Policy" scope="prototype"/>
 
 	<bean id="tlitextCompensateIdReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/compensateid.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/compensateid.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -66,7 +66,7 @@
     </bean>
 
 	<bean id="tlitextCustomerReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/customer.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/customer.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -102,7 +102,7 @@
     </bean>
 
 	<bean id="tlitextNameReader" class="org.springframework.batch.item.file.FlatFileItemReader">		
-		<property name="resource" value="${source.file.path}/name.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/name.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -140,7 +140,7 @@
 
 								
 	<bean id="tlitextPersonReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/person.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/person.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -178,7 +178,7 @@
     </bean>
 
 	<bean id="tlitextPolicyReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/mortpolicy1.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/mortpolicy1.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -215,7 +215,7 @@
     </bean>
     
 	<bean id="tlitextCertReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/newcert.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/newcert.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -259,7 +259,7 @@ receiptflag,referenceno,reserve" />
 
 
 	<bean id="tlitextDetCertReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/newdetcert2.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/newdetcert2.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -302,7 +302,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
     </bean>
 
 	<bean id="tlitextCertRiderReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/certrider.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/certrider.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -340,7 +340,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
     </bean>
  
  	<bean id="tlitextCertLinkerReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/certlinker.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/certlinker.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -376,7 +376,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
     </bean>
 
 	<bean id="tlitextCertMappingReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/certmapping.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/certmapping.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -412,7 +412,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
     </bean>
 
 	<bean id="tlitextMgClaimReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/mgclaim.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/mgclaim.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -453,7 +453,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="tlitextMgOrderReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="${source.file.path}/mgorder*.dat" />
+			value="${tlitext.source.file.path}/mgorder*.dat" />
 		<property name="delegate" ref="tlitextMgOrderFlatFileItemReader" />
 	</bean>
 
@@ -499,7 +499,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 	<bean id="tlitextMgPayReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="${source.file.path}/mgpay/mgpay*.dat" />
+			value="${tlitext.source.file.path}/mgpay/mgpay*.dat" />
 		<property name="delegate" ref="tlitextMgPayFlatFileItemReader" />
 	</bean>
 
@@ -547,7 +547,7 @@ payrate,payamount,accdamount,surrenderamount,returnamount,deductamount,claimokda
 	<bean id="tlitextMgPayRiderReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="${source.file.path}/mgpayrider/mgpayrider*.dat" />
+			value="${tlitext.source.file.path}/mgpayrider/mgpayrider*.dat" />
 		<property name="delegate" ref="tlitextMgPayRiderFlatFileItemReader" />
 	</bean>
 
@@ -595,7 +595,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 	<bean id="tlitextMgHisReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="${source.file.path}/mghis*.dat" />
+			value="${tlitext.source.file.path}/mghis*.dat" />
 		<property name="delegate" ref="tlitextMgHisFlatFileItemReader" />
 	</bean>
 
@@ -638,7 +638,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
     </bean>
 
 	<bean id="tlitextMgInsMemoReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="${source.file.path}/mginsmemo.dat" />
+		<property name="resource" value="${tlitext.source.file.path}/mginsmemo.dat" />
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
@@ -678,7 +678,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 	<bean id="tlitextMgInterestReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="${source.file.path}/mginterest*.dat" />
+			value="${tlitext.source.file.path}/mginterest*.dat" />
 		<property name="delegate" ref="tlitextMgInterestFlatFileItemReader" />
 	</bean>
 
@@ -723,7 +723,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 	<bean id="tlitextMgReceiverReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-			value="${source.file.path}/mgreceiver*.dat" />
+			value="${tlitext.source.file.path}/mgreceiver*.dat" />
 		<property name="delegate" ref="tlitextMgReceiverFlatFileItemReader" />
 	</bean>
 
