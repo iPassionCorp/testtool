@@ -536,7 +536,7 @@ payrate,payamount,accdamount,surrenderamount,returnamount,deductamount,claimokda
                 <![CDATA[
                     INSERT INTO tlitext.mgpay
                     VALUES
-                    (:certno, :receivedate, : accidentdate, :sectioncode, :orderno, :policystatus, :policystatusdate, :policystatus2, :policystatusdate2, 
+                    (:certno, :receivedate, :accidentdate, :sectioncode, :orderno, :policystatus, :policystatusdate, :policystatus2, :policystatusdate2, 
                     :branchcode, :servicebranch, :claimtype, :paytype, :proofinsuredage, :disabilitytype, :disnumber, :payrate, :payamount, 
                     :accdamount, :surrenderamount, :returnamount, :deductamount, :claimokdate, :claimpaydate, :allowtype)
                 ]]>
@@ -761,9 +761,9 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 <![CDATA[
                     INSERT INTO tlitext.mgreceiver
                     VALUES
-                    (:certno, :accidentdate, :receivedate, :seqno, :prename, :firstname, : lastname, :type, :payamount, 
+                    (:certno, :accidentdate, :receivedate, :seqno, :prename, :firstname, :lastname, :type, :payamount, 
                     :address, :tumbon, :zipcode, :mobilephone, :citizenid, :paytype, :banktype, :bankcode, :bankbranch, :bankaccount, 
-                    :guardianbeneficiary, :ispay, :haveindicia, :countrycode, :claimpaydate, : bookstatus, 
+                    :guardianbeneficiary, :ispay, :haveindicia, :countrycode, :claimpaydate, :bookstatus, 
                     :chqdate, :chqno, :docno, :isbeneficiarykilled, :birthdate)
                 ]]>
             </value>
