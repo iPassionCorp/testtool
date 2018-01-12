@@ -84,7 +84,7 @@ public class CustomerInfo {
     private String percentofbenefitciary3;
     private String percentofbenefitciary4;
     private String downplaneffectivedate;
-    private String date_Sosover;
+    private String date_sosover;
     private String customerduration;
     private String med;
     private String customernation;
@@ -588,11 +588,12 @@ public class CustomerInfo {
 	public void setDownplaneffectivedate(String downplaneffectivedate) {
 		this.downplaneffectivedate = downplaneffectivedate;
 	}
-	public String getDate_Sosover() {
-		return date_Sosover;
+
+	public String getDate_sosover() {
+		return date_sosover;
 	}
-	public void setDate_Sosover(String date_Sosover) {
-		this.date_Sosover = date_Sosover;
+	public void setDate_sosover(String date_sosover) {
+		this.date_sosover = date_sosover;
 	}
 	public String getCustomerduration() {
 		return customerduration;
