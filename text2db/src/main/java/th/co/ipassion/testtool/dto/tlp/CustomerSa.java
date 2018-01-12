@@ -3,40 +3,40 @@ package th.co.ipassion.testtool.dto.tlp;
 public class CustomerSa {
     private String customercode;
     private String policyno;
-    private String saLifetpd;
-    private String saLife;
-    private String saTpd;
-    private String saTd;
-    private String saAdd;
-    private String saAdb;
-    private String saHa;
-    private String saHb;
-    private String saMe;
-    private String saPa;
-    private String saPh;
-    private String saCi;
+    private String sa_Lifetpd;
+    private String sa_Life;
+    private String sa_Tpd;
+    private String sa_Td;
+    private String sa_Add;
+    private String sa_Adb;
+    private String sa_Ha;
+    private String sa_Hb;
+    private String sa_Me;
+    private String sa_Pa;
+    private String sa_Ph;
+    private String sa_Ci;
     private String flaglife;
     private String flaglifetpd;
     private String ia;
     private String sa;
     private String transdate;
-    private String miAmount;
-    private String mexpiryLife;
-    private String expiryTpd;
-    private String expiryTd;
-    private String expiryAdd;
-    private String expiryAdb;
-    private String expiryHa;
-    private String expiryHb;
-    private String expiryMe;
-    private String expiryPa;
-    private String expiryPh;
-    private String expiryCi;
-    private String saMa;
-    private String expiryMa;
-    private String saMc;
-    private String expiryMc;
-    private String expiryLife;
+    private String mi_Amount;
+    private String mexpiry_Life;
+    private String expiry_Tpd;
+    private String expiry_Td;
+    private String expiry_Add;
+    private String expiry_Adb;
+    private String expiry_Ha;
+    private String expiry_Hb;
+    private String expiry_Me;
+    private String expiry_Pa;
+    private String expiry_Ph;
+    private String expiry_Ci;
+    private String sa_Ma;
+    private String expiry_Ma;
+    private String sa_Mc;
+    private String expiry_Mc;
+    private String expiry_Life;
 	public String getCustomercode() {
 		return customercode;
 	}
@@ -49,77 +49,77 @@ public class CustomerSa {
 	public void setPolicyno(String policyno) {
 		this.policyno = policyno;
 	}
-	public String getSaLifetpd() {
-		return saLifetpd;
+	public String getSa_Lifetpd() {
+		return sa_Lifetpd;
 	}
-	public void setSaLifetpd(String saLifetpd) {
-		this.saLifetpd = saLifetpd;
+	public void setSa_Lifetpd(String sa_Lifetpd) {
+		this.sa_Lifetpd = sa_Lifetpd;
 	}
-	public String getSaLife() {
-		return saLife;
+	public String getSa_Life() {
+		return sa_Life;
 	}
-	public void setSaLife(String saLife) {
-		this.saLife = saLife;
+	public void setSa_Life(String sa_Life) {
+		this.sa_Life = sa_Life;
 	}
-	public String getSaTpd() {
-		return saTpd;
+	public String getSa_Tpd() {
+		return sa_Tpd;
 	}
-	public void setSaTpd(String saTpd) {
-		this.saTpd = saTpd;
+	public void setSa_Tpd(String sa_Tpd) {
+		this.sa_Tpd = sa_Tpd;
 	}
-	public String getSaTd() {
-		return saTd;
+	public String getSa_Td() {
+		return sa_Td;
 	}
-	public void setSaTd(String saTd) {
-		this.saTd = saTd;
+	public void setSa_Td(String sa_Td) {
+		this.sa_Td = sa_Td;
 	}
-	public String getSaAdd() {
-		return saAdd;
+	public String getSa_Add() {
+		return sa_Add;
 	}
-	public void setSaAdd(String saAdd) {
-		this.saAdd = saAdd;
+	public void setSa_Add(String sa_Add) {
+		this.sa_Add = sa_Add;
 	}
-	public String getSaAdb() {
-		return saAdb;
+	public String getSa_Adb() {
+		return sa_Adb;
 	}
-	public void setSaAdb(String saAdb) {
-		this.saAdb = saAdb;
+	public void setSa_Adb(String sa_Adb) {
+		this.sa_Adb = sa_Adb;
 	}
-	public String getSaHa() {
-		return saHa;
+	public String getSa_Ha() {
+		return sa_Ha;
 	}
-	public void setSaHa(String saHa) {
-		this.saHa = saHa;
+	public void setSa_Ha(String sa_Ha) {
+		this.sa_Ha = sa_Ha;
 	}
-	public String getSaHb() {
-		return saHb;
+	public String getSa_Hb() {
+		return sa_Hb;
 	}
-	public void setSaHb(String saHb) {
-		this.saHb = saHb;
+	public void setSa_Hb(String sa_Hb) {
+		this.sa_Hb = sa_Hb;
 	}
-	public String getSaMe() {
-		return saMe;
+	public String getSa_Me() {
+		return sa_Me;
 	}
-	public void setSaMe(String saMe) {
-		this.saMe = saMe;
+	public void setSa_Me(String sa_Me) {
+		this.sa_Me = sa_Me;
 	}
-	public String getSaPa() {
-		return saPa;
+	public String getSa_Pa() {
+		return sa_Pa;
 	}
-	public void setSaPa(String saPa) {
-		this.saPa = saPa;
+	public void setSa_Pa(String sa_Pa) {
+		this.sa_Pa = sa_Pa;
 	}
-	public String getSaPh() {
-		return saPh;
+	public String getSa_Ph() {
+		return sa_Ph;
 	}
-	public void setSaPh(String saPh) {
-		this.saPh = saPh;
+	public void setSa_Ph(String sa_Ph) {
+		this.sa_Ph = sa_Ph;
 	}
-	public String getSaCi() {
-		return saCi;
+	public String getSa_Ci() {
+		return sa_Ci;
 	}
-	public void setSaCi(String saCi) {
-		this.saCi = saCi;
+	public void setSa_Ci(String sa_Ci) {
+		this.sa_Ci = sa_Ci;
 	}
 	public String getFlaglife() {
 		return flaglife;
@@ -151,108 +151,109 @@ public class CustomerSa {
 	public void setTransdate(String transdate) {
 		this.transdate = transdate;
 	}
-	public String getMiAmount() {
-		return miAmount;
+	public String getMi_Amount() {
+		return mi_Amount;
 	}
-	public void setMiAmount(String miAmount) {
-		this.miAmount = miAmount;
+	public void setMi_Amount(String mi_Amount) {
+		this.mi_Amount = mi_Amount;
 	}
-	public String getMexpiryLife() {
-		return mexpiryLife;
+	public String getMexpiry_Life() {
+		return mexpiry_Life;
 	}
-	public void setMexpiryLife(String mexpiryLife) {
-		this.mexpiryLife = mexpiryLife;
+	public void setMexpiry_Life(String mexpiry_Life) {
+		this.mexpiry_Life = mexpiry_Life;
 	}
-	public String getExpiryTpd() {
-		return expiryTpd;
+	public String getExpiry_Tpd() {
+		return expiry_Tpd;
 	}
-	public void setExpiryTpd(String expiryTpd) {
-		this.expiryTpd = expiryTpd;
+	public void setExpiry_Tpd(String expiry_Tpd) {
+		this.expiry_Tpd = expiry_Tpd;
 	}
-	public String getExpiryTd() {
-		return expiryTd;
+	public String getExpiry_Td() {
+		return expiry_Td;
 	}
-	public void setExpiryTd(String expiryTd) {
-		this.expiryTd = expiryTd;
+	public void setExpiry_Td(String expiry_Td) {
+		this.expiry_Td = expiry_Td;
 	}
-	public String getExpiryAdd() {
-		return expiryAdd;
+	public String getExpiry_Add() {
+		return expiry_Add;
 	}
-	public void setExpiryAdd(String expiryAdd) {
-		this.expiryAdd = expiryAdd;
+	public void setExpiry_Add(String expiry_Add) {
+		this.expiry_Add = expiry_Add;
 	}
-	public String getExpiryAdb() {
-		return expiryAdb;
+	public String getExpiry_Adb() {
+		return expiry_Adb;
 	}
-	public void setExpiryAdb(String expiryAdb) {
-		this.expiryAdb = expiryAdb;
+	public void setExpiry_Adb(String expiry_Adb) {
+		this.expiry_Adb = expiry_Adb;
 	}
-	public String getExpiryHa() {
-		return expiryHa;
+	public String getExpiry_Ha() {
+		return expiry_Ha;
 	}
-	public void setExpiryHa(String expiryHa) {
-		this.expiryHa = expiryHa;
+	public void setExpiry_Ha(String expiry_Ha) {
+		this.expiry_Ha = expiry_Ha;
 	}
-	public String getExpiryHb() {
-		return expiryHb;
+	public String getExpiry_Hb() {
+		return expiry_Hb;
 	}
-	public void setExpiryHb(String expiryHb) {
-		this.expiryHb = expiryHb;
+	public void setExpiry_Hb(String expiry_Hb) {
+		this.expiry_Hb = expiry_Hb;
 	}
-	public String getExpiryMe() {
-		return expiryMe;
+	public String getExpiry_Me() {
+		return expiry_Me;
 	}
-	public void setExpiryMe(String expiryMe) {
-		this.expiryMe = expiryMe;
+	public void setExpiry_Me(String expiry_Me) {
+		this.expiry_Me = expiry_Me;
 	}
-	public String getExpiryPa() {
-		return expiryPa;
+	public String getExpiry_Pa() {
+		return expiry_Pa;
 	}
-	public void setExpiryPa(String expiryPa) {
-		this.expiryPa = expiryPa;
+	public void setExpiry_Pa(String expiry_Pa) {
+		this.expiry_Pa = expiry_Pa;
 	}
-	public String getExpiryPh() {
-		return expiryPh;
+	public String getExpiry_Ph() {
+		return expiry_Ph;
 	}
-	public void setExpiryPh(String expiryPh) {
-		this.expiryPh = expiryPh;
+	public void setExpiry_Ph(String expiry_Ph) {
+		this.expiry_Ph = expiry_Ph;
 	}
-	public String getExpiryCi() {
-		return expiryCi;
+	public String getExpiry_Ci() {
+		return expiry_Ci;
 	}
-	public void setExpiryCi(String expiryCi) {
-		this.expiryCi = expiryCi;
+	public void setExpiry_Ci(String expiry_Ci) {
+		this.expiry_Ci = expiry_Ci;
 	}
-	public String getSaMa() {
-		return saMa;
+	public String getSa_Ma() {
+		return sa_Ma;
 	}
-	public void setSaMa(String saMa) {
-		this.saMa = saMa;
+	public void setSa_Ma(String sa_Ma) {
+		this.sa_Ma = sa_Ma;
 	}
-	public String getExpiryMa() {
-		return expiryMa;
+	public String getExpiry_Ma() {
+		return expiry_Ma;
 	}
-	public void setExpiryMa(String expiryMa) {
-		this.expiryMa = expiryMa;
+	public void setExpiry_Ma(String expiry_Ma) {
+		this.expiry_Ma = expiry_Ma;
 	}
-	public String getSaMc() {
-		return saMc;
+	public String getSa_Mc() {
+		return sa_Mc;
 	}
-	public void setSaMc(String saMc) {
-		this.saMc = saMc;
+	public void setSa_Mc(String sa_Mc) {
+		this.sa_Mc = sa_Mc;
 	}
-	public String getExpiryMc() {
-		return expiryMc;
+	public String getExpiry_Mc() {
+		return expiry_Mc;
 	}
-	public void setExpiryMc(String expiryMc) {
-		this.expiryMc = expiryMc;
+	public void setExpiry_Mc(String expiry_Mc) {
+		this.expiry_Mc = expiry_Mc;
 	}
-	public String getExpiryLife() {
-		return expiryLife;
+	public String getExpiry_Life() {
+		return expiry_Life;
 	}
-	public void setExpiryLife(String expiryLife) {
-		this.expiryLife = expiryLife;
+	public void setExpiry_Life(String expiry_Life) {
+		this.expiry_Life = expiry_Life;
 	}
+
     
     
 }
