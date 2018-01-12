@@ -79,7 +79,7 @@
 					<bean
 						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
 						<property name="names"
-							value="productname,policyno,productcode,certificateno,saledate,branchnam,customercode,
+							value="productname,policyno,productcode,certificateno,saledate,branchname,customercode,
 							accountno,loanno,totalofloan,sa,prem,durationinsurance,insurancestatus,
 							effectivedate,expireddate,customerstatus,canceldate,cancelreason,canceldescription,channel,
 							prefix,nameth,surnameth,birthdate,age,weight,height,gender,status,nationid,creditcardno,
@@ -110,7 +110,7 @@
                 <![CDATA[
                     INSERT INTO tlp.customerinfo
                     VALUES
-                    (:productname, :policyno, :productcode, :certificateno, :saledate, :branchnam, :customercode, 
+                    (:productname, :policyno, :productcode, :certificateno, :saledate, :branchname, :customercode, 
                     :accountno, :loanno, :totalofloan, :sa, :prem, :durationinsurance, :insurancestatus, :effectivedate, 
                     :expireddate, :customerstatus, :canceldate, :cancelreason, :canceldescription, :channel, :prefix, 
                     :nameth, :surnameth, :birthdate, :age, :weight, :height, :gender, :status, :nationid, :creditcardno, 
