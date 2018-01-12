@@ -18,8 +18,8 @@ public class Payment {
     private String dateofrefund;
     private String invoiceno;
     private String monthenddate;
-    private String pay_Date;
-    private String refund_Amount;
+    private String pay_date;
+    private String refund_amount;
     private String collecteddate;
 	public String getPartnercode() {
 		return partnercode;
@@ -117,17 +117,18 @@ public class Payment {
 	public void setMonthenddate(String monthenddate) {
 		this.monthenddate = monthenddate;
 	}
-	public String getPay_Date() {
-		return pay_Date;
+
+	public String getPay_date() {
+		return pay_date;
 	}
-	public void setPay_Date(String pay_Date) {
-		this.pay_Date = pay_Date;
+	public void setPay_date(String pay_date) {
+		this.pay_date = pay_date;
 	}
-	public String getRefund_Amount() {
-		return refund_Amount;
+	public String getRefund_amount() {
+		return refund_amount;
 	}
-	public void setRefund_Amount(String refund_Amount) {
-		this.refund_Amount = refund_Amount;
+	public void setRefund_amount(String refund_amount) {
+		this.refund_amount = refund_amount;
 	}
 	public String getCollecteddate() {
 		return collecteddate;
