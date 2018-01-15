@@ -5,7 +5,8 @@ public class CertMapping {
     private String policyno;
     private String certno;
     private String rpolicyno;
-    private String rpolicyn;
+    private String rcertno;
+    
 	public String getPolicyno() {
 		return policyno;
 	}
@@ -24,11 +25,12 @@ public class CertMapping {
 	public void setRpolicyno(String rpolicyno) {
 		this.rpolicyno = rpolicyno;
 	}
-	public String getRpolicyn() {
-		return rpolicyn;
+	public String getRcertno() {
+		return rcertno;
 	}
-	public void setRpolicyn(String rpolicyn) {
-		this.rpolicyn = rpolicyn;
+	public void setRcertno(String rcertno) {
+		this.rcertno = rcertno;
 	}
+
      
 }
