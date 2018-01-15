@@ -697,7 +697,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 						<property name="names"
 							value="certno,accidentdate,receivedate,ridertype,paytype,startdate,enddate,day,payamount,interestamount" />
 						<property name="columns"
-							value="1-8,9-16,17-24,25-26,27-27,28-35,36-43,44-47,48-59,60-70" />
+							value="1-8,9-16,17-24,25-27,28-28,29-36,37-44,45-48,49-60,61-71" />
 					</bean>
 				</property>
 			</bean>
