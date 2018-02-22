@@ -19,7 +19,7 @@
 
 	<bean id="tlpCustomerBalloonReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="${tlp.source.file.path}/Balloon/*_*.txt"/>
+		<property name="resources" value="${tlp.source.file.path}/Balloon/*_*.txt" />
 		<property name="delegate" ref="tlpCustomerBalloonFlatFileItemReader" />
 	</bean>
 
