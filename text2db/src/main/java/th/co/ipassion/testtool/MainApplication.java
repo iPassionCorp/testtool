@@ -21,7 +21,7 @@ public class MainApplication {
         //Job job = (Job) context.getBean("importCertMappingJob");
         //Job job = (Job) context.getBean("importMgClaimJob");
         //Job job = (Job) context.getBean("importMgHisJob");
-      
+
         try {
             JobExecution execution = jobLauncher.run(job, new JobParameters());
             System.out.println("Job Exit Status : "+ execution.getStatus());
@@ -30,7 +30,7 @@ public class MainApplication {
             System.out.println("Job " + args[0] + " failed");
             e.printStackTrace();
         } finally {
-        	
+            System.out.println("End");
         }
 	}
 
