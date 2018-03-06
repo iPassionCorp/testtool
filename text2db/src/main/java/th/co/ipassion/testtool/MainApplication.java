@@ -29,7 +29,7 @@ public class MainApplication {
         } catch (JobExecutionException e) {
             System.out.println("Job " + args[0] + " failed");
             e.printStackTrace();
-        } finally {
+        } finally { 
             System.out.println("End");
         }
 	}
