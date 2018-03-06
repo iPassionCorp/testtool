@@ -279,6 +279,8 @@ receiptflag,referenceno,reserve" />
 				<property name="lineTokenizer">
 					<bean
 							class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false" />
 						<property name="names"
 								  value="policyno,certno,code,address1,address2,telephoneno,mariagestatus,recname1,percent1,relationshipcode1,recname2,percent2,relationshipcode2,recname3,percent3,
 relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
