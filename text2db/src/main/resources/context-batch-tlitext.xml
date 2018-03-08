@@ -261,7 +261,6 @@ receiptflag,referenceno,reserve" />
 	<bean id="tlitextDetCertReader" class="org.springframework.batch.item.file.FlatFileItemReader">
 		<!--read detcert file-->
 		<property name="resource" value="${tlitext.source.file.path}/newdetcert2.dat" />
-		<property name="encoding" value ="windows-874"/>
 		<!--set policy about separator-->
 		<property name="recordSeparatorPolicy">
 			<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />
