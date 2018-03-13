@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Jobs for schema dm -->
+
+	<batch:job id="dmCompensateIdJob">
+		<batch:step id="dmCompensateIdStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmCompensateIdReader" writer="dmCompensateIdWriter" commit-interval="10000"/>
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmCustomerJob">
+		<batch:step id="dmCustomerStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmCustomerReader" writer="dmCustomerWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmNameJob">
+		<batch:step id="dmNameStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmNameReader" writer="dmNameWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmPersonJob">
+		<batch:step id="dmPersonStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmPersonReader" writer="dmPersonWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmPolicyJob">
+		<batch:step id="dmPolicyStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmPolicyReader" writer="dmPolicyWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmCertJob">
+		<batch:step id="dmCertStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmCertReader" writer="dmCertWriter"
+					commit-interval="10000">
+				</batch:chunk>
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmDetCertJob">
+		<batch:step id="dmDetCertStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmDetCertReader" writer="dmDetCertWriter" commit-interval="10000">
+				</batch:chunk>
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmCertRiderJob">
+		<batch:step id="dmCertRiderStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmCertRiderReader" writer="dmCertRiderWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmCertLinkerJob">
+		<batch:step id="dmCertLinkerStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmCertLinkerReader" writer="dmCertLinkerWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmCertMappingJob">
+		<batch:step id="dmCertMappingStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmCertMappingReader" writer="dmCertMappingWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmMgClaimJob">
+		<batch:step id="dmMgClaimStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmMgClaimReader" writer="dmMgClaimWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmMgOrderJob">
+		<batch:step id="dmMgOrderStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmMgOrderReader" writer="dmMgOrderWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmMgPayJob">
+		<batch:step id="dmMgPayStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmMgPayReader" writer="dmMgPayWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmMgPayRiderJob">
+		<batch:step id="dmMgPayRiderStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmMgPayRiderReader" writer="dmMgPayRiderWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmMgHisJob">
+		<batch:step id="dmMgHisStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmMgHisReader" writer="dmMgHisWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmMgInsMemoJob">
+		<batch:step id="dmMgInsMemoStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmMgInsMemoReader" writer="dmMgInsMemoWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmMgInterestJob">
+		<batch:step id="dmMgInterestStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmMgInterestReader" writer="dmMgInterestWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="dmMgReceiverJob">
+		<batch:step id="dmMgReceiverStep1">
+			<batch:tasklet>
+				<batch:chunk reader="dmMgReceiverReader" writer="dmMgReceiverWriter"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+</beans>

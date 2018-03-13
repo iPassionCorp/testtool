@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Jobs for schema tlp -->
+	
+
+	<batch:job id="tlpCustomerBalloonJob">
+		<batch:step id="tlpCustomerBalloonStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpCustomerBalloonReader" writer="tlpCustomerBalloonWriter" commit-interval="10000"/>
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpCustomerInfoJob">
+		<batch:step id="tlpCustomerInfoStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpCustomerInfoReader" writer="tlpCustomerInfoWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpCustomerSaJob">
+		<batch:step id="tlpCustomerSaStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpCustomerSaReader" writer="tlpCustomerSaWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpPaymentJob">
+		<batch:step id="tlpPaymentStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpPaymentReader" writer="tlpPaymentWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpSplitPremiumAmountJob">
+		<batch:step id="tlpSplitPremiumAmountStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpSplitPremiumAmountReader" writer="tlpSplitPremiumAmountWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+	
+</beans>

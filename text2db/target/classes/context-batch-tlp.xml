@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:property-placeholder location="classpath:text2db.properties" />
+
+	<bean id="customerBalloon" class="th.co.ipassion.testtool.dto.tlp.CustomerBalloon" scope="prototype"/>
+	<bean id="customerInfo" class="th.co.ipassion.testtool.dto.tlp.CustomerInfo" scope="prototype"/>
+	<bean id="customerSa" class="th.co.ipassion.testtool.dto.tlp.CustomerSa" scope="prototype"/>
+	<bean id="payment" class="th.co.ipassion.testtool.dto.tlp.Payment" scope="prototype"/>
+	<bean id="splitPremiumAmount" class="th.co.ipassion.testtool.dto.tlp.SplitPremiumAmount" scope="prototype"/>
+
+	<bean id="tlpCustomerBalloonReader"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources" value="${tlp.source.file.path}/**/Balloon/*_*.txt" />
+		<property name="delegate" ref="tlpCustomerBalloonFlatFileItemReader" />
+	</bean>
+
+	<bean id="tlpCustomerBalloonFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+		<property name="linesToSkip" value="1"/>
+		<property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="fieldSetMapper">
+					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+						<property name="prototypeBeanName" value="customerBalloon" />
+			  		</bean>
+				</property>
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="names"
+							value="policyno,certno,policynoballoon,certnobolloon,loancontractno" />
+						<property name="delimiter" value="|"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+    <bean id="tlpCustomerBalloonWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+	  	<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property> 
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.customerballoon
+                    VALUES
+                    (:policyno, :certno, :policynoballoon, :certnobolloon, :loancontractno)
+                ]]>
+            </value>
+        </property>                   
+    </bean>
+ 
+ 	<bean id="tlpCustomerInfoReader"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources" value="${tlp.source.file.path}/**/**/*_CustomerInfo.txt" />
+		<property name="delegate" ref="tlpCustomerInfoFlatFileItemReader" />
+	</bean>
+
+	<bean id="tlpCustomerInfoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+		<property name="linesToSkip" value="1"/>
+		<property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="fieldSetMapper">
+					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+						<property name="prototypeBeanName" value="customerInfo" />
+			  		</bean>
+				</property>
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="names"
+							value="productname,policyno,productcode,certificateno,saledate,branchname,customercode,
+							accountno,loanno,totalofloan,sa,prem,durationinsurance,insurancestatus,
+							effectivedate,expireddate,customerstatus,canceldate,cancelreason,canceldescription,channel,
+							prefix,nameth,surnameth,birthdate,age,weight,height,gender,status,nationid,creditcardno,
+							expiredcreditcard,address1,address2,addressoffice1,addressoffice2,
+							nameofbenefit1,nameofbenefit2,nameofbenefit3,nameofbenefit4,
+							relationship1,relationship2,relationship3,relationship4,hometel,mobiletel,officetel,officercodesale,
+							salenameth,managercode,dateprintcert,postbackdate,cancelletterno,printcancelletterdate,partnercode,
+							partnername,databasesource,refname,refnationid,refcreditcardno,facility,uwdescription,uwstatus,
+							tmksaledate,coverage,paidtodate,extrarate,voicetag,deathdate,customerloanapprovedate,lob,
+							canceltransactiondate,oldaccountno,customeroccupationtext,loaninstallment1stdue,
+							customercontactofficepay,percentofbenefitciary1,percentofbenefitciary2,percentofbenefitciary3,
+							percentofbenefitciary4,downplaneffectivedate,date_sosover,customerduration,med,customernation,
+							endorsedate,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate" />
+						<property name="delimiter" value="|"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+    <bean id="tlpCustomerInfoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+	  	<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property> 
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.customerinfo
+                    VALUES
+                    (:productname, :policyno, :productcode, :certificateno, :saledate, :branchname, :customercode, 
+                    :accountno, :loanno, :totalofloan, :sa, :prem, :durationinsurance, :insurancestatus, :effectivedate, 
+                    :expireddate, :customerstatus, :canceldate, :cancelreason, :canceldescription, :channel, :prefix, 
+                    :nameth, :surnameth, :birthdate, :age, :weight, :height, :gender, :status, :nationid, :creditcardno, 
+                    :expiredcreditcard, :address1, :address2, :addressoffice1, :addressoffice2, :nameofbenefit1, :nameofbenefit2, 
+                    :nameofbenefit3, :nameofbenefit4, :relationship1, :relationship2, :relationship3, :relationship4, 
+                    :hometel, :mobiletel, :officetel, :officercodesale, :salenameth, :managercode, :dateprintcert, :postbackdate, 
+                    :cancelletterno, :printcancelletterdate, :partnercode, :partnername, :databasesource, :refname, :refnationid, 
+                    :refcreditcardno, :facility, :uwdescription, :uwstatus, :tmksaledate, :coverage, :paidtodate, :extrarate, 
+                    :voicetag, :deathdate, :customerloanapprovedate, :lob, :canceltransactiondate, :oldaccountno, :customeroccupationtext, 
+                    :loaninstallment1stdue, :customercontactofficepay, :percentofbenefitciary1, :percentofbenefitciary2, 
+                    :percentofbenefitciary3, :percentofbenefitciary4, :downplaneffectivedate, :date_sosover, :customerduration, 
+                    :med, :customernation, :endorsedate, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate)
+                ]]>
+            </value>
+        </property>                   
+    </bean>
+
+ 	<bean id="tlpCustomerSaReader"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources" value="${tlp.source.file.path}/**/**/*_CustomerSA.txt" />
+		<property name="delegate" ref="tlpCustomerSaFlatFileItemReader" />
+	</bean>
+
+	<bean id="tlpCustomerSaFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+		<property name="linesToSkip" value="1"/>
+		<property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="fieldSetMapper">
+					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+						<property name="prototypeBeanName" value="customerSa" />
+			  		</bean>
+				</property>
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="names"
+							value="customercode,policyno,sa_lifetpd,sa_life,sa_tpd,sa_td,sa_add,sa_adb,sa_ha,sa_hb,sa_me,sa_pa,sa_ph,sa_ci,
+							flaglife,flaglifetpd,ia,sa,transdate,mi_amount,expiry_life,expiry_tpd,expiry_td,expiry_add,expiry_adb,
+							expiry_ha,expiry_hb,expiry_me,expiry_pa,expiry_ph,expiry_ci,sa_ma,expiry_ma,sa_mc,expiry_mc" />
+						<property name="delimiter" value="|"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+    <bean id="tlpCustomerSaWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+	  	<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property> 
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.customersa
+                    VALUES
+                    (:customercode, :policyno, :sa_lifetpd, :sa_life, :sa_tpd, :sa_td, :sa_add, :sa_adb, 
+                    :sa_ha, :sa_hb, :sa_me, :sa_pa, :sa_ph, :sa_ci, :flaglife, :flaglifetpd, :ia, :sa, :transdate, 
+                    :mi_amount, :expiry_life, :expiry_tpd, :expiry_td, :expiry_add, :expiry_adb, :expiry_ha, :expiry_hb, 
+                    :expiry_me, :expiry_pa, :expiry_ph, :expiry_ci, :sa_ma, :expiry_ma, :sa_mc, :expiry_mc)
+                ]]>
+            </value>
+        </property>                   
+    </bean>
+
+ 	<bean id="tlpPaymentReader"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources" value="${tlp.source.file.path}/**/**/*_Payment.txt" />
+		<property name="delegate" ref="tlpPaymentFlatFileItemReader" />
+	</bean>
+
+	<bean id="tlpPaymentFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+		<property name="linesToSkip" value="1"/>
+		<property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="fieldSetMapper">
+					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+						<property name="prototypeBeanName" value="payment" />
+			  		</bean>
+				</property>
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="names"
+							value="partnercode,policyno,productcode,customercode,duedate,senddate,ob,paymentdate,premiumamt,adjustpremium,
+							typeofpayment,accno,refund,dateofrefund,invoiceno,monthenddate,pay_date,refund_amount,collecteddate" />
+						<property name="delimiter" value="|"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+    <bean id="tlpPaymentWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+	  	<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property> 
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.payment
+                    VALUES
+                    (:partnercode, :policyno, :productcode, :customercode, :duedate, :senddate, :ob, :paymentdate, :premiumamt, 
+                    :adjustpremium, :typeofpayment, :accno, :refund, :dateofrefund, :invoiceno, :monthenddate, :pay_date, :refund_amount, :collecteddate)
+                ]]>
+            </value>
+        </property>                   
+    </bean>
+ 
+  	<bean id="tlpSplitPremiumAmountReader"
+		class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources" value="${tlp.source.file.path}/**/**/*_SplitPremiumAmount.txt" />
+		<property name="delegate" ref="tlpSplitPremiumAmountFlatFileItemReader" />
+	</bean>
+
+	<bean id="tlpSplitPremiumAmountFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+		<property name="linesToSkip" value="1"/>
+		<property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>		
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="fieldSetMapper">
+					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+						<property name="prototypeBeanName" value="splitPremiumAmount" />
+			  		</bean>
+				</property>
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="names"
+							value="productid,grouppolicyno,customercode,totpremium,lifepremium,deathpremium,tpdpremium,
+							ttdpremium,tdpremium,papremium,adbpremium,addpremium,rccpremium,mapremium,mcpremium,mepremium,
+							hbpremium,hapremium,hspremium,ddpremium,lifetpdpremium" />
+						<property name="delimiter" value="|"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+    <bean id="tlpSplitPremiumAmountWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+	  	<property name="itemSqlParameterSourceProvider">
+			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property> 
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.splitpremiumamount
+                    VALUES
+                    (:productid, :grouppolicyno, :customercode, :totpremium, :lifepremium, :deathpremium, 
+                    :tpdpremium, :ttdpremium, :tdpremium, :papremium, :adbpremium, :addpremium, :rccpremium, 
+                    :mapremium, :mcpremium, :mepremium, :hbpremium, :hapremium, :hspremium, :ddpremium, :lifetpdpremium)
+                ]]>
+            </value>
+        </property>                   
+    </bean>
+         
+</beans>
