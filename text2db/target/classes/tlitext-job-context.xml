@@ -73,7 +73,7 @@
 	<batch:job id="tlitextCertJob">
 		<batch:step id="tlitextCertStep1">
 			<batch:tasklet>
-				<batch:chunk reader="tlitextCertReader" writer="tlitextCertWriter"
+				<batch:chunk reader="tlitextCertReader" processor="tlitextDetCertProcessor" writer="tlitextCertWriter"
 					commit-interval="10000">
 				</batch:chunk>
 			</batch:tasklet>
@@ -86,7 +86,7 @@
 	<batch:job id="tlitextDetCertJob">
 		<batch:step id="tlitextDetCertStep1">
 			<batch:tasklet>
-				<batch:chunk reader="tlitextDetCertReader" processor="tlitextDetCertProcessor" writer="tlitextDetCertWriter"  commit-interval="10000">
+				<batch:chunk reader="tlitextDetCertReader" processor="tlitextDetCertProcessor" writer="tlitextDetCertWriter" commit-interval="10000">
 				</batch:chunk>
 			</batch:tasklet>
 		</batch:step>

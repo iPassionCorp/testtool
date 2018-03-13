@@ -295,7 +295,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 		</property>
 	</bean>
 
-
+	<bean id="tlitextDetCertProcessor" class="th.co.ipassion.testtool.processor.detcertProcessor" />
 
 	<bean id="tlitextDetCertWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
 		<property name="dataSource" ref="dataSource" />
@@ -740,6 +740,8 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 				  value="${tlitext.source.file.path}/mgreceiver*.dat" />
 		<property name="delegate" ref="tlitextMgReceiverFlatFileItemReader" />
 	</bean>
+
+	<bean id="tlitextMgReceiverProcessor" class="th.co.ipassion.testtool.processor.mgReceiverProcessor" />
 
 	<bean id="tlitextMgReceiverFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
 		  scope="step">

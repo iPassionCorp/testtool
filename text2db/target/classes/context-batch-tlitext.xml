@@ -741,6 +741,8 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 		<property name="delegate" ref="tlitextMgReceiverFlatFileItemReader" />
 	</bean>
 
+	<bean id="tlitextMgReceiverProcessor" class="th.co.ipassion.testtool.processor.mgReceiverProcessor" />
+
 	<bean id="tlitextMgReceiverFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
 		  scope="step">
 		<property name="encoding" value ="windows-874"/>
@@ -767,8 +769,6 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
 			</bean>
 		</property>
 	</bean>
-
-	<bean id="tlitextMgReceiverProcessor" class="th.co.ipassion.testtool.processor.mgReceiverProcessor" />
 
 	<bean id="tlitextMgReceiverWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
 		<property name="dataSource" ref="dataSource" />
