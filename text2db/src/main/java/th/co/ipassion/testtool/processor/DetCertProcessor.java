@@ -4,7 +4,7 @@ import org.springframework.batch.item.ItemProcessor;
 import th.co.ipassion.testtool.dto.tlitext.DetCert;
 
 
-public class detcertProcessor implements ItemProcessor<DetCert, DetCert> {
+public class DetCertProcessor implements ItemProcessor<DetCert, DetCert> {
 
     public DetCert process(DetCert item) throws Exception {
         if(item.getPolicyno().matches("(.*)\\u0000(.*)") ||
