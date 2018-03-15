@@ -1,7 +1,7 @@
 package th.co.ipassion.testtool.processor.dm;
 
 import org.springframework.batch.item.ItemProcessor;
-import th.co.ipassion.testtool.dto.tlitext.DetCert;
+import th.co.ipassion.testtool.dto.dm.DetCert;
 
 public class DetCertProcessor implements ItemProcessor<DetCert, DetCert> {
     public DetCert process(DetCert item) throws Exception {

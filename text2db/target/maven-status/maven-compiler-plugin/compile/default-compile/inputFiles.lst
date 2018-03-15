@@ -13,12 +13,14 @@ C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\job\BlankLineRecordSeparatorPolicy.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlitext\CompensateId.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlitext\Customer.java
-C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\processor\DetCertProcessor.java
+C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\processor\tlitext\MgReceiverProcessor.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\MainApplication.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlitext\DetCert.java
+C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\processor\tlitext\DetCertProcessor.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlitext\MgOrder.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlitext\MgPay.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\Customer.java
+C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\processor\dm\MgReceiverProcessor.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\CertLinker.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\MgClaim.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlitext\CertLinker.java
@@ -29,7 +31,6 @@ C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\CertMapping.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\MgHis.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlp\CustomerSa.java
-C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\processor\MgReceiverProcessor.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\CompensateId.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\DetCert.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\MgInterest.java
@@ -39,6 +40,7 @@ C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\MgOrder.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\Policy.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlitext\MgReceiver.java
+C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\processor\dm\DetCertProcessor.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\MgReceiver.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\tlitext\MgPayRider.java
 C:\Users\iPassion10\Documents\testtool-corp\text2db\src\main\java\th\co\ipassion\testtool\dto\dm\CertRider.java
