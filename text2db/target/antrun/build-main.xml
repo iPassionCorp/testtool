@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="maven-antrun-" default="main"  >
 <target name="main">
-  <delete file="/Users/kunchai/Desktop/text2db-crop/text2db/target/classes/text2db.properties"/>
-  <copy file="/Users/kunchai/Desktop/text2db-crop/text2db/target/classes/text2db.cloud.properties" tofile="/Users/kunchai/Desktop/text2db-crop/text2db/target/classes/text2db.properties"/>
+  <delete file="C:\Users\iPassion10\Documents\testtool-corp\text2db\target\classes/text2db.properties"/>
+  <copy file="C:\Users\iPassion10\Documents\testtool-corp\text2db\target\classes/text2db.cloud.properties" tofile="C:\Users\iPassion10\Documents\testtool-corp\text2db\target\classes/text2db.properties"/>
 </target>
 </project>

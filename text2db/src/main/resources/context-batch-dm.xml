@@ -284,7 +284,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
 		</property>
 	</bean>
 
-    
+	<bean id="dmDetCertProcessor" class="th.co.ipassion.testtool.processor.dm.DetCertProcessor" />
 
     <bean id="dmDetCertWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource" />
@@ -753,6 +753,8 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
 			</bean>
 		</property>
 	</bean>
+
+	<bean id="dmMgReceiverProcessor" class="th.co.ipassion.testtool.processor.dm.MgReceiverProcessor" />
 
     <bean id="dmMgReceiverWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource" />

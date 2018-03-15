@@ -1,4 +1,4 @@
-package th.co.ipassion.testtool.processor;
+package th.co.ipassion.testtool.processor.tlitext;
 
 import org.springframework.batch.item.ItemProcessor;
 import th.co.ipassion.testtool.dto.tlitext.MgReceiver;

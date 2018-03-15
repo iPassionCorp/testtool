@@ -1,11 +1,9 @@
-package th.co.ipassion.testtool.processor;
+package th.co.ipassion.testtool.processor.dm;
 
 import org.springframework.batch.item.ItemProcessor;
 import th.co.ipassion.testtool.dto.tlitext.DetCert;
 
-
 public class DetCertProcessor implements ItemProcessor<DetCert, DetCert> {
-
     public DetCert process(DetCert item) throws Exception {
         if(item.getPolicyno().matches("(.*)\\u0000(.*)") ||
                 item.getAddress1().matches("(.*)\\u0000(.*)")||
@@ -30,9 +28,7 @@ public class DetCertProcessor implements ItemProcessor<DetCert, DetCert> {
                 ){
             return null;
         }
-        System.out.println("Done!!!");
+        System.out.println("Done!!! "+item.getPolicyno());
         return item;
     }
 }
-
-
