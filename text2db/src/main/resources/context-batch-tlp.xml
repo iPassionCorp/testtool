@@ -295,7 +295,7 @@
     </bean>
 
     <bean id="tlpClaimPaymentReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_ClaimPayment.txt" />
+        <property name="resource" value="${tlp.source.file.path}/Phase1_TextFile/Claim/SQL_TB_ClaimPayment.txt" />
         <property name="linesToSkip" value="1"/>
         <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
@@ -342,7 +342,7 @@
     </bean>
 
     <bean id="tlpClaimPaymentDetailReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_ClaimPaymentDetail.txt" />
+        <property name="resource" value="${tlp.source.file.path}/Phase1_TextFile/Claim/SQL_TB_ClaimPaymentDetail.txt" />
         <property name="linesToSkip" value="1"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
@@ -387,7 +387,7 @@
     </bean>
 
     <bean id="tlpClaimRegisterDetailReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_ClaimRegisterDetail.txt" />
+        <property name="resource" value="${tlp.source.file.path}/Phase1_TextFile/Claim/SQL_TB_ClaimRegisterDetail.txt" />
         <property name="linesToSkip" value="1"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
@@ -460,7 +460,7 @@
     </bean>
 
     <bean id="tlpClaimRegisterHeaderReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_ClaimRegisterHeader.txt" />
+        <property name="resource" value="${tlp.source.file.path}/Phase1_TextFile/Claim/SQL_TB_ClaimRegisterHeader.txt" />
         <property name="linesToSkip" value="1"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
@@ -519,7 +519,7 @@
     </bean>
 
     <bean id="tlpMasProductReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_MasProduct.txt" />
+        <property name="resource" value="${tlp.source.file.path}/Phase1_TextFile/Claim/SQL_TB_MasProduct.txt" />
         <property name="linesToSkip" value="1"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
@@ -564,7 +564,7 @@
     </bean>
 
     <bean id="tlpMasProductCoverageReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_MasProductCoverage.txt" />
+        <property name="resource" value="${tlp.source.file.path}/Phase1_TextFile/Claim/SQL_TB_MasProductCoverage.txt" />
         <property name="linesToSkip" value="1"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
@@ -609,7 +609,7 @@
     </bean>
 
     <bean id="tlpMasProductCoverageClaimReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_MasProductCoverageClaim.txt" />
+        <property name="resource" value="${tlp.source.file.path}/Phase1_TextFile/Claim/SQL_TB_MasProductCoverageClaim.txt" />
         <property name="linesToSkip" value="1"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
