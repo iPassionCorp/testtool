@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="291a249e-fd97-4098-8ef2-7d303b34fdfe" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml" afterPath="$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/text2db.cloud.properties" afterPath="$PROJECT_DIR$/src/main/resources/text2db.cloud.properties" />
+      <change beforePath="$PROJECT_DIR$/target/classes/context-batch-tlp.xml" afterPath="$PROJECT_DIR$/target/classes/context-batch-tlp.xml" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change beforePath="$PROJECT_DIR$/target/text2db-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/text2db-1.0.0-SNAPSHOT.jar" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,8 +33,8 @@
       <file leaf-file-name="context-batch-tlp.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1209">
-              <caret line="611" column="87" lean-forward="false" selection-start-line="611" selection-start-column="87" selection-end-line="611" selection-end-column="87" />
+            <state relative-caret-position="-1860">
+              <caret line="19" column="67" lean-forward="false" selection-start-line="19" selection-start-column="67" selection-end-line="19" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -38,7 +43,7 @@
       <file leaf-file-name="tlp-job-context.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/tlp-job-context.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1067">
+            <state relative-caret-position="3000">
               <caret line="145" column="48" lean-forward="false" selection-start-line="145" selection-start-column="19" selection-end-line="145" selection-end-column="48" />
               <folding />
             </state>
@@ -68,8 +73,8 @@
       <file leaf-file-name="text2db.cloud.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.cloud.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -110,9 +115,10 @@
       <find>ClaimPayment</find>
       <find>PaymentId</find>
       <find>splitPremiumAmount</find>
-      <find>tlpCustomerInf</find>
       <find>customerin</find>
       <find>tlpCustomerInfoFlatFileItemReader</find>
+      <find>tlpCustomerInf</find>
+      <find>encoding</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,8 +153,8 @@
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlp/SplitPremiumAmount.java" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlp/ClaimPayment.java" />
         <option value="$PROJECT_DIR$/src/main/resources/tlp-job-context.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/text2db.cloud.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/text2db.cloud.properties" />
       </list>
     </option>
   </component>
@@ -467,7 +473,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4647551" sideWeight="0.5048649" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14814815" sideWeight="0.49513513" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.63799286" sideWeight="0.49513513" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.091995224" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -912,18 +918,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.cloud.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-tlitext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/tlp-job-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1067">
-          <caret line="145" column="48" lean-forward="false" selection-start-line="145" selection-start-column="19" selection-end-line="145" selection-end-column="48" />
+        <state relative-caret-position="-4114">
+          <caret line="654" column="86" lean-forward="false" selection-start-line="654" selection-start-column="8" selection-end-line="654" selection-end-column="86" />
           <folding />
         </state>
       </provider>
@@ -936,18 +934,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-tlitext.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/tlp-job-context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4114">
-          <caret line="654" column="86" lean-forward="false" selection-start-line="654" selection-start-column="8" selection-end-line="654" selection-end-column="86" />
+        <state relative-caret-position="3000">
+          <caret line="145" column="48" lean-forward="false" selection-start-line="145" selection-start-column="19" selection-end-line="145" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.cloud.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1209">
-          <caret line="611" column="87" lean-forward="false" selection-start-line="611" selection-start-column="87" selection-end-line="611" selection-end-column="87" />
+        <state relative-caret-position="-1860">
+          <caret line="19" column="67" lean-forward="false" selection-start-line="19" selection-start-column="67" selection-end-line="19" selection-end-column="67" />
           <folding />
         </state>
       </provider>
