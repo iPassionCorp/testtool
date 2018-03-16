@@ -78,7 +78,7 @@
 	</bean>
 
 	<bean id="tlpCustomerInfoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
-		<property name="linesToSkip" value="1"/>s
+		<property name="linesToSkip" value="1"/>
 		<property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
