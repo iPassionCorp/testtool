@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="291a249e-fd97-4098-8ef2-7d303b34fdfe" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverDataPrepareProcessor.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/main/th/co/ipassion/testtool/MainApplication.class" afterPath="$PROJECT_DIR$/out/production/main/th/co/ipassion/testtool/MainApplication.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/main/th/co/ipassion/testtool/processor/detcertProcessor.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/MgReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/MgReceiver.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.java" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/context-batch-tlitext.xml" afterPath="$PROJECT_DIR$/src/main/resources/context-batch-tlitext.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml" afterPath="$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tlitext-job-context.xml" afterPath="$PROJECT_DIR$/src/main/resources/tlitext-job-context.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tlp-job-context.xml" afterPath="$PROJECT_DIR$/src/main/resources/tlp-job-context.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/context-batch-tlitext.xml" afterPath="$PROJECT_DIR$/target/classes/context-batch-tlitext.xml" />
       <change beforePath="$PROJECT_DIR$/target/classes/context-batch-tlp.xml" afterPath="$PROJECT_DIR$/target/classes/context-batch-tlp.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.class" afterPath="$PROJECT_DIR$/target/classes/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tlitext-job-context.xml" afterPath="$PROJECT_DIR$/target/classes/tlitext-job-context.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tlp-job-context.xml" afterPath="$PROJECT_DIR$/target/classes/tlp-job-context.xml" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/target/text2db-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/text2db-1.0.0-SNAPSHOT.jar" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,8 +20,8 @@
       <file leaf-file-name="context-batch-tlp.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="617" column="36" lean-forward="true" selection-start-line="617" selection-start-column="36" selection-end-line="617" selection-end-column="36" />
+            <state relative-caret-position="245">
+              <caret line="80" column="49" lean-forward="false" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -46,8 +30,8 @@
       <file leaf-file-name="tlp-job-context.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/tlp-job-context.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3205">
-              <caret line="109" column="44" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="44" />
+            <state relative-caret-position="575">
+              <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -108,6 +92,8 @@
       <find>ClaimPayment</find>
       <find>PaymentId</find>
       <find>splitPremiumAmount</find>
+      <find>tlpCustomerInf</find>
+      <find>customerin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -242,7 +228,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.tlpClaimRegisterHeaderJob">
+  <component name="RunManager" selected="Application.tlpCustomerInfoJob">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -320,11 +306,11 @@
       <module name="text2db" />
       <envs />
     </configuration>
-    <configuration name="tlpClaimRegisterHeaderJob" type="Application" factoryName="Application">
+    <configuration name="tlpCustomerInfoJob" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="th.co.ipassion.testtool.MainApplication" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="tlpClaimRegisterHeaderJob" />
+      <option name="PROGRAM_PARAMETERS" value="tlpCustomerInfoJob" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
@@ -421,7 +407,7 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Application.tlpClaimRegisterHeaderJob" />
+      <item index="0" class="java.lang.String" itemvalue="Application.tlpCustomerInfoJob" />
       <item index="1" class="java.lang.String" itemvalue="Application.tlitextDetCertJob" />
       <item index="2" class="java.lang.String" itemvalue="Application.tlitextMgReceiverJob" />
       <item index="3" class="java.lang.String" itemvalue="Application.main" />
@@ -452,6 +438,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -461,8 +448,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4647551" sideWeight="0.5048649" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31780168" sideWeight="0.49513513" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5483871" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31780168" sideWeight="0.49513513" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.091995224" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -922,18 +909,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/tlp-job-context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="617" column="36" lean-forward="true" selection-start-line="617" selection-start-column="36" selection-end-line="617" selection-end-column="36" />
+        <state relative-caret-position="575">
+          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/tlp-job-context.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3205">
-          <caret line="109" column="44" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="44" />
+        <state relative-caret-position="245">
+          <caret line="80" column="49" lean-forward="false" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
           <folding />
         </state>
       </provider>
