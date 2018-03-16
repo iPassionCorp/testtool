@@ -16,8 +16,15 @@
 	<bean id="customerSa" class="th.co.ipassion.testtool.dto.tlp.CustomerSa" scope="prototype"/>
 	<bean id="payment" class="th.co.ipassion.testtool.dto.tlp.Payment" scope="prototype"/>
 	<bean id="splitPremiumAmount" class="th.co.ipassion.testtool.dto.tlp.SplitPremiumAmount" scope="prototype"/>
+    <bean id="claimPayment" class="th.co.ipassion.testtool.dto.tlp.ClaimPayment" scope="prototype"/>
+    <bean id="claimPaymentDetail" class ="th.co.ipassion.testtool.dto.tlp.ClaimPaymentDetail" scope="prototype"/>
+    <bean id="claimRegisterDetail" class="th.co.ipassion.testtool.dto.tlp.ClaimRegisterDetail" scope="prototype"/>
+    <bean id="claimRegisterHeader" class="th.co.ipassion.testtool.dto.tlp.ClaimRegisterHeader" scope="prototype"/>
+    <bean id="masProduct" class="th.co.ipassion.testtool.dto.tlp.MasProduct" scope="prototype"/>
+    <bean id="masProductCoverage" class="th.co.ipassion.testtool.dto.tlp.MasProductCoverage" scope="prototype"/>
+    <bean id="masProductCoverageClaim" class="th.co.ipassion.testtool.dto.tlp.MasProductCoverageClaim" scope="prototype"/>
 
-	<bean id="tlpCustomerBalloonReader"
+    <bean id="tlpCustomerBalloonReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources" value="${tlp.source.file.path}/**/Balloon/*_*.txt" />
 		<property name="delegate" ref="tlpCustomerBalloonFlatFileItemReader" />
@@ -286,6 +293,363 @@
                 ]]>
             </value>
         </property>                   
+    </bean>
+
+    <bean id="tlpClaimPaymentReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_ClaimPayment.txt" />
+        <property name="linesToSkip" value="1"/>
+        <property name="encoding" value ="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="claimPayment" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="paymentId,registerseq,claimno,printdate,requestby,approveby1,approveby2,authorizedby1,authorizedby2,
+                                  totalamt,paidDate,createdate,createuser,updateuser,updatedate,sysprintstatus,canceldate,lettertype,reqdate,financedate,
+                                  respdate,deadlinedate,payrate" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpClaimPaymentWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.claimpayment
+                    VALUES
+                    (:paymentId, :registerseq, :claimno, :printdate, :requestby, :approveby1, :approveby2,
+                    :authorizedby1, :authorizedby2, :totalamt, :paidDate, :createdate, :createuser, :updateuser,
+                    :updatedate, :sysprintstatus, :canceldate, :lettertype, :reqdate, :financedate, :respdate, :deadlinedate, :payrate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpClaimPaymentDetailReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_ClaimPaymentDetail.txt" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="claimPaymentDetail" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="paymentdtId,paymentId,paymenttype,payeename,pamentamt,method,relation,receiptName,address1,
+                                  address2,tumbon,amphor,province,zipcode,claimbenefit,bankid,bankname,accno,returncheque,returndate,
+                                  payeeNo,createdate,createuser,updatedate,updateuser,printref,printrefRunno,chequeno,receivechequedate,remarkpayment" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpClaimPaymentDetailWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.claimpaymentdetail
+                    VALUES
+                    (:paymentdtId,:paymentId,:paymenttype,:payeename,:pamentamt,:method,:relation,:receiptName,:address1,:address2,
+                    :tumbon,:amphor,:province,:zipcode,:claimbenefit,:bankid,:bankname,:accno,:returncheque,:returndate,:payeeNo,
+                    :createdate,:createuser,:updatedate,:updateuser,:printref,:printrefRunno,:chequeno,:receivechequedate,:remarkpayment)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpClaimRegisterDetailReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_ClaimRegisterDetail.txt" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="claimRegisterDetail" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="regdtlseq,regdtlregisterno,regdtlclaimrunno,regdtlclaimno,regdtlletterrunno,regdtlletterno,regdtlclaimgroup,
+                                  regdtlclaimcausecode,regdtlclaimcauseen,regdtlclaimcauseth,regdtldateofmedicalreceive,regdtldateofmedicalreport,
+                                  regdtldateofcompletedoc,regdtlhospitalcode,regdtlhospitalname,regdtlpatientdeptcode,regdtlpatientdept,regdtldateofopd,
+                                  regdtldateofaccident,regdtldateofdeath,regdtldateofadmission,regdtldateofdischarge,regdtldateofoccurred,regdtldurationfrom,
+                                  regdtldurationto,regdtldurationdays,regdtlestimateclaim,regdtlclaimexpense,regdtlcoinsurancecode,
+                                  regdtldeclinestatus,regdtltotalclaim,regdtltotalttdpercentage,regdtltotalttdamount,regdtltotaltpdpercentage,
+                                  regdtltotaltpdamount,regdtladjustcode,regdtladjustpayment,regdtlinterest,regdtltotalamount,regdtltotalexgratiaamount,regdtlvoidamount,
+                                  regdtlsavedenyamount,regdtlpartialpayment,regdtlchequeno,regdtlpaidtopartner,regdtlpaidtobeneficiary,
+                                  regdtlclaimfollowup,regdtlclaimremark,regdtlclaimflag,regdtlregisterdate,regdtlregister,regdtlapprovestatus,
+                                  regdtlapprovedate,regdtlapproval,regdtlpolicystatus,regdtlhbcflag,registerseq,claimtypeseq,coinsuranceseq,risktypeseq,
+                                  datatype,paymentId,sysuseclaim,regdtldblindemnity,regdtlclaimnoteapprove,regdtlcleanstatus,regdtlnote,regdtlcaseno,
+                                  regdtlfaxclaim,regdtlbatchno,regdtlicdten1,regdtlicdteneng1,regdtlicdtenth1,regdtlicdten2,regdtlicdteneng2,
+                                  regdtlicdtenth2,regdtlicdten3,regdtlicdteneng3,regdtlicdtenth3,regdtltpaclaimtype,regdtllettermemocreatedate,regdtllettermemouser,
+                                  regdtllettermemostatus,regdtllos,regdtlbenefitday,regdtlclonestatus,regdtlseqtpa,regdtlhismaprpt,regdtlclaimstatus,
+                                  regdtlletterdate,regdtlletterpendingdate,regdtlletterdelaydate,regdtlletterreminddate,regdtlletterclosedate,
+                                  regdtlletterpaymentdate,regdtllettervoiddate,regdtlletterdenydate,regdtlcalsa,regdtlestimateclaimamt,
+                                  regdtlperproposal,claimtypesubseq,claimtypesubcode,regdtlclaimcausecancel,paytype,partnercode" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpClaimRegisterDetailWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.claimregisterdetail
+                    VALUES
+                    (:regdtlseq,:regdtlregisterno,:regdtlclaimrunno,:regdtlclaimno,:regdtlletterrunno,:regdtlletterno,:regdtlclaimgroup,
+                    :regdtlclaimcausecode,:regdtlclaimcauseen,:regdtlclaimcauseth,:regdtldateofmedicalreceive,:regdtldateofcompletedoc,
+                    :regdtlhospitalcode,:regdtlhospitalname,:regdtlpatientdeptcode,:regdtlpatientdept,:regdtldateofopd,:regdtldateofaccident,
+                    :regdtldateofdeath,:regdtldateofadmission,:regdtldateofdischarge,:regdtldateofoccurred,:regdtldurationfrom,
+                    :regdtldurationto,:regdtldurationdays,:regdtlestimateclaim,:regdtlclaimexpense,:regdtlcoinsurancecode,
+                    :regdtldeclinestatus,:regdtltotalclaim,:regdtltotalttdpercentage,:regdtltotalttdamount,:regdtltotaltpdpercentage,
+                    :regdtltotaltpdamount,:regdtladjustcode,:regdtladjustpayment,:regdtlinterest,:regdtltotalamount,:regdtltotalexgratiaamount,
+                    :regdtlvoidamount,:regdtlsavedenyamount,:regdtlpartialpayment,:regdtlchequeno,:regdtlpaidtopartner,
+                    :regdtlpaidtobeneficiary,:regdtlclaimfollowup,:regdtlclaimremark,:regdtlclaimflag,:regdtlregisterdate,
+                    :regdtlregister,:regdtlapprovestatus,:regdtlapprovedate,:regdtlapproval,:regdtlpolicystatus,:regdtlhbcflag,:registerseq,
+                    :claimtypeseq,:coinsuranceseq,:risktypeseq,:datatype,:paymentId,:sysuseclaim,:regdtldblindemnity,:regdtlclaimnoteapprove,
+                    :regdtlcleanstatus,:regdtlnote,:regdtlcaseno,:regdtlfaxclaim,:regdtlbatchno,:regdtlicdten1,:regdtlicdteneng1,:regdtlicdtenth1,
+                    :regdtlicdten2,:regdtlicdteneng2,:regdtlicdtenth2,:regdtlicdten3,:regdtlicdteneng3,:regdtlicdtenth3,:regdtltpaclaimtype,
+                    :regdtllettermemocreatedate,:regdtllettermemouser,:regdtllettermemostatus,:regdtllos,:regdtlbenefitday,:regdtlclonestatus,
+                    :regdtlseqtpa,:regdtlhismaprpt,:regdtlclaimstatus,:regdtlletterdate,:regdtlletterpendingdate,:regdtlletterdelaydate,:regdtlletterreminddate,:regdtlletterclosedate,
+                    :regdtlletterpaymentdate,:regdtllettervoiddate,:regdtlletterdenydate,:regdtlcalsa,:regdtlestimateclaimamt,:regdtlperproposal,:claimtypesubseq,
+                    :claimtypesubcode,:regdtlclaimcausecancel,:paytype,:partnercode)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpClaimRegisterHeaderReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_ClaimRegisterHeader.txt" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="claimRegisterHeader" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="registerseq,regcustomerbranchname,regcustomercode,regcustomercertificateno,regcustomerloanno,
+                                        regcustomeracctno,regcustomeridcard,regcustomerprefix,regcustomername,regcustomerfname,
+                                        regcustomerlname,regcustomerdob,regcustomerage,regcustomergender,regcustomerstatus,regcustomercardtype,
+                                        regcustomercardno,regcustomercardlimit,regcustomercardinstl,regcustomeraddr01,regcustomeraddr02,regcustomeraddr03,
+                                        regcustomerprovince,regcustomerzipcode,regcustomertelephone,regcustomerloanamount,regcustomersumassured,regcustomerpremium,
+                                        regcustomerdurationinsurance,regcustomermodeofpayment,regcustomersaledate,regcustomeruwstatuscode,
+                                        regcustomeruwstatusdesc,regcustomercontractdate,regcustomerissuedate,regcustomereffectivedate,regcustomerexpiredate,
+                                        regcustomervehreceivedate,regcustomerfirstpaymentdate,regcustomerlastpaymentdate,regcustomerpaidtodate,
+                                        regcustomerpolicystatuscode,regcustomerpolicystatusdesc,regcustomercanceldate,regcustomercancelreason,
+                                        regcustomercanceldescription,regcustomercancelletterno,claimno,productseq,datatype,regcustomerchannel,regcustomerrefid,age" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpClaimRegisterHeaderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.claimregisterheader
+                    VALUES
+                    (:registerseq,:regcustomerbranchname,:regcustomercode,:regcustomercertificateno,:regcustomerloanno,
+                    :regcustomeracctno,:regcustomeridcard,:regcustomerprefix,:regcustomername,:regcustomerfname,
+                    :regcustomerlname,:regcustomerdob,:regcustomerage,:regcustomergender,:regcustomerstatus,:regcustomercardtype,
+                    :regcustomercardno,:regcustomercardlimit,:regcustomercardinstl,:regcustomeraddr01,:regcustomeraddr02,:regcustomeraddr03,
+                    :regcustomerprovince,:regcustomerzipcode,:regcustomertelephone,:regcustomerloanamount,:regcustomersumassured,:regcustomerpremium,
+                    :regcustomerdurationinsurance,:regcustomermodeofpayment,:regcustomersaledate,:regcustomeruwstatuscode,
+                    :regcustomeruwstatusdesc,:regcustomercontractdate,:regcustomerissuedate,:regcustomereffectivedate,:regcustomerexpiredate,
+                    :regcustomervehreceivedate,:regcustomerfirstpaymentdate,:regcustomerlastpaymentdate,:regcustomerpaidtodate,
+                    :regcustomerpolicystatuscode,:regcustomerpolicystatusdesc,:regcustomercanceldate,:regcustomercancelreason,
+                    :regcustomercanceldescription,:regcustomercancelletterno,:claimno,:productseq,:datatype,:regcustomerchannel,:regcustomerrefid,:age)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpMasProductReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_MasProduct.txt" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="masProduct" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="productseq,policyno,productcode,productplan,productnameen,productnameth,
+                                                productgroup,productstatus,partnerseq,producttype,partnerlettername,percentLife,
+                                                percentTpd,percentAdd,percentAdb,percentPa" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpMasProductWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.masproduct
+                    VALUES
+                    (:productseq,:policyno,:productcode,:productplan,:productnameen,:productnameth,
+                    :productgroup,:productstatus,:partnerseq,:producttype,:partnerlettername,:percentLife,
+                    :percentTpd,:percentAdd,:percentAdb,:percentPa)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpMasProductCoverageReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_MasProductCoverage.txt" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="masProductCoverage" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="productcoverageseq,productcoveragepaymentmode,productcoveragesa,productcoverageamount,
+                                                productcoveragewaitingperiod,productcoverageexcludeperiod,productcoveragedesc,productseq,
+                                                riskcoverageseq" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpMasProductCoverageWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.masproductcoverage
+                    VALUES
+                    (:productcoverageseq,:productcoveragepaymentmode,:productcoveragesa,:productcoverageamount,
+                        :productcoveragewaitingperiod,:productcoverageexcludeperiod,:productcoveragedesc,:productseq,
+                        :riskcoverageseq)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpMasProductCoverageClaimReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase1_Go_Live_20180310/Claim/SQL_TB_MasProductCoverageClaim.txt" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="masProductCoverageClaim" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="productcoverageclaimseq,productcoverageclaimonetime,productcoverageseq,
+                                            claimtypeseq,risktypeseq" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpMasProductCoverageClaimWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.masproductcoverageclaim
+                    VALUES
+                    (:productcoverageclaimseq,:productcoverageclaimonetime,:productcoverageseq,
+                    :claimtypeseq,:risktypeseq)]]>
+            </value>
+        </property>
     </bean>
          
 </beans>

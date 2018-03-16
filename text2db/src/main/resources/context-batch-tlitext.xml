@@ -734,14 +734,41 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 		</property>
 	</bean>
 
+    <bean id="tlitextMgReceiverDataPrepareReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${tlitext.source.file.path}/mgreceiver*.dat" />
+        <property name="delegate" ref="tlitextMgReceiverDataPrepareFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlitextMgReceiverDataPrepareFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value ="windows-874"/>
+
+    </bean>
+
+    <bean id="tlitextMgReceiverDataPrepareProcessor" class="th.co.ipassion.testtool.processor.tlitext.MgReceiverDataPrepareProcessor" />
+
+    <bean id="tlitextMgReceiverDataPrepareWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+        <property name="resource" value="${tlitext.source.file.path}/mgreceiver_temp.dat"/>
+        <property name="lineAggregator">
+            <bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+                <property name="fieldExtractor">
+                    <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+                        <property name="names" value="certno,accidentdate,receivedate,seqno,prename,firstname, lastname,type,payamount,address,tumbon,zipcode,mobilephone,citizenid,paytype,banktype,bankcode,
+bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpaydate, bookstatus,chqdate,chqno,docno,isbeneficiarykilled,birthdate" />
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
 	<bean id="tlitextMgReceiverReader"
 		  class="org.springframework.batch.item.file.MultiResourceItemReader">
 		<property name="resources"
-				  value="${tlitext.source.file.path}/mgreceiver*.dat" />
+				  value="${tlitext.source.file.path}/mgreceiver_temp.dat" />
 		<property name="delegate" ref="tlitextMgReceiverFlatFileItemReader" />
 	</bean>
-
-	<bean id="tlitextMgReceiverProcessor" class="th.co.ipassion.testtool.processor.tlitext.MgReceiverProcessor" />
 
 	<bean id="tlitextMgReceiverFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
 		  scope="step">
@@ -770,6 +797,8 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
 		</property>
 	</bean>
 
+	<bean id="tlitextMgReceiverProcessor" class="th.co.ipassion.testtool.processor.tlitext.MgReceiverProcessor" />
+
 	<bean id="tlitextMgReceiverWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
 		<property name="dataSource" ref="dataSource" />
 		<property name="itemSqlParameterSourceProvider">
@@ -780,13 +809,14 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
 				<![CDATA[
                     INSERT INTO tlitext.mgreceiver
                     VALUES
-                    (:certno, :accidentdate, :receivedate, :seqno, :prename, :firstname, :lastname, :type, :payamount, 
-                    :address, :tumbon, :zipcode, :mobilephone, :citizenid, :paytype, :banktype, :bankcode, :bankbranch, :bankaccount, 
-                    :guardianbeneficiary, :ispay, :haveindicia, :countrycode, :claimpaydate, :bookstatus, 
+                    (:certno, :accidentdate, :receivedate, :seqno, :prename, :firstname, :lastname, :type, :payamount,
+                    :address, :tumbon, :zipcode, :mobilephone, :citizenid, :paytype, :banktype, :bankcode, :bankbranch, :bankaccount,
+                    :guardianbeneficiary, :ispay, :haveindicia, :countrycode, :claimpaydate, :bookstatus,
                     :chqdate, :chqno, :docno, :isbeneficiarykilled, :birthdate)
                 ]]>
 			</value>
 		</property>
 	</bean>
+
 
 </beans>

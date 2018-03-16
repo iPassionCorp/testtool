@@ -211,6 +211,4 @@ public class MgReceiver {
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
-    
-    
 }

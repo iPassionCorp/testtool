@@ -70,5 +70,89 @@
 			<batch:listener ref="jobListener" />
 		</batch:listeners>
 	</batch:job>
+
+	<batch:job id="tlpClaimPaymentJob">
+		<batch:step id="tlpClaimPaymentStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpClaimPaymentReader" writer="tlpClaimPaymentWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+    <batch:job id="tlpClaimPaymentDetailJob">
+        <batch:step id="tlpClaimPaymentDetailStep1">
+            <batch:tasklet>
+                <batch:chunk reader="tlpClaimPaymentDetailReader" writer="tlpClaimPaymentDetailWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="tlpClaimRegisterDetailJob">
+        <batch:step id="tlpClaimRegisterDetailStep1">
+            <batch:tasklet>
+                <batch:chunk reader="tlpClaimRegisterDetailReader" writer="tlpClaimRegisterDetailWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="tlpClaimRegisterHeaderJob">
+        <batch:step id="tlpClaimRegisterHeaderStep1">
+            <batch:tasklet>
+                <batch:chunk reader="tlpClaimRegisterHeaderReader" writer="tlpClaimRegisterHeaderWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="tlpMasProductJob">
+        <batch:step id="tlpMasProductStep1">
+            <batch:tasklet>
+                <batch:chunk reader="tlpMasProductReader" writer="tlpMasProductWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="tlpMasProductCoverageJob">
+        <batch:step id="tlpMasProductCoverageStep1">
+            <batch:tasklet>
+                <batch:chunk reader="tlpMasProductCoverageReader" writer="tlpMasProductCoverageWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="tlpMasProductCoverageClaimJob">
+        <batch:step id="tlpMasProductCoverageClaimStep1">
+            <batch:tasklet>
+                <batch:chunk reader="tlpMasProductCoverageClaimReader" writer="tlpMasProductCoverageClaimWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
 	
 </beans>
