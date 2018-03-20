@@ -744,7 +744,22 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
     <bean id="tlitextMgReceiverDataPrepareFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value ="windows-874"/>
-
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="fieldSetMapper">
+					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+						<property name="prototypeBeanName" value="tlitextMgReceiver" />
+					</bean>
+				</property>
+				<property name="lineTokenizer">
+					<bean
+							class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+						<property name="strict"
+								  value="false" />
+					</bean>
+				</property>
+			</bean>
+		</property>
     </bean>
 
     <bean id="tlitextMgReceiverDataPrepareProcessor" class="th.co.ipassion.testtool.processor.tlitext.MgReceiverDataPrepareProcessor" />

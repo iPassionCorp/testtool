@@ -30,7 +30,6 @@ th\co\ipassion\testtool\dto\tlitext\MgInsMemo.class
 th\co\ipassion\testtool\processor\tlitext\MgReceiverProcessor.class
 th\co\ipassion\testtool\dto\dm\DetCert.class
 th\co\ipassion\testtool\dto\tlp\ClaimPayment.class
-th\co\ipassion\testtool\processor\tlitext\MgReceiverDataPrepareProcessor.class
 th\co\ipassion\testtool\dto\tlp\MasProductCoverageClaim.class
 th\co\ipassion\testtool\job\BlankLineRecordSeparatorPolicy.class
 th\co\ipassion\testtool\dto\dm\CompensateId.class
