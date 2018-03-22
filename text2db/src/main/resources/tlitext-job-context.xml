@@ -214,22 +214,16 @@
 		</batch:listeners>
 	</batch:job>
 
-	<batch:job id="tlitextMgReceiverJob">
-		<batch:step id="tlitextMgReceiverStep1">
-			<batch:tasklet>
-				<batch:chunk reader="tlitextMgReceiverDataPrepareReader" processor="tlitextMgReceiverDataPrepareProcessor" writer="tlitextMgReceiverDataPrepareWriter" commit-interval="10000">
-				</batch:chunk>
-			</batch:tasklet>
-		</batch:step>
-		<!--<batch:step id="tlitextMgReceiverStep2">-->
-			<!--<batch:tasklet>-->
-				<!--<batch:chunk reader="tlitextMgReceiverReader" processor="tlitextMgReceiverProcessor" writer="tlitextMgReceiverWriter" commit-interval="10000">-->
-				<!--</batch:chunk>-->
-			<!--</batch:tasklet>-->
-		<!--</batch:step>-->
-		<batch:listeners>
-			<batch:listener ref="jobListener" />
-		</batch:listeners>
-	</batch:job>
+    <batch:job id="tlitextMgReceiverJob">
+        <batch:step id="tlitextMgReceiverStep1">
+            <batch:tasklet>
+                <batch:chunk reader="tlitextMgReceiverReader" processor="tlitextMgReceiverProcessor" writer="tlitextMgReceiverWriter" commit-interval="100">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
 
 </beans>

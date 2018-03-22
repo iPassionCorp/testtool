@@ -15,6 +15,7 @@ th\co\ipassion\testtool\dto\tlitext\DetCert.class
 th\co\ipassion\testtool\processor\dm\MgReceiverProcessor.class
 th\co\ipassion\testtool\dto\tlp\MasProduct.class
 th\co\ipassion\testtool\dto\dm\MgInterest.class
+th\co\ipassion\testtool\job\CutLinePolicy.class
 th\co\ipassion\testtool\dto\dm\MgClaim.class
 th\co\ipassion\testtool\dto\dm\Policy.class
 th\co\ipassion\testtool\dto\tlitext\MgPay.class

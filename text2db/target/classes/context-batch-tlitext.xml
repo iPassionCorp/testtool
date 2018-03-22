@@ -29,6 +29,7 @@
 	<bean id="tlitextName" class="th.co.ipassion.testtool.dto.tlitext.Name" scope="prototype"/>
 	<bean id="tlitextPerson" class="th.co.ipassion.testtool.dto.tlitext.Person" scope="prototype"/>
 	<bean id="tlitextPolicy" class="th.co.ipassion.testtool.dto.tlitext.Policy" scope="prototype"/>
+	<bean id="tlitextMgReceiverAbstact" class="th.co.ipassion.testtool.dto.tlitext.MgReceiverAbstact" scope="prototype"/>
 
 	<bean id="tlitextCompensateIdReader" class="org.springframework.batch.item.file.FlatFileItemReader">
 		<property name="resource" value="${tlitext.source.file.path}/compensateid.dat" />
@@ -734,94 +735,53 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 		</property>
 	</bean>
 
-    <bean id="tlitextMgReceiverDataPrepareReader"
+    <bean id="tlitextMgReceiverReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
                   value="${tlitext.source.file.path}/mgreceiver*.dat" />
-        <property name="delegate" ref="tlitextMgReceiverDataPrepareFlatFileItemReader" />
+        <property name="delegate" ref="tlitextMgReceiverFlatFileItemReader" />
     </bean>
 
-    <bean id="tlitextMgReceiverDataPrepareFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+    <bean id="tlitextMgReceiverFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value ="windows-874"/>
-		<property name="lineMapper">
-			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-				<property name="fieldSetMapper">
-					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-						<property name="prototypeBeanName" value="tlitextMgReceiver" />
-					</bean>
-				</property>
-				<property name="lineTokenizer">
-					<bean
-							class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="strict"
-								  value="false" />
-					</bean>
-				</property>
-			</bean>
-		</property>
-    </bean>
-
-    <bean id="tlitextMgReceiverDataPrepareProcessor" class="th.co.ipassion.testtool.processor.tlitext.MgReceiverDataPrepareProcessor" />
-
-    <bean id="tlitextMgReceiverDataPrepareWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
-        <property name="resource" value="${tlitext.source.file.path}/mgreceiver_temp.dat"/>
-        <property name="lineAggregator">
-            <bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
-                <property name="fieldExtractor">
-                    <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
-                        <property name="names" value="certno,accidentdate,receivedate,seqno,prename,firstname, lastname,type,payamount,address,tumbon,zipcode,mobilephone,citizenid,paytype,banktype,bankcode,
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextMgReceiver" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false" />
+                        <property name="names"
+                                  value="certno,accidentdate,receivedate,seqno,prename,firstname, lastname,type,payamount,address,tumbon,zipcode,mobilephone,citizenid,paytype,banktype,bankcode,
 bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpaydate, bookstatus,chqdate,chqno,docno,isbeneficiarykilled,birthdate" />
+                        <property name="columns"
+                                  value="1-8,9-16,17-24,25-25,26-55,56-115,116-175,176-176,177-188,189-316,317-321,322-326,327-336,337-349,350-350,351-351,352-361,362-396,397-411,412-491,492-492,493-493,
+494-496,497-504,505-505,506-513,514-523,524-528,529-529,530-537" />
                     </bean>
                 </property>
             </bean>
         </property>
     </bean>
 
-	<bean id="tlitextMgReceiverReader"
-		  class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources"
-				  value="${tlitext.source.file.path}/mgreceiver_temp.dat" />
-		<property name="delegate" ref="tlitextMgReceiverFlatFileItemReader" />
-	</bean>
+    <bean id="tlitextMgReceiverProcessor" class="th.co.ipassion.testtool.processor.tlitext.MgReceiverProcessor" />
 
-	<bean id="tlitextMgReceiverFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
-		  scope="step">
-		<property name="encoding" value ="windows-874"/>
-		<property name="lineMapper">
-			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-				<property name="fieldSetMapper">
-					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-						<property name="prototypeBeanName" value="tlitextMgReceiver" />
-					</bean>
-				</property>
-				<property name="lineTokenizer">
-					<bean
-							class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<property name="strict"
-								  value="false" />
-						<property name="names"
-								  value="certno,accidentdate,receivedate,seqno,prename,firstname, lastname,type,payamount,address,tumbon,zipcode,mobilephone,citizenid,paytype,banktype,bankcode,
-bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpaydate, bookstatus,chqdate,chqno,docno,isbeneficiarykilled,birthdate" />
-						<property name="columns"
-								  value="1-8,9-16,17-24,25-25,26-55,56-115,116-175,176-176,177-188,189-316,317-321,322-326,327-336,337-349,350-350,351-351,352-361,362-396,397-411,412-491,492-492,493-493,
-494-496,497-504,505-505,506-513,514-523,524-528,529-529,530-537" />
-					</bean>
-				</property>
-			</bean>
-		</property>
-	</bean>
-
-	<bean id="tlitextMgReceiverProcessor" class="th.co.ipassion.testtool.processor.tlitext.MgReceiverProcessor" />
-
-	<bean id="tlitextMgReceiverWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-		<property name="dataSource" ref="dataSource" />
-		<property name="itemSqlParameterSourceProvider">
-			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
-		</property>
-		<property name="sql">
-			<value>
-				<![CDATA[
+    <bean id="tlitextMgReceiverWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
                     INSERT INTO tlitext.mgreceiver
                     VALUES
                     (:certno, :accidentdate, :receivedate, :seqno, :prename, :firstname, :lastname, :type, :payamount,
@@ -829,9 +789,9 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                     :guardianbeneficiary, :ispay, :haveindicia, :countrycode, :claimpaydate, :bookstatus,
                     :chqdate, :chqno, :docno, :isbeneficiarykilled, :birthdate)
                 ]]>
-			</value>
-		</property>
-	</bean>
+            </value>
+        </property>
+    </bean>
 
 
 </beans>
