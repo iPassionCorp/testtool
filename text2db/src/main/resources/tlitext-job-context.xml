@@ -274,10 +274,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextOrdmastJob">
-        <batch:step id="tlitextOrdmastStep1">
+    <batch:job id="tlitextOrtlitextastJob">
+        <batch:step id="tlitextOrtlitextastStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextOrdmastReader" writer="tlitextOrdmastWriter" commit-interval="100">
+                <batch:chunk reader="tlitextOrtlitextastReader" writer="tlitextOrtlitextastWriter" commit-interval="100">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
