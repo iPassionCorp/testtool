@@ -15,11 +15,11 @@ public class CutLinePolicy extends SimpleRecordSeparatorPolicy {
     @Override
     public String postProcess(String aRecord) {
         String line = aRecord;
-        if (line.matches("00(.*)")){
-            System.out.println(line.trim().length() + " " + line);
-            return super.postProcess(line);
+        if (line.charAt(0)!='0'){
+            line = line.replaceAll("/(\r?\n|\r)/gm","");
+            System.out.println(line);
         }
-        return null;
+        return super.postProcess(line);
     }
 
 }
