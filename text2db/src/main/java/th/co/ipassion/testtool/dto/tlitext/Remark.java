@@ -4,6 +4,7 @@ public class Remark {
     private String policyno;
     private String department;
     private String sequence;
+    private String message;
 
     public String getPolicyno() {
         return policyno;
@@ -27,5 +28,13 @@ public class Remark {
 
     public void setSequence(String sequence) {
         this.sequence = sequence;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

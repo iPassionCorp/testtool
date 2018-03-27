@@ -33,7 +33,7 @@
 	<bean id="dmBeneficiary" class="th.co.ipassion.testtool.dto.dm.Beneficiary" scope="prototype"/>
 	<bean id="dmExtrapremium" class="th.co.ipassion.testtool.dto.dm.Extrapremium" scope="prototype"/>
 	<bean id="dmOrctrl" class="th.co.ipassion.testtool.dto.dm.Orctrl" scope="prototype"/>
-	<bean id="dmOrtlitextast" class="th.co.ipassion.testtool.dto.dm.Ortlitextast" scope="prototype"/>
+	<bean id="dmOrdmast" class="th.co.ipassion.testtool.dto.dm.Ordmast" scope="prototype"/>
 	<bean id="dmRemark" class="th.co.ipassion.testtool.dto.dm.Remark" scope="prototype"/>
 	<bean id="dmRider" class="th.co.ipassion.testtool.dto.dm.Rider" scope="prototype"/>
 	<bean id="dmRprider" class="th.co.ipassion.testtool.dto.dm.Rprider" scope="prototype"/>
@@ -829,9 +829,9 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <bean id="dmBeneficiaryReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${dm.source.file.path}/" />
         <property name="encoding" value ="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />
-        </property>
+        <!--<property name="recordSeparatorPolicy">-->
+            <!--<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />-->
+        <!--</property>-->
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -962,7 +962,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
-    <bean id="dmOrtlitextastReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+    <bean id="dmOrdmastReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${dm.source.file.path}/" />
         <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
@@ -973,7 +973,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 <property name="fieldSetMapper">
                     <bean
                             class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-                        <property name="prototypeBeanName" value="dmOrtlitextast" />
+                        <property name="prototypeBeanName" value="dmOrdmast" />
                     </bean>
                 </property>
                 <property name="lineTokenizer">
@@ -995,7 +995,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
-    <bean id="dmOrtlitextastWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+    <bean id="dmOrdmastWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource" />
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
@@ -1003,7 +1003,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         <property name="sql">
             <value>
                 <![CDATA[
-                    INSERT INTO dm.ortlitextast
+                    INSERT INTO dm.ordmast
                     VALUES
                     (:policyno,:nameid,:branch,:salesid,:occupationtype,:occupationcode,:plancode,
                     :effectivedate,:policystatus1,:policystatus2,:policystatusdate1,:policystatusdate2,

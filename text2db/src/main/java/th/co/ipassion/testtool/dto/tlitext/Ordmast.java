@@ -1,6 +1,6 @@
-package th.co.ipassion.testtool.dto.dm;
+package th.co.ipassion.testtool.dto.tlitext;
 
-public class Ortlitextast {
+public class Ordmast {
     private String policyno;
     private String nameid;
     private String branch;

@@ -229,7 +229,7 @@
 	<batch:job id="tlitextAddressJob">
 		<batch:step id="tlitextAddressStep1">
 			<batch:tasklet>
-				<batch:chunk reader="tlitextAddressReader" writer="tlitextAddressWriter" commit-interval="100">
+				<batch:chunk reader="tlitextAddressReader" writer="tlitextAddressWriter" commit-interval="10000">
 				</batch:chunk>
 			</batch:tasklet>
 		</batch:step>
@@ -241,7 +241,7 @@
 	<batch:job id="tlitextBeneficiaryJob">
 		<batch:step id="tlitextBeneficiaryStep1">
 			<batch:tasklet>
-				<batch:chunk reader="tlitextBeneficiaryReader" writer="tlitextBeneficiaryWriter" commit-interval="100">
+				<batch:chunk reader="tlitextBeneficiaryReader" processor="tlitextBeneficiaryProcessor" writer="tlitextBeneficiaryWriter" commit-interval="10000">
 				</batch:chunk>
 			</batch:tasklet>
 		</batch:step>
@@ -253,7 +253,7 @@
 	<batch:job id="tlitextExtrapremiumJob">
 		<batch:step id="tlitextExtrapremiumStep1">
 			<batch:tasklet>
-				<batch:chunk reader="tlitextExtrapremiumReader" writer="tlitextExtrapremiumWriter" commit-interval="100">
+				<batch:chunk reader="tlitextExtrapremiumReader" writer="tlitextExtrapremiumWriter" commit-interval="10000">
 				</batch:chunk>
 			</batch:tasklet>
 		</batch:step>
@@ -265,7 +265,7 @@
     <batch:job id="tlitextOrctrlJob">
         <batch:step id="tlitextOrctrlStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextOrctrlReader" writer="tlitextOrctrlWriter" commit-interval="100">
+                <batch:chunk reader="tlitextOrctrlReader" writer="tlitextOrctrlWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -274,10 +274,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextOrtlitextastJob">
-        <batch:step id="tlitextOrtlitextastStep1">
+    <batch:job id="tlitextOrdmastJob">
+        <batch:step id="tlitextOrdmastStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextOrtlitextastReader" writer="tlitextOrtlitextastWriter" commit-interval="100">
+                <batch:chunk reader="tlitextOrdmastReader" writer="tlitextOrdmastWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -289,7 +289,7 @@
     <batch:job id="tlitextRemarkJob">
         <batch:step id="tlitextRemarkStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextRemarkReader" writer="tlitextRemarkWriter" commit-interval="100">
+                <batch:chunk reader="tlitextRemarkReader" processor="tlitextRemarkProcessor" writer="tlitextRemarkWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -301,7 +301,7 @@
     <batch:job id="tlitextRiderJob">
         <batch:step id="tlitextRiderStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextRiderReader" writer="tlitextRiderWriter" commit-interval="100">
+                <batch:chunk reader="tlitextRiderReader" writer="tlitextRiderWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -313,7 +313,7 @@
     <batch:job id="tlitextRpriderJob">
         <batch:step id="tlitextRpriderStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextRpriderReader" writer="tlitextRpriderWriter" commit-interval="100">
+                <batch:chunk reader="tlitextRpriderReader" writer="tlitextRpriderWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>

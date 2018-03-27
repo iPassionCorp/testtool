@@ -33,7 +33,7 @@
     <bean id="tlitextBeneficiary" class="th.co.ipassion.testtool.dto.tlitext.Beneficiary" scope="prototype"/>
     <bean id="tlitextExtrapremium" class="th.co.ipassion.testtool.dto.tlitext.Extrapremium" scope="prototype"/>
     <bean id="tlitextOrctrl" class="th.co.ipassion.testtool.dto.tlitext.Orctrl" scope="prototype"/>
-    <bean id="tlitextOrtlitextast" class="th.co.ipassion.testtool.dto.tlitext.Ortlitextast" scope="prototype"/>
+    <bean id="tlitextOrdmast" class="th.co.ipassion.testtool.dto.tlitext.Ordmast" scope="prototype"/>
     <bean id="tlitextRemark" class="th.co.ipassion.testtool.dto.tlitext.Remark" scope="prototype"/>
     <bean id="tlitextRider" class="th.co.ipassion.testtool.dto.tlitext.Rider" scope="prototype"/>
     <bean id="tlitextRprider" class="th.co.ipassion.testtool.dto.tlitext.Rprider" scope="prototype"/>
@@ -845,11 +845,11 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="tlitextBeneficiaryReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/" />
+        <property name="resource" value="${tlitext.source.file.path}/nbeneficiary.dat" />
         <property name="encoding" value ="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />
-        </property>
+        <!--<property name="recordSeparatorPolicy">-->
+            <!--<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />-->
+        <!--</property>-->
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -872,6 +872,8 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
+	<bean id="tlitextBeneficiaryProcessor" class="th.co.ipassion.testtool.processor.tlitext.BeneficiaryProcessor" />
+
     <bean id="tlitextBeneficiaryWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource" />
         <property name="itemSqlParameterSourceProvider">
@@ -889,7 +891,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="tlitextExtrapremiumReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/" />
+        <property name="resource" value="${tlitext.source.file.path}/extrapremium.dat" />
         <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />
@@ -933,7 +935,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="tlitextOrctrlReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/" />
+        <property name="resource" value="${tlitext.source.file.path}/orctrl.dat" />
         <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />
@@ -980,8 +982,8 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
-    <bean id="tlitextOrtlitextastReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/" />
+    <bean id="tlitextOrdmastReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/ordmast.dat" />
         <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />
@@ -991,7 +993,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 <property name="fieldSetMapper">
                     <bean
                             class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-                        <property name="prototypeBeanName" value="tlitextOrtlitextast" />
+                        <property name="prototypeBeanName" value="tlitextOrdmast" />
                     </bean>
                 </property>
                 <property name="lineTokenizer">
@@ -1013,7 +1015,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
-    <bean id="tlitextOrtlitextastWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+    <bean id="tlitextOrdmastWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource" />
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
@@ -1021,7 +1023,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         <property name="sql">
             <value>
                 <![CDATA[
-                    INSERT INTO tlitext.ortlitextast
+                    INSERT INTO tlitext.ordmast
                     VALUES
                     (:policyno,:nameid,:branch,:salesid,:occupationtype,:occupationcode,:plancode,
                     :effectivedate,:policystatus1,:policystatus2,:policystatusdate1,:policystatusdate2,
@@ -1035,11 +1037,11 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="tlitextRemarkReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/" />
+        <property name="resource" value="${tlitext.source.file.path}/remark.dat" />
         <property name="encoding" value ="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />
-        </property>
+        <!--&lt;!&ndash;<property name="recordSeparatorPolicy">&ndash;&gt;-->
+            <!--<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />-->
+        <!--</property>-->
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1053,7 +1055,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="strict" value="false" />
                         <property name="names"
-                                  value="policyno,department,sequence" />
+                                  value="policyno,department,sequence,message" />
                         <property name="columns"
                                   value="1-8,9-10,11-13,14-113" />
                     </bean>
@@ -1061,6 +1063,8 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
             </bean>
         </property>
     </bean>
+
+	<bean id="tlitextRemarkProcessor" class="th.co.ipassion.testtool.processor.tlitext.RemarkProcessor" />
 
     <bean id="tlitextRemarkWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource" />
@@ -1072,14 +1076,14 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 <![CDATA[
                     INSERT INTO tlitext.remark
                     VALUES
-                    (:policyno,:department,:sequence)
+                    (:policyno,:department,:sequence,:message)
                 ]]>
             </value>
         </property>
     </bean>
 
     <bean id="tlitextRiderReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-    <property name="resource" value="${tlitext.source.file.path}/" />
+    <property name="resource" value="${tlitext.source.file.path}/rider.dat" />
     <property name="encoding" value ="windows-874"/>
     <property name="recordSeparatorPolicy">
         <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />
