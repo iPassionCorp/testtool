@@ -2,42 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="291a249e-fd97-4098-8ef2-7d303b34fdfe" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/BeneficiaryProcessor.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/RemarkProcessor.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_c3p0_0_9_5_pre8.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_7.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_1_4.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/dm/Ortlitextast.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/Ortlitextast.java" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/Ordmast.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/Remark.java" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/Remark.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/DetCertProcessor.java" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/DetCertProcessor.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.java" afterPath="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/context-batch-dm.xml" afterPath="$PROJECT_DIR$/src/main/resources/context-batch-dm.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/context-batch-tlitext.xml" afterPath="$PROJECT_DIR$/src/main/resources/context-batch-tlitext.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml" afterPath="$PROJECT_DIR$/src/main/resources/context-batch-tlp.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dm-job-context.xml" afterPath="$PROJECT_DIR$/src/main/resources/dm-job-context.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/text2db.cloud.properties" afterPath="$PROJECT_DIR$/src/main/resources/text2db.cloud.properties" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/text2db.properties" afterPath="$PROJECT_DIR$/src/main/resources/text2db.properties" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/text2db.sit.properties" afterPath="$PROJECT_DIR$/src/main/resources/text2db.sit.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tlitext-job-context.xml" afterPath="$PROJECT_DIR$/src/main/resources/tlitext-job-context.xml" />
-      <change beforePath="$PROJECT_DIR$/target/antrun/build-main.xml" afterPath="$PROJECT_DIR$/target/antrun/build-main.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/context-batch-dm.xml" afterPath="$PROJECT_DIR$/target/classes/context-batch-dm.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/context-batch-tlitext.xml" afterPath="$PROJECT_DIR$/target/classes/context-batch-tlitext.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/context-batch-tlp.xml" afterPath="$PROJECT_DIR$/target/classes/context-batch-tlp.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dm-job-context.xml" afterPath="$PROJECT_DIR$/target/classes/dm-job-context.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/th/co/ipassion/testtool/processor/tlitext/DetCertProcessor.class" afterPath="$PROJECT_DIR$/target/classes/th/co/ipassion/testtool/processor/tlitext/DetCertProcessor.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.class" afterPath="$PROJECT_DIR$/target/classes/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tlitext-job-context.xml" afterPath="$PROJECT_DIR$/target/classes/tlitext-job-context.xml" />
-      <change beforePath="$PROJECT_DIR$/target/dependency-jars/c3p0-0.9.5-pre8.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/dependency-jars/mchange-commons-java-0.2.7.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/dependency-jars/postgresql-42.1.4.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/target/text2db-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/text2db-1.0.0-SNAPSHOT.jar" />
-      <change beforePath="$PROJECT_DIR$/text2db.iml" afterPath="$PROJECT_DIR$/text2db.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -98,8 +66,28 @@
       <file leaf-file-name="text2db.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+            <state relative-caret-position="0">
+              <caret line="0" column="97" lean-forward="false" selection-start-line="0" selection-start-column="97" selection-end-line="0" selection-end-column="97" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="text2db.cloud.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.cloud.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="97" lean-forward="false" selection-start-line="0" selection-start-column="97" selection-end-line="0" selection-end-column="97" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="text2db.sit.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.sit.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -118,38 +106,18 @@
       <file leaf-file-name="MgReceiverProcessor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="480">
               <caret line="17" column="78" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetCertProcessor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/DetCertProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="72" lean-forward="false" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="context-batch-dm.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="context-batch-dm.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-dm.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="776">
-              <caret line="832" column="50" lean-forward="false" selection-start-line="832" selection-start-column="50" selection-end-line="832" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dm-job-context.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/dm-job-context.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8400">
-              <caret line="280" column="68" lean-forward="false" selection-start-line="280" selection-start-column="68" selection-end-line="280" selection-end-column="68" />
+            <state relative-caret-position="2625">
+              <caret line="1149" column="8" lean-forward="true" selection-start-line="1149" selection-start-column="8" selection-end-line="1149" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -237,14 +205,11 @@
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/dm/Address.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/job/CutLinePolicy.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/text2db.cloud.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/text2db.sit.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/Remark.java" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/RemarkProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/DetCertProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/text2db.properties" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/dm/Ordmast.java" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/Ordmast.java" />
         <option value="$PROJECT_DIR$/src/main/resources/dm-job-context.xml" />
@@ -253,6 +218,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/context-batch-tlitext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/BeneficiaryProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/context-batch-dm.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/text2db.cloud.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/text2db.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/text2db.sit.properties" />
       </list>
     </option>
   </component>
@@ -722,7 +690,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -732,9 +699,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4647551" sideWeight="0.5048649" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.091995224" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23297492" sideWeight="0.49513513" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5400239" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23297492" sideWeight="0.49513513" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855436" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3545946" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -989,13 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.cloud.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/tlitext/Rider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1014,13 +974,6 @@
             <element signature="e#767#768#0" expanded="false" />
             <element signature="e#805#806#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.sit.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1084,14 +1037,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="17" column="78" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/dto/dm/Beneficiary.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1104,14 +1049,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5730">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1152,8 +1089,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/context-batch-dm.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="832" column="50" lean-forward="false" selection-start-line="832" selection-start-column="50" selection-end-line="832" selection-end-column="50" />
+        <state relative-caret-position="2625">
+          <caret line="1149" column="8" lean-forward="true" selection-start-line="1149" selection-start-column="8" selection-end-line="1149" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/th/co/ipassion/testtool/processor/tlitext/MgReceiverProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="17" column="78" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.cloud.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="97" lean-forward="false" selection-start-line="0" selection-start-column="97" selection-end-line="0" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="97" lean-forward="false" selection-start-line="0" selection-start-column="97" selection-end-line="0" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/text2db.sit.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
           <folding />
         </state>
       </provider>
