@@ -740,6 +740,10 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
 
 	<bean id="dmMgReceiverFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
 		scope="step">
+		<property name="encoding" value ="windows-874"/>
+		<property name="recordSeparatorPolicy">
+			<bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+		</property>
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="fieldSetMapper">
