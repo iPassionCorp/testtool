@@ -14,12 +14,14 @@ public class CutLinePolicy extends SimpleRecordSeparatorPolicy {
 
     @Override
     public String postProcess(String aRecord) {
-        String line = aRecord;
-        if (line.charAt(0)!='0'){
-            line = line.replaceAll("/(\r?\n|\r)/gm","");
-            System.out.println(line);
+        String temp = aRecord.substring(0,8);
+        if (temp.matches("^[0-9]{8}$")){
+            return super.postProcess(aRecord);
+        }else{
+            aRecord = aRecord.replaceAll("/(\r?\n|\r)/gm","");
+            System.out.println(aRecord);
+            return null;
         }
-        return super.postProcess(line);
     }
 
 }
