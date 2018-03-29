@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="text2db-1.0.0-SNAPSHOT">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/target/text2db-1.0.0-SNAPSHOT.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
