@@ -16,7 +16,11 @@ public class CutLinePolicy extends SimpleRecordSeparatorPolicy {
     public String postProcess(String aRecord) {
         String temp = aRecord.substring(0,8);
         if (temp.matches("^[0-9]{8}$")){
-            return super.postProcess(aRecord);
+            if(aRecord.length()<537){
+                return null;
+            }else{
+                return super.postProcess(aRecord);
+            }
         }else{
             aRecord = aRecord.replaceAll("/(\r?\n|\r)/gm","");
             System.out.println(aRecord);
