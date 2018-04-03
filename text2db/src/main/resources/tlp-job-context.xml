@@ -154,5 +154,89 @@
             <batch:listener ref="jobListener" />
         </batch:listeners>
     </batch:job>
+
+	<batch:job id="tlpAppCustomerJob">
+		<batch:step id="tlpAppCustomerStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpAppCustomerReader" writer="tlpAppCustomerWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpAppCustomerAddressJob">
+		<batch:step id="tlpAppCustomerAddressStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpAppCustomerAddressReader" writer="tlpAppCustomerAddressWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpHistoryStatusJob">
+		<batch:step id="tlpHistoryStatusStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpHistoryStatusReader" writer="tlpHistoryStatusWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpPolicyMasterJob">
+		<batch:step id="tlpPolicyMasterStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpPolicyMasterReader" writer="tlpPolicyMasterWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpPolicyBeneficiaryJob">
+		<batch:step id="tlpPolicyBeneficiaryStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpPolicyBeneficiaryReader" writer="tlpPolicyBeneficiaryWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpPolicyPaidJob">
+		<batch:step id="tlpPolicyPaidStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpPolicyPaidReader" writer="tlpPolicyPaidWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpPolicyRiderJob">
+		<batch:step id="tlpPolicyRiderStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpPolicyRiderReader" writer="tlpPolicyRiderWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
 	
 </beans>

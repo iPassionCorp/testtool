@@ -1,4 +1,4 @@
-package th.co.ipassion.testtool.job;
+package main.java.th.co.ipassion.testtool.job;
 
 import org.springframework.batch.item.file.separator.SimpleRecordSeparatorPolicy;
 

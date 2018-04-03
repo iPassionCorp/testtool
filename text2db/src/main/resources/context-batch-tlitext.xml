@@ -749,7 +749,7 @@ ameexpense,amepayment,tdday,tdstartdate,tdpayment, returnamount,deductamount,voi
           scope="step">
         <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+            <bean class="main.java.th.co.ipassion.testtool.job.CutLinePolicy"/>
         </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">

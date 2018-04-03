@@ -23,6 +23,13 @@
     <bean id="masProduct" class="th.co.ipassion.testtool.dto.tlp.MasProduct" scope="prototype"/>
     <bean id="masProductCoverage" class="th.co.ipassion.testtool.dto.tlp.MasProductCoverage" scope="prototype"/>
     <bean id="masProductCoverageClaim" class="th.co.ipassion.testtool.dto.tlp.MasProductCoverageClaim" scope="prototype"/>
+    <bean id="appCustomer" class="th.co.ipassion.testtool.dto.tlp.AppCustomer" scope="prototype"/>
+    <bean id="appCustomerAddress" class="th.co.ipassion.testtool.dto.tlp.AppCustomerAddress" scope="prototype"/>
+    <bean id="historyStatus" class="th.co.ipassion.testtool.dto.tlp.HistoryStatus" scope="prototype"/>
+    <bean id="policyMaster" class="th.co.ipassion.testtool.dto.tlp.PolicyMaster" scope="prototype"/>
+    <bean id="policyBeneficiary" class="th.co.ipassion.testtool.dto.tlp.PolicyBeneficiary" scope="prototype"/>
+    <bean id="policyPaid" class="th.co.ipassion.testtool.dto.tlp.PolicyPaid" scope="prototype"/>
+    <bean id="policyRider" class="th.co.ipassion.testtool.dto.tlp.PolicyRider" scope="prototype"/>
 
     <bean id="tlpCustomerBalloonReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
@@ -649,6 +656,335 @@
                     VALUES
                     (:productcoverageclaimseq,:productcoverageclaimonetime,:productcoverageseq,
                     :claimtypeseq,:risktypeseq)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpAppCustomerReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="appCustomer" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="appno,custprename,custname,custsurname,custstatus,custheight,custweight,
+                                        custoccupation,custposition,custid,custidtype,custiddate,custidamphur,
+                                        custidprovince,custsex,custage,importdate,printstatus,printdate,addtype,
+                                        custbirthdate,relation,accountno,userimport,fileimport,creditno,credittype,
+                                        creditexpire,address1,address2,address3,address4,caddress1,caddress2,caddress3,
+                                        caddress4,race,nationality,prefix" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpAppCustomerWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.appcustomer
+                    VALUES
+                    (:appno,:custprename,:custname,:custsurname,:custstatus,:custheight,:custweight,
+                    :custoccupation,:custposition,:custid,:custidtype,:custiddate,:custidamphur,
+                    :custidprovince,:custsex,:custage,:importdate,:printstatus,:printdate,:addtype,
+                    :custbirthdate,:relation,:accountno,:userimport,:fileimport,:creditno,:credittype,
+                    :creditexpire,:address1,:address2,:address3,:address4,:caddress1,:caddress2,:caddress3,
+                    :caddress4,:race,:nationality,:prefix)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpAppCustomerAddressReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="appCustomerAddress" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="appno,addtype,addplace,addnumber,addmoo,addvillage,addbuilding,
+                                        addfloor,addroom,addsoi,addroad,adddistrict,addamphur,addprovince,
+                                        addzipcode,remark" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpAppCustomerAddressWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.appcustomeraddress
+                    VALUES
+                    (:appno,:addtype,:addplace,:addnumber,:addmoo,:addvillage,:addbuilding,
+                    :addfloor,:addroom,:addsoi,:addroad,:adddistrict,:addamphur,:addprovince,
+                    :addzipcode,:remark)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpHistoryStatusReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="historyStatus" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="historycode,policyno,createdate,username,statusdate,
+                                        status,statusremark,statusdescription,statusnew,
+                                        statusnewremark,statusold,statusoldremark" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpHistoryStatusWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.historystatus
+                    VALUES
+                    (:historycode,:policyno,:createdate,:username,:statusdate,
+                :status,:statusremark,:statusdescription,:statusnew,
+                :statusnewremark,:statusold,:statusoldremark)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpPolicyMasterReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+    <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+    <property name="linesToSkip" value="1"/>
+    <property name="recordSeparatorPolicy">
+        <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+    </property>
+    <property name="lineMapper">
+        <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+            <property name="fieldSetMapper">
+                <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                    <property name="prototypeBeanName" value="policyMaster" />
+                </bean>
+            </property>
+            <property name="lineTokenizer">
+                <bean
+                        class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                    <property name="strict" value="true"/>
+                    <property name="names"
+                              value="policyno,appno, plancode,planname,prename,frstname,surname,statusnew,statusnewremark,statusold,
+                                        statusoldremark,sex,medical,class,occtype,extramort,issuedage,sa,premlife,premacc,premexta,premtotal,
+                                        mode,payperiod,covperiod,effectivedate,birthdate,paymentdate,nextduedate, modifydate,statusdate,
+                                        matdate,expdate,dateprintpolicy,issuepolicydate,idno,stopdate,stopreason,deathdate,receivefreelookdate,
+                                        receivefreelookdescription,receivefreelookrealdate,prefix,sanew, expdatenew,cashexpire,cashimmediate,book,tesco,
+                                        nocount,bookpredic,tescopredic,sendstatus,sendgiftdate,userconfirm,registermailtesco,receivetescodate,
+                                        receivetescostatus,receivetescoreason,uploadxo,extrarate,effectivedateold,matdateold,expdateold,
+                                        issuedageold,cv,cvdate" />
+                    <property name="delimiter" value="|"/>
+                </bean>
+            </property>
+        </bean>
+    </property>
+</bean>
+
+    <bean id="tlpPolicyMasterWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.policymaster
+                    VALUES
+                    (:policyno,:appno, :plancode,:planname,:prename,:frstname,:surname,:statusnew,:statusnewremark,:statusold,
+                    :statusoldremark,:sex,:medical,:class,:occtype,:extramort,:issuedage,:sa,:premlife,:premacc,:premexta,:premtotal,
+                    :mode,:payperiod,:covperiod,:effectivedate,:birthdate,:paymentdate,:nextduedate, :modifydate,:statusdate,
+                    :matdate,:expdate,:dateprintpolicy,:issuepolicydate,:idno,:stopdate,:stopreason,:deathdate,:receivefreelookdate,
+                    :receivefreelookdescription,:receivefreelookrealdate,:prefix,:sanew, :expdatenew,:cashexpire,:cashimmediate,:book,:tesco,
+                    :nocount,:bookpredic,:tescopredic,:sendstatus,:sendgiftdate,:userconfirm,:registermailtesco,:receivetescodate,
+                    :receivetescostatus,:receivetescoreason,:uploadxo,:extrarate,:effectivedateold,:matdateold,:expdateold,
+                    :issuedageold,:cv,:cvdate)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpPolicyBeneficiaryReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="policyBeneficiary" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="policyno,seqno,beneficiaryname,relationship,percentage,age" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpPolicyBeneficiaryWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.policybeneficiary
+                    VALUES
+                    (:policyno,:seqno,:beneficiaryname,:relationship,:percentage,:age)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpPolicyPaidReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="policyPaid" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="receiptno,policyno,seqno,paiddate,duedate,nextduedate,paidprem,
+                                        numberpay,branchpay,bankpay,typepay,yearpay,paycount,createdate,
+                                        cheqdate,typecustomer,username,importby,receiptstatus,receiptdescription,
+                                        mode,todate,monthpay,premtotal,descriptiondate,partnersend" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpPolicyPaidWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.policypaid
+                    VALUES
+                    (:receiptno,:policyno,:seqno,:paiddate,:duedate,:nextduedate,:paidprem,
+                    :numberpay,:branchpay,:bankpay,:typepay,:yearpay,:paycount,:createdate,
+                    :cheqdate,:typecustomer,:username,:importby,:receiptstatus,:receiptdescription,
+                    :mode,:todate,:monthpay, :premtotal,:descriptiondate,:partnersend)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpPolicyRiderReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="policyRider" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="riderno,policyno,plancode,statusnew,statusold,sa,
+                                        premrider,premextra,premtotal,mode,covperiod,effectivedate,
+                                        startdate,expdate,issuedage,attage,statusdate,endorsedate" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpPolicyRiderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.policyrider
+                    VALUES
+                    (:riderno,:policyno,:plancode,:statusnew,:statusold,:sa,
+                    :premrider,:premextra,:premtotal,:mode,:covperiod,:effectivedate,
+                    :startdate,:expdate,:issuedage,:attage,:statusdate,:endorsedate)]]>
             </value>
         </property>
     </bean>
