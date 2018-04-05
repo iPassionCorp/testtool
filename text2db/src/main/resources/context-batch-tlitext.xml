@@ -267,30 +267,24 @@ receiptflag,referenceno,reserve" />
 
 
 	<bean id="tlitextDetCertReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<!--read detcert file-->
 		<property name="resource" value="${tlitext.source.file.path}/newdetcert2.dat" />
 		<property name="encoding" value ="windows-874"/>
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-				<!--mapping file-->
 				<property name="fieldSetMapper">
 					<bean
 							class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
 						<property name="prototypeBeanName" value="tlitextDetCert" />
 					</bean>
 				</property>
-				<!--split it-->
 				<property name="lineTokenizer">
 					<bean
 							class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-						<!--strict data-->
                         <property name="strict"
                                   value="false" />
-						<!--set name of column-->
 						<property name="names"
 								  value="policyno,certno,code,address1,address2,telephoneno,mariagestatus,recname1,percent1,relationshipcode1,recname2,percent2,relationshipcode2,recname3,percent3,
 relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve" />
-						<!--set columns number and split to map with name of column-->
 						<property name="columns"
 								  value="1-4,5-12,13-22,23-92,93-162,163-222,223-223,224-323,324-328,329-330,331-430,431-435,436-437,438-537,538-542,543-544,545-554,555-566,567-578,579-579,580-580,581-581" />
 					</bean>
@@ -843,9 +837,6 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <bean id="tlitextBeneficiaryReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlitext.source.file.path}/nbeneficiary.dat" />
         <property name="encoding" value ="windows-874"/>
-        <!--<property name="recordSeparatorPolicy">-->
-            <!--<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />-->
-        <!--</property>-->
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1035,9 +1026,6 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <bean id="tlitextRemarkReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlitext.source.file.path}/remark.dat" />
         <property name="encoding" value ="windows-874"/>
-        <!--&lt;!&ndash;<property name="recordSeparatorPolicy">&ndash;&gt;-->
-            <!--<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />-->
-        <!--</property>-->
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">

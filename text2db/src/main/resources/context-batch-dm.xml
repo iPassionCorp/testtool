@@ -833,9 +833,6 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <bean id="dmBeneficiaryReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${dm.source.file.path}/" />
         <property name="encoding" value ="windows-874"/>
-        <!--<property name="recordSeparatorPolicy">-->
-            <!--<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy" />-->
-        <!--</property>-->
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
