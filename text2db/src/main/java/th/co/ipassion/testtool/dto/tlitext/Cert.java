@@ -39,6 +39,15 @@ public class Cert {
     private String receiptflag;
     private String referenceno;
     private String reserve;
+	private String mode;
+	private String payperiod;
+	private String paydate;
+	private String rpno;
+	private String statdate1;
+	private String oldstatcert1;
+	private String oldstatcert2;
+	private String oldstatcertdate1;
+	private String oldstatcertdate2;
     
 	public String getPolicyno() {
 		return policyno;
@@ -262,5 +271,76 @@ public class Cert {
 	public void setReserve(String reserve) {
 		this.reserve = reserve;
 	}
-    
+
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	public String getPayperiod() {
+		return payperiod;
+	}
+
+	public void setPayperiod(String payperiod) {
+		this.payperiod = payperiod;
+	}
+
+	public String getPaydate() {
+		return paydate;
+	}
+
+	public void setPaydate(String paydate) {
+		this.paydate = paydate;
+	}
+
+	public String getRpno() {
+		return rpno;
+	}
+
+	public void setRpno(String rpno) {
+		this.rpno = rpno;
+	}
+
+	public String getStatdate1() {
+		return statdate1;
+	}
+
+	public void setStatdate1(String statdate1) {
+		this.statdate1 = statdate1;
+	}
+
+	public String getOldstatcert1() {
+		return oldstatcert1;
+	}
+
+	public void setOldstatcert1(String oldstatcert1) {
+		this.oldstatcert1 = oldstatcert1;
+	}
+
+	public String getOldstatcert2() {
+		return oldstatcert2;
+	}
+
+	public void setOldstatcert2(String oldstatcert2) {
+		this.oldstatcert2 = oldstatcert2;
+	}
+
+	public String getOldstatcertdate1() {
+		return oldstatcertdate1;
+	}
+
+	public void setOldstatcertdate1(String oldstatcertdate1) {
+		this.oldstatcertdate1 = oldstatcertdate1;
+	}
+
+	public String getOldstatcertdate2() {
+		return oldstatcertdate2;
+	}
+
+	public void setOldstatcertdate2(String oldstatcertdate2) {
+		this.oldstatcertdate2 = oldstatcertdate2;
+	}
 }

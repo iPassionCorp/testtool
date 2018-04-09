@@ -3,6 +3,7 @@ package th.co.ipassion.testtool.dto.tlitext;
 public class Orctrl {
     private String rpno;
     private String policyno;
+    private String certno;
     private String effectivedate;
     private String payperiod;
     private String paydate;
@@ -180,5 +181,13 @@ public class Orctrl {
 
     public void setMoneyok(String moneyok) {
         this.moneyok = moneyok;
+    }
+
+    public String getCertno() {
+        return certno;
+    }
+
+    public void setCertno(String certno) {
+        this.certno = certno;
     }
 }

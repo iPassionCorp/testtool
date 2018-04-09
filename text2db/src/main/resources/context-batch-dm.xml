@@ -38,6 +38,7 @@
     <bean id="dmRemark" class="th.co.ipassion.testtool.dto.dm.Remark" scope="prototype"/>
     <bean id="dmRider" class="th.co.ipassion.testtool.dto.dm.Rider" scope="prototype"/>
     <bean id="dmRprider" class="th.co.ipassion.testtool.dto.dm.Rprider" scope="prototype"/>
+    <bean id="dmQueue" class="th.co.ipassion.testtool.dto.dm.Queue" scope="prototype"/>
 
     <bean id="dmCompensateIdReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${dm.source.file.path}/compensateid.dat"/>
@@ -238,8 +239,10 @@
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="names"
                                   value="policyno,certno,appno,reqdate,nameid,age,smi,lifesum,accidentsum,period,loan_term,lifepremium,extrapremium,tpdpremium,extratpdpremium,addpremium,
-em,tpd,effectivedate,maturedate,premiumdate,certyyyymm,statcer,statcer2,statdate2,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate,endownmentyear,deadcause,
-receiptflag,referenceno,reserve"/>
+                                em,tpd,effectivedate,maturedate,premiumdate,certyyyymm,statcer,statcer2,statdate2,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate,endownmentyear,deadcause,
+                                receiptflag,referenceno,reserve,mode,payperiod,paydate,rpno,statdate1,
+                                oldstatcert1,oldstatcert2,oldstatcertdate1,oldstatcertdate2"/>
+                        <!--Add certno waiting for numbering of columns-->
                         <property name="columns"
                                   value="1-4,5-12,13-24,25-32,33-45,46-47,48-56,57-65,66-74,75-76,77-78,79-88,89-98,99-108,109-118,119-128,129-131,132-135,136-143,144-151,152-159,160-165,166-166,167-167,168-175,176-183,184-191,192-201,202-209,210-217,218-227,228-235,236-242,243-246,247-247,248-267,268-269"/>
                     </bean>
@@ -261,7 +264,8 @@ receiptflag,referenceno,reserve"/>
                     (:policyno, :certno, :appno, :reqdate, :nameid, :age, :smi, :lifesum, :accidentsum, :period, :loan_term, :lifepremium, 
                     :extrapremium, :tpdpremium, :extratpdpremium, :addpremium, :em, :tpd, :effectivedate, :maturedate, :premiumdate, :certyyyymm, 
                     :statcer, :statcer2, :statdate2, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate, :endownmentyear, 
-                    :deadcause, :receiptflag, :referenceno, :reserve)
+                    :deadcause, :receiptflag, :referenceno, :reserve, :mode,:payperiod,:paydate,:rpno,:statdate1,
+                    :oldstatcert1,:oldstatcert2,:oldstatcertdate1,:oldstatcertdate2)
                 ]]>
             </value>
         </property>
@@ -936,11 +940,12 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="strict" value="false"/>
                         <property name="names"
-                                  value="rpno,policyno,effectivedate,payperiod,paydate,premium,extraprem,
+                                  value="rpno,policyno,certno,effectivedate,payperiod,paydate,premium,extraprem,
                                                 sysdate,currentstatus,originalstatus,mode,time,requestdate,submitno,
                                                 graceperiod,printeddate,submitbranch,userid,reasoncode,moneyok"/>
+                        <!--Add certno waiting for numbering of columns-->
                         <property name="columns"
-                                  value="1-12,13-20,21-28,29-32,33-40,41-49,50-57,58-65,66-66,67-67,68-68,69-69,70-77,78-89,90-90,91-98,99-101,102-108,109-110,111-111"/>
+                                  value=""/>
                     </bean>
                 </property>
             </bean>
@@ -1126,9 +1131,10 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="strict" value="false"/>
                         <property name="names"
-                                  value="rpno,seqno,ridertext"/>
+                                  value="rpno,seqno,ridertext,extrapremium"/>
+                        <!--Add certno waiting for numbering of columns-->
                         <property name="columns"
-                                  value="1-12,13-13,14-136"/>
+                                  value=""/>
                     </bean>
                 </property>
             </bean>
@@ -1145,7 +1151,55 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 <![CDATA[
                     INSERT INTO dm.rprider
                     VALUES
-                    (:rpno,:seqno,:ridertext)
+                    (:rpno,:seqno,:ridertext,:extrapremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmQueueReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmQueue"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="rpno,seqno,ridertext"/>
+                        <property name="columns"
+                                  value="considerid,queuetype,jobtype,jobcode,offerdate,referenceno,receivedate,
+                                    modifydate,modifytime,status,xconsiderid,firstjobtype,firstjobcode,
+                                    firstxconsiderid,firstofferdate,"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.queue
+                    VALUES
+                    (:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,
+                    :modifydate,:modifytime,:status,:xconsiderid,:firstjobtype,:firstjobcode,
+                    :firstxconsiderid,:firstofferdate,)
                 ]]>
             </value>
         </property>
