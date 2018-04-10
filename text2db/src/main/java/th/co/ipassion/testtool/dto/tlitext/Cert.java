@@ -41,7 +41,6 @@ public class Cert {
     private String reserve;
 	private String mode;
 	private String payperiod;
-	private String paydate;
 	private String rpno;
 	private String statdate1;
 	private String oldstatcert1;
@@ -286,14 +285,6 @@ public class Cert {
 
 	public void setPayperiod(String payperiod) {
 		this.payperiod = payperiod;
-	}
-
-	public String getPaydate() {
-		return paydate;
-	}
-
-	public void setPaydate(String paydate) {
-		this.paydate = paydate;
 	}
 
 	public String getRpno() {

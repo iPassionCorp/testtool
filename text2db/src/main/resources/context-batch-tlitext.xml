@@ -240,7 +240,7 @@
                         <property name="names"
                                   value="policyno,certno,appno,reqdate,nameid,age,smi,lifesum,accidentsum,period,loan_term,lifepremium,extrapremium,tpdpremium,extratpdpremium,addpremium,
                                 em,tpd,effectivedate,maturedate,premiumdate,certyyyymm,statcer,statcer2,statdate2,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate,endownmentyear,deadcause,
-                                receiptflag,referenceno,reserve,mode,payperiod,paydate,rpno,statdate1,
+                                receiptflag,referenceno,reserve,mode,payperiod,rpno,statdate1,
                                 oldstatcert1,oldstatcert2,oldstatcertdate1,oldstatcertdate2"/>
                         <!--Add certno waiting for numbering of columns-->
                         <property name="columns"
@@ -264,7 +264,7 @@
                     (:policyno, :certno, :appno, :reqdate, :nameid, :age, :smi, :lifesum, :accidentsum, :period, :loan_term, :lifepremium, 
                     :extrapremium, :tpdpremium, :extratpdpremium, :addpremium, :em, :tpd, :effectivedate, :maturedate, :premiumdate, :certyyyymm, 
                     :statcer, :statcer2, :statdate2, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate, :endownmentyear, 
-                    :deadcause, :receiptflag, :referenceno, :reserve, :mode,:payperiod,:paydate,:rpno,:statdate1,
+                    :deadcause, :receiptflag, :referenceno, :reserve, :mode,:payperiod,:rpno,:statdate1,
                     :oldstatcert1,:oldstatcert2,:oldstatcertdate1,:oldstatcertdate2)
                 ]]>
             </value>
