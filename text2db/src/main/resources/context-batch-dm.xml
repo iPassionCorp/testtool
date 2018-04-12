@@ -1204,4 +1204,36 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
             </value>
         </property>
     </bean>
+
+    <!--test replicate data-->
+    <bean id="dmRepDetCertReader" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FORM dm.detcert
+                ]]>
+            </value>
+        </property>
+    </bean>
+    <bean id="dmRepDetCertWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="targetSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.detcert
+                    VALUES
+                    (:policyno, :certno, :code, :address1, :address2, :telephoneno, :mariagestatus,
+                    :recname1, :percent1, :relationshipcode1, :recname2, :percent2, :relationshipcode2, :recname3, :percent3, :relationshipcode3,
+                    :analist, :prmiseno, :prmiseno2, :loantype, :med, :reserve)
+                ]]>
+            </value>
+        </property>
+    </bean>
 </beans>

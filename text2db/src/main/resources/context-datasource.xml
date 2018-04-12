@@ -37,5 +37,12 @@
         <property name="username" value="${dataSource.user}" />
         <property name="password" value="${dataSource.password}" />       
     </bean>
+
+    <bean id="targetSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${targetSource.driverClass}"/>
+        <property name="url" value="${targetSource.jdbcUrl}"/>
+        <property name="username" value="${targetSource.username}"/>
+        <property name="password" value="${targetSource.password}"/>
+    </bean>
  
 </beans>  
