@@ -1215,10 +1215,10 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 ]]>
             </value>
         </property>
-        <property name="rowMapper" ref="rowMapper"/>
+        <property name="rowMapper" ref="dmDetCertMap"/>
     </bean>
 
-    <bean id="rowMapper" class="main.java.th.co.ipassion.testtool.mapper.dmDetCert" />
+    <bean id="dmDetCertMap" class="main.java.th.co.ipassion.testtool.mapper.dmDetCert" />
 
     <bean id="dmRepDetCertWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="targetSource"/>
