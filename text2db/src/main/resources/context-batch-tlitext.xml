@@ -951,7 +951,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                                                 graceperiod,printeddate,submitbranch,userid,reasoncode,moneyok"/>
                         <!--Add certno waiting for numbering of columns-->
                         <property name="columns"
-                                  value=""/>
+                                  value="1-12,13-20,21-28,29-32,33-40,41-49,50-57,58-65,66-66,67-67,68-68,69-69,70-77,78-89,90-90,91-98,99-101,102-108,109-110,111-111"/>
                     </bean>
                 </property>
             </bean>
@@ -1139,7 +1139,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                                   value="rpno,seqno,ridertext,extrapremium"/>
                         <!--Add certno waiting for numbering of columns-->
                         <property name="columns"
-                                  value=""/>
+                                  value="1-12,13-13,14-136"/>
                     </bean>
                 </property>
             </bean>
@@ -1162,51 +1162,51 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
-    <bean id="tlitextQueueReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
-        <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
-        </property>
-        <property name="lineMapper">
-            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-                <property name="fieldSetMapper">
-                    <bean
-                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-                        <property name="prototypeBeanName" value="tlitextQueue"/>
-                    </bean>
-                </property>
-                <property name="lineTokenizer">
-                    <bean
-                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-                        <property name="strict" value="false"/>
-                        <property name="names"
-                                  value="considerid,queuetype,jobtype,jobcode,offerdate,referenceno,receivedate,
-                                    modifydate,modifytime,status,xconsiderid,firstjobtype,firstjobcode,
-                                    firstxconsiderid,firstofferdate,"/>
-                        <property name="columns"
-                                  value=""/>
-                    </bean>
-                </property>
-            </bean>
-        </property>
-    </bean>
+    <!--<bean id="tlitextQueueReader" class="org.springframework.batch.item.file.FlatFileItemReader">-->
+        <!--<property name="resource" value="${dm.source.file.path}/"/>-->
+        <!--<property name="encoding" value="windows-874"/>-->
+        <!--<property name="recordSeparatorPolicy">-->
+            <!--<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>-->
+        <!--</property>-->
+        <!--<property name="lineMapper">-->
+            <!--<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">-->
+                <!--<property name="fieldSetMapper">-->
+                    <!--<bean-->
+                            <!--class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">-->
+                        <!--<property name="prototypeBeanName" value="tlitextQueue"/>-->
+                    <!--</bean>-->
+                <!--</property>-->
+                <!--<property name="lineTokenizer">-->
+                    <!--<bean-->
+                            <!--class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">-->
+                        <!--<property name="strict" value="false"/>-->
+                        <!--<property name="names"-->
+                                  <!--value="considerid,queuetype,jobtype,jobcode,offerdate,referenceno,receivedate,-->
+                                    <!--modifydate,modifytime,status,xconsiderid,firstjobtype,firstjobcode,-->
+                                    <!--firstxconsiderid,firstofferdate,"/>-->
+                        <!--<property name="columns"-->
+                                  <!--value="1-100"/>-->
+                    <!--</bean>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</property>-->
+    <!--</bean>-->
 
-    <bean id="tlitextQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="itemSqlParameterSourceProvider">
-            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
-        </property>
-        <property name="sql">
-            <value>
-                <![CDATA[
-                    INSERT INTO tlitext.queue
-                    VALUES
-                    (:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,
-                    :modifydate,:modifytime,:status,:xconsiderid,:firstjobtype,:firstjobcode,
-                    :firstxconsiderid,:firstofferdate)
-                ]]>
-            </value>
-        </property>
-    </bean>
+    <!--<bean id="tlitextQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="itemSqlParameterSourceProvider">-->
+            <!--<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>-->
+        <!--</property>-->
+        <!--<property name="sql">-->
+            <!--<value>-->
+                <!--<![CDATA[-->
+                    <!--INSERT INTO tlitext.queue-->
+                    <!--VALUES-->
+                    <!--(:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,-->
+                    <!--:modifydate,:modifytime,:status,:xconsiderid,:firstjobtype,:firstjobcode,-->
+                    <!--:firstxconsiderid,:firstofferdate)-->
+                <!--]]>-->
+            <!--</value>-->
+        <!--</property>-->
+    <!--</bean>-->
 </beans>
