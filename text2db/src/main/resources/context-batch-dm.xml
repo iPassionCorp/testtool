@@ -1206,7 +1206,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <!--test replicate data-->
-    <bean id="dmRepDetCertReader" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+    <bean id="dmRepDetCertReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
         <property name="dataSource" ref="dataSource"/>
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
@@ -1214,7 +1214,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FORM dm.detcert
+                    SELECT * FROM dm.detcert
                 ]]>
             </value>
         </property>
