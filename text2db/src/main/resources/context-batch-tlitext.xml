@@ -30,7 +30,7 @@
     <bean id="tlitextName" class="th.co.ipassion.testtool.dto.tlitext.Name" scope="prototype"/>
     <bean id="tlitextPerson" class="th.co.ipassion.testtool.dto.tlitext.Person" scope="prototype"/>
     <bean id="tlitextPolicy" class="th.co.ipassion.testtool.dto.tlitext.Policy" scope="prototype"/>
-    <bean id="tlitextAddess" class="th.co.ipassion.testtool.dto.tlitext.Address" scope="prototype"/>
+    <bean id="tlitextAddress" class="th.co.ipassion.testtool.dto.tlitext.Address" scope="prototype"/>
     <bean id="tlitextBeneficiary" class="th.co.ipassion.testtool.dto.tlitext.Beneficiary" scope="prototype"/>
     <bean id="tlitextExtrapremium" class="th.co.ipassion.testtool.dto.tlitext.Extrapremium" scope="prototype"/>
     <bean id="tlitextOrctrl" class="th.co.ipassion.testtool.dto.tlitext.Orctrl" scope="prototype"/>
@@ -797,7 +797,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="tlitextAddressReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="resource" value="${tlitext.source.file.path}/address.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1118,7 +1118,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="tlitextRpriderReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="resource" value="${tlitext.source.file.path}/rprider.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1152,13 +1152,22 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
         </property>
         <property name="sql">
+            <!--EDM2-->
             <value>
                 <![CDATA[
                     INSERT INTO tlitext.rprider
                     VALUES
-                    (:rpno,:seqno,:ridertext,:extrapremium)
+                    (:rpno,:seqno,:ridertext)
                 ]]>
             </value>
+            <!--EDM4-->
+            <!--<value>-->
+                <!--<![CDATA[-->
+                    <!--INSERT INTO tlitext.rprider-->
+                    <!--VALUES-->
+                    <!--(:rpno,:seqno,:ridertext,:extrapremium)-->
+                <!--]]>-->
+            <!--</value>-->
         </property>
     </bean>
 

@@ -1206,7 +1206,40 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <!--</bean>-->
 
     <!--test replicate data-->
-    <bean id="dmRepDetCertReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+
+    <bean id="repDmCompensateIdReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.CompensateId
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.CompensateId"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmCompensateIdWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.compensateid
+                    VALUES
+                    (:compensateid, :referenceid)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmDetCertReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
         <property name="dataSource" ref="dataSource"/>
         <property name="sql">
             <value>
@@ -1215,12 +1248,14 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 ]]>
             </value>
         </property>
-        <property name="rowMapper" ref="dmDetCertMap"/>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.DetCert"/>
+            </bean>
+        </property>
     </bean>
 
-    <bean id="dmDetCertMap" class="main.java.th.co.ipassion.testtool.mapper.dmDetCert" />
-
-    <bean id="dmRepDetCertWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+    <bean id="repDmDetCertWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="targetSource"/>
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
