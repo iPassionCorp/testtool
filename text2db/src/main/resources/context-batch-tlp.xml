@@ -988,5 +988,679 @@
             </value>
         </property>
     </bean>
-         
+
+    <!--for replicating job-->
+    <bean id="repTlpCustomerBalloonReader"
+          class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.customerballoon
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.CustomerBalloon"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpCustomerBalloonWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.customerballoon
+                    VALUES
+                    (:policyno, :certno, :policynoballoon, :certnobolloon, :loancontractno)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpCustomerInfoReader"
+          class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.customerinfo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.CustomerInfo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpCustomerInfoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.customerinfo
+                    VALUES
+                    (:productname, :policyno, :productcode, :certificateno, :saledate, :branchname, :customercode,
+                    :accountno, :loanno, :totalofloan, :sa, :prem, :durationinsurance, :insurancestatus, :effectivedate,
+                    :expireddate, :customerstatus, :canceldate, :cancelreason, :canceldescription, :channel, :prefix,
+                    :nameth, :surnameth, :birthdate, :age, :weight, :height, :gender, :status, :nationid, :creditcardno,
+                    :expiredcreditcard, :address1, :address2, :addressoffice1, :addressoffice2, :nameofbenefit1, :nameofbenefit2,
+                    :nameofbenefit3, :nameofbenefit4, :relationship1, :relationship2, :relationship3, :relationship4,
+                    :hometel, :mobiletel, :officetel, :officercodesale, :salenameth, :managercode, :dateprintcert, :postbackdate,
+                    :cancelletterno, :printcancelletterdate, :partnercode, :partnername, :databasesource, :refname, :refnationid,
+                    :refcreditcardno, :facility, :uwdescription, :uwstatus, :tmksaledate, :coverage, :paidtodate, :extrarate,
+                    :voicetag, :deathdate, :customerloanapprovedate, :lob, :canceltransactiondate, :oldaccountno, :customeroccupationtext,
+                    :loaninstallment1stdue, :customercontactofficepay, :percentofbenefitciary1, :percentofbenefitciary2,
+                    :percentofbenefitciary3, :percentofbenefitciary4, :downplaneffectivedate, :date_sosover, :customerduration,
+                    :med, :customernation, :endorsedate, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpCustomerSaReader"
+          class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.customersa
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.CustomerSa"/>
+            </bean>
+        </property>
+    </bean>
+
+
+    <bean id="repTlpCustomerSaWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.customersa
+                    VALUES
+                    (:customercode, :policyno, :sa_lifetpd, :sa_life, :sa_tpd, :sa_td, :sa_add, :sa_adb,
+                    :sa_ha, :sa_hb, :sa_me, :sa_pa, :sa_ph, :sa_ci, :flaglife, :flaglifetpd, :ia, :sa, :transdate,
+                    :mi_amount, :expiry_life, :expiry_tpd, :expiry_td, :expiry_add, :expiry_adb, :expiry_ha, :expiry_hb,
+                    :expiry_me, :expiry_pa, :expiry_ph, :expiry_ci, :sa_ma, :expiry_ma, :sa_mc, :expiry_mc)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpPaymentReader"
+          class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.payment
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.Payment"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpPaymentWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.payment
+                    VALUES
+                    (:partnercode, :policyno, :productcode, :customercode, :duedate, :senddate, :ob, :paymentdate, :premiumamt,
+                    :adjustpremium, :typeofpayment, :accno, :refund, :dateofrefund, :invoiceno, :monthenddate, :pay_date, :refund_amount, :collecteddate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpSplitPremiumAmountReader"
+          class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.splitpremiumamout
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.SplitPremiumAmount"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpSplitPremiumAmountWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.splitpremiumamount
+                    VALUES
+                    (:productid, :grouppolicyno, :customercode, :totpremium, :lifepremium, :deathpremium,
+                    :tpdpremium, :ttdpremium, :tdpremium, :papremium, :adbpremium, :addpremium, :rccpremium,
+                    :mapremium, :mcpremium, :mepremium, :hbpremium, :hapremium, :hspremium, :ddpremium, :lifetpdpremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpClaimPaymentReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.claimpayment
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.ClaimPayment"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpClaimPaymentWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.claimpayment
+                    VALUES
+                    (:paymentId, :registerseq, :claimno, :printdate, :requestby, :approveby1, :approveby2,
+                    :authorizedby1, :authorizedby2, :totalamt, :paidDate, :createdate, :createuser, :updateuser,
+                    :updatedate, :sysprintstatus, :canceldate, :lettertype, :reqdate, :financedate, :respdate, :deadlinedate, :payrate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpClaimPaymentDetailReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.claimpaymentdetail
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.ClaimPaymentDetail"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpClaimPaymentDetailWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.claimpaymentdetail
+                    VALUES
+                    (:paymentdtId,:paymentId,:paymenttype,:payeename,:pamentamt,:method,:relation,:receiptName,:address1,:address2,
+                    :tumbon,:amphor,:province,:zipcode,:claimbenefit,:bankid,:bankname,:accno,:returncheque,:returndate,:payeeNo,
+                    :createdate,:createuser,:updatedate,:updateuser,:printref,:printrefRunno,:chequeno,:receivechequedate,:remarkpayment)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpClaimRegisterDetailReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.claimregisterdetail
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.ClaimRegisterDetail"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpClaimRegisterDetailWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.claimregisterdetail
+                    VALUES
+                    (:regdtlseq,:regdtlregisterno,:regdtlclaimrunno,:regdtlclaimno,:regdtlletterrunno,:regdtlletterno,:regdtlclaimgroup,
+                    :regdtlclaimcausecode,:regdtlclaimcauseen,:regdtlclaimcauseth,:regdtldateofmedicalreceive,:regdtldateofcompletedoc,
+                    :regdtlhospitalcode,:regdtlhospitalname,:regdtlpatientdeptcode,:regdtlpatientdept,:regdtldateofopd,:regdtldateofaccident,
+                    :regdtldateofdeath,:regdtldateofadmission,:regdtldateofdischarge,:regdtldateofoccurred,:regdtldurationfrom,
+                    :regdtldurationto,:regdtldurationdays,:regdtlestimateclaim,:regdtlclaimexpense,:regdtlcoinsurancecode,
+                    :regdtldeclinestatus,:regdtltotalclaim,:regdtltotalttdpercentage,:regdtltotalttdamount,:regdtltotaltpdpercentage,
+                    :regdtltotaltpdamount,:regdtladjustcode,:regdtladjustpayment,:regdtlinterest,:regdtltotalamount,:regdtltotalexgratiaamount,
+                    :regdtlvoidamount,:regdtlsavedenyamount,:regdtlpartialpayment,:regdtlchequeno,:regdtlpaidtopartner,
+                    :regdtlpaidtobeneficiary,:regdtlclaimfollowup,:regdtlclaimremark,:regdtlclaimflag,:regdtlregisterdate,
+                    :regdtlregister,:regdtlapprovestatus,:regdtlapprovedate,:regdtlapproval,:regdtlpolicystatus,:regdtlhbcflag,:registerseq,
+                    :claimtypeseq,:coinsuranceseq,:risktypeseq,:datatype,:paymentId,:sysuseclaim,:regdtldblindemnity,:regdtlclaimnoteapprove,
+                    :regdtlcleanstatus,:regdtlnote,:regdtlcaseno,:regdtlfaxclaim,:regdtlbatchno,:regdtlicdten1,:regdtlicdteneng1,:regdtlicdtenth1,
+                    :regdtlicdten2,:regdtlicdteneng2,:regdtlicdtenth2,:regdtlicdten3,:regdtlicdteneng3,:regdtlicdtenth3,:regdtltpaclaimtype,
+                    :regdtllettermemocreatedate,:regdtllettermemouser,:regdtllettermemostatus,:regdtllos,:regdtlbenefitday,:regdtlclonestatus,
+                    :regdtlseqtpa,:regdtlhismaprpt,:regdtlclaimstatus,:regdtlletterdate,:regdtlletterpendingdate,:regdtlletterdelaydate,:regdtlletterreminddate,:regdtlletterclosedate,
+                    :regdtlletterpaymentdate,:regdtllettervoiddate,:regdtlletterdenydate,:regdtlcalsa,:regdtlestimateclaimamt,:regdtlperproposal,:claimtypesubseq,
+                    :claimtypesubcode,:regdtlclaimcausecancel,:paytype,:partnercode)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpClaimRegisterHeaderReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.claimregisterheader
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.ClaimRegisterHeader"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpClaimRegisterHeaderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.claimregisterheader
+                    VALUES
+                    (:registerseq,:regcustomerbranchname,:regcustomercode,:regcustomercertificateno,:regcustomerloanno,
+                    :regcustomeracctno,:regcustomeridcard,:regcustomerprefix,:regcustomername,:regcustomerfname,
+                    :regcustomerlname,:regcustomerdob,:regcustomerage,:regcustomergender,:regcustomerstatus,:regcustomercardtype,
+                    :regcustomercardno,:regcustomercardlimit,:regcustomercardinstl,:regcustomeraddr01,:regcustomeraddr02,:regcustomeraddr03,
+                    :regcustomerprovince,:regcustomerzipcode,:regcustomertelephone,:regcustomerloanamount,:regcustomersumassured,:regcustomerpremium,
+                    :regcustomerdurationinsurance,:regcustomermodeofpayment,:regcustomersaledate,:regcustomeruwstatuscode,
+                    :regcustomeruwstatusdesc,:regcustomercontractdate,:regcustomerissuedate,:regcustomereffectivedate,:regcustomerexpiredate,
+                    :regcustomervehreceivedate,:regcustomerfirstpaymentdate,:regcustomerlastpaymentdate,:regcustomerpaidtodate,
+                    :regcustomerpolicystatuscode,:regcustomerpolicystatusdesc,:regcustomercanceldate,:regcustomercancelreason,
+                    :regcustomercanceldescription,:regcustomercancelletterno,:claimno,:productseq,:datatype,:regcustomerchannel,:regcustomerrefid,:age)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpMasProductReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.masproduct
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.MasProduct"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpMasProductWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.masproduct
+                    VALUES
+                    (:productseq,:policyno,:productcode,:productplan,:productnameen,:productnameth,
+                    :productgroup,:productstatus,:partnerseq,:producttype,:partnerlettername,:percentLife,
+                    :percentTpd,:percentAdd,:percentAdb,:percentPa)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpMasProductCoverageReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.masproductcoverage
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.MasProductCoverage"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpMasProductCoverageWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.masproductcoverage
+                    VALUES
+                    (:productcoverageseq,:productcoveragepaymentmode,:productcoveragesa,:productcoverageamount,
+                        :productcoveragewaitingperiod,:productcoverageexcludeperiod,:productcoveragedesc,:productseq,
+                        :riskcoverageseq)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpMasProductCoverageClaimReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.masproductcoverageclaim
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.MasProductCoverageClaim"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpMasProductCoverageClaimWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.masproductcoverageclaim
+                    VALUES
+                    (:productcoverageclaimseq,:productcoverageclaimonetime,:productcoverageseq,
+                    :claimtypeseq,:risktypeseq)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpAppCustomerReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.appcustomer
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.AppCustomer"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpAppCustomerWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.appcustomer
+                    VALUES
+                    (:appno,:custprename,:custname,:custsurname,:custstatus,:custheight,:custweight,
+                    :custoccupation,:custposition,:custid,:custidtype,:custiddate,:custidamphur,
+                    :custidprovince,:custsex,:custage,:importdate,:printstatus,:printdate,:addtype,
+                    :custbirthdate,:relation,:accountno,:userimport,:fileimport,:creditno,:credittype,
+                    :creditexpire,:address1,:address2,:address3,:address4,:caddress1,:caddress2,:caddress3,
+                    :caddress4,:race,:nationality,:prefix)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpAppCustomerAddressReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.appcustomeraddress
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.AppCustomerAddress"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpAppCustomerAddressWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.appcustomeraddress
+                    VALUES
+                    (:appno,:addtype,:addplace,:addnumber,:addmoo,:addvillage,:addbuilding,
+                    :addfloor,:addroom,:addsoi,:addroad,:adddistrict,:addamphur,:addprovince,
+                    :addzipcode,:remark)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpHistoryStatusReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.historystatus
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.HistoryStatus"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpHistoryStatusWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.historystatus
+                    VALUES
+                    (:historycode,:policyno,:createdate,:username,:statusdate,
+                :status,:statusremark,:statusdescription,:statusnew,
+                :statusnewremark,:statusold,:statusoldremark)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpPolicyMasterReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.policymaster
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.PolicyMaster"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpPolicyMasterWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.policymaster
+                    VALUES
+                    (:policyno,:appno, :plancode,:planname,:prename,:frstname,:surname,:statusnew,:statusnewremark,:statusold,
+                    :statusoldremark,:sex,:medical,:class,:occtype,:extramort,:issuedage,:sa,:premlife,:premacc,:premexta,:premtotal,
+                    :mode,:payperiod,:covperiod,:effectivedate,:birthdate,:paymentdate,:nextduedate, :modifydate,:statusdate,
+                    :matdate,:expdate,:dateprintpolicy,:issuepolicydate,:idno,:stopdate,:stopreason,:deathdate,:receivefreelookdate,
+                    :receivefreelookdescription,:receivefreelookrealdate,:prefix,:sanew, :expdatenew,:cashexpire,:cashimmediate,:book,:tesco,
+                    :nocount,:bookpredic,:tescopredic,:sendstatus,:sendgiftdate,:userconfirm,:registermailtesco,:receivetescodate,
+                    :receivetescostatus,:receivetescoreason,:uploadxo,:extrarate,:effectivedateold,:matdateold,:expdateold,
+                    :issuedageold,:cv,:cvdate)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpPolicyBeneficiaryReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.policybeneficiary
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.PolicyBeneficiary"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpPolicyBeneficiaryWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.policybeneficiary
+                    VALUES
+                    (:policyno,:seqno,:beneficiaryname,:relationship,:percentage,:age)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpPolicyPaidReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.policypaid
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.PolicyPaid"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpPolicyPaidWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.policypaid
+                    VALUES
+                    (:receiptno,:policyno,:seqno,:paiddate,:duedate,:nextduedate,:paidprem,
+                    :numberpay,:branchpay,:bankpay,:typepay,:yearpay,:paycount,:createdate,
+                    :cheqdate,:typecustomer,:username,:importby,:receiptstatus,:receiptdescription,
+                    :mode,:todate,:monthpay, :premtotal,:descriptiondate,:partnersend)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpPolicyRiderReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.policyrider
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.PolicyRider"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpPolicyRiderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.policyrider
+                    VALUES
+                    (:riderno,:policyno,:plancode,:statusnew,:statusold,:sa,
+                    :premrider,:premextra,:premtotal,:mode,:covperiod,:effectivedate,
+                    :startdate,:expdate,:issuedage,:attage,:statusdate,:endorsedate)]]>
+            </value>
+        </property>
+    </bean>
 </beans>
