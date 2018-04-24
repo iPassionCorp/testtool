@@ -238,5 +238,233 @@
 			<batch:listener ref="jobListener" />
 		</batch:listeners>
 	</batch:job>
+
+	<!--for replicating job-->
+	<batch:job id="repTlpCustomerBalloonJob">
+		<batch:step id="repTlpCustomerBalloonStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpCustomerBalloonReader" writer="repTlpCustomerBalloonWriter" commit-interval="10000"/>
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpCustomerInfoJob">
+		<batch:step id="repTlpCustomerInfoStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpCustomerInfoReader" writer="repTlpCustomerInfoWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpCustomerSaJob">
+		<batch:step id="repTlpCustomerSaStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpCustomerSaReader" writer="repTlpCustomerSaWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpPaymentJob">
+		<batch:step id="repTlpPaymentStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpPaymentReader" writer="repTlpPaymentWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpSplitPremiumAmountJob">
+		<batch:step id="repTlpSplitPremiumAmountStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpSplitPremiumAmountReader" writer="repTlpSplitPremiumAmountWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpClaimPaymentJob">
+		<batch:step id="repTlpClaimPaymentStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpClaimPaymentReader" writer="repTlpClaimPaymentWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpClaimPaymentDetailJob">
+		<batch:step id="repTlpClaimPaymentDetailStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpClaimPaymentDetailReader" writer="repTlpClaimPaymentDetailWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpClaimRegisterDetailJob">
+		<batch:step id="repTlpClaimRegisterDetailStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpClaimRegisterDetailReader" writer="repTlpClaimRegisterDetailWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpClaimRegisterHeaderJob">
+		<batch:step id="repTlpClaimRegisterHeaderStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpClaimRegisterHeaderReader" writer="repTlpClaimRegisterHeaderWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpMasProductJob">
+		<batch:step id="repTlpMasProductStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpMasProductReader" writer="repTlpMasProductWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpMasProductCoverageJob">
+		<batch:step id="repTlpMasProductCoverageStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpMasProductCoverageReader" writer="repTlpMasProductCoverageWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpMasProductCoverageClaimJob">
+		<batch:step id="repTlpMasProductCoverageClaimStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpMasProductCoverageClaimReader" writer="repTlpMasProductCoverageClaimWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpAppCustomerJob">
+		<batch:step id="repTlpAppCustomerStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpAppCustomerReader" writer="repTlpAppCustomerWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpAppCustomerAddressJob">
+		<batch:step id="repTlpAppCustomerAddressStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpAppCustomerAddressReader" writer="repTlpAppCustomerAddressWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpHistoryStatusJob">
+		<batch:step id="repTlpHistoryStatusStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpHistoryStatusReader" writer="repTlpHistoryStatusWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpPolicyMasterJob">
+		<batch:step id="repTlpPolicyMasterStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpPolicyMasterReader" writer="repTlpPolicyMasterWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpPolicyBeneficiaryJob">
+		<batch:step id="repTlpPolicyBeneficiaryStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpPolicyBeneficiaryReader" writer="repTlpPolicyBeneficiaryWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpPolicyPaidJob">
+		<batch:step id="repTlpPolicyPaidStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpPolicyPaidReader" writer="repTlpPolicyPaidWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="repTlpPolicyRiderJob">
+		<batch:step id="repTlpPolicyRiderStep1">
+			<batch:tasklet>
+				<batch:chunk reader="repTlpPolicyRiderReader" writer="repTlpPolicyRiderWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
 	
 </beans>
