@@ -1,4 +1,4 @@
-package main.java.th.co.ipassion.testtool.dto.tlp;
+package th.co.ipassion.testtool.dto.tlp;
 
 public class PolicyMaster implements java.io.Serializable {
     private String policyno;
