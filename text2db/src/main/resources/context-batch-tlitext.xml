@@ -1171,51 +1171,51 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
-    <!--<bean id="tlitextQueueReader" class="org.springframework.batch.item.file.FlatFileItemReader">-->
-        <!--<property name="resource" value="${dm.source.file.path}/"/>-->
-        <!--<property name="encoding" value="windows-874"/>-->
-        <!--<property name="recordSeparatorPolicy">-->
-            <!--<bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>-->
-        <!--</property>-->
-        <!--<property name="lineMapper">-->
-            <!--<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">-->
-                <!--<property name="fieldSetMapper">-->
-                    <!--<bean-->
-                            <!--class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">-->
-                        <!--<property name="prototypeBeanName" value="tlitextQueue"/>-->
-                    <!--</bean>-->
-                <!--</property>-->
-                <!--<property name="lineTokenizer">-->
-                    <!--<bean-->
-                            <!--class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">-->
-                        <!--<property name="strict" value="false"/>-->
-                        <!--<property name="names"-->
-                                  <!--value="considerid,queuetype,jobtype,jobcode,offerdate,referenceno,receivedate,-->
-                                    <!--modifydate,modifytime,status,xconsiderid,firstjobtype,firstjobcode,-->
-                                    <!--firstxconsiderid,firstofferdate,"/>-->
-                        <!--<property name="columns"-->
-                                  <!--value="1-100"/>-->
-                    <!--</bean>-->
-                <!--</property>-->
-            <!--</bean>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <bean id="tlitextQueueReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextQueue"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="considerid,queuetype,jobtype,jobcode,offerdate,referenceno,receivedate,
+                                    modifydate,modifytime,status,xconsiderid,firstjobtype,firstjobcode,
+                                    firstxconsiderid,firstofferdate,"/>
+                        <property name="columns"
+                                  value="1-100"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-    <!--<bean id="tlitextQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-        <!--<property name="itemSqlParameterSourceProvider">-->
-            <!--<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>-->
-        <!--</property>-->
-        <!--<property name="sql">-->
-            <!--<value>-->
-                <!--<![CDATA[-->
-                    <!--INSERT INTO tlitext.queue-->
-                    <!--VALUES-->
-                    <!--(:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,-->
-                    <!--:modifydate,:modifytime,:status,:xconsiderid,:firstjobtype,:firstjobcode,-->
-                    <!--:firstxconsiderid,:firstofferdate)-->
-                <!--]]>-->
-            <!--</value>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <bean id="tlitextQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.queue
+                    VALUES
+                    (:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,
+                    :modifydate,:modifytime,:status,:xconsiderid,:firstjobtype,:firstjobcode,
+                    :firstxconsiderid,:firstofferdate)
+                ]]>
+            </value>
+        </property>
+    </bean>
 </beans>

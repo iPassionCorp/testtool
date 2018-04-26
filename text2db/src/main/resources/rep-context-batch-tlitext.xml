@@ -870,4 +870,38 @@
             </value>
         </property>
     </bean>
+
+    <bean id="repTlitextQueueReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.queue
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Queue"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.queue
+                    VALUES
+                    (:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,
+                    :modifydate,:modifytime,:status,:xconsiderid,:firstjobtype,:firstjobcode,
+                    :firstxconsiderid,:firstofferdate)
+                ]]>
+            </value>
+        </property>
+    </bean>
 </beans>
