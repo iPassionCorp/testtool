@@ -9,12 +9,22 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
-    <!-- Jobs for schema tlitext -->
-    <batch:job id="tlitextCompensateIdJob">
-        <batch:step id="tlitextCompensateIdStep1">
+    <!--for replicating data-->
+    <batch:job id="repDmCompensateIdJob">
+        <batch:step id="repDmCompensateIdStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextCompensateIdReader" writer="tlitextCompensateIdWriter"
+                <batch:chunk reader="repDmCompensateIdReader" writer="repDmCompensateIdWriter" commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmCustomerJob">
+        <batch:step id="repDmCustomerStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmCustomerReader" writer="repDmCustomerWriter"
                              commit-interval="10000"/>
             </batch:tasklet>
         </batch:step>
@@ -23,10 +33,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextCustomerJob">
-        <batch:step id="tlitextCustomerStep1">
+    <batch:job id="repDmNameJob">
+        <batch:step id="repDmNameStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextCustomerReader" writer="tlitextCustomerWriter"
+                <batch:chunk reader="repDmNameReader" writer="repDmNameWriter"
                              commit-interval="10000"/>
             </batch:tasklet>
         </batch:step>
@@ -35,10 +45,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextNameJob">
-        <batch:step id="tlitextNameStep1">
+    <batch:job id="repDmPersonJob">
+        <batch:step id="repDmPersonStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextNameReader" writer="tlitextNameWriter"
+                <batch:chunk reader="repDmPersonReader" writer="repDmPersonWriter"
                              commit-interval="10000"/>
             </batch:tasklet>
         </batch:step>
@@ -47,22 +57,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextPersonJob">
-        <batch:step id="tlitextPersonStep1">
+    <batch:job id="repDmPolicyJob">
+        <batch:step id="repDmPolicyStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextPersonReader" writer="tlitextPersonWriter"
-                             commit-interval="10000"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextPolicyJob">
-        <batch:step id="tlitextPolicyStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextPolicyReader" writer="tlitextPolicyWriter"
+                <batch:chunk reader="repDmPolicyReader" writer="repDmPolicyWriter"
                              commit-interval="100"/>
             </batch:tasklet>
         </batch:step>
@@ -71,193 +69,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextCertJob">
-        <batch:step id="tlitextCertStep1">
+    <batch:job id="repDmCertJob">
+        <batch:step id="repDmCertStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextCertReader" writer="tlitextCertWriter" commit-interval="10000">
-                </batch:chunk>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextDetCertJob">
-        <batch:step id="tlitextDetCertStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextDetCertReader" processor="tlitextDetCertProcessor"
-                             writer="tlitextDetCertWriter" commit-interval="10000">
-                </batch:chunk>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextCertRiderJob">
-        <batch:step id="tlitextCertRiderStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextCertRiderReader" writer="tlitextCertRiderWriter"
-                             commit-interval="10000"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextCertLinkerJob">
-        <batch:step id="tlitextCertLinkerStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextCertLinkerReader" writer="tlitextCertLinkerWriter"
-                             commit-interval="10000"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextCertMappingJob">
-        <batch:step id="tlitextCertMappingStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextCertMappingReader" writer="tlitextCertMappingWriter"
-                             commit-interval="10000"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextMgClaimJob">
-        <batch:step id="tlitextMgClaimStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextMgClaimReader" writer="tlitextMgClaimWriter"
-                             commit-interval="100"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextMgOrderJob">
-        <batch:step id="tlitextMgOrderStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextMgOrderReader" writer="tlitextMgOrderWriter"
-                             commit-interval="100"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextMgPayJob">
-        <batch:step id="tlitextMgPayStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextMgPayReader" writer="tlitextMgPayWriter"
-                             commit-interval="100"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextMgPayRiderJob">
-        <batch:step id="tlitextMgPayRiderStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextMgPayRiderReader" writer="tlitextMgPayRiderWriter"
-                             commit-interval="100"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextMgHisJob">
-        <batch:step id="tlitextMgHisStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextMgHisReader" writer="tlitextMgHisWriter"
-                             commit-interval="100"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextMgInsMemoJob">
-        <batch:step id="tlitextMgInsMemoStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextMgInsMemoReader" writer="tlitextMgInsMemoWriter"
-                             commit-interval="100"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextMgInterestJob">
-        <batch:step id="tlitextMgInterestStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextMgInterestReader" writer="tlitextMgInterestWriter"
-                             commit-interval="100"/>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextMgReceiverJob">
-        <batch:step id="tlitextMgReceiverStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextMgReceiverReader" processor="tlitextMgReceiverProcessor"
-                             writer="tlitextMgReceiverWriter" commit-interval="10000">
-                </batch:chunk>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextAddressJob">
-        <batch:step id="tlitextAddressStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextAddressReader" writer="tlitextAddressWriter" commit-interval="10000">
-                </batch:chunk>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextBeneficiaryJob">
-        <batch:step id="tlitextBeneficiaryStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextBeneficiaryReader" processor="tlitextBeneficiaryProcessor"
-                             writer="tlitextBeneficiaryWriter" commit-interval="10000">
-                </batch:chunk>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
-
-    <batch:job id="tlitextExtrapremiumJob">
-        <batch:step id="tlitextExtrapremiumStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextExtrapremiumReader" writer="tlitextExtrapremiumWriter"
+                <batch:chunk reader="repDmCertReader" writer="repDmCertWriter"
                              commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
@@ -267,10 +82,11 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextOrctrlJob">
-        <batch:step id="tlitextOrctrlStep1">
+    <batch:job id="repDmDetCertJob">
+        <batch:step id="repDmDetCertStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextOrctrlReader" writer="tlitextOrctrlWriter" commit-interval="10000">
+                <batch:chunk reader="repDmDetCertReader" writer="repDmDetCertWriter"
+                             commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -279,10 +95,142 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextOrdmastJob">
-        <batch:step id="tlitextOrdmastStep1">
+    <batch:job id="repDmCertRiderJob">
+        <batch:step id="repDmCertRiderStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextOrdmastReader" writer="tlitextOrdmastWriter" commit-interval="10000">
+                <batch:chunk reader="repDmCertRiderReader" writer="repDmCertRiderWriter"
+                             commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmCertLinkerJob">
+        <batch:step id="repDmCertLinkerStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmCertLinkerReader" writer="repDmCertLinkerWriter"
+                             commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmCertMappingJob">
+        <batch:step id="repDmCertMappingStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmCertMappingReader" writer="repDmCertMappingWriter"
+                             commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmMgClaimJob">
+        <batch:step id="repDmMgClaimStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmMgClaimReader" writer="repDmMgClaimWriter"
+                             commit-interval="100"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmMgOrderJob">
+        <batch:step id="repDmMgOrderStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmMgOrderReader" writer="repDmMgOrderWriter"
+                             commit-interval="100"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmMgPayJob">
+        <batch:step id="repDmMgPayStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmMgPayReader" writer="repDmMgPayWriter"
+                             commit-interval="100"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmMgPayRiderJob">
+        <batch:step id="repDmMgPayRiderStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmMgPayRiderReader" writer="repDmMgPayRiderWriter"
+                             commit-interval="100"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmMgHisJob">
+        <batch:step id="repDmMgHisStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmMgHisReader" writer="repDmMgHisWriter"
+                             commit-interval="100"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmMgInsMemoJob">
+        <batch:step id="repDmMgInsMemoStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmMgInsMemoReader" writer="repDmMgInsMemoWriter"
+                             commit-interval="100"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmMgInterestJob">
+        <batch:step id="repDmMgInterestStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmMgInterestReader" writer="repDmMgInterestWriter"
+                             commit-interval="100"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmMgReceiverJob">
+        <batch:step id="repDmMgReceiverStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmMgReceiverReader" writer="repDmMgReceiverWriter"
+                             commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmAddressJob">
+        <batch:step id="repDmAddressStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmAddressReader" writer="repDmAddressWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -291,11 +239,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextRemarkJob">
-        <batch:step id="tlitextRemarkStep1">
+    <batch:job id="repDmBeneficiaryJob">
+        <batch:step id="repDmBeneficiaryStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextRemarkReader" processor="tlitextRemarkProcessor"
-                             writer="tlitextRemarkWriter" commit-interval="10000">
+                <batch:chunk reader="repDmBeneficiaryReader" writer="repDmBeneficiaryWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -304,10 +251,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextRiderJob">
-        <batch:step id="tlitextRiderStep1">
+    <batch:job id="repDmExtrapremiumJob">
+        <batch:step id="repDmExtrapremiumStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextRiderReader" writer="tlitextRiderWriter" commit-interval="10000">
+                <batch:chunk reader="repDmExtrapremiumReader" writer="repDmExtrapremiumWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -316,10 +263,10 @@
         </batch:listeners>
     </batch:job>
 
-    <batch:job id="tlitextRpriderJob">
-        <batch:step id="tlitextRpriderStep1">
+    <batch:job id="repDmOrctrlJob">
+        <batch:step id="repDmOrctrlStep1">
             <batch:tasklet>
-                <batch:chunk reader="tlitextRpriderReader" writer="tlitextRpriderWriter" commit-interval="10000">
+                <batch:chunk reader="repDmOrctrlReader" writer="repDmOrctrlWriter" commit-interval="10000">
                 </batch:chunk>
             </batch:tasklet>
         </batch:step>
@@ -328,15 +275,51 @@
         </batch:listeners>
     </batch:job>
 
-    <!--<batch:job id="tlitextQueueJob">-->
-        <!--<batch:step id="tlitextQueueStep1">-->
-            <!--<batch:tasklet>-->
-                <!--<batch:chunk reader="tlitextQueueReader" writer="tlitextQueueWriter" commit-interval="10000">-->
-                <!--</batch:chunk>-->
-            <!--</batch:tasklet>-->
-        <!--</batch:step>-->
-        <!--<batch:listeners>-->
-            <!--<batch:listener ref="jobListener"/>-->
-        <!--</batch:listeners>-->
-    <!--</batch:job>-->
+    <batch:job id="repDmOrdmastJob">
+        <batch:step id="repDmOrdmastStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmOrdmastReader" writer="repDmOrdmastWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmRemarkJob">
+        <batch:step id="repDmRemarkStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmRemarkReader" writer="repDmRemarkWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmRiderJob">
+        <batch:step id="repDmRiderStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmRiderReader" writer="repDmRiderWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmRpriderJob">
+        <batch:step id="repDmRpriderStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmRpriderReader" writer="repDmRpriderWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
 </beans>
