@@ -1,4 +1,4 @@
-package main.java.th.co.ipassion.testtool.dto.tlitext;
+package th.co.ipassion.testtool.dto.tlitext;
 
 public class Queue {
     private String considerid;
