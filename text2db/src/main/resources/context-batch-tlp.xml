@@ -900,7 +900,7 @@
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="strict" value="true"/>
                         <property name="names"
-                                  value="customercode,policyno,seqno,beneficiaryprename,beneficiaryname,beneficiarylastname,relationship,percentage,age" />
+                                  value="policyno,seqno,beneficiaryprename,beneficiaryname,beneficiarylastname,relationship,percentage,age" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
