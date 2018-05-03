@@ -501,7 +501,7 @@
     </bean>
 
     <bean id="repTlpAppCustomerAddressWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="targetSource" />
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
         </property>
@@ -576,14 +576,14 @@
                 <![CDATA[
                     INSERT INTO tlp.policymaster
                     VALUES
-                    (:policyno,:appno, :plancode,:planname,:prename,:frstname,:surname,:statusnew,:statusnewremark,:statusold,
-                    :statusoldremark,:sex,:medical,:class,:occtype,:extramort,:issuedage,:sa,:premlife,:premacc,:premexta,:premtotal,
+                    (:customercode,:policyno,:appno, :plancode,:planname,:prename,:frstname,:surname,:statusnew,:statusnewremark,:statusold,
+                    :statusoldremark,:sex,:medical,:_class,:occtype,:extramort,:issuedage,:sa,:premlife,:premacc,:premexta,:premtotal,
                     :mode,:payperiod,:covperiod,:effectivedate,:birthdate,:paymentdate,:nextduedate, :modifydate,:statusdate,
                     :matdate,:expdate,:dateprintpolicy,:issuepolicydate,:idno,:stopdate,:stopreason,:deathdate,:receivefreelookdate,
                     :receivefreelookdescription,:receivefreelookrealdate,:prefix,:sanew, :expdatenew,:cashexpire,:cashimmediate,:book,:tesco,
                     :nocount,:bookpredic,:tescopredic,:sendstatus,:sendgiftdate,:userconfirm,:registermailtesco,:receivetescodate,
                     :receivetescostatus,:receivetescoreason,:uploadxo,:extrarate,:effectivedateold,:matdateold,:expdateold,
-                    :issuedageold,:cv,:cvdate)]]>
+                    :issuedageold,:cv,:cvdate,:status2,:statusdate2)]]>
             </value>
         </property>
     </bean>
@@ -614,7 +614,7 @@
                 <![CDATA[
                     INSERT INTO tlp.policybeneficiary
                     VALUES
-                    (:policyno,:seqno,:beneficiaryname,:relationship,:percentage,:age)]]>
+                    (:policyno,:seqno,:beneficiaryprename,:beneficiaryname,:beneficiarylastname,:relationship,:percentage,:age)]]>
             </value>
         </property>
     </bean>
@@ -670,7 +670,7 @@
     </bean>
 
     <bean id="repTlpPolicyRiderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="targetSource" />
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
         </property>

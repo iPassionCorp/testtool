@@ -326,16 +326,4 @@
             <batch:listener ref="jobListener"/>
         </batch:listeners>
     </batch:job>
-
-    <batch:job id="repTlitextQueueJob">
-        <batch:step id="repTlitextQueueStep1">
-            <batch:tasklet>
-                <batch:chunk reader="repTlitextQueueReader" writer="repTlitextQueueWriter" commit-interval="10000">
-                </batch:chunk>
-            </batch:tasklet>
-        </batch:step>
-        <batch:listeners>
-            <batch:listener ref="jobListener"/>
-        </batch:listeners>
-    </batch:job>
 </beans>

@@ -660,9 +660,16 @@
         </property>
     </bean>
 
-    <bean id="tlpAppCustomerReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+
+    <bean id="tlpAppCustomerReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${tlp.source.file.path}/**/*_AppCustomer.txt" />
+        <property name="delegate" ref="tlpAppCustomerReaderFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpAppCustomerReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -711,9 +718,15 @@
         </property>
     </bean>
 
-    <bean id="tlpAppCustomerAddressReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+    <bean id="tlpAppCustomerAddressReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${tlp.source.file.path}/**/*_AppCustomerAddress.txt" />
+        <property name="delegate" ref="tlpAppCustomerAddressReaderFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpAppCustomerAddressReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -756,9 +769,15 @@
         </property>
     </bean>
 
-    <bean id="tlpHistoryStatusReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+    <bean id="tlpHistoryStatusReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${tlp.source.file.path}/**/*_HistoryStatus.txt" />
+        <property name="delegate" ref="tlpHistoryStatusReaderFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpHistoryStatusReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -801,38 +820,44 @@
         </property>
     </bean>
 
-    <bean id="tlpPolicyMasterReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-    <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
-    <property name="linesToSkip" value="1"/>
-    <property name="recordSeparatorPolicy">
-        <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
-    </property>
-    <property name="lineMapper">
-        <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-            <property name="fieldSetMapper">
-                <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-                    <property name="prototypeBeanName" value="policyMaster" />
-                </bean>
-            </property>
-            <property name="lineTokenizer">
-                <bean
-                        class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
-                    <property name="strict" value="true"/>
-                    <property name="names"
-                              value="policyno,appno, plancode,planname,prename,frstname,surname,statusnew,statusnewremark,statusold,
-                                        statusoldremark,sex,medical,class,occtype,extramort,issuedage,sa,premlife,premacc,premexta,premtotal,
+    <bean id="tlpPolicyMasterReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${tlp.source.file.path}/**/*_PolicyMaster.txt" />
+        <property name="delegate" ref="tlpPolicyMasterReaderFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpPolicyMasterReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="policyMaster" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="customercode,policyno,appno, plancode,planname,prename,frstname,surname,statusnew,statusnewremark,statusold,
+                                        statusoldremark,sex,medical,_class,occtype,extramort,issuedage,sa,premlife,premacc,premexta,premtotal,
                                         mode,payperiod,covperiod,effectivedate,birthdate,paymentdate,nextduedate, modifydate,statusdate,
                                         matdate,expdate,dateprintpolicy,issuepolicydate,idno,stopdate,stopreason,deathdate,receivefreelookdate,
                                         receivefreelookdescription,receivefreelookrealdate,prefix,sanew, expdatenew,cashexpire,cashimmediate,book,tesco,
                                         nocount,bookpredic,tescopredic,sendstatus,sendgiftdate,userconfirm,registermailtesco,receivetescodate,
                                         receivetescostatus,receivetescoreason,uploadxo,extrarate,effectivedateold,matdateold,expdateold,
-                                        issuedageold,cv,cvdate" />
-                    <property name="delimiter" value="|"/>
-                </bean>
-            </property>
-        </bean>
-    </property>
-</bean>
+                                        issuedageold,cv,cvdate,status2,statusdate2"/>
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
     <bean id="tlpPolicyMasterWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource" />
@@ -842,23 +867,29 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    INSERT INTO tlp.policymaster
-                    VALUES
-                    (:policyno,:appno, :plancode,:planname,:prename,:frstname,:surname,:statusnew,:statusnewremark,:statusold,
-                    :statusoldremark,:sex,:medical,:class,:occtype,:extramort,:issuedage,:sa,:premlife,:premacc,:premexta,:premtotal,
-                    :mode,:payperiod,:covperiod,:effectivedate,:birthdate,:paymentdate,:nextduedate, :modifydate,:statusdate,
-                    :matdate,:expdate,:dateprintpolicy,:issuepolicydate,:idno,:stopdate,:stopreason,:deathdate,:receivefreelookdate,
-                    :receivefreelookdescription,:receivefreelookrealdate,:prefix,:sanew, :expdatenew,:cashexpire,:cashimmediate,:book,:tesco,
-                    :nocount,:bookpredic,:tescopredic,:sendstatus,:sendgiftdate,:userconfirm,:registermailtesco,:receivetescodate,
-                    :receivetescostatus,:receivetescoreason,:uploadxo,:extrarate,:effectivedateold,:matdateold,:expdateold,
-                    :issuedageold,:cv,:cvdate)]]>
+                INSERT INTO tlp.policymaster
+                VALUES
+                (:customercode,:policyno,:appno, :plancode,:planname,:prename,:frstname,:surname,:statusnew,:statusnewremark,:statusold,
+                :statusoldremark,:sex,:medical,:_class,:occtype,:extramort,:issuedage,:sa,:premlife,:premacc,:premexta,:premtotal,
+                :mode,:payperiod,:covperiod,:effectivedate,:birthdate,:paymentdate,:nextduedate, :modifydate,:statusdate,
+                :matdate,:expdate,:dateprintpolicy,:issuepolicydate,:idno,:stopdate,:stopreason,:deathdate,:receivefreelookdate,
+                :receivefreelookdescription,:receivefreelookrealdate,:prefix,:sanew, :expdatenew,:cashexpire,:cashimmediate,:book,:tesco,
+                :nocount,:bookpredic,:tescopredic,:sendstatus,:sendgiftdate,:userconfirm,:registermailtesco,:receivetescodate,
+                :receivetescostatus,:receivetescoreason,:uploadxo,:extrarate,:effectivedateold,:matdateold,:expdateold,
+                :issuedageold,:cv,:cvdate,:status2,:statusdate2)]]>
             </value>
         </property>
     </bean>
 
-    <bean id="tlpPolicyBeneficiaryReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+    <bean id="tlpPolicyBeneficiaryReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${tlp.source.file.path}/**/*_PolicyBeneficiary.txt" />
+        <property name="delegate" ref="tlpPolicyBeneficiaryReaderFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpPolicyBeneficiaryReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -874,7 +905,7 @@
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="strict" value="true"/>
                         <property name="names"
-                                  value="policyno,seqno,beneficiaryname,relationship,percentage,age" />
+                                  value="policyno,seqno,beneficiaryprename,beneficiaryname,beneficiarylastname,relationship,percentage,age" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -892,14 +923,20 @@
                 <![CDATA[
                     INSERT INTO tlp.policybeneficiary
                     VALUES
-                    (:policyno,:seqno,:beneficiaryname,:relationship,:percentage,:age)]]>
+                    (:policyno,:seqno,:beneficiaryprename,:beneficiaryname,:beneficiarylastname,:relationship,:percentage,:age)]]>
             </value>
         </property>
     </bean>
 
-    <bean id="tlpPolicyPaidReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+    <bean id="tlpPolicyPaidReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${tlp.source.file.path}/**/*_PolicyPaid.txt" />
+        <property name="delegate" ref="tlpPolicyPaidReaderFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpPolicyPaidReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -944,9 +981,15 @@
         </property>
     </bean>
 
-    <bean id="tlpPolicyRiderReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlp.source.file.path}/Phase2_TextFile/Claim/" />
+    <bean id="tlpPolicyRiderReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${tlp.source.file.path}/**/*_PolicyRider.txt" />
+        <property name="delegate" ref="tlpPolicyRiderReaderFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpPolicyRiderReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>

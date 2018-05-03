@@ -1,6 +1,7 @@
 package th.co.ipassion.testtool.dto.tlp;
 
 public class PolicyMaster implements java.io.Serializable {
+    private String customercode;
     private String policyno;
     private String appno;
     private String plancode;
@@ -68,6 +69,8 @@ public class PolicyMaster implements java.io.Serializable {
     private String issuedageold;
     private String cv;
     private String cvdate;
+    private String status2;
+    private String statusdate2;
 
     public String getPolicyno() {
         return policyno;
@@ -603,5 +606,29 @@ public class PolicyMaster implements java.io.Serializable {
 
     public void setCvdate(String cvdate) {
         this.cvdate = cvdate;
+    }
+
+    public String getStatus2() {
+        return status2;
+    }
+
+    public void setStatus2(String status2) {
+        this.status2 = status2;
+    }
+
+    public String getStatusdate2() {
+        return statusdate2;
+    }
+
+    public void setStatusdate2(String statusdate2) {
+        this.statusdate2 = statusdate2;
+    }
+
+    public String getCustomercode() {
+        return customercode;
+    }
+
+    public void setCustomercode(String customercode) {
+        this.customercode = customercode;
     }
 }

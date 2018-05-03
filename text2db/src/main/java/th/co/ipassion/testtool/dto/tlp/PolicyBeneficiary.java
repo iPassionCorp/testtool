@@ -3,7 +3,9 @@ package th.co.ipassion.testtool.dto.tlp;
 public class PolicyBeneficiary implements java.io.Serializable {
     private String policyno;
     private String seqno;
+    private String beneficiaryprename;
     private String beneficiaryname;
+    private String beneficiarylastname;
     private String relationship;
     private String percentage;
     private String age;
@@ -54,5 +56,21 @@ public class PolicyBeneficiary implements java.io.Serializable {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getBeneficiaryprename() {
+        return beneficiaryprename;
+    }
+
+    public void setBeneficiaryprename(String beneficiaryprename) {
+        this.beneficiaryprename = beneficiaryprename;
+    }
+
+    public String getBeneficiarylastname() {
+        return beneficiarylastname;
+    }
+
+    public void setBeneficiarylastname(String beneficiarylastname) {
+        this.beneficiarylastname = beneficiarylastname;
     }
 }
