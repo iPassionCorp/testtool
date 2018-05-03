@@ -577,7 +577,7 @@
                     INSERT INTO tlp.policymaster
                     VALUES
                     (:customercode,:policyno,:appno, :plancode,:planname,:prename,:frstname,:surname,:statusnew,:statusnewremark,:statusold,
-                    :statusoldremark,:sex,:medical,:class,:occtype,:extramort,:issuedage,:sa,:premlife,:premacc,:premexta,:premtotal,
+                    :statusoldremark,:sex,:medical,:_class,:occtype,:extramort,:issuedage,:sa,:premlife,:premacc,:premexta,:premtotal,
                     :mode,:payperiod,:covperiod,:effectivedate,:birthdate,:paymentdate,:nextduedate, :modifydate,:statusdate,
                     :matdate,:expdate,:dateprintpolicy,:issuepolicydate,:idno,:stopdate,:stopreason,:deathdate,:receivefreelookdate,
                     :receivefreelookdescription,:receivefreelookrealdate,:prefix,:sanew, :expdatenew,:cashexpire,:cashimmediate,:book,:tesco,
