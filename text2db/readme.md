@@ -1,6 +1,5 @@
 # TEXT2DB
-This is the Text2DB program. Main focus so far is have about masic file and can run to database
-
+This is the Text2DB program. The main focus has on MASIC file and this program work with MASIC file read and write into Database
 ## Getting Started
 These instruction will get you a copy the project up running on your local machine and testing.
 
