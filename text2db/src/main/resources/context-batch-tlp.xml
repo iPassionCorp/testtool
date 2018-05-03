@@ -826,7 +826,7 @@
                                         receivefreelookdescription,receivefreelookrealdate,prefix,sanew, expdatenew,cashexpire,cashimmediate,book,tesco,
                                         nocount,bookpredic,tescopredic,sendstatus,sendgiftdate,userconfirm,registermailtesco,receivetescodate,
                                         receivetescostatus,receivetescoreason,uploadxo,extrarate,effectivedateold,matdateold,expdateold,
-                                        issuedageold,cv,cvdate" />
+                                        issuedageold,cv,cvdate,status2,statusdate2" />
                     <property name="delimiter" value="|"/>
                 </bean>
             </property>
@@ -851,7 +851,7 @@
                     :receivefreelookdescription,:receivefreelookrealdate,:prefix,:sanew, :expdatenew,:cashexpire,:cashimmediate,:book,:tesco,
                     :nocount,:bookpredic,:tescopredic,:sendstatus,:sendgiftdate,:userconfirm,:registermailtesco,:receivetescodate,
                     :receivetescostatus,:receivetescoreason,:uploadxo,:extrarate,:effectivedateold,:matdateold,:expdateold,
-                    :issuedageold,:cv,:cvdate)]]>
+                    :issuedageold,:cv,:cvdate,:status2,:statusdate2)]]>
             </value>
         </property>
     </bean>
@@ -874,7 +874,7 @@
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="strict" value="true"/>
                         <property name="names"
-                                  value="policyno,seqno,beneficiaryname,relationship,percentage,age" />
+                                  value="policyno,seqno,beneficiaryprename,beneficiaryname,beneficiarylastname,relationship,percentage,age" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -892,7 +892,7 @@
                 <![CDATA[
                     INSERT INTO tlp.policybeneficiary
                     VALUES
-                    (:policyno,:seqno,:beneficiaryname,:relationship,:percentage,:age)]]>
+                    (:policyno,:seqno,:beneficiaryprename,:beneficiaryname,:beneficiarylastname,:relationship,:percentage,:age)]]>
             </value>
         </property>
     </bean>

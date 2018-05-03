@@ -1192,7 +1192,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                         <property name="names"
                                   value="considerid,queuetype,jobtype,jobcode,offerdate,referenceno,receivedate,
                                     modifydate,modifytime,status,xconsiderid,firstjobtype,firstjobcode,
-                                    firstxconsiderid,firstofferdate,"/>
+                                    firstxconsiderid,firstofferdate"/>
                         <property name="columns"
                                   value="1-100"/>
                     </bean>

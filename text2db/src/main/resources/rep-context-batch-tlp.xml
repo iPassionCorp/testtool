@@ -583,7 +583,7 @@
                     :receivefreelookdescription,:receivefreelookrealdate,:prefix,:sanew, :expdatenew,:cashexpire,:cashimmediate,:book,:tesco,
                     :nocount,:bookpredic,:tescopredic,:sendstatus,:sendgiftdate,:userconfirm,:registermailtesco,:receivetescodate,
                     :receivetescostatus,:receivetescoreason,:uploadxo,:extrarate,:effectivedateold,:matdateold,:expdateold,
-                    :issuedageold,:cv,:cvdate)]]>
+                    :issuedageold,:cv,:cvdate,:status2,:statusdate2)]]>
             </value>
         </property>
     </bean>
@@ -614,7 +614,7 @@
                 <![CDATA[
                     INSERT INTO tlp.policybeneficiary
                     VALUES
-                    (:policyno,:seqno,:beneficiaryname,:relationship,:percentage,:age)]]>
+                    (:policyno,:seqno,:beneficiaryprename,:beneficiaryname,:beneficiarylastname,:relationship,:percentage,:age)]]>
             </value>
         </property>
     </bean>
