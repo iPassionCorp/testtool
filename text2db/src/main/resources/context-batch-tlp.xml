@@ -669,6 +669,7 @@
 
     <bean id="tlpAppCustomerReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -725,6 +726,7 @@
 
     <bean id="tlpAppCustomerAddressReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -775,6 +777,7 @@
 
     <bean id="tlpHistoryStatusReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -825,6 +828,7 @@
 
     <bean id="tlpPolicyMasterReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -885,6 +889,7 @@
 
     <bean id="tlpPolicyBeneficiaryReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -931,6 +936,7 @@
 
     <bean id="tlpPolicyPaidReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -983,6 +989,7 @@
 
     <bean id="tlpPolicyRiderReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
+        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
