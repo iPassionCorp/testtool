@@ -501,7 +501,7 @@
     </bean>
 
     <bean id="repTlpAppCustomerAddressWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="targetSource" />
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
         </property>
@@ -670,7 +670,7 @@
     </bean>
 
     <bean id="repTlpPolicyRiderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="targetSource" />
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
         </property>
