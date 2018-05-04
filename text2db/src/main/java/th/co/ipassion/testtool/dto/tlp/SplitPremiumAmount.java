@@ -22,6 +22,7 @@ public class SplitPremiumAmount {
     private String hspremium;
     private String ddpremium;
     private String lifetpdpremium;
+    private String duedate;
 	public String getProductid() {
 		return productid;
 	}
@@ -148,6 +149,12 @@ public class SplitPremiumAmount {
 	public void setLifetpdpremium(String lifetpdpremium) {
 		this.lifetpdpremium = lifetpdpremium;
 	}
-    
-    
+
+	public String getDuedate() {
+		return duedate;
+	}
+
+	public void setDuedate(String duedate) {
+		this.duedate = duedate;
+	}
 }

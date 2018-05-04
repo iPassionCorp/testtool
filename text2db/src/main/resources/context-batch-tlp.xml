@@ -80,7 +80,7 @@
  
  	<bean id="tlpCustomerInfoReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="${tlp.source.file.path}/**/**/*_CustomerInfo.txt" />
+		<property name="resources" value="${tlp.source.file.path}/**/*_Enquire_CustomerInfo.txt" />
 		<property name="delegate" ref="tlpCustomerInfoFlatFileItemReader" />
 	</bean>
 
@@ -153,7 +153,7 @@
 
  	<bean id="tlpCustomerSaReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="${tlp.source.file.path}/**/**/*_CustomerSA.txt" />
+		<property name="resources" value="${tlp.source.file.path}/**/*_Enquire_CustomerSA.txt" />
 		<property name="delegate" ref="tlpCustomerSaFlatFileItemReader" />
 	</bean>
 
@@ -205,7 +205,7 @@
 
  	<bean id="tlpPaymentReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="${tlp.source.file.path}/**/**/*_Payment.txt" />
+		<property name="resources" value="${tlp.source.file.path}/**/*_Enquire_Payment.txt" />
 		<property name="delegate" ref="tlpPaymentFlatFileItemReader" />
 	</bean>
 
@@ -254,7 +254,7 @@
  
   	<bean id="tlpSplitPremiumAmountReader"
 		class="org.springframework.batch.item.file.MultiResourceItemReader">
-		<property name="resources" value="${tlp.source.file.path}/**/**/*_SplitPremiumAmount.txt" />
+		<property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount.txt" />
 		<property name="delegate" ref="tlpSplitPremiumAmountFlatFileItemReader" />
 	</bean>
 
@@ -277,7 +277,7 @@
 						<property name="names"
 							value="productid,grouppolicyno,customercode,totpremium,lifepremium,deathpremium,tpdpremium,
 							ttdpremium,tdpremium,papremium,adbpremium,addpremium,rccpremium,mapremium,mcpremium,mepremium,
-							hbpremium,hapremium,hspremium,ddpremium,lifetpdpremium" />
+							hbpremium,hapremium,hspremium,ddpremium,lifetpdpremium,duedate" />
 						<property name="delimiter" value="|"/>
 					</bean>
 				</property>
@@ -297,7 +297,7 @@
                     VALUES
                     (:productid, :grouppolicyno, :customercode, :totpremium, :lifepremium, :deathpremium, 
                     :tpdpremium, :ttdpremium, :tdpremium, :papremium, :adbpremium, :addpremium, :rccpremium, 
-                    :mapremium, :mcpremium, :mepremium, :hbpremium, :hapremium, :hspremium, :ddpremium, :lifetpdpremium)
+                    :mapremium, :mcpremium, :mepremium, :hbpremium, :hapremium, :hspremium, :ddpremium, :lifetpdpremium, :duedate)
                 ]]>
             </value>
         </property>                   
