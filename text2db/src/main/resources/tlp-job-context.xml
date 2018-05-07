@@ -155,6 +155,18 @@
         </batch:listeners>
     </batch:job>
 
+	<batch:job id="tlpMasRiskTypeJob">
+		<batch:step id="tlpMasRiskTypeStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpMasRiskTypeReader" writer="tlpMasRiskTypeWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
 	<batch:job id="tlpAppCustomerJob">
 		<batch:step id="tlpAppCustomerStep1">
 			<batch:tasklet>
