@@ -9,19 +9,45 @@ First thing you must have Java IDE to run this program (e.g Eclipse, IntelliJ, N
 1) Change property file on your program go to `/src/main/resources/` `text2db.cloud.properties` for cloud profile and `text2db.sit.properties` for SIT profile.
     
     dataSource 
-    `dataSource.jdbcUrl=jdbc:postgresql://<url>:5432/<database>`
-    `dataSource.driverClass=org.postgresql.Driver`
-    `dataSource.user=<username>`
-    `dataSource.password=<password>`
+    ```
+    dataSource.jdbcUrl=jdbc:postgresql://<url>:5432/<database>
+    ```
+    ```
+    dataSource.driverClass=org.postgresql.Driver
+    ```
+    ```
+    dataSource.user=<username>
+    ```
+    ```
+    dataSource.password=<password>
+    ```
     
     targetSource for replicate job this target source for writing data from datasource to targetsource
-    `targetSource.jdbcUrl=jdbc:postgresql://<url>:5432/<database>`
-    `targetSource.driverClass=org.postgresql.Driver`
-    `targetSource.user=<username>`
-    `targetSource.password=<password>`
+    ```
+    targetSource.jdbcUrl=jdbc:postgresql://<url>:5432/<database>
+    ```
+    ```
+    targetSource.driverClass=org.postgresql.Driver
+    ```
+    ```
+    targetSource.user=<username>
+    ```
+    ```
+    targetSource.password=<password>
+    ```
 
 2) Run maven for build this program 
-`mvn clean install <args>` if you want to run this program for SIT environment `mvn clean install -Psit` and cloud enviroment `mvn clean install -Pcloud`
+    ```
+    mvn clean install <args>
+    ``` 
+    if you want to run this program for SIT environment 
+    ```
+    mvn clean install -Psit
+    ``` 
+    and cloud enviroment 
+    ```
+    mvn clean install -Pcloud
+    ```
 
 3) Open IDE Program and change Run configurations for running about job you want to run 
 ![picture](https://i.imgur.com/TwmirWf.png)
