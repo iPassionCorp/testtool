@@ -11,28 +11,16 @@ First thing you must have Java IDE to run this program (e.g Eclipse, IntelliJ, N
     dataSource 
     ```
     dataSource.jdbcUrl=jdbc:postgresql://<url>:5432/<database>
-    ```
-    ```
     dataSource.driverClass=org.postgresql.Driver
-    ```
-    ```
     dataSource.user=<username>
-    ```
-    ```
     dataSource.password=<password>
     ```
     
     targetSource for replicate job this target source for writing data from datasource to targetsource
     ```
     targetSource.jdbcUrl=jdbc:postgresql://<url>:5432/<database>
-    ```
-    ```
     targetSource.driverClass=org.postgresql.Driver
-    ```
-    ```
     targetSource.user=<username>
-    ```
-    ```
     targetSource.password=<password>
     ```
 
