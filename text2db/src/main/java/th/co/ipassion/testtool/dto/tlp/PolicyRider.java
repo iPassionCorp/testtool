@@ -3,6 +3,7 @@ package th.co.ipassion.testtool.dto.tlp;
 public class PolicyRider implements java.io.Serializable{
     private String riderno;
     private String policyno;
+    private String ridertype;
     private String plancode;
     private String statusnew;
     private String statusold;
@@ -162,5 +163,13 @@ public class PolicyRider implements java.io.Serializable{
 
     public void setEndorsedate(String endorsedate) {
         this.endorsedate = endorsedate;
+    }
+
+    public String getRidertype() {
+        return ridertype;
+    }
+
+    public void setRidertype(String ridertype) {
+        this.ridertype = ridertype;
     }
 }

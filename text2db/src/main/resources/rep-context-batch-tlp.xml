@@ -679,7 +679,7 @@
                 <![CDATA[
                     INSERT INTO tlp.policyrider
                     VALUES
-                    (:riderno,:policyno,:plancode,:statusnew,:statusold,:sa,
+                    (:riderno,:policyno,:ridertype,:plancode,:statusnew,:statusold,:sa,
                     :premrider,:premextra,:premtotal,:mode,:covperiod,:effectivedate,
                     :startdate,:expdate,:issuedage,:attage,:statusdate,:endorsedate)]]>
             </value>

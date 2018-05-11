@@ -710,7 +710,6 @@
 
     <bean id="tlpAppCustomerReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -767,7 +766,6 @@
 
     <bean id="tlpAppCustomerAddressReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -818,7 +816,6 @@
 
     <bean id="tlpHistoryStatusReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -869,7 +866,6 @@
 
     <bean id="tlpPolicyMasterReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -930,7 +926,6 @@
 
     <bean id="tlpPolicyBeneficiaryReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -977,7 +972,6 @@
 
     <bean id="tlpPolicyPaidReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -1030,7 +1024,6 @@
 
     <bean id="tlpPolicyRiderReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value="UTF-8"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -1046,7 +1039,7 @@
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="strict" value="true"/>
                         <property name="names"
-                                  value="riderno,policyno,plancode,statusnew,statusold,sa,
+                                  value="riderno,policyno,ridertype,plancode,statusnew,statusold,sa,
                                         premrider,premextra,premtotal,mode,covperiod,effectivedate,
                                         startdate,expdate,issuedage,attage,statusdate,endorsedate" />
                         <property name="delimiter" value="|"/>
@@ -1066,7 +1059,7 @@
                 <![CDATA[
                     INSERT INTO tlp.policyrider
                     VALUES
-                    (:riderno,:policyno,:plancode,:statusnew,:statusold,:sa,
+                    (:riderno,:policyno,:ridertype,:plancode,:statusnew,:statusold,:sa,
                     :premrider,:premextra,:premtotal,:mode,:covperiod,:effectivedate,
                     :startdate,:expdate,:issuedage,:attage,:statusdate,:endorsedate)]]>
             </value>
