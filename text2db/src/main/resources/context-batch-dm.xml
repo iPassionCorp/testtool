@@ -38,14 +38,27 @@
     <bean id="dmRemark" class="th.co.ipassion.testtool.dto.dm.Remark" scope="prototype"/>
     <bean id="dmRider" class="th.co.ipassion.testtool.dto.dm.Rider" scope="prototype"/>
     <bean id="dmRprider" class="th.co.ipassion.testtool.dto.dm.Rprider" scope="prototype"/>
-    <bean id="dmQueue" class="th.co.ipassion.testtool.dto.dm.Queue" scope="prototype"/>
 
     <!--edm4gl-->
     <bean id="dmClaim" class="th.co.ipassion.testtool.dto.dm.Claim" scope="prototype"/>
     <bean id="dmEclm" class="th.co.ipassion.testtool.dto.dm.Eclm" scope="prototype"/>
     <bean id="dmDthordo" class="th.co.ipassion.testtool.dto.dm.Dthordo" scope="prototype"/>
     <bean id="dmRidordo" class="th.co.ipassion.testtool.dto.dm.Ridordo" scope="prototype"/>
+    <bean id="dmDhsordo" class="th.co.ipassion.testtool.dto.dm.Dhsordo" scope="prototype"/>
+    <bean id="dmBnfordo" class="th.co.ipassion.testtool.dto.dm.Bnfordo" scope="prototype"/>
     <bean id="dmOacm" class="th.co.ipassion.testtool.dto.dm.Oacm" scope="prototype"/>
+    <bean id="dmHordods" class="th.co.ipassion.testtool.dto.dm.Hordods" scope="prototype"/>
+    <bean id="dmPay" class="th.co.ipassion.testtool.dto.dm.Pay" scope="prototype"/>
+    <bean id="dmInsmemo" class="th.co.ipassion.testtool.dto.dm.Insmemo" scope="prototype"/>
+    <bean id="dmVoiordo" class="th.co.ipassion.testtool.dto.dm.Voiordo" scope="prototype"/>
+    <bean id="dmCmem" class="th.co.ipassion.testtool.dto.dm.Cmem" scope="prototype"/>
+    <bean id="dmOdis" class="th.co.ipassion.testtool.dto.dm.Odis" scope="prototype"/>
+    <bean id="dmOrds" class="th.co.ipassion.testtool.dto.dm.Ords" scope="prototype"/>
+    <bean id="dmHospital" class="th.co.ipassion.testtool.dto.dm.Hospital" scope="prototype"/>
+    <bean id="dmIcd10" class="th.co.ipassion.testtool.dto.dm.Icd10" scope="prototype"/>
+
+    <!--edm4cf-->
+    <bean id="dmQueue" class="th.co.ipassion.testtool.dto.dm.Queue" scope="prototype"/>
 
     <bean id="dmCompensateIdReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${dm.source.file.path}/compensateid.dat"/>
@@ -1539,6 +1552,503 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
                     :policyStatus2,:policyStatusDate2,:branch,:lCode,:unitCode,:mode,:payPeriod,:payDate,:aplStartDate,
                     :aplEndDate,:extendStartDate,:extendEndDate,:expireDate,:renewalDate,:renewalPayPeriod,:expireDateBeforeRenewal,
                     :serviceBranch,:serviceUnit,:claimOkDate,:claimPayDate,:claimPersonCode,:dependentType,:dependentSequence,:firstClaimPayDate,:effectiveDate,:planCode)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmHordodsReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="dmHordodsFlatFileItemReader"/>
+    </bean>
+
+    <bean id="dmHordodsFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmHordods"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="policyNo,accidentDate,receiveDate,seqNo,remarkDate,remarkNo,remark,employeeID,recTime"/>
+                        <property name="columns"
+                                  value="1-8,9-16,17-24,25-26,27-34,35-36,37-136,137-143,144-149"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmHordodsWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.hordods
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:seqNo,:remarkDate,:remarkNo,:remark,:employeeID,:recTime)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+
+    <bean id="dmPayReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="dmPayFlatFileItemReader"/>
+    </bean>
+
+    <bean id="dmPayFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmPay"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="sectionCode,orderNo,payType,bankCode,bankBranch,bankAccount"/>
+                        <property name="columns"
+                                  value="1-2,3-10,11-11,12-21,22-56,57-71"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmPayWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.pay
+                    VALUES
+                    (:sectionCode,:orderNo,:payType,:bankCode,:bankBranch,:bankAccount)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmInsmemoReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmInsmemo"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="claimType,mstType,policyNo,accidentDate,receiveDate,memoCode,detail1,detail2,saveDate"/>
+                        <property name="columns"
+                                  value="1-1,2-2,3-10,11-18,19-26,27-29,30-129,130-229,230-237"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmInsmemoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.insmemo
+                    VALUES
+                    (:claimType,:mstType,:policyNo,:accidentDate,:receiveDate,:memoCode,:detail1,:detail2,:saveDate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmVoiordoReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="dmVoiordoFlatFileItemReader"/>
+    </bean>
+
+    <bean id="dmVoiordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmVoiordo"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="claimType,policyNo,accidentDate,receiveDate,riderType,voidType,voidDate,voidAmount,
+                    voidFirstPeriod,premType,tellBookStatus,endorsementStatus,debtFlag,startDate,endDate,addPremium"/>
+                        <property name="columns"
+                                  value="1-1,2-9,10-17,18-25,26-28,29-29,30-37,38-48,49-54,55-55,56-56,57-57,58-58,59-66,67-74,75-84"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmVoiordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.voiordo
+                    VALUES
+                    (:claimType,:policyNo,:accidentDate,:receiveDate,:riderType,:voidType,:voidDate,:voidAmount,
+                    :voidFirstPeriod,:premType,:tellBookStatus,:endorsementStatus,:debtFlag,:startDate,:endDate,:addPremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmCmemReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="dmCmemFlatFileItemReader"/>
+    </bean>
+
+    <bean id="dmCmemFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmCmem"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="sectionCode,orderNo,seqNo,detail"/>
+                        <property name="columns"
+                                  value="1-2,3-10,11-11,12-211"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmCmemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.cmem
+                    VALUES
+                    (:sectionCode,:orderNo,:seqNo,:detail)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmOdisReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="dmOdisFlatFileItemReader"/>
+    </bean>
+
+    <bean id="dmOdisFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmOdis"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="policyNo,accidentDate,receiveDate,riderType,organFlag,organ,exceptFlag,exceptStartDate,
+                                exceptEndDate,exceptStartPeriod,eexceptEndPeriod,premiumFlag,premiumAmount,premiumStartDate,
+                                premiumEndDate,allowPeriod,allowance,allowStartDate,premiumInterest,premIntStartDate,premIntEndDate,riderSurcash"/>
+                        <property name="columns"
+                                  value="1-8,9-16,17-24,25-27,28-28,29-43,44-44,45-52,53-60,61-64,65-68,69-69,70-79,80-87,88-95,96-97,98-108,109-116,117-126,127-134,135-142,143-150"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmOdisWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.odis
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:riderType,:organFlag,:organ,:exceptFlag,:exceptStartDate,
+                    :exceptEndDate,:exceptStartPeriod,:eexceptEndPeriod,:premiumFlag,:premiumAmount,:premiumStartDate,
+                    :premiumEndDate,:allowPeriod,:allowance,:allowStartDate,:premiumInterest,:premIntStartDate,:premIntEndDate,:riderSurcash)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmOrdsReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="dmOrdsFlatFileItemReader"/>
+    </bean>
+
+    <bean id="dmOrdsFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmOrds"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="policyNo,accidentDate,receiveDate,riderType,riderSum,riderPay,payRate,causeType"/>
+                        <property name="columns"
+                                  value="1-8,9-16,17-24,25-27,28-36,37-47,48-50,51-52"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmOrdsWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.ords
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:riderType,:riderSum,:riderPay,:payRate,:causeType)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmHospitalReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmHospital"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="code,prename,name,company,address1,address2,paytype,zone,level,informalrecordexpense,
+                    istlmedicarehospital,istlmedicaredate,fax1,extensionfax1,fax2,extensionfax2,incomingfax1,incomingfax2,ipdright,ipdrightdate,
+                    opdright,opdrightdate,incomingfax3,incomingfax4,incomingfax5,incomingfax6,showhospitalname,formalrecordexpense,email1,
+                    email2,email3,email4,sendemail1,sendemail2,sendemail3,sendemail4,automate,isstricthospital,recorddate,recordid"/>
+                        <property name="columns"
+                                  value="1-4,5-24,25-84,85-144,145-194,195-244,245-245,246-246,247-247,248-251,252-252,253-260,261-269,270-273,274-282,283-286,287-295,296-304,305-305,306-313,314-314,315-322,323-331,332-340,341-349,350-358,359-359,360-363,364-463,464-563,564-663,664-763,764-863,864-963,964-1063,1064-1163,1164-1164,1165-1165,1166-1173,1174-1180"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmHospitalWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.hospital
+                    VALUES
+                    (:code,:prename,:name,:company,:address1,:address2,:paytype,:zone,:level,:informalrecordexpense,
+                    :istlmedicarehospital,:istlmedicaredate,:fax1,:extensionfax1,:fax2,:extensionfax2,:incomingfax1,:incomingfax2,:ipdright,:ipdrightdate,
+                    :opdright,:opdrightdate,:incomingfax3,:incomingfax4,:incomingfax5,:incomingfax6,:showhospitalname,:formalrecordexpense,:email1,
+                    :email2,:email3,:email4,:sendemail1,:sendemail2,:sendemail3,:sendemail4,:automate,:isstricthospital,:recorddate,:recordid)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmIcd10Reader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmIcd10"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="code,detail1,detail2,illnesscode,rangeofstay,isicd10,keyword,simpledisease,deadlydisease"/>
+                        <property name="columns"
+                                  value="1-6,7-56,57-106,107-107,108-110,111-111,112-131,132-132,133-133"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmIcd10Writer" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.icd10
+                    VALUES
+                    (:code,:detail1,:detail2,:illnesscode,:rangeofstay,:isicd10,:keyword,:simpledisease,:deadlydisease)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dmQueueReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextIcd10"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="considerid,queuetype,jobtype,jobcode,offerdate,referenceno,receivedate,modifydate,modifytime,status,
+xconsiderid,firstjobtype,firstjobcode,firstxconsiderid,firstofferdate"/>
+                        <property name="columns"
+                                  value="1-7,8-8,9-9,10-11,12-19,20-29,30-37,38-45,46-51,52-52,53-59,60-60,61-62,63-69,70-77"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.queue
+                    VALUES
+                    (:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,:modifydate,:modifytime,:status,
+                    :xconsiderid,:firstjobtype,:firstjobcode,:firstxconsiderid,:firstofferdate)
                 ]]>
             </value>
         </property>

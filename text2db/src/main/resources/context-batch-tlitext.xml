@@ -38,7 +38,6 @@
     <bean id="tlitextRemark" class="th.co.ipassion.testtool.dto.tlitext.Remark" scope="prototype"/>
     <bean id="tlitextRider" class="th.co.ipassion.testtool.dto.tlitext.Rider" scope="prototype"/>
     <bean id="tlitextRprider" class="th.co.ipassion.testtool.dto.tlitext.Rprider" scope="prototype"/>
-    <bean id="tlitextQueue" class="th.co.ipassion.testtool.dto.tlitext.Queue" scope="prototype"/>
 
     <!--edm4gl-->
     <bean id="tlitextClaim" class="th.co.ipassion.testtool.dto.tlitext.Claim" scope="prototype"/>
@@ -48,6 +47,17 @@
     <bean id="tlitextDhsordo" class="th.co.ipassion.testtool.dto.tlitext.Dhsordo" scope="prototype"/>
     <bean id="tlitextBnfordo" class="th.co.ipassion.testtool.dto.tlitext.Bnfordo" scope="prototype"/>
     <bean id="tlitextOacm" class="th.co.ipassion.testtool.dto.tlitext.Oacm" scope="prototype"/>
+    <bean id="tlitextHordods" class="th.co.ipassion.testtool.dto.tlitext.Hordods" scope="prototype"/>
+    <bean id="tlitextPay" class="th.co.ipassion.testtool.dto.tlitext.Pay" scope="prototype"/>
+    <bean id="tlitextInsmemo" class="th.co.ipassion.testtool.dto.tlitext.Insmemo" scope="prototype"/>
+    <bean id="tlitextVoiordo" class="th.co.ipassion.testtool.dto.tlitext.Voiordo" scope="prototype"/>
+    <bean id="tlitextCmem" class="th.co.ipassion.testtool.dto.tlitext.Cmem" scope="prototype"/>
+    <bean id="tlitextOdis" class="th.co.ipassion.testtool.dto.tlitext.Odis" scope="prototype"/>
+    <bean id="tlitextOrds" class="th.co.ipassion.testtool.dto.tlitext.Ords" scope="prototype"/>
+    <bean id="tlitextHospital" class="th.co.ipassion.testtool.dto.tlitext.Hospital" scope="prototype"/>
+    <bean id="tlitextIcd10" class="th.co.ipassion.testtool.dto.tlitext.Icd10" scope="prototype"/>
+    <!--edm4cf-->
+    <bean id="tlitextQueue" class="th.co.ipassion.testtool.dto.tlitext.Queue" scope="prototype"/>
 
     <bean id="tlitextCompensateIdReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlitext.source.file.path}/compensateid.dat"/>
@@ -1183,7 +1193,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <!--edm4gl-->
 
     <bean id="tlitextClaimReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${tlitext.source.file.path}/"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1557,6 +1567,504 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
                     :policyStatus2,:policyStatusDate2,:branch,:lCode,:unitCode,:mode,:payPeriod,:payDate,:aplStartDate,
                     :aplEndDate,:extendStartDate,:extendEndDate,:expireDate,:renewalDate,:renewalPayPeriod,:expireDateBeforeRenewal,
                     :serviceBranch,:serviceUnit,:claimOkDate,:claimPayDate,:claimPersonCode,:dependentType,:dependentSequence,:firstClaimPayDate,:effectiveDate,:planCode)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextHordodsReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="tlitextHordodsFlatFileItemReader"/>
+    </bean>
+
+    <bean id="tlitextHordodsFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextHordods"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="policyNo,accidentDate,receiveDate,seqNo,remarkDate,remarkNo,remark,employeeID,recTime"/>
+                        <property name="columns"
+                                  value="1-8,9-16,17-24,25-26,27-34,35-36,37-136,137-143,144-149"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextHordodsWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.hordods
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:seqNo,:remarkDate,:remarkNo,:remark,:employeeID,:recTime)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextPayReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="tlitextPayFlatFileItemReader"/>
+    </bean>
+
+    <bean id="tlitextPayFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextPay"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="sectionCode,orderNo,payType,bankCode,bankBranch,bankAccount"/>
+                        <property name="columns"
+                                  value="1-2,3-10,11-11,12-21,22-56,57-71"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextPayWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.pay
+                    VALUES
+                    (:sectionCode,:orderNo,:payType,:bankCode,:bankBranch,:bankAccount)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextInsmemoReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextInsmemo"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="claimType,mstType,policyNo,accidentDate,receiveDate,memoCode,detail1,detail2,saveDate"/>
+                        <property name="columns"
+                                  value="1-1,2-2,3-10,11-18,19-26,27-29,30-129,130-229,230-237"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextInsmemoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.insmemo
+                    VALUES
+                    (:claimType,:mstType,:policyNo,:accidentDate,:receiveDate,:memoCode,:detail1,:detail2,:saveDate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextVoiordoReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="tlitextVoiordoFlatFileItemReader"/>
+    </bean>
+
+    <bean id="tlitextVoiordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextVoiordo"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="claimType,policyNo,accidentDate,receiveDate,riderType,voidType,voidDate,voidAmount,
+                    voidFirstPeriod,premType,tellBookStatus,endorsementStatus,debtFlag,startDate,endDate,addPremium"/>
+                        <property name="columns"
+                                  value="1-1,2-9,10-17,18-25,26-28,29-29,30-37,38-48,49-54,55-55,56-56,57-57,58-58,59-66,67-74,75-84"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextVoiordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.voiordo
+                    VALUES
+                    (:claimType,:policyNo,:accidentDate,:receiveDate,:riderType,:voidType,:voidDate,:voidAmount,
+                    :voidFirstPeriod,:premType,:tellBookStatus,:endorsementStatus,:debtFlag,:startDate,:endDate,:addPremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextCmemReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="tlitextCmemFlatFileItemReader"/>
+    </bean>
+
+    <bean id="tlitextCmemFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextCmem"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="sectionCode,orderNo,seqNo,detail"/>
+                        <property name="columns"
+                                  value="1-2,3-10,11-11,12-211"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextCmemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tliext.cmem
+                    VALUES
+                    (:sectionCode,:orderNo,:seqNo,:detail)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextOdisReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="tlitextOdisFlatFileItemReader"/>
+    </bean>
+
+    <bean id="tlitextOdisFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextOdis"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="policyNo,accidentDate,receiveDate,riderType,organFlag,organ,exceptFlag,exceptStartDate,
+                                exceptEndDate,exceptStartPeriod,eexceptEndPeriod,premiumFlag,premiumAmount,premiumStartDate,
+                                premiumEndDate,allowPeriod,allowance,allowStartDate,premiumInterest,premIntStartDate,premIntEndDate,riderSurcash"/>
+                        <property name="columns"
+                                  value="1-8,9-16,17-24,25-27,28-28,29-43,44-44,45-52,53-60,61-64,65-68,69-69,70-79,80-87,88-95,96-97,98-108,109-116,117-126,127-134,135-142,143-150"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextOdisWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.odis
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:riderType,:organFlag,:organ,:exceptFlag,:exceptStartDate,
+                    :exceptEndDate,:exceptStartPeriod,:eexceptEndPeriod,:premiumFlag,:premiumAmount,:premiumStartDate,
+                    :premiumEndDate,:allowPeriod,:allowance,:allowStartDate,:premiumInterest,:premIntStartDate,:premIntEndDate,:riderSurcash)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextOrdsReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+        <property name="delegate" ref="tlitextOrdsFlatFileItemReader"/>
+    </bean>
+
+    <bean id="tlitextOrdsFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
+          scope="step">
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextOrds"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict"
+                                  value="false"/>
+                        <property name="names"
+                                  value="policyNo,accidentDate,receiveDate,riderType,riderSum,riderPay,payRate,causeType"/>
+                        <property name="columns"
+                                  value="1-8,9-16,17-24,25-27,28-36,37-47,48-50,51-52"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextOrdsWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.ords
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:riderType,:riderSum,:riderPay,:payRate,:causeType)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextHospitalReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextHospital"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="code,prename,name,company,address1,address2,paytype,zone,level,informalrecordexpense,
+                    istlmedicarehospital,istlmedicaredate,fax1,extensionfax1,fax2,extensionfax2,incomingfax1,incomingfax2,ipdright,ipdrightdate,
+                    opdright,opdrightdate,incomingfax3,incomingfax4,incomingfax5,incomingfax6,showhospitalname,formalrecordexpense,email1,
+                    email2,email3,email4,sendemail1,sendemail2,sendemail3,sendemail4,automate,isstricthospital,recorddate,recordid"/>
+                        <property name="columns"
+                                  value="1-4,5-24,25-84,85-144,145-194,195-244,245-245,246-246,247-247,248-251,252-252,253-260,261-269,270-273,274-282,283-286,287-295,296-304,305-305,306-313,314-314,315-322,323-331,332-340,341-349,350-358,359-359,360-363,364-463,464-563,564-663,664-763,764-863,864-963,964-1063,1064-1163,1164-1164,1165-1165,1166-1173,1174-1180"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextHospitalWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.hospital
+                    VALUES
+                    (:code,:prename,:name,:company,:address1,:address2,:paytype,:zone,:level,:informalrecordexpense,
+                    :istlmedicarehospital,:istlmedicaredate,:fax1,:extensionfax1,:fax2,:extensionfax2,:incomingfax1,:incomingfax2,:ipdright,:ipdrightdate,
+                    :opdright,:opdrightdate,:incomingfax3,:incomingfax4,:incomingfax5,:incomingfax6,:showhospitalname,:formalrecordexpense,:email1,
+                    :email2,:email3,:email4,:sendemail1,:sendemail2,:sendemail3,:sendemail4,:automate,:isstricthospital,:recorddate,:recordid)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextIcd10Reader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextIcd10"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="code,detail1,detail2,illnesscode,rangeofstay,isicd10,keyword,simpledisease,deadlydisease"/>
+                        <property name="columns"
+                                  value="1-6,7-56,57-106,107-107,108-110,111-111,112-131,132-132,133-133"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextIcd10Writer" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.icd10
+                    VALUES
+                    (:code,:detail1,:detail2,:illnesscode,:rangeofstay,:isicd10,:keyword,:simpledisease,:deadlydisease)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <!--edm4cf-->
+
+    <bean id="tlitextQueueReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="tlitextIcd10"/>
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="considerid,queuetype,jobtype,jobcode,offerdate,referenceno,receivedate,modifydate,modifytime,status,
+xconsiderid,firstjobtype,firstjobcode,firstxconsiderid,firstofferdate"/>
+                        <property name="columns"
+                                  value="1-7,8-8,9-9,10-11,12-19,20-29,30-37,38-45,46-51,52-52,53-59,60-60,61-62,63-69,70-77"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlitextQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.queue
+                    VALUES
+                    (:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,:modifydate,:modifytime,:status,
+                    :xconsiderid,:firstjobtype,:firstjobcode,:firstxconsiderid,:firstofferdate)
                 ]]>
             </value>
         </property>
