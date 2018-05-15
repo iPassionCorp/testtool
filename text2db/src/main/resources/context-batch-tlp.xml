@@ -464,7 +464,7 @@
 			:regdtlicdtenth3,:regdtltpaclaimtype,:regdtllettermemocreatedate,:regdtllettermemouser,:regdtllettermemostatus,
 			:regdtllos,:regdtlbenefitday,:regdtlclonestatus,:regdtlseqtpa,:regdtlhismaprpt,:regdtlclaimstatus,:regdtlletterdate,:regdtlletterpendingdate,
 			:regdtlletterdelaydate,:regdtlletterreminddate,:regdtlletterclosedate,:regdtlletterpaymentdate,:regdtllettervoiddate,:regdtlletterdenydate,:regdtlcalsa,
-			:regdtlestimateclaimamt,:regdtlperproposal,:claimtypesubseq,:claimtypesubcode,:regdtlclaimcausecancel,:paytype,:partnercode,)]]>
+			:regdtlestimateclaimamt,:regdtlperproposal,:claimtypesubseq,:claimtypesubcode,:regdtlclaimcausecancel,:paytype,:partnercode)]]>
             </value>
         </property>
     </bean>
