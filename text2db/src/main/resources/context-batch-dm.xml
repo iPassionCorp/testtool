@@ -1179,7 +1179,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
 
     <!--edm4gl-->
     <bean id="dmClaimReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/claim.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1225,16 +1225,13 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <bean id="dmEclmReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/eclm*.dat"/>
         <property name="delegate" ref="dmEclmFlatFileItemReader"/>
     </bean>
 
     <bean id="dmEclmFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="main.java.th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1248,10 +1245,13 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                         <property name="strict"
                                   value="false"/>
                         <property name="names"
-                                  value="sectionCode,orderNo,claimType,receiveTime,causeCode1,causeDetail1,causeCode2,causeDetail2,specialCauseFlag,hospitalCode,psysicianCertificate,admitFlag
-admitStartDate,investigationCode1,investigationCode2,investigationCode3,treatmentCode1,treatmentCode2,treatmentCode3,notation,receiverID
-precertConsiderID,considerID,linkSectionOrder,marketAmount,saveAmount,provinceCode,payLimit,interestClaim,interestPayStart
-interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag,medicalProcedure,screeningAssessor,checkerID,automateFlag,rbDays,icuDays,isVip"/>
+                                  value="sectionCode,orderNo,claimType,receiveTime,causeCode1,causeDetail1,causeCode2,
+                                  causeDetail2,specialCauseFlag,hospitalCode,psysicianCertificate,admitFlag,
+                                  admitStartDate,investigationCode1,investigationCode2,investigationCode3,treatmentCode1,treatmentCode2,
+                                  treatmentCode3,notation,receiverID,precertConsiderID,considerID,linkSectionOrder,marketAmount,saveAmount,
+                                  provinceCode,payLimit,interestClaim,interestPayStart,
+                                  interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,
+                                  severeAccidentFlag,medicalProcedure,screeningAssessor,checkerID,automateFlag,rbDays,icuDays,isVip"/>
                         <property name="columns"
                                   value="1-2,3-10,11-11,12-17,18-23,24-73,74-79,80-129,130-130,131-134,135-140,
                                   141-141,142-149,150-151,152-153,154-155,156-162,163-169,170-176,177-276,
@@ -1274,10 +1274,10 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
                 <![CDATA[
                     INSERT INTO dm.eclm
                     VALUES
-                    (:sectionCode,:orderNo,:claimType,:receiveTime,:causeCode1,:causeDetail1,:causeCode2,:causeDetail2,:specialCauseFlag,:hospitalCode,:psysicianCertificate,:admitFlag
-                    admitStartDate,:investigationCode1,:investigationCode2,:investigationCode3,:treatmentCode1,:treatmentCode2,:treatmentCode3,:notation,:receiverID
-                    precertConsiderID,:considerID,:linkSectionOrder,:marketAmount,:saveAmount,:provinceCode,:payLimit,:interestClaim,:interestPayStart
-                    interestPolicy,:branchConsiderID,:branchUserID,:pureAccidentFlag,:severeAccidentFlag,:medicalProcedure,:screeningAssessor,:checkerID,:automateFlag,:rbDays,:icuDays,:isVip)
+                    (:sectionCode,:orderNo,:claimType,:receiveTime,:causeCode1,:causeDetail1,:causeCode2,:causeDetail2,:specialCauseFlag,:hospitalCode,:psysicianCertificate,:admitFlag,
+                    :admitStartDate,:investigationCode1,:investigationCode2,:investigationCode3,:treatmentCode1,:treatmentCode2,:treatmentCode3,:notation,:receiverID,
+                    :precertConsiderID,:considerID,:linkSectionOrder,:marketAmount,:saveAmount,:provinceCode,:payLimit,:interestClaim,:interestPayStart,
+                    :interestPolicy,:branchConsiderID,:branchUserID,:pureAccidentFlag,:severeAccidentFlag,:medicalProcedure,:screeningAssessor,:checkerID,:automateFlag,:rbDays,:icuDays,:isVip)
                 ]]>
             </value>
         </property>
@@ -1285,16 +1285,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmDthordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/odth*.dat"/>
         <property name="delegate" ref="dmDthordoFlatFileItemReader"/>
     </bean>
 
     <bean id="dmDthordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="main.java.th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1346,16 +1343,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmRidordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/orid*.dat"/>
         <property name="delegate" ref="dmRidordoFlatFileItemReader"/>
     </bean>
 
     <bean id="dmRidordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1388,7 +1382,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
                 <![CDATA[
                     INSERT INTO dm.ridordo
                     VALUES
-                    (policyNo,:receiveDate,:riderType,:riderAmount)
+                    (:policyNo,:receiveDate,:riderType,:riderAmount)
                 ]]>
             </value>
         </property>
@@ -1397,16 +1391,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmDhsordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/odhs*.dat"/>
         <property name="delegate" ref="dmDhsordoFlatFileItemReader"/>
     </bean>
 
     <bean id="dmDhsordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1448,16 +1439,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmBnfordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/obnf*.dat"/>
         <property name="delegate" ref="dmBnfordoFlatFileItemReader"/>
     </bean>
 
     <bean id="dmBnfordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1503,16 +1491,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmOacmReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/oacm*.dat"/>
         <property name="delegate" ref="dmOacmFlatFileItemReader"/>
     </bean>
 
     <bean id="dmOacmFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1560,16 +1545,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmHordodsReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/ohds*.dat"/>
         <property name="delegate" ref="dmHordodsFlatFileItemReader"/>
     </bean>
 
     <bean id="dmHordodsFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1612,16 +1594,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmPayReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/pay*.dat"/>
         <property name="delegate" ref="dmPayFlatFileItemReader"/>
     </bean>
 
     <bean id="dmPayFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1661,7 +1640,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     </bean>
 
     <bean id="dmInsmemoReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/insmemo*.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1707,16 +1686,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmVoiordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/ovoi*.dat"/>
         <property name="delegate" ref="dmVoiordoFlatFileItemReader"/>
     </bean>
 
     <bean id="dmVoiordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1760,16 +1736,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmCmemReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/cmem*.dat"/>
         <property name="delegate" ref="dmCmemFlatFileItemReader"/>
     </bean>
 
     <bean id="dmCmemFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1811,16 +1784,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmOdisReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/odis*.dat"/>
         <property name="delegate" ref="dmOdisFlatFileItemReader"/>
     </bean>
 
     <bean id="dmOdisFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1866,7 +1836,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="dmOrdsReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${dm.source.file.path}/mgreceiver*.dat"/>
+                  value="${dm.source.file.path}/ords*.dat"/>
         <property name="delegate" ref="dmOrdsFlatFileItemReader"/>
     </bean>
 
@@ -1915,7 +1885,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     </bean>
 
     <bean id="dmHospitalReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/hospital.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1965,7 +1935,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     </bean>
 
     <bean id="dmIcd10Reader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/icd10.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>

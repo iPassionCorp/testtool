@@ -1,4 +1,4 @@
-package main.java.th.co.ipassion.testtool.dto.dm;
+package th.co.ipassion.testtool.dto.dm;
 
 public class Bnfordo {
     private String policyNo;

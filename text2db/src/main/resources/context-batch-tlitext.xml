@@ -1193,11 +1193,8 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <!--edm4gl-->
 
     <bean id="tlitextClaimReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="resource" value="${tlitext.source.file.path}/claim.dat"/>
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1239,16 +1236,13 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <bean id="tlitextEclmReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/eclm*.dat"/>
         <property name="delegate" ref="tlitextEclmFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextEclmFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="main.java.th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1262,10 +1256,10 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                         <property name="strict"
                                   value="false"/>
                         <property name="names"
-                                  value="sectionCode,orderNo,claimType,receiveTime,causeCode1,causeDetail1,causeCode2,causeDetail2,specialCauseFlag,hospitalCode,psysicianCertificate,admitFlag
-admitStartDate,investigationCode1,investigationCode2,investigationCode3,treatmentCode1,treatmentCode2,treatmentCode3,notation,receiverID
-precertConsiderID,considerID,linkSectionOrder,marketAmount,saveAmount,provinceCode,payLimit,interestClaim,interestPayStart
-interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag,medicalProcedure,screeningAssessor,checkerID,automateFlag,rbDays,icuDays,isVip"/>
+                                  value="sectionCode,orderNo,claimType,receiveTime,causeCode1,causeDetail1,causeCode2,causeDetail2,specialCauseFlag,hospitalCode,psysicianCertificate,admitFlag,
+                                        admitStartDate,investigationCode1,investigationCode2,investigationCode3,treatmentCode1,treatmentCode2,treatmentCode3,notation,receiverID,
+                                        precertConsiderID,considerID,linkSectionOrder,marketAmount,saveAmount,provinceCode,payLimit,interestClaim,interestPayStart,
+                                        interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag,medicalProcedure,screeningAssessor,checkerID,automateFlag,rbDays,icuDays,isVip"/>
                         <property name="columns"
                                   value="1-2,3-10,11-11,12-17,18-23,24-73,74-79,80-129,130-130,131-134,135-140,
                                   141-141,142-149,150-151,152-153,154-155,156-162,163-169,170-176,177-276,
@@ -1288,10 +1282,10 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
                 <![CDATA[
                     INSERT INTO tlitext.eclm
                     VALUES
-                    (:sectionCode,:orderNo,:claimType,:receiveTime,:causeCode1,:causeDetail1,:causeCode2,:causeDetail2,:specialCauseFlag,:hospitalCode,:psysicianCertificate,:admitFlag
-                    admitStartDate,:investigationCode1,:investigationCode2,:investigationCode3,:treatmentCode1,:treatmentCode2,:treatmentCode3,:notation,:receiverID
-                    precertConsiderID,:considerID,:linkSectionOrder,:marketAmount,:saveAmount,:provinceCode,:payLimit,:interestClaim,:interestPayStart
-                    interestPolicy,:branchConsiderID,:branchUserID,:pureAccidentFlag,:severeAccidentFlag,:medicalProcedure,:screeningAssessor,:checkerID,:automateFlag,:rbDays,:icuDays,:isVip)
+                    (:sectionCode,:orderNo,:claimType,:receiveTime,:causeCode1,:causeDetail1,:causeCode2,:causeDetail2,:specialCauseFlag,:hospitalCode,:psysicianCertificate,:admitFlag,
+                    :admitStartDate,:investigationCode1,:investigationCode2,:investigationCode3,:treatmentCode1,:treatmentCode2,:treatmentCode3,:notation,:receiverID,
+                    :precertConsiderID,:considerID,:linkSectionOrder,:marketAmount,:saveAmount,:provinceCode,:payLimit,:interestClaim,:interestPayStart,
+                    :interestPolicy,:branchConsiderID,:branchUserID,:pureAccidentFlag,:severeAccidentFlag,:medicalProcedure,:screeningAssessor,:checkerID,:automateFlag,:rbDays,:icuDays,:isVip)
                 ]]>
             </value>
         </property>
@@ -1300,16 +1294,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextDthordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/odth*.dat"/>
         <property name="delegate" ref="tlitextDthordoFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextDthordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="main.java.th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1361,16 +1352,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextRidordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/orid*.dat"/>
         <property name="delegate" ref="tlitextRidordoFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextRidordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1412,16 +1400,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextDhsordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/odhs*.dat"/>
         <property name="delegate" ref="tlitextDhsordoFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextDhsordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1463,16 +1448,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextBnfordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/obnf*.dat"/>
         <property name="delegate" ref="tlitextBnfordoFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextBnfordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1518,16 +1500,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextOacmReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/oacm*.dat"/>
         <property name="delegate" ref="dmOacmFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextOacmFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1575,16 +1554,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextHordodsReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/ohds*.dat"/>
         <property name="delegate" ref="tlitextHordodsFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextHordodsFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1626,16 +1602,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextPayReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/pay*.dat"/>
         <property name="delegate" ref="tlitextPayFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextPayFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1675,7 +1648,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     </bean>
 
     <bean id="tlitextInsmemoReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="resource" value="${tlitext.source.file.path}/insmemo*.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1721,7 +1694,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextVoiordoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/ovoi*.dat"/>
         <property name="delegate" ref="tlitextVoiordoFlatFileItemReader"/>
     </bean>
 
@@ -1774,16 +1747,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextCmemReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/cmem*.dat"/>
         <property name="delegate" ref="tlitextCmemFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextCmemFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1814,7 +1784,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
         <property name="sql">
             <value>
                 <![CDATA[
-                    INSERT INTO tliext.cmem
+                    INSERT INTO tlitext.cmem
                     VALUES
                     (:sectionCode,:orderNo,:seqNo,:detail)
                 ]]>
@@ -1825,16 +1795,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextOdisReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/odis*.dat"/>
         <property name="delegate" ref="tlitextOdisFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextOdisFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1880,16 +1847,13 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     <bean id="tlitextOrdsReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <property name="resources"
-                  value="${tlitext.source.file.path}/mgreceiver*.dat"/>
+                  value="${tlitext.source.file.path}/ords*.dat"/>
         <property name="delegate" ref="tlitextOrdsFlatFileItemReader"/>
     </bean>
 
     <bean id="tlitextOrdsFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -1929,7 +1893,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     </bean>
 
     <bean id="tlitextHospitalReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="resource" value="${tlitext.source.file.path}/hospital.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1979,7 +1943,7 @@ interestPolicy,branchConsiderID,branchUserID,pureAccidentFlag,severeAccidentFlag
     </bean>
 
     <bean id="tlitextIcd10Reader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/"/>
+        <property name="resource" value="${tlitext.source.file.path}/icd10.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
