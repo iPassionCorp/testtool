@@ -451,22 +451,23 @@
                     INSERT INTO tlp.claimregisterdetail
                     VALUES
                     (:regdtlseq,:regdtlregisterno,:regdtlclaimrunno,:regdtlclaimno,:regdtlletterrunno,:regdtlletterno,:regdtlclaimgroup,
-			:regdtlclaimcausecode,:regdtlclaimcauseen,:regdtlclaimcauseth,:regdtldateofmedicalreceive,:regdtldateofmedicalreport,:regdtldateofcompletedoc,
-			:regdtlhospitalcode,:regdtlhospitalname,:regdtlpatientdeptcode,:regdtlpatientdept,:regdtldateofopd,
-			:regdtldateofaccident,:regdtldateofdeath,:regdtldateofadmission,:regdtldateofdischarge,:regdtldateofoccurred,
-			:regdtldurationfrom,:regdtldurationto,:regdtldurationdays,:regdtlestimateclaim,:regdtlclaimexpense,
-			:regdtlcoinsurancecode,:regdtldeclinestatus,:regdtltotalclaim,:regdtltotalttdpercentage,:regdtltotalttdamount,:regdtltotaltpdpercentage,
-			:regdtltotaltpdamount,:regdtladjustcode,:regdtladjustpayment,:regdtlinterest,:regdtltotalamount,
-			:regdtltotalexgratiaamount,:regdtlvoidamount,:regdtlsavedenyamount,:regdtlpartialpayment,:regdtlchequeno,:regdtlpaidtopartner,
-			:regdtlpaidtobeneficiary,:regdtlclaimfollowup,:regdtlclaimremark,:regdtlclaimflag,:regdtlregisterdate,
-			:regdtlregister,:regdtlapprovestatus,:regdtlapprovedate,:regdtlapproval,:regdtlpolicystatus,:regdtlhbcflag,
-			:registerseq,:claimtypeseq,:coinsuranceseq,:risktypeseq,:datatype,:paymentId,:sysuseclaim,:regdtldblindemnity,
-			:regdtlclaimnoteapprove,:regdtlcleanstatus,:regdtlnote,:regdtlcaseno,:regdtlfaxclaim,:regdtlbatchno,:regdtlicdten1,
-			:regdtlicdteneng1,:regdtlicdtenth1,:regdtlicdten2,:regdtlicdteneng2,:regdtlicdtenth2,:regdtlicdten3,:regdtlicdteneng3,
-			:regdtlicdtenth3,:regdtltpaclaimtype,:regdtllettermemocreatedate,:regdtllettermemouser,:regdtllettermemostatus,
-			:regdtllos,:regdtlbenefitday,:regdtlclonestatus,:regdtlseqtpa,:regdtlhismaprpt,:regdtlclaimstatus,:regdtlletterdate,:regdtlletterpendingdate,
-			:regdtlletterdelaydate,:regdtlletterreminddate,:regdtlletterclosedate,:regdtlletterpaymentdate,:regdtllettervoiddate,:regdtlletterdenydate,:regdtlcalsa,
-			:regdtlestimateclaimamt,:regdtlperproposal,:claimtypesubseq,:claimtypesubcode,:regdtlclaimcausecancel,:paytype,:partnercode)]]>
+                    :regdtlclaimcausecode,:regdtlclaimcauseen,:regdtlclaimcauseth,:regdtldateofmedicalreceive,:regdtldateofmedicalreport,:regdtldateofcompletedoc,
+                    :regdtlhospitalcode,:regdtlhospitalname,:regdtlpatientdeptcode,:regdtlpatientdept,:regdtldateofopd,
+                    :regdtldateofaccident,:regdtldateofdeath,:regdtldateofadmission,:regdtldateofdischarge,:regdtldateofoccurred,
+                    :regdtldurationfrom,:regdtldurationto,:regdtldurationdays,:regdtlestimateclaim,:regdtlclaimexpense,
+                    :regdtlcoinsurancecode,:regdtldeclinestatus,:regdtltotalclaim,:regdtltotalttdpercentage,:regdtltotalttdamount,:regdtltotaltpdpercentage,
+                    :regdtltotaltpdamount,:regdtladjustcode,:regdtladjustpayment,:regdtlinterest,:regdtltotalamount,
+                    :regdtltotalexgratiaamount,:regdtlvoidamount,:regdtlsavedenyamount,:regdtlpartialpayment,:regdtlchequeno,:regdtlpaidtopartner,
+                    :regdtlpaidtobeneficiary,:regdtlclaimfollowup,:regdtlclaimremark,:regdtlclaimflag,:regdtlregisterdate,
+                    :regdtlregister,:regdtlapprovestatus,:regdtlapprovedate,:regdtlapproval,:regdtlpolicystatus,:regdtlhbcflag,
+                    :registerseq,:claimtypeseq,:coinsuranceseq,:risktypeseq,:datatype,:paymentId,:sysuseclaim,:regdtldblindemnity,
+                    :regdtlclaimnoteapprove,:regdtlcleanstatus,:regdtlnote,:regdtlcaseno,:regdtlfaxclaim,:regdtlbatchno,:regdtlicdten1,
+                    :regdtlicdteneng1,:regdtlicdtenth1,:regdtlicdten2,:regdtlicdteneng2,:regdtlicdtenth2,:regdtlicdten3,:regdtlicdteneng3,
+                    :regdtlicdtenth3,:regdtltpaclaimtype,:regdtllettermemocreatedate,:regdtllettermemouser,:regdtllettermemostatus,
+                    :regdtllos,:regdtlbenefitday,:regdtlclonestatus,:regdtlseqtpa,:regdtlhismaprpt,:regdtlclaimstatus,:regdtlletterdate,:regdtlletterpendingdate,
+                    :regdtlletterdelaydate,:regdtlletterreminddate,:regdtlletterclosedate,:regdtlletterpaymentdate,:regdtllettervoiddate,:regdtlletterdenydate,:regdtlcalsa,
+                    :regdtlestimateclaimamt,:regdtlperproposal,:claimtypesubseq,:claimtypesubcode,:regdtlclaimcausecancel,:paytype,:partnercode)
+                ]]>
             </value>
         </property>
     </bean>
