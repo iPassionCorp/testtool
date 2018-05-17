@@ -1391,7 +1391,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 <![CDATA[
                     INSERT INTO tlitext.ridordo
                     VALUES
-                    (policyNo,:receiveDate,:riderType,:riderAmount)
+                    (:policyNo,:receiveDate,:riderType,:riderAmount)
                 ]]>
             </value>
         </property>
@@ -1701,9 +1701,6 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     <bean id="tlitextVoiordoFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader"
           scope="step">
         <property name="encoding" value="windows-874"/>
-        <property name="recordSeparatorPolicy">
-            <bean class="th.co.ipassion.testtool.job.CutLinePolicy"/>
-        </property>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
