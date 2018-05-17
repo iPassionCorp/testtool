@@ -20,6 +20,12 @@ public class SplitPremiumAmount {
     private String hbpremium;
     private String hapremium;
     private String hspremium;
+    private String icupremium;
+    private String ciptrmium;
+    private String fi_deathlum;
+    private String fi_tpdpremium;
+    private String ls_deathpremium;
+    private String ls_tpdpremium;
     private String ddpremium;
     private String lifetpdpremium;
     private String duedate;
@@ -131,6 +137,55 @@ public class SplitPremiumAmount {
 	public void setHapremium(String hapremium) {
 		this.hapremium = hapremium;
 	}
+
+	public String getIcupremium() {
+		return icupremium;
+	}
+
+	public void setIcupremium(String icupremium) {
+		this.icupremium = icupremium;
+	}
+
+	public String getCiptrmium() {
+		return ciptrmium;
+	}
+
+	public void setCiptrmium(String ciptrmium) {
+		this.ciptrmium = ciptrmium;
+	}
+
+	public String getFi_deathlum() {
+		return fi_deathlum;
+	}
+
+	public void setFi_deathlum(String fi_deathlum) {
+		this.fi_deathlum = fi_deathlum;
+	}
+
+	public String getFi_tpdpremium() {
+		return fi_tpdpremium;
+	}
+
+	public void setFi_tpdpremium(String fi_tpdpremium) {
+		this.fi_tpdpremium = fi_tpdpremium;
+	}
+
+	public String getLs_deathpremium() {
+		return ls_deathpremium;
+	}
+
+	public void setLs_deathpremium(String ls_deathpremium) {
+		this.ls_deathpremium = ls_deathpremium;
+	}
+
+	public String getLs_tpdpremium() {
+		return ls_tpdpremium;
+	}
+
+	public void setLs_tpdpremium(String ls_tpdpremium) {
+		this.ls_tpdpremium = ls_tpdpremium;
+	}
+
 	public String getHspremium() {
 		return hspremium;
 	}

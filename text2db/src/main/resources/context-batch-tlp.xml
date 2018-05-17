@@ -278,7 +278,8 @@
                         <property name="names"
                                   value="productid,grouppolicyno,customercode,totpremium,lifepremium,deathpremium,tpdpremium,
 							ttdpremium,tdpremium,papremium,adbpremium,addpremium,rccpremium,mapremium,mcpremium,mepremium,
-							hbpremium,hapremium,hspremium,ddpremium,lifetpdpremium,duedate" />
+							hbpremium,hapremium,hspremium,icupremium,ciptrmium,fi_deathlum,fi_tpdpremium,ls_deathpremium,ls_tpdpremium,
+							ddpremium,lifetpdpremium,duedate" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -298,7 +299,8 @@
                     VALUES
                     (:productid, :grouppolicyno, :customercode, :totpremium, :lifepremium, :deathpremium, 
                     :tpdpremium, :ttdpremium, :tdpremium, :papremium, :adbpremium, :addpremium, :rccpremium, 
-                    :mapremium, :mcpremium, :mepremium, :hbpremium, :hapremium, :hspremium, :ddpremium, :lifetpdpremium, :duedate)
+                    :mapremium, :mcpremium, :mepremium, :hbpremium, :hapremium, :hspremium, :icupremium,:ciptrmium,
+                    :fi_deathlum, :fi_tpdpremium, :ls_deathpremium, :ls_tpdpremium, :ddpremium, :lifetpdpremium, :duedate)
                 ]]>
             </value>
         </property>
