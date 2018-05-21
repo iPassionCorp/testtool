@@ -704,7 +704,8 @@
                 <![CDATA[
                     INSERT INTO tlp.masrisktype
                     VALUES
-                    (:risktypeseq,:risktypename)]]>
+                    (:risktypeseq,:risktypename)
+                ]]>
             </value>
         </property>
     </bean>
