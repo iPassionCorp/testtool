@@ -78,6 +78,23 @@ Program arguments `<see other arguments below this as you want>`
 * dmRemarkJob
 * dmRiderJob
 * dmRpriderJob
+* dmBnfordoJob
+* dmClaimJob
+* dmCmemJob
+* dmDhsordoJob
+* dmDthordJob
+* dmEclmJob
+* dmHordodsJob
+* dmIcd10Job
+* dmInsmemoJob
+* dmHopitalJob
+* dmOacmJob
+* dmOdisJob
+* dmOrsdJob
+* dmPayJob
+* dmQueueJob
+* dmRidordoJob
+* dmVoiordoJob
 
 ##### schema Tlitext
 * tlitextAddressJob
@@ -107,6 +124,24 @@ Program arguments `<see other arguments below this as you want>`
 * tlitextRemarkJob
 * tlitextRiderJob
 * tlitextRpriderJob
+* tlitextBnfordoJob
+* tlitextClaimJob
+* tlitextCmemJob
+* tlitextDhsordoJob
+* tlitextDthordJob
+* tlitextEclmJob
+* tlitextHordodsJob
+* tlitextIcd10Job
+* tlitextInsmemoJob
+* tlitextHopitalJob
+* tlitextOacmJob
+* tlitextOdisJob
+* tlitextOrsdJob
+* tlitextPayJob
+* tlitextQueueJob
+* tlitextRidordoJob
+* tlitextVoiordoJob
+
 
 ##### schema Tlp
 * tlpAppCustomerJob
@@ -158,6 +193,23 @@ Program arguments `<see other arguments below this as you want>`
 * repDmRemarkJob
 * repDmRiderJob
 * repDmRpriderJob
+* repDmBnfordoJob
+* repDmClaimJob
+* repDmCmemJob
+* repDmDhsordoJob
+* repDmDthordJob
+* repDmEclmJob
+* repDmHordodsJob
+* repDmIcd10Job
+* repDmInsmemoJob
+* repDmHopitalJob
+* repDmOacmJob
+* repDmOdisJob
+* repDmOrsdJob
+* repDmPayJob
+* repDmQueueJob
+* repDmRidordoJob
+* repDmVoiordoJob
 
 ##### Schema Tlitext 
 * repTlitextAddressJob
@@ -187,6 +239,23 @@ Program arguments `<see other arguments below this as you want>`
 * repTlitextRemarkJob
 * repTlitextRiderJob
 * repTlitextRpriderJob
+* repTlitextBnfordoJob
+* repTlitextClaimJob
+* repTlitextCmemJob
+* repTlitextDhsordoJob
+* repTlitextDthordJob
+* repTlitextEclmJob
+* repTlitextHordodsJob
+* repTlitextIcd10Job
+* repTlitextInsmemoJob
+* repTlitextHopitalJob
+* repTlitextOacmJob
+* repTlitextOdisJob
+* repTlitextOrsdJob
+* repTlitextPayJob
+* repTlitextQueueJob
+* repTlitextRidordoJob
+* repTlitextVoiordoJob
 
 ##### Schema Tlp 
 * repTlpAppCustomerJob
@@ -202,6 +271,7 @@ Program arguments `<see other arguments below this as you want>`
 * repTlpMasProductJob
 * repTlpMasProductCoverageJob
 * repTlpMasProductCoverageClaimJob
+* repTlpMasRiskTypeJob
 * repTlpPaymentJob
 * repTlpPolicyBeneficiaryJob
 * repTlpPolicyMasterJob
