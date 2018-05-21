@@ -56,7 +56,7 @@ Program arguments `<see other arguments below this as you want>`
 * dmCertJob
 * dmCertLinkerJob
 * dmCertMappingJob
-* dmCertRider
+* dmCertRiderJob
 * dmCompensateIdJob
 * dmCustomerJob
 * dmDetCertJob
@@ -149,7 +149,7 @@ Program arguments `<see other arguments below this as you want>`
 * tlpClaimPaymentJob
 * tlpClaimPaymentDetailJob
 * tlpClaimRegisterDetailJob
-* tlpClaimRegisterHeader
+* tlpClaimRegisterHeaderJob
 * tlpCustomerBalloonJob
 * tlpCustomerInfoJob
 * tlpCustomerSaJob
@@ -157,7 +157,7 @@ Program arguments `<see other arguments below this as you want>`
 * tlpMasProductJob
 * tlpMasProductCoverageJob
 * tlpMasProductCoverageClaimJob
-* tlpMasRiskType
+* tlpMasRiskTypeJob
 * tlpPaymentJob
 * tlpPolicyBeneficiaryJob
 * tlpPolicyMasterJob
@@ -218,7 +218,7 @@ Program arguments `<see other arguments below this as you want>`
 * repTlitextCertJob
 * repTlitextCertLinkerJob
 * repTlitextCertMappingJob
-* repTlitextCertRider
+* repTlitextCertRiderJob
 * repTlitextCompensateIdJob
 * repTlitextCustomerJob
 * repTlitextDetCertJob
@@ -264,7 +264,7 @@ Program arguments `<see other arguments below this as you want>`
 * repTlpClaimPaymentJob
 * repTlpClaimPaymentDetailJob
 * repTlpClaimRegisterDetailJob
-* repTlpClaimRegisterHeader
+* repTlpClaimRegisterHeaderJob
 * repTlpCustomerBalloonJob
 * repTlpCustomerInfoJob
 * repTlpCustomerSaJob
