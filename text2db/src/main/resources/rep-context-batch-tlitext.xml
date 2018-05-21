@@ -17,7 +17,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.cert
+                    SELECT * FROM tlitext.cert
                 ]]>
             </value>
         </property>
@@ -53,7 +53,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.certlinker
+                    SELECT * FROM tlitext.certlinker
                 ]]>
             </value>
         </property>
@@ -85,7 +85,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.certmapping
+                    SELECT * FROM tlitext.certmapping
                 ]]>
             </value>
         </property>
@@ -117,7 +117,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.certrider
+                    SELECT * FROM tlitext.certrider
                 ]]>
             </value>
         </property>
@@ -149,7 +149,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.CompensateId
+                    SELECT * FROM tlitext.CompensateId
                 ]]>
             </value>
         </property>
@@ -181,7 +181,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.detcert
+                    SELECT * FROM tlitext.detcert
                 ]]>
             </value>
         </property>
@@ -215,7 +215,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.customer
+                    SELECT * FROM tlitext.customer
                 ]]>
             </value>
         </property>
@@ -247,7 +247,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.name
+                    SELECT * FROM tlitext.name
                 ]]>
             </value>
         </property>
@@ -280,7 +280,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.person
+                    SELECT * FROM tlitext.person
                 ]]>
             </value>
         </property>
@@ -312,7 +312,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.policy
+                    SELECT * FROM tlitext.policy
                 ]]>
             </value>
         </property>
@@ -344,7 +344,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.mgclaim
+                    SELECT * FROM tlitext.mgclaim
                 ]]>
             </value>
         </property>
@@ -377,7 +377,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.mgorder
+                    SELECT * FROM tlitext.mgorder
                 ]]>
             </value>
         </property>
@@ -411,7 +411,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.mgpay
+                    SELECT * FROM tlitext.mgpay
                 ]]>
             </value>
         </property>
@@ -446,7 +446,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.mgpayrider
+                    SELECT * FROM tlitext.mgpayrider
                 ]]>
             </value>
         </property>
@@ -481,7 +481,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.mghis
+                    SELECT * FROM tlitext.mghis
                 ]]>
             </value>
         </property>
@@ -513,7 +513,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.mginsmemo
+                    SELECT * FROM tlitext.mginsmemo
                 ]]>
             </value>
         </property>
@@ -546,7 +546,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.mginterest
+                    SELECT * FROM tlitext.mginterest
                 ]]>
             </value>
         </property>
@@ -579,7 +579,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.mgreceiver
+                    SELECT * FROM tlitext.mgreceiver
                 ]]>
             </value>
         </property>
@@ -613,7 +613,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.address
+                    SELECT * FROM tlitext.address
                 ]]>
             </value>
         </property>
@@ -645,7 +645,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.Beneficiary
+                    SELECT * FROM tlitext.Beneficiary
                 ]]>
             </value>
         </property>
@@ -677,7 +677,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.extrapremium
+                    SELECT * FROM tlitext.extrapremium
                 ]]>
             </value>
         </property>
@@ -709,7 +709,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.orctrl
+                    SELECT * FROM tlitext.orctrl
                 ]]>
             </value>
         </property>
@@ -743,7 +743,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.ordmast
+                    SELECT * FROM tlitext.ordmast
                 ]]>
             </value>
         </property>
@@ -780,7 +780,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.remark
+                    SELECT * FROM tlitext.remark
                 ]]>
             </value>
         </property>
@@ -812,7 +812,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.rider
+                    SELECT * FROM tlitext.rider
                 ]]>
             </value>
         </property>
@@ -844,7 +844,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM dm.rprider
+                    SELECT * FROM tlitext.rprider
                 ]]>
             </value>
         </property>
@@ -866,6 +866,570 @@
                     INSERT INTO tlitext.rprider
                     VALUES
                     (:rpno,:seqno,:ridertext,:extrapremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextBnfordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.bnfordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Bnfordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextBnfordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.bnfordo
+                    VALUES
+                    (:policyNo,:receiveDate,:seqNo,:preName,:firstName,:lastName,:relationship,:isMurderer,:no,:type,:percentShare,:payAmount,
+                    :address,:tumbon,:zipCode,:mobilePhone,:citizenID,:payType,:bankCode,
+                    :bankBranch,:bankAccount,:guardianBeneficiary,:isPay,:birthDate,:haveIndicia,:countryCode)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextClaimReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.claim
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Claim"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextClaimWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.claim
+                    VALUES
+                    (:claimType,:mstType,:policyNo,:receiveyyyymm,:sectionCode,:orderNo,:referenceNo,:okDate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextCmemReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.cmem
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Cmem"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextCmemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.cmem
+                    VALUES
+                    (:sectionCode,:orderNo,:seqNo,:detail)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextDhsordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.dhsordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Dhsordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextDhsordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.dhsordo
+                    VALUES
+                    (:policyNo,:receiveDate,:seqNo,:remarkDate,:remarkNo,:remark,:employeeID,:recTime)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextDthordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.dthordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Dthordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextDthordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.dthordo
+                    VALUES
+                    (:policyNo,:receiveDate,:accidentDate,:sectionCode,:orderNo,:policyStatus1,:policyStatusDate1,:policyStatus2,
+                        :policyStatusDate2,:proofInsuredAge,:branch,:lCode,:mode,:payLastPeriod,:payLastDate,:payPeriod,:payDate,:aplStartDate,
+                        :aplEndDate,:extendStartDate,:extendEndDate,:expireDate,:renewalDate,:renewalPayPeriod,:expireDateBeforeRenewal,:serviceBranch,
+                        :serviceUnit,:claimOkDate,:claimPayDate,:claimPayType,:payLifeSum,:payRiderSum,:rejectFlag,:rejectAmount,:rejectDate,
+                        :claimPersonCode,:interestClaim,:interestPayStart,:dependentType,:dependentSequence,:paAccidentDate,:firstClaimPayDate,:effectiveDate,
+                        :calSurCash,:planCode,:unitCode,:oicSeqType,:payLifeSumType)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextEclmReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.eclm
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Eclm"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextEclmWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.eclm
+                    VALUES
+                    (:sectionCode,:orderNo,:claimType,:receiveTime,:causeCode1,:causeDetail1,:causeCode2,:causeDetail2,:specialCauseFlag,:hospitalCode,:psysicianCertificate,:admitFlag,
+                    :admitStartDate,:investigationCode1,:investigationCode2,:investigationCode3,:treatmentCode1,:treatmentCode2,:treatmentCode3,:notation,:receiverID,
+                    :precertConsiderID,:considerID,:linkSectionOrder,:marketAmount,:saveAmount,:provinceCode,:payLimit,:interestClaim,:interestPayStart,
+                    :interestPolicy,:branchConsiderID,:branchUserID,:pureAccidentFlag,:severeAccidentFlag,:medicalProcedure,:screeningAssessor,:checkerID,:automateFlag,:rbDays,:icuDays,:isVip)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextHordodsReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.hordods
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Hordods"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextHordodsWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.hordods
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:seqNo,:remarkDate,:remarkNo,:remark,:employeeID,:recTime)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextHospitalReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.hospital
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Hospital"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextHospitalWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.hospital
+                    VALUES
+                    (:code,:prename,:name,:company,:address1,:address2,:paytype,:zone,:level,:informalrecordexpense,
+                    :istlmedicarehospital,:istlmedicaredate,:fax1,:extensionfax1,:fax2,:extensionfax2,:incomingfax1,:incomingfax2,:ipdright,:ipdrightdate,
+                    :opdright,:opdrightdate,:incomingfax3,:incomingfax4,:incomingfax5,:incomingfax6,:showhospitalname,:formalrecordexpense,:email1,
+                    :email2,:email3,:email4,:sendemail1,:sendemail2,:sendemail3,:sendemail4,:automate,:isstricthospital,:recorddate,:recordid)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextIcd10Reader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.icd10
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Icd10"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextIcd10Writer" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.icd10
+                    VALUES
+                    (:code,:detail1,:detail2,:illnesscode,:rangeofstay,:isicd10,:keyword,:simpledisease,:deadlydisease)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextInsmemoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.insmemo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Insmemo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextInsmemoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.insmemo
+                    VALUES
+                    (:claimType,:mstType,:policyNo,:accidentDate,:receiveDate,:memoCode,:detail1,:detail2,:saveDate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextOacmReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.oacm
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Oacm"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextOacmWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.oacm
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:sectionCode,:orderNo,:policyStatus1,:policyStatusDate1,
+                    :policyStatus2,:policyStatusDate2,:branch,:lCode,:unitCode,:mode,:payPeriod,:payDate,:aplStartDate,
+                    :aplEndDate,:extendStartDate,:extendEndDate,:expireDate,:renewalDate,:renewalPayPeriod,:expireDateBeforeRenewal,
+                    :serviceBranch,:serviceUnit,:claimOkDate,:claimPayDate,:claimPersonCode,:dependentType,:dependentSequence,:firstClaimPayDate,:effectiveDate,:planCode)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextOdisReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.odis
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Odis"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextOdisWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.odis
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:riderType,:organFlag,:organ,:exceptFlag,:exceptStartDate,
+                    :exceptEndDate,:exceptStartPeriod,:eexceptEndPeriod,:premiumFlag,:premiumAmount,:premiumStartDate,
+                    :premiumEndDate,:allowPeriod,:allowance,:allowStartDate,:premiumInterest,:premIntStartDate,:premIntEndDate,:riderSurcash)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextOrdsReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.ords
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Ords"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextOrdsWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.ords
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:riderType,:riderSum,:riderPay,:payRate,:causeType)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextPayReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.pay
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Pay"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextPayWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.pay
+                    VALUES
+                    (:sectionCode,:orderNo,:payType,:bankCode,:bankBranch,:bankAccount)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextQueueReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.queue
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Queue"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.queue
+                    VALUES
+                    (:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,:modifydate,:modifytime,:status,
+                    :xconsiderid,:firstjobtype,:firstjobcode,:firstxconsiderid,:firstofferdate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextRidordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.ridordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Ridordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextRidordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.ridordo
+                    VALUES
+                    (:policyNo,:receiveDate,:riderType,:riderAmount)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlitextVoiordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlitext.voiordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlitext.Voiordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlitextVoiordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.voiordo
+                    VALUES
+                    (:claimType,:policyNo,:accidentDate,:receiveDate,:riderType,:voidType,:voidDate,:voidAmount,
+                    :voidFirstPeriod,:premType,:tellBookStatus,:endorsementStatus,:debtFlag,:startDate,:endDate,:addPremium)
                 ]]>
             </value>
         </property>

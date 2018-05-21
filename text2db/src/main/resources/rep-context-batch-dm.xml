@@ -870,4 +870,569 @@
         </property>
     </bean>
 
+
+    <bean id="repDmBnfordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.bnfordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Bnfordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmBnfordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.bnfordo
+                    VALUES
+                    (:policyNo,:receiveDate,:seqNo,:preName,:firstName,:lastName,:relationship,:isMurderer,:no,:type,:percentShare,:payAmount,
+                    :address,:tumbon,:zipCode,:mobilePhone,:citizenID,:payType,:bankCode,
+                    :bankBranch,:bankAccount,:guardianBeneficiary,:isPay,:birthDate,:haveIndicia,:countryCode)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmClaimReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.claim
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Claim"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmClaimWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.claim
+                    VALUES
+                    (:claimType,:mstType,:policyNo,:receiveyyyymm,:sectionCode,:orderNo,:referenceNo,:okDate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmCmemReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.cmem
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Cmem"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmCmemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.cmem
+                    VALUES
+                    (:sectionCode,:orderNo,:seqNo,:detail)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmDhsordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.dhsordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Dhsordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmDhsordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.dhsordo
+                    VALUES
+                    (:policyNo,:receiveDate,:seqNo,:remarkDate,:remarkNo,:remark,:employeeID,:recTime)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmDthordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.dthordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Dthordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmDthordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.dthordo
+                    VALUES
+                    (:policyNo,:receiveDate,:accidentDate,:sectionCode,:orderNo,:policyStatus1,:policyStatusDate1,:policyStatus2,
+                        :policyStatusDate2,:proofInsuredAge,:branch,:lCode,:mode,:payLastPeriod,:payLastDate,:payPeriod,:payDate,:aplStartDate,
+                        :aplEndDate,:extendStartDate,:extendEndDate,:expireDate,:renewalDate,:renewalPayPeriod,:expireDateBeforeRenewal,:serviceBranch,
+                        :serviceUnit,:claimOkDate,:claimPayDate,:claimPayType,:payLifeSum,:payRiderSum,:rejectFlag,:rejectAmount,:rejectDate,
+                        :claimPersonCode,:interestClaim,:interestPayStart,:dependentType,:dependentSequence,:paAccidentDate,:firstClaimPayDate,:effectiveDate,
+                        :calSurCash,:planCode,:unitCode,:oicSeqType,:payLifeSumType)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmEclmReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.eclm
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Eclm"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmEclmWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.eclm
+                    VALUES
+                    (:sectionCode,:orderNo,:claimType,:receiveTime,:causeCode1,:causeDetail1,:causeCode2,:causeDetail2,:specialCauseFlag,:hospitalCode,:psysicianCertificate,:admitFlag,
+                    :admitStartDate,:investigationCode1,:investigationCode2,:investigationCode3,:treatmentCode1,:treatmentCode2,:treatmentCode3,:notation,:receiverID,
+                    :precertConsiderID,:considerID,:linkSectionOrder,:marketAmount,:saveAmount,:provinceCode,:payLimit,:interestClaim,:interestPayStart,
+                    :interestPolicy,:branchConsiderID,:branchUserID,:pureAccidentFlag,:severeAccidentFlag,:medicalProcedure,:screeningAssessor,:checkerID,:automateFlag,:rbDays,:icuDays,:isVip)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmHordodsReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.hordods
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Hordods"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmHordodsWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.hordods
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:seqNo,:remarkDate,:remarkNo,:remark,:employeeID,:recTime)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmHospitalReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.hospital
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Hospital"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmHospitalWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.hospital
+                    VALUES
+                    (:code,:prename,:name,:company,:address1,:address2,:paytype,:zone,:level,:informalrecordexpense,
+                    :istlmedicarehospital,:istlmedicaredate,:fax1,:extensionfax1,:fax2,:extensionfax2,:incomingfax1,:incomingfax2,:ipdright,:ipdrightdate,
+                    :opdright,:opdrightdate,:incomingfax3,:incomingfax4,:incomingfax5,:incomingfax6,:showhospitalname,:formalrecordexpense,:email1,
+                    :email2,:email3,:email4,:sendemail1,:sendemail2,:sendemail3,:sendemail4,:automate,:isstricthospital,:recorddate,:recordid)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmIcd10Reader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.icd10
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Icd10"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmIcd10Writer" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.icd10
+                    VALUES
+                    (:code,:detail1,:detail2,:illnesscode,:rangeofstay,:isicd10,:keyword,:simpledisease,:deadlydisease)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmInsmemoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.insmemo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Insmemo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmInsmemoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.insmemo
+                    VALUES
+                    (:claimType,:mstType,:policyNo,:accidentDate,:receiveDate,:memoCode,:detail1,:detail2,:saveDate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmOacmReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.oacm
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Oacm"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmOacmWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.oacm
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:sectionCode,:orderNo,:policyStatus1,:policyStatusDate1,
+                    :policyStatus2,:policyStatusDate2,:branch,:lCode,:unitCode,:mode,:payPeriod,:payDate,:aplStartDate,
+                    :aplEndDate,:extendStartDate,:extendEndDate,:expireDate,:renewalDate,:renewalPayPeriod,:expireDateBeforeRenewal,
+                    :serviceBranch,:serviceUnit,:claimOkDate,:claimPayDate,:claimPersonCode,:dependentType,:dependentSequence,:firstClaimPayDate,:effectiveDate,:planCode)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmOdisReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.odis
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Odis"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmOdisWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.odis
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:riderType,:organFlag,:organ,:exceptFlag,:exceptStartDate,
+                    :exceptEndDate,:exceptStartPeriod,:eexceptEndPeriod,:premiumFlag,:premiumAmount,:premiumStartDate,
+                    :premiumEndDate,:allowPeriod,:allowance,:allowStartDate,:premiumInterest,:premIntStartDate,:premIntEndDate,:riderSurcash)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmOrdsReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.ords
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Ords"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmOrdsWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.ords
+                    VALUES
+                    (:policyNo,:accidentDate,:receiveDate,:riderType,:riderSum,:riderPay,:payRate,:causeType)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmPayReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.pay
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Pay"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmPayWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.pay
+                    VALUES
+                    (:sectionCode,:orderNo,:payType,:bankCode,:bankBranch,:bankAccount)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmQueueReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.queue
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Queue"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmQueueWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.queue
+                    VALUES
+                    (:considerid,:queuetype,:jobtype,:jobcode,:offerdate,:referenceno,:receivedate,:modifydate,:modifytime,:status,
+                    :xconsiderid,:firstjobtype,:firstjobcode,:firstxconsiderid,:firstofferdate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmRidordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.ridordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Ridordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmRidordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.ridordo
+                    VALUES
+                    (:policyNo,:receiveDate,:riderType,:riderAmount)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repDmVoiordoReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.voiordo
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.Voiordo"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmVoiordoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.voiordo
+                    VALUES
+                    (:claimType,:policyNo,:accidentDate,:receiveDate,:riderType,:voidType,:voidDate,:voidAmount,
+                    :voidFirstPeriod,:premType,:tellBookStatus,:endorsementStatus,:debtFlag,:startDate,:endDate,:addPremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
 </beans>

@@ -450,6 +450,39 @@
         </property>
     </bean>
 
+
+    <bean id="repTlpMasRiskTypeReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlp.masrisktype
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.MasRiskType"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpMasRiskTypeWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.masrisktype
+                    VALUES
+                    (:risktypeseq,:risktypename)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
     <bean id="repTlpAppCustomerReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
         <property name="dataSource" ref="dataSource"/>
         <property name="sql">

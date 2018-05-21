@@ -323,4 +323,209 @@
         </batch:listeners>
     </batch:job>
 
+
+    <batch:job id="repDmBnfordoJob">
+        <batch:step id="repDmBnfordoStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmBnfordoReader" writer="repDmBnfordoWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmClaimJob">
+        <batch:step id="repDmClaimStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmClaimReader" writer="repDmClaimWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmCmemJob">
+        <batch:step id="repDmCmemStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmCmemReader" writer="repDmCmemWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmDhsordoJob">
+        <batch:step id="repDmDhsordoStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmDhsordoReader" writer="repDmDhsordoWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmDthordJob">
+        <batch:step id="repDmDthordStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmDthordReader" writer="repDmDthordWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmEclmJob">
+        <batch:step id="repDmEclmStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmEclmReader" writer="repDmEclmWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmHordodsJob">
+        <batch:step id="repDmHordodsStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmHordodsReader" writer="repDmHordodsWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmHospitalJob">
+        <batch:step id="repDmHospitalStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmHospitalReader" writer="repDmHospitalWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmIcd10Job">
+        <batch:step id="repDmIcd10Step1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmIcd10Reader" writer="repDmIcd10Writer" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmInsmemoJob">
+        <batch:step id="repDmInsmemoStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmInsmemoReader" writer="repDmInsmemoWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmOacmJob">
+        <batch:step id="repDmOacmStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmOacmReader" writer="repDmOacmWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmOdisJob">
+        <batch:step id="repDmOdisStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmOdisReader" writer="repDmOdisWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmOrdsJob">
+        <batch:step id="repDmOrdsStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmOrdsReader" writer="repDmOrdsWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmPayJob">
+        <batch:step id="repDmPayStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmPayReader" writer="repDmPayWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmQueueJob">
+        <batch:step id="repDmQueueStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmQueueReader" writer="repDmQueueWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmRidordoJob">
+        <batch:step id="repDmRidordoStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmRidordoReader" writer="repDmRidordoWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="repDmVoiordoJob">
+        <batch:step id="repDmVoiordoStep1">
+            <batch:tasklet>
+                <batch:chunk reader="repDmVoiordoReader" writer="repDmVoiordoWriter" commit-interval="10000">
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
 </beans>
