@@ -157,6 +157,7 @@ Program arguments `<see other arguments below this as you want>`
 * tlpMasProductJob
 * tlpMasProductCoverageJob
 * tlpMasProductCoverageClaimJob
+* tlpMasRiskType
 * tlpPaymentJob
 * tlpPolicyBeneficiaryJob
 * tlpPolicyMasterJob
