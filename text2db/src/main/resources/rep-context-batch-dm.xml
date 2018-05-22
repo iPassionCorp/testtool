@@ -1435,4 +1435,36 @@
         </property>
     </bean>
 
+    <bean id="repDmTlpMigrationReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM dm.tlpmigration
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.dm.TlpMigration"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repDmTlpMigrationWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.tlpmigration
+                    VALUES
+                    (:customerCode,:tlpPolicyNo,:tlpCertNo,:tlpPlanNo,:tlpProductName,:migratePlanCode,:migratePlanNo,:tmoPlanCode,:tmoPlanNo)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
 </beans>
