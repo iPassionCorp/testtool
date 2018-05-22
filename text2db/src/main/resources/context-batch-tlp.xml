@@ -356,7 +356,6 @@
     <bean id="tlpClaimPaymentDetailReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlp.source.file.path}/Claim/SQL_TB_ClaimPaymentDetail.txt" />
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -402,7 +401,6 @@
     <bean id="tlpClaimRegisterDetailReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlp.source.file.path}/Claim/SQL_TB_ClaimRegisterDetail.txt" />
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -477,7 +475,6 @@
     <bean id="tlpClaimRegisterHeaderReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlp.source.file.path}/Claim/SQL_TB_ClaimRegisterHeader.txt" />
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -537,7 +534,6 @@
     <bean id="tlpMasProductReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlp.source.file.path}/Claim/SQL_TB_MasProduct.txt" />
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
