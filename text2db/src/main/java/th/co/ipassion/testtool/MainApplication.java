@@ -15,22 +15,19 @@ public class MainApplication {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-batch-job-context.xml");
         
         JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
-        //Job job = (Job) context.getBean("importPolicyJob");
-        Job job = (Job) context.getBean(args[0]);
-        //Job job = (Job) context.getBean("importCertLinkerJob");
-        //Job job = (Job) context.getBean("importCertMappingJob");
-        //Job job = (Job) context.getBean("importMgClaimJob");
-        //Job job = (Job) context.getBean("importMgHisJob");
-      
-        try {
-            JobExecution execution = jobLauncher.run(job, new JobParameters());
-            System.out.println("Job Exit Status : "+ execution.getStatus());
-      
-        } catch (JobExecutionException e) {
-            System.out.println("Job " + args[0] + " failed");
-            e.printStackTrace();
-        } finally {
-        	
+
+        for (int i = 0; i < args.length; i ++) {       
+	        Job job = (Job) context.getBean(args[i]);
+	        try {
+	            JobExecution execution = jobLauncher.run(job, new JobParameters());
+	            System.out.println("Job Exit Status : "+ execution.getStatus());
+	      
+	        } catch (JobExecutionException e) {
+	            System.out.println("Job " + args[0] + " failed");
+	            e.printStackTrace();
+	        } finally {
+	        	
+	        }
         }
 	}
 
