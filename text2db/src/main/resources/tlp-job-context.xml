@@ -251,6 +251,53 @@
 		</batch:listeners>
 	</batch:job>
 
+	<batch:job id="tlpSplitPremiumAmount2Job">
+		<batch:step id="tlpSplitPremiumAmount2Step1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpSplitPremiumAmount2Reader" writer="tlpSplitPremiumAmount2Writer"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpHistoryDownPlanJob">
+		<batch:step id="tlpHistoryDownPlanStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpHistoryDownPlanReader" writer="tlpHistoryDownPlanWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="tlpHistoryExportJob">
+		<batch:step id="tlpHistoryExportStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpHistoryExportReader" writer="tlpHistoryExportWriter"
+							 commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+    <batch:job id="tlpMemberMasterJob">
+        <batch:step id="tlpMemberMasterStep1">
+            <batch:tasklet>
+                <batch:chunk reader="tlpMemberMasterReader" writer="tlpMemberMasterWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
 
 
 </beans>

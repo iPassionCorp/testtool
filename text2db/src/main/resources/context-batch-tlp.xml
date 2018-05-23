@@ -31,6 +31,10 @@
     <bean id="policyBeneficiary" class="th.co.ipassion.testtool.dto.tlp.PolicyBeneficiary" scope="prototype"/>
     <bean id="policyPaid" class="th.co.ipassion.testtool.dto.tlp.PolicyPaid" scope="prototype"/>
     <bean id="policyRider" class="th.co.ipassion.testtool.dto.tlp.PolicyRider" scope="prototype"/>
+    <bean id="splitPremiumAmount2" class="th.co.ipassion.testtool.dto.tlp.SplitPremiumAmount2" scope="prototype"/>
+    <bean id="historyDownplan" class="th.co.ipassion.testtool.dto.tlp.HistoryDownPlan" scope="prototype"/>
+    <bean id="historyExport" class="th.co.ipassion.testtool.dto.tlp.HistoryExport" scope="prototype"/>
+    <bean id="memberMaster" class="th.co.ipassion.testtool.dto.tlp.MemberMaster" scope="prototype"/>
 
     <bean id="tlpCustomerBalloonReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
@@ -1064,6 +1068,182 @@
                     (:riderno,:policyno,:ridertype,:plancode,:statusnew,:statusold,:sa,
                     :premrider,:premextra,:premtotal,:mode,:covperiod,:effectivedate,
                     :startdate,:expdate,:issuedage,:attage,:statusdate,:endorsedate)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpSplitPremiumAmount2Reader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <!--waiting for naming file name-->
+        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
+        <property name="delegate" ref="tlpSplitPremiumAmount2FlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpSplitPremiumAmount2FlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="linesToSkip" value="1"/>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="splitPremiumAmount2" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names"
+                                  value="certno, ridername, oldridersa, newridersa, oldriderpremium, newriderpremium" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpSplitPremiumAmount2Writer" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.splitpremiumamount2
+                    VALUES
+                    (:certno, :ridername, :oldridersa, :newridersa, :oldriderpremium, :newriderpremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpHistoryDownPlanReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <!--waiting for file name-->
+        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
+        <property name="delegate" ref="tlpHistoryDownPlanFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpHistoryDownPlanFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="linesToSkip" value="1"/>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="historyDownPlan" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names"
+                                  value="certno, oldproductcode, newproductcode, payperiod, newpremium, createdate" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpHistoryDownPlanWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.historydownplan
+                    VALUES
+                    (:certno, :oldproductcode, :newproductcode, :payperiod, :newpremium, :createdate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpHistoryExportReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <!--waiting for file name-->
+        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
+        <property name="delegate" ref="tlpHistoryExportFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpHistoryExportFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="linesToSkip" value="1"/>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="historyExport" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names"
+                                  value="billingtype, certno, billingdate, duedatestart, duedateend, installmentpolyear, payperiod, partnerbillingdate, totalpremium, status, returndate, attempttime, installmentseq, createdate, responsecode, exfileout, exfilereturn" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpHistoryExportWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.historyexport
+                    VALUES
+                    (:billingtype, :certno, :billingdate, :duedatestart, :duedateend, :installmentpolyear, :payperiod, :partnerbillingdate, :totalpremium, :status, :returndate, :attempttime, :installmentseq, :createdate, :responsecode, :exfileout, :exfilereturn)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpMemberMasterReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <!--waiting for file name-->
+        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
+        <property name="delegate" ref="tlpMemberMasterFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpMemberMasterFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="linesToSkip" value="1"/>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="memberMaster" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names"
+                                  value="policyno, certificateno, cardno, cardexpired, effectivedate, firstduedate" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpMemberMasterWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.membermaster
+                    VALUES
+                    (:policyno, :certificateno, :cardno, :cardexpired, :effectivedate, :firstduedate)
+                ]]>
             </value>
         </property>
     </bean>
