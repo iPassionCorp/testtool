@@ -1208,7 +1208,7 @@
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <!--waiting for file name-->
         <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
-        <property name="delegate" ref="tlpMemberMasterFileItemReader" />
+        <property name="delegate" ref="tlpMemberMasterFlatFileItemReader" />
     </bean>
 
     <bean id="tlpMemberMasterFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
