@@ -720,4 +720,132 @@
             </value>
         </property>
     </bean>
+
+    <bean id="repTlpHistoryDownPlanReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlpbilling.historydownplan
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.HistoryDownPlan"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpHistoryDownPlanWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.historydownplan
+                    VALUES
+                    (:certno, :oldproductcode, :newproductcode, :payperiod, :newpremium, :createdate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpHistoryExportReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlpbilling.historyexport
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.HistoryExport"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpHistoryExportWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.historyexport
+                    VALUES
+                    (:billingtype, :certno, :billingdate, :duedatestart, :duedateend, :installmentpolyear, :payperiod, :partnerbillingdate, :totalpremium, :status, :returndate, :attempttime, :installmentseq, :createdate, :responsecode, :exfileout, :exfilereturn)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpMemberMasterReader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlpbilling.membermaster
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.MemberMaster"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpMemberMasterWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.membermaster
+                    VALUES
+                    (:policyno, :certificateno, :cardno, :cardexpired, :effectivedate, :firstduedate)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="repTlpSplitPremiumAmount2Reader"  class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    SELECT * FROM tlpbilling.splitpremiumamount2
+                ]]>
+            </value>
+        </property>
+        <property name="rowMapper">
+            <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.SplitPremiumAmount2"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="repTlpSplitPremiumAmount2Writer" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="targetSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.splitpremiumamount2
+                    VALUES
+                    (:certno, :ridername, :oldridersa, :newridersa, :oldriderpremium, :newriderpremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
 </beans>
