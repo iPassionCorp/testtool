@@ -12,7 +12,6 @@ public class BillingDetail  implements java.io.Serializable {
      private String uttxreferno2;
      private String uttxtrxntype;
      private String uttxrecordstatus;
-     private String uttxoutputresult;
      private String uttxpaymentdate;
      private String uttxpaymenttime;
      private String uttxresponsecode;
@@ -22,7 +21,7 @@ public class BillingDetail  implements java.io.Serializable {
     public BillingDetail() {
     }
 
-    public BillingDetail(String uttxrectype, String uttxseq, String uttxpan, String uttxcardholdername, String uttxtrxnamt, String uttxreferno1, String uttxreferno2, String uttxtrxntype, String uttxrecordstatus, String uttxoutputresult, String uttxpaymentdate, String uttxpaymenttime, String uttxresponsecode, String uttxauthcode, String expirydate) {
+    public BillingDetail(String uttxrectype, String uttxseq, String uttxpan, String uttxcardholdername, String uttxtrxnamt, String uttxreferno1, String uttxreferno2, String uttxtrxntype, String uttxrecordstatus, String uttxpaymentdate, String uttxpaymenttime, String uttxresponsecode, String uttxauthcode, String expirydate) {
        this.uttxrectype = uttxrectype;
        this.uttxseq = uttxseq;
        this.uttxpan = uttxpan;
@@ -32,7 +31,6 @@ public class BillingDetail  implements java.io.Serializable {
        this.uttxreferno2 = uttxreferno2;
        this.uttxtrxntype = uttxtrxntype;
        this.uttxrecordstatus = uttxrecordstatus;
-       this.uttxoutputresult = uttxoutputresult;
        this.uttxpaymentdate = uttxpaymentdate;
        this.uttxpaymenttime = uttxpaymenttime;
        this.uttxresponsecode = uttxresponsecode;
@@ -112,14 +110,6 @@ public class BillingDetail  implements java.io.Serializable {
         this.uttxrecordstatus = uttxrecordstatus;
     }
 
-    public String getUttxoutputresult() {
-        return this.uttxoutputresult;
-    }
-    
-    public void setUttxoutputresult(String uttxoutputresult) {
-        this.uttxoutputresult = uttxoutputresult;
-    }
-
     public String getUttxpaymentdate() {
         return this.uttxpaymentdate;
     }
@@ -176,7 +166,6 @@ public class BillingDetail  implements java.io.Serializable {
  && ( (this.getUttxreferno2()==castOther.getUttxreferno2()) || ( this.getUttxreferno2()!=null && castOther.getUttxreferno2()!=null && this.getUttxreferno2().equals(castOther.getUttxreferno2()) ) )
  && ( (this.getUttxtrxntype()==castOther.getUttxtrxntype()) || ( this.getUttxtrxntype()!=null && castOther.getUttxtrxntype()!=null && this.getUttxtrxntype().equals(castOther.getUttxtrxntype()) ) )
  && ( (this.getUttxrecordstatus()==castOther.getUttxrecordstatus()) || ( this.getUttxrecordstatus()!=null && castOther.getUttxrecordstatus()!=null && this.getUttxrecordstatus().equals(castOther.getUttxrecordstatus()) ) )
- && ( (this.getUttxoutputresult()==castOther.getUttxoutputresult()) || ( this.getUttxoutputresult()!=null && castOther.getUttxoutputresult()!=null && this.getUttxoutputresult().equals(castOther.getUttxoutputresult()) ) )
  && ( (this.getUttxpaymentdate()==castOther.getUttxpaymentdate()) || ( this.getUttxpaymentdate()!=null && castOther.getUttxpaymentdate()!=null && this.getUttxpaymentdate().equals(castOther.getUttxpaymentdate()) ) )
  && ( (this.getUttxpaymenttime()==castOther.getUttxpaymenttime()) || ( this.getUttxpaymenttime()!=null && castOther.getUttxpaymenttime()!=null && this.getUttxpaymenttime().equals(castOther.getUttxpaymenttime()) ) )
  && ( (this.getUttxresponsecode()==castOther.getUttxresponsecode()) || ( this.getUttxresponsecode()!=null && castOther.getUttxresponsecode()!=null && this.getUttxresponsecode().equals(castOther.getUttxresponsecode()) ) )
@@ -184,28 +173,6 @@ public class BillingDetail  implements java.io.Serializable {
  && ( (this.getExpirydate()==castOther.getExpirydate()) || ( this.getExpirydate()!=null && castOther.getExpirydate()!=null && this.getExpirydate().equals(castOther.getExpirydate()) ) );
    }
    
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + ( getUttxrectype() == null ? 0 : this.getUttxrectype().hashCode() );
-         result = 37 * result + ( getUttxseq() == null ? 0 : this.getUttxseq().hashCode() );
-         result = 37 * result + ( getUttxpan() == null ? 0 : this.getUttxpan().hashCode() );
-         result = 37 * result + ( getUttxcardholdername() == null ? 0 : this.getUttxcardholdername().hashCode() );
-         result = 37 * result + ( getUttxtrxnamt() == null ? 0 : this.getUttxtrxnamt().hashCode() );
-         result = 37 * result + ( getUttxreferno1() == null ? 0 : this.getUttxreferno1().hashCode() );
-         result = 37 * result + ( getUttxreferno2() == null ? 0 : this.getUttxreferno2().hashCode() );
-         result = 37 * result + ( getUttxtrxntype() == null ? 0 : this.getUttxtrxntype().hashCode() );
-         result = 37 * result + ( getUttxrecordstatus() == null ? 0 : this.getUttxrecordstatus().hashCode() );
-         result = 37 * result + ( getUttxoutputresult() == null ? 0 : this.getUttxoutputresult().hashCode() );
-         result = 37 * result + ( getUttxpaymentdate() == null ? 0 : this.getUttxpaymentdate().hashCode() );
-         result = 37 * result + ( getUttxpaymenttime() == null ? 0 : this.getUttxpaymenttime().hashCode() );
-         result = 37 * result + ( getUttxresponsecode() == null ? 0 : this.getUttxresponsecode().hashCode() );
-         result = 37 * result + ( getUttxauthcode() == null ? 0 : this.getUttxauthcode().hashCode() );
-         result = 37 * result + ( getExpirydate() == null ? 0 : this.getExpirydate().hashCode() );
-         return result;
-   }   
-
-
 }
 
 
