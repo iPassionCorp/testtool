@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:text2db.properties"/>
+
+    <bean id="ktcBillingDetail" class="th.co.ipassion.testtool.dto.ktc.BillingDetail" scope="prototype"/>
+    <bean id="ktcBillingFooter" class="th.co.ipassion.testtool.dto.ktc.BillingFooter" scope="prototype"/>
+    <bean id="ktcBillingHeader" class="th.co.ipassion.testtool.dto.ktc.BillingHeader" scope="prototype"/>
+    <bean id="ktcPaymentDetail" class="th.co.ipassion.testtool.dto.ktc.PaymentDetail" scope="prototype"/>
+    <bean id="ktcPaymentFooter" class="th.co.ipassion.testtool.dto.ktc.PaymentFooter" scope="prototype"/>
+    <bean id="ktcPaymentHeader" class="th.co.ipassion.testtool.dto.ktc.PaymentHeader" scope="prototype"/>
+
+    <bean id="ktcBillingReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources"
+                  value="${ktc.source.file.path}/Output_*.txt"/>
+        <property name="delegate" ref="ktcBillingFlatFileItemReader"/>
+    </bean>
+
+    <bean id="ktcBillingFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="lineMapper" ref="patternMatchingMapper" />
+        <property name="strict" value="true" />
+    </bean>
+
+    <bean id="patternMatchingMapper" class="org.springframework.batch.item.file.mapping.PatternMatchingCompositeLineMapper">
+        <property name="tokenizers">
+            <map>
+                <entry key="H?" value-ref="ktcBillingHeaderTokenizers"/>
+                <entry key="D?" value-ref="ktcBillingDetailTokenizers"/>
+                <entry key="F?" value-ref="ktcBillingFooterTokenizers"/>
+            </map>
+        </property>
+        <property name="fieldSetMappers">
+            <map>
+                <entry key="H?" value-ref="ktcBillingHeader"/>
+                <entry key="D?" value-ref="ktcBillingDetail"/>
+                <entry key="F?" value-ref="ktcBillingFooter"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="passThroughFieldSetMapper" class="org.springframework.batch.item.file.mapping.PassThroughFieldSetMapper" />
+
+    <bean id="ktcBillingHeaderTokenizers"
+          class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+        <property name="names" value="uttxrectype, uttxseq, uttxeffectivedate, uttxfiledate, uttxmerid, uttxmername, uttxcompacno, uttxservicetype, uttxbankcode, uttxrecsize, uttxfiletype, filler" />
+        <property name="columns" value="1-1,2-8,9-16,17-24,25-39,40-64,65-74,75-76,77-79,80-82,83-83,84-132" />
+    </bean>
+
+    <bean id="ktcBillingDetailTokenizers"
+          class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+        <property name="names" value="uttxrectype, uttxseq, uttxpan, uttxcardholdername, uttxtrxnamt, uttxreferno1, uttxreferno2, uttxtrxntype, uttxrecordstatus, uttxoutputresult, uttxpaymentdate, uttxpaymenttime, uttxresponsecode, uttxauthcode, expirydate" />
+        <property name="columns" value="1-1,2-8,9-27,28-52,53-62,63-82,83-102,103-103,104-104,105-112,113-120,121-122,123-128,129-132" />
+    </bean>
+
+    <bean id="ktcBillingFooterTokenizers"
+          class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+        <property name="names" value="uttxrectype, uttxseq, uttxtotdbamount, uttxnodbitem, uttxtotcramount, uttxnocritem, filler" />
+        <property name="columns" value="1-1,2-8,9-26,27-32,33-50,51-56,57-132" />
+    </bean>
+
+    <bean id="ktcBillingDetailWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpktc.billingdetail
+                    VALUES
+                    (:uttxrectype, :uttxseq, :uttxpan, :uttxcardholdername, :uttxtrxnamt, :uttxreferno1, :uttxreferno2, :uttxtrxntype,
+                    :uttxrecordstatus, :uttxoutputresult, :uttxpaymentdate, :uttxpaymenttime, :uttxresponsecode)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="ktcBillingHeaderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpktc.billingdetail
+                    VALUES
+                    (:uttxrectype, :uttxseq, :uttxeffectivedate, :uttxfiledate, :uttxmerid, :uttxmername, :uttxcompacno, :uttxservicetype,
+                    :uttxbankcode, :uttxrecsize, :uttxfiletype, :filler)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="ktcBillingFooterWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpktc.billingdetail
+                    VALUES
+                    (:uttxrectype, :uttxseq, :uttxtotdbamount, :uttxnodbitem, :uttxtotcramount, :uttxnocritem, :filler)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="ktcBillingWriter" class="org.springframework.batch.item.support.CompositeItemWriter">
+        <property name="delegates">
+            <list>
+                <ref bean="ktcBillingDetailWriter" />
+                <ref bean="ktcBillingHeaderWriter" />
+                <ref bean="ktcBillingFooterWriter" />
+            </list>
+        </property>
+    </bean>
+
+</beans>

@@ -14,6 +14,7 @@
     <import resource="classpath:tlitext-job-context.xml"/>
     <import resource="classpath:dm-job-context.xml"/>
     <import resource="classpath:tlp-job-context.xml"/>
+    <import resource="classpath:ktc-job-context.xml"/>
     <import resource="classpath:rep-tlitext-job-context.xml"/>
     <import resource="classpath:rep-dm-job-context.xml"/>
     <import resource="classpath:rep-tlp-job-context.xml"/>
