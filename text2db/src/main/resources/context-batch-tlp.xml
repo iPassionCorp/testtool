@@ -163,7 +163,6 @@
 
     <bean id="tlpCustomerSaFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -215,7 +214,6 @@
 
     <bean id="tlpPaymentFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -231,7 +229,7 @@
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="names"
                                   value="partnercode,policyno,productcode,customercode,duedate,senddate,ob,paymentdate,premiumamt,adjustpremium,
-							typeofpayment,accno,refund,dateofrefund,invoiceno,monthenddate,pay_date,refund_amount,collecteddate" />
+							typeofpayment,accno,refund,dateofrefund,invoiceno,monthenddate,pay_date,refund_amount,collecteddate,mode,payperiod,receiptno" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -250,7 +248,8 @@
                     INSERT INTO tlp.payment
                     VALUES
                     (:partnercode, :policyno, :productcode, :customercode, :duedate, :senddate, :ob, :paymentdate, :premiumamt, 
-                    :adjustpremium, :typeofpayment, :accno, :refund, :dateofrefund, :invoiceno, :monthenddate, :pay_date, :refund_amount, :collecteddate)
+                    :adjustpremium, :typeofpayment, :accno, :refund, :dateofrefund, :invoiceno, :monthenddate, :pay_date, 
+                    :refund_amount, :collecteddate, :mode, :payperiod, :receiptno)
                 ]]>
             </value>
         </property>
@@ -264,7 +263,6 @@
 
     <bean id="tlpSplitPremiumAmountFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -282,7 +280,7 @@
                                   value="productid,grouppolicyno,customercode,totpremium,lifepremium,deathpremium,tpdpremium,
 							ttdpremium,tdpremium,papremium,adbpremium,addpremium,rccpremium,mapremium,mcpremium,mepremium,
 							hbpremium,hapremium,hspremium,icupremium,ciptrmium,fi_deathlum,fi_tpdpremium,ls_deathpremium,ls_tpdpremium,
-							ddpremium,lifetpdpremium,duedate" />
+							ddpremium,lifetpdpremium,duedate,receiptno" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -303,7 +301,7 @@
                     (:productid, :grouppolicyno, :customercode, :totpremium, :lifepremium, :deathpremium, 
                     :tpdpremium, :ttdpremium, :tdpremium, :papremium, :adbpremium, :addpremium, :rccpremium, 
                     :mapremium, :mcpremium, :mepremium, :hbpremium, :hapremium, :hspremium, :icupremium,:ciptrmium,
-                    :fi_deathlum, :fi_tpdpremium, :ls_deathpremium, :ls_tpdpremium, :ddpremium, :lifetpdpremium, :duedate)
+                    :fi_deathlum, :fi_tpdpremium, :ls_deathpremium, :ls_tpdpremium, :ddpremium, :lifetpdpremium, :duedate, :receiptno)
                 ]]>
             </value>
         </property>
