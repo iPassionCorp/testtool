@@ -1073,7 +1073,7 @@
     <bean id="tlpSplitPremiumAmount2Reader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <!--waiting for naming file name-->
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*SplitPremiumAmount*.txt" />
         <property name="delegate" ref="tlpSplitPremiumAmount2FlatFileItemReader" />
     </bean>
 
@@ -1117,7 +1117,7 @@
     <bean id="tlpHistoryDownPlanReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <!--waiting for file name-->
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*HistoryDownplan*.txt" />
         <property name="delegate" ref="tlpHistoryDownPlanFlatFileItemReader" />
     </bean>
 
@@ -1134,7 +1134,7 @@
                     <bean
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="names"
-                                  value="certno, oldproductcode, newproductcode, payperiod, newpremium, createdate" />
+                                  value="certno, oldproductcode, newproductcode, payperiod, newpremium, createdate, status" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -1152,7 +1152,7 @@
                 <![CDATA[
                     INSERT INTO tlpbilling.historydownplan
                     VALUES
-                    (:certno, :oldproductcode, :newproductcode, :payperiod, :newpremium, :createdate)
+                    (:certno, :oldproductcode, :newproductcode, :payperiod, :newpremium, :createdate, :status)
                 ]]>
             </value>
         </property>
@@ -1161,7 +1161,7 @@
     <bean id="tlpHistoryExportReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <!--waiting for file name-->
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*HistoryExport*.txt" />
         <property name="delegate" ref="tlpHistoryExportFlatFileItemReader" />
     </bean>
 
@@ -1178,7 +1178,9 @@
                     <bean
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="names"
-                                  value="billingtype, certno, billingdate, duedatestart, duedateend, installmentpolyear, payperiod, partnerbillingdate, totalpremium, status, returndate, attempttime, installmentseq, createdate, responsecode, exfileout, exfilereturn" />
+                                  value="billingtype, certno, billingdate, duedatestart, duedateend, installmentpolyear, 
+                                  payperiod, partnerbillingdate, totalpremium, status, returndate, attempttime, installmentseq, 
+                                  createdate, responsecode, exfileout, exfilereturn, paiddate, fileoutdate" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -1196,7 +1198,9 @@
                 <![CDATA[
                     INSERT INTO tlpbilling.historyexport
                     VALUES
-                    (:billingtype, :certno, :billingdate, :duedatestart, :duedateend, :installmentpolyear, :payperiod, :partnerbillingdate, :totalpremium, :status, :returndate, :attempttime, :installmentseq, :createdate, :responsecode, :exfileout, :exfilereturn)
+                    (:billingtype, :certno, :billingdate, :duedatestart, :duedateend, :installmentpolyear, 
+                    :payperiod, :partnerbillingdate, :totalpremium, :status, :returndate, :attempttime, :installmentseq, 
+                    :createdate, :responsecode, :exfileout, :exfilereturn, :paiddate, :fileoutdate)
                 ]]>
             </value>
         </property>
@@ -1205,7 +1209,7 @@
     <bean id="tlpMemberMasterReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
         <!--waiting for file name-->
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount2.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*MemberMaster*.txt" />
         <property name="delegate" ref="tlpMemberMasterFlatFileItemReader" />
     </bean>
 
