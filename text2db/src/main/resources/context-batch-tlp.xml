@@ -1151,7 +1151,7 @@
                 <![CDATA[
                     INSERT INTO tlpbilling.historydownplan
                     VALUES
-                    (:certno, :oldproductcode, :newproductcode, :payperiod, :newpremium, :createdate, :status)
+                    (:certNo, :oldProductCode, :newProductCode, :payPeriod, :newPremium, :createDate, :status)
                 ]]>
             </value>
         </property>
