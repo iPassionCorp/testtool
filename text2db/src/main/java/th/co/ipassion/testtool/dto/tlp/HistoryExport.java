@@ -1,6 +1,7 @@
 package th.co.ipassion.testtool.dto.tlp;
 
 public class HistoryExport {
+	
     private String billingtype;
     private String certno;
     private String billingdate;
@@ -18,6 +19,8 @@ public class HistoryExport {
     private String responsecode;
     private String exfileout;
     private String exfilereturn;
+    private String paiddate;
+    private String fileoutdate;
 
     public String getBillingtype() {
         return billingtype;
@@ -154,4 +157,21 @@ public class HistoryExport {
     public void setExfilereturn(String exfilereturn) {
         this.exfilereturn = exfilereturn;
     }
+
+	public String getPaiddate() {
+		return paiddate;
+	}
+
+	public void setPaiddate(String paiddate) {
+		this.paiddate = paiddate;
+	}
+
+	public String getFileoutdate() {
+		return fileoutdate;
+	}
+
+	public void setFileoutdate(String fileoutdate) {
+		this.fileoutdate = fileoutdate;
+	}
+    
 }

@@ -7,8 +7,17 @@ public class HistoryDownPlan {
     private String payPeriod;
     private String newPremium;
     private String createDate;
+    private String status;
 
-    public String getCertNo() {
+    public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getCertNo() {
         return certNo;
     }
 
