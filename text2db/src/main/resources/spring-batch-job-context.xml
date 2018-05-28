@@ -19,5 +19,6 @@
     <import resource="classpath:rep-tlitext-job-context.xml"/>
     <import resource="classpath:rep-dm-job-context.xml"/>
     <import resource="classpath:rep-tlp-job-context.xml"/>
+    <import resource="classpath:rep-billing-job-context.xml"/>
 
 </beans>

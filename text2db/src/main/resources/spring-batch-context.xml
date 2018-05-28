@@ -19,5 +19,6 @@
     <import resource="classpath:rep-context-batch-tlitext.xml"/>
     <import resource="classpath:rep-context-batch-dm.xml"/>
     <import resource="classpath:rep-context-batch-tlp.xml"/>
+    <import resource="classpath:rep-context-batch-billing.xml"/>
 
 </beans>
