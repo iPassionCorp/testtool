@@ -1,4 +1,4 @@
-package th.co.ipassion.testtool.dto.tlp;
+package th.co.ipassion.testtool.dto.billing;
 
 public class MemberMaster {
     private String policyno;

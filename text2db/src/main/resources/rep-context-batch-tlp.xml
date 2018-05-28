@@ -732,7 +732,7 @@
         </property>
         <property name="rowMapper">
             <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
-                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.HistoryDownPlan"/>
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.billing.HistoryDownPlan"/>
             </bean>
         </property>
     </bean>
@@ -764,7 +764,7 @@
         </property>
         <property name="rowMapper">
             <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
-                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.HistoryExport"/>
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.billing.HistoryExport"/>
             </bean>
         </property>
     </bean>
@@ -828,7 +828,7 @@
         </property>
         <property name="rowMapper">
             <bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
-                <property name="mappedClass" value="th.co.ipassion.testtool.dto.tlp.SplitPremiumAmount2"/>
+                <property name="mappedClass" value="th.co.ipassion.testtool.dto.billing.SplitPremiumAmount2"/>
             </bean>
         </property>
     </bean>

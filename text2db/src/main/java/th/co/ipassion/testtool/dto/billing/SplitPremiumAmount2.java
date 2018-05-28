@@ -1,4 +1,4 @@
-package th.co.ipassion.testtool.dto.tlp;
+package th.co.ipassion.testtool.dto.billing;
 
 public class SplitPremiumAmount2 {
     private String certno;

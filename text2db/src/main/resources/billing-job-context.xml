@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <batch:job id="billingSplitPremiumAmount2Job">
+        <batch:step id="billingSplitPremiumAmount2Step1">
+            <batch:tasklet>
+                <batch:chunk reader="billingSplitPremiumAmount2Reader" writer="billingSplitPremiumAmount2Writer"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="billingHistoryDownPlanJob">
+        <batch:step id="billingHistoryDownPlanStep1">
+            <batch:tasklet>
+                <batch:chunk reader="billingHistoryDownPlanReader" writer="billingHistoryDownPlanWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="billingHistoryExportJob">
+        <batch:step id="billingHistoryExportStep1">
+            <batch:tasklet>
+                <batch:chunk reader="billingHistoryExportReader" writer="billingHistoryExportWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="billingMemberMasterJob">
+        <batch:step id="billingMemberMasterStep1">
+            <batch:tasklet>
+                <batch:chunk reader="billingMemberMasterReader" writer="billingMemberMasterWriter"
+                             commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+</beans>
