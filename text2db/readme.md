@@ -24,7 +24,16 @@ First thing you must have Java IDE to run this program (e.g Eclipse, IntelliJ, N
     targetSource.password=<password>
     ```
 
-2) Run maven for build this program 
+2) Set resource path 
+   ```
+   tlp.source.file.path=<path>
+   tlitext.source.file.path=<path>
+   dm.source.file.path=file:<path>
+   ktc.source.file.path=file:<path>
+   billing.source.file.path=file:<path>
+    ``` 
+
+3) Run maven for build this program 
     ```
     mvn clean install <args>
     ``` 
@@ -36,8 +45,9 @@ First thing you must have Java IDE to run this program (e.g Eclipse, IntelliJ, N
     ```
     mvn clean install -Pcloud
     ```
+    
 
-3) Open IDE Program and change Run configurations for running about job you want to run 
+4) Open IDE Program and change Run configurations for running about job you want to run 
 ![picture](https://i.imgur.com/TwmirWf.png)
 Main class `th.co.ipassion.testtool.MainApplication`
 Program arguments `<see other arguments below this as you want>`
@@ -46,6 +56,8 @@ Program arguments `<see other arguments below this as you want>`
 * Dm
 * Tlitext
 * Tlp
+* billing
+* ktc
 
 ### Program Arguments 
 
@@ -165,6 +177,16 @@ Program arguments `<see other arguments below this as you want>`
 * tlpPolicyRiderJob
 * tlpSplitPremiumAmountJob
 
+##### schema Billing
+
+* billingSplitPremiumAmount2Job
+* billingHistoryExportJob
+* billingHistoryDownPlanJob
+* billingMemberMasterJob
+
+##### schema Ktc
+* soon
+
 #### Replicate data from Database to another Database
 ##### Schema dm
 * repDmAddressJob
@@ -279,3 +301,13 @@ Program arguments `<see other arguments below this as you want>`
 * repTlpPolicyPaidJob
 * repTlpPolicyRiderJob
 * repTlpSplitPremiumAmountJob
+
+##### schema Billing
+
+* repBillingSplitPremiumAmount2Job
+* repBillingHistoryExportJob
+* repBillingHistoryDownPlanJob
+* repBillingMemberMasterJob
+
+##### schema Ktc
+* soon
