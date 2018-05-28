@@ -96,6 +96,36 @@ public class CustomerInfo {
     private String paydate2;
     private String amount2;
     private String deaddate;
+    private String lastpaydate;
+    private String lastreceiptno;
+    private String mode;
+    private String lastpayperiod;
+    
+    
+	public String getLastpaydate() {
+		return lastpaydate;
+	}
+	public void setLastpaydate(String lastpaydate) {
+		this.lastpaydate = lastpaydate;
+	}
+	public String getLastreceiptno() {
+		return lastreceiptno;
+	}
+	public void setLastreceiptno(String lastreceiptno) {
+		this.lastreceiptno = lastreceiptno;
+	}
+	public String getMode() {
+		return mode;
+	}
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+	public String getLastpayperiod() {
+		return lastpayperiod;
+	}
+	public void setLastpayperiod(String lastpayperiod) {
+		this.lastpayperiod = lastpayperiod;
+	}
 	public String getProductname() {
 		return productname;
 	}

@@ -119,7 +119,8 @@
 							canceltransactiondate,oldaccountno,customeroccupationtext,loaninstallment1stdue,
 							customercontactofficepay,percentofbenefitciary1,percentofbenefitciary2,percentofbenefitciary3,
 							percentofbenefitciary4,downplaneffectivedate,date_sosover,customerduration,med,customernation,
-							endorsedate,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate" />
+							endorsedate,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate,
+							lastpaydate,lastreceiptno,mode,lastpayperiod" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -149,7 +150,8 @@
                     :voicetag, :deathdate, :customerloanapprovedate, :lob, :canceltransactiondate, :oldaccountno, :customeroccupationtext, 
                     :loaninstallment1stdue, :customercontactofficepay, :percentofbenefitciary1, :percentofbenefitciary2, 
                     :percentofbenefitciary3, :percentofbenefitciary4, :downplaneffectivedate, :date_sosover, :customerduration, 
-                    :med, :customernation, :endorsedate, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate)
+                    :med, :customernation, :endorsedate, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate,
+                    :lastpaydate, :lastreceiptno, :mode, :lastpayperiod)
                 ]]>
             </value>
         </property>
