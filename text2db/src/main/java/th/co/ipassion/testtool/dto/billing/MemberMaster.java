@@ -7,8 +7,17 @@ public class MemberMaster {
     private String cardexpired;
     private String effectivedate;
     private String firstduedate;
+    private String mobile;
 
-    public String getPolicyno() {
+    public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getPolicyno() {
         return policyno;
     }
 

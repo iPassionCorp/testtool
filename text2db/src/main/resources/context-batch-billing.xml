@@ -14,6 +14,8 @@
     <bean id="historyDownplan" class="th.co.ipassion.testtool.dto.billing.HistoryDownPlan" scope="prototype"/>
     <bean id="historyExport" class="th.co.ipassion.testtool.dto.billing.HistoryExport" scope="prototype"/>
     <bean id="memberMaster" class="th.co.ipassion.testtool.dto.billing.MemberMaster" scope="prototype"/>
+	<bean id="paidHistory" class="th.co.ipassion.testtool.dto.billing.PaidHistory" scope="prototype"/>
+	<bean id="cancelRefund" class="th.co.ipassion.testtool.dto.billing.CancelRefund" scope="prototype"/>
 
     <bean id="billingSplitPremiumAmount2Reader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
@@ -168,7 +170,7 @@
                     <bean
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="names"
-                                  value="policyno, certificateno, cardno, cardexpired, effectivedate, firstduedate" />
+                                  value="policyno, certificateno, cardno, cardexpired, effectivedate, firstduedate, mobile" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -186,9 +188,96 @@
                 <![CDATA[
                     INSERT INTO tlpbilling.membermaster
                     VALUES
-                    (:policyno, :certificateno, :cardno, :cardexpired, :effectivedate, :firstduedate)
+                    (:policyno, :certificateno, :cardno, :cardexpired, :effectivedate, :firstduedate, :mobile)
                 ]]>
             </value>
         </property>
     </bean>
+    
+    <bean id="billingPaidHistoryReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${billing.source.file.path}/*PaidHistory*.txt" />
+        <property name="delegate" ref="tlpPaidHistoryFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpPaidHistoryFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="linesToSkip" value="1"/>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="paidHistory" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names"
+                                  value="certno, duedate, refundamount" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="billingPaidHistoryWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.paidhistory
+                    VALUES
+                    (:certno, :duedate, :refundamount)
+                ]]>
+            </value>
+        </property>
+    </bean>
+    
+    <bean id="billingCancelRefundReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${billing.source.file.path}/*CancelRefund*.txt" />
+        <property name="delegate" ref="tlpCancelRefundFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpCancelRefundFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="linesToSkip" value="1"/>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="cancelRefund" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names"
+                                  value="certno, duedate, transactiondate, partial, cancelreason2" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="billingCancelRefundWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlpbilling.cancelrefund
+                    VALUES
+                    (:certno, :duedate, :transactiondate, :partial, :cancelreason2)
+                ]]>
+            </value>
+        </property>
+    </bean>    
+    
 </beans>
