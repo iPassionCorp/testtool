@@ -133,6 +133,7 @@
 
     <bean id="tlitextNameReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlitext.source.file.path}/name.dat"/>
+        <property name="encoding" value="windows-874"/>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
@@ -171,6 +172,7 @@
 
     <bean id="tlitextPersonReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlitext.source.file.path}/person.dat"/>
+        <property name="encoding" value="windows-874"/>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
                 <property name="fieldSetMapper">
