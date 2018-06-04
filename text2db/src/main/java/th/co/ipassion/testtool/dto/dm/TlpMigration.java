@@ -6,12 +6,30 @@ public class TlpMigration {
     private String tlpCertNo;
     private String tlpPlanNo;
     private String tlpProductName;
+    private String tliPolicyNo;
     private String migratePlanCode;
     private String migratePlanNo;
     private String tmoPlanCode;
     private String tmoPlanNo;
+    private String family;
 
-    public String getCustomerCode() {
+    public String getTliPolicyNo() {
+		return tliPolicyNo;
+	}
+
+	public void setTliPolicyNo(String tliPolicyNo) {
+		this.tliPolicyNo = tliPolicyNo;
+	}
+
+	public String getFamily() {
+		return family;
+	}
+
+	public void setFamily(String family) {
+		this.family = family;
+	}
+
+	public String getCustomerCode() {
         return customerCode;
     }
 

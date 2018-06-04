@@ -2028,7 +2028,7 @@ xconsiderid,firstjobtype,firstjobcode,firstxconsiderid,firstofferdate"/>
     </bean>
 
     <bean id="dmTlpMigrationReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/tlpmigration.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -2046,9 +2046,9 @@ xconsiderid,firstjobtype,firstjobcode,firstxconsiderid,firstofferdate"/>
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="strict" value="false"/>
                         <property name="names"
-                                  value="customerCode,tlpPolicyNo,tlpCertNo,tlpPlanNo,tlpProductName,migratePlanCode,migratePlanNo,tmoPlanCode,tmoPlanNo"/>
+                                  value="customerCode,tlpPolicyNo,tlpCertNo,tlpPlanNo,tlpProductName,tliPolicyNo,migratePlanCode,migratePlanNo,tmoPlanCode,tmoPlanNo,family"/>
                         <property name="columns"
-                                  value="1-20,21-28,29-43,44-51,52-251,252-255,256-256,257-260,261-261"/>
+                                  value="1-20,21-28,29-43,44-51,52-251,252-259,260-263,264-264,265-268,269-269,270-270"/>
                     </bean>
                 </property>
             </bean>
@@ -2065,7 +2065,7 @@ xconsiderid,firstjobtype,firstjobcode,firstxconsiderid,firstofferdate"/>
                 <![CDATA[
                     INSERT INTO dm.tlpmigration
                     VALUES
-                    (:customerCode,:tlpPolicyNo,:tlpCertNo,:tlpPlanNo,:tlpProductName,:migratePlanCode,:migratePlanNo,:tmoPlanCode,:tmoPlanNo)
+                    (:customerCode,:tlpPolicyNo,:tlpCertNo,:tlpPlanNo,:tlpProductName,:tliPolicyNo,:migratePlanCode,:migratePlanNo,:tmoPlanCode,:tmoPlanNo,:family)
                 ]]>
             </value>
         </property>
