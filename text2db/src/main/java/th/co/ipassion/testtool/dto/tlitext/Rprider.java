@@ -4,7 +4,6 @@ public class Rprider {
     private String rpno;
     private String seqno;
     private String ridertext;
-    private String extrapremium;
 
     public String getRpno() {
         return rpno;
@@ -28,13 +27,5 @@ public class Rprider {
 
     public void setRidertext(String ridertext) {
         this.ridertext = ridertext;
-    }
-
-    public String getExtrapremium() {
-        return extrapremium;
-    }
-
-    public void setExtrapremium(String extrapremium) {
-        this.extrapremium = extrapremium;
     }
 }

@@ -317,12 +317,87 @@
     </batch:job>
 
     <batch:job id="tlitextRpriderJob">
-        <batch:step id="tlitextRpriderStep1">
-            <batch:tasklet>
-                <batch:chunk reader="tlitextRpriderReader" writer="tlitextRpriderWriter" commit-interval="10000">
-                </batch:chunk>
-            </batch:tasklet>
-        </batch:step>
+    	<batch:split id="tlitextRpriderSplit" task-executor="asyncTaskExecutor">
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStep">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader" writer="tlitextRpriderWriter" commit-interval="10000"/>
+		            </batch:tasklet>
+		        </batch:step>			
+			</batch:flow> 
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStepOld">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReaderOld" writer="tlitextRpriderWriterOld" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step>			
+			</batch:flow> 
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStep2552">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader2552" writer="tlitextRpriderWriter2552" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step>			
+			</batch:flow>
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStep2553">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader2553" writer="tlitextRpriderWriter2553" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step>			
+			</batch:flow>
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStep2554">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader2554" writer="tlitextRpriderWriter2554" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step>			
+			</batch:flow>
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStep2555">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader2555" writer="tlitextRpriderWriter2555" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step>			
+			</batch:flow>
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStep2556">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader2556" writer="tlitextRpriderWriter2556" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step>			
+			</batch:flow>
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStep2557">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader2557" writer="tlitextRpriderWriter2557" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step>						
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="tlitextRpriderStep2558">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader2558" writer="tlitextRpriderWriter2558" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step> 
+			</batch:flow>
+			<batch:flow>
+		        <batch:step id="tlitextRpriderStep2559">
+		            <batch:tasklet>
+		                <batch:chunk reader="tlitextRpriderReader2559" writer="tlitextRpriderWriter2559" commit-interval="10000">
+		                </batch:chunk>
+		            </batch:tasklet>
+		        </batch:step>			
+			</batch:flow>
+    	</batch:split>
         <batch:listeners>
             <batch:listener ref="jobListener"/>
         </batch:listeners>

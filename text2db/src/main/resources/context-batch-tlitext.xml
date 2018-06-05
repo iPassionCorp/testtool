@@ -1155,42 +1155,121 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
+	<bean id="tlitextRpriderLineMapper"
+		class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+		<property name="fieldSetMapper">
+			<bean
+				class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+				<property name="prototypeBeanName" value="tlitextRprider" />
+			</bean>
+		</property>
+		<property name="lineTokenizer">
+			<bean
+				class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+				<property name="strict" value="false" />
+				<property name="names" value="rpno,seqno,ridertext" />
+				<property name="columns" value="1-12,13-13,14-136" />
+			</bean>
+		</property>
+	</bean>
+
     <bean id="tlitextRpriderReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlitext.source.file.path}/rprider.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
         </property>
-        <property name="lineMapper">
-            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-                <property name="fieldSetMapper">
-                    <bean
-                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-                        <property name="prototypeBeanName" value="tlitextRprider"/>
-                    </bean>
-                </property>
-                <property name="lineTokenizer">
-                    <bean
-                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-                        <property name="strict" value="false"/>
-                        <property name="names"
-                                  value="rpno,seqno,ridertext,extrapremium"/>
-                        <!--Add certno waiting for numbering of columns-->
-                        <property name="columns"
-                                  value="1-12,13-13,14-136"/>
-                    </bean>
-                </property>
-            </bean>
-        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
     </bean>
 
+    
+    <bean id="tlitextRpriderReaderOld" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider_old.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+
+    <bean id="tlitextRpriderReader2552" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider2552.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+
+    <bean id="tlitextRpriderReader2553" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider2553.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+
+    <bean id="tlitextRpriderReader2554" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider2554.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+
+    <bean id="tlitextRpriderReader2555" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider2555.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+
+    <bean id="tlitextRpriderReader2556" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider2556.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+
+    <bean id="tlitextRpriderReader2557" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider2557.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+    
+    <bean id="tlitextRpriderReader2558" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider2558.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+
+    <bean id="tlitextRpriderReader2559" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/rprider2559.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextRpriderLineMapper"/>
+    </bean>
+      
     <bean id="tlitextRpriderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource"/>
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
         </property>
         <property name="sql">
-            <!--EDM2-->
             <value>
                 <![CDATA[
                     INSERT INTO tlitext.rprider
@@ -1198,16 +1277,152 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                     (:rpno,:seqno,:ridertext)
                 ]]>
             </value>
-            <!--EDM4-->
-            <!--<value>-->
-                <!--<![CDATA[-->
-                    <!--INSERT INTO tlitext.rprider-->
-                    <!--VALUES-->
-                    <!--(:rpno,:seqno,:ridertext,:extrapremium)-->
-                <!--]]>-->
-            <!--</value>-->
         </property>
     </bean>
+
+    <bean id="tlitextRpriderWriterOld" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider_old
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextRpriderWriter2552" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider2552
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextRpriderWriter2553" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider2553
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextRpriderWriter2554" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider2554
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextRpriderWriter2555" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider2555
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextRpriderWriter2556" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider2556
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextRpriderWriter2557" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider2557
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextRpriderWriter2558" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider2558
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextRpriderWriter2559" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.rprider2559
+                    VALUES
+                    (:rpno,:seqno,:ridertext)
+                ]]>
+            </value>
+        </property>
+    </bean>                                
 
     <!--edm4gl-->
 
