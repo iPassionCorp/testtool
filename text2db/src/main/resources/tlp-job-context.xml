@@ -26,7 +26,9 @@
 	<batch:job id="tlpCustomerInfoJob">
 		<batch:step id="tlpCustomerInfoStep1">
 			<batch:tasklet>
-				<batch:chunk reader="tlpCustomerInfoReader" writer="tlpCustomerInfoWriter"
+				<batch:chunk reader="tlpCustomerInfoReader" 
+				processor="tlpCustomerInfoProcessor"
+				writer="tlpCustomerInfoWriter"
 					commit-interval="10000" />
 			</batch:tasklet>
 		</batch:step>

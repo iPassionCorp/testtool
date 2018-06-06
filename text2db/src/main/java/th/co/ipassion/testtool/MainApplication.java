@@ -23,7 +23,7 @@ public class MainApplication {
 	            System.out.println("Job Exit Status : "+ execution.getStatus());
 	      
 	        } catch (JobExecutionException e) {
-	            System.out.println("Job " + args[0] + " failed");
+	            System.out.println("Job " + args[i] + " failed");
 	            e.printStackTrace();
 	        } finally {
 	        	

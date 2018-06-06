@@ -72,19 +72,20 @@
                 <![CDATA[
                     INSERT INTO tlp.customerinfo
                     VALUES
-                    (:productname, :policyno, :productcode, :certificateno, :saledate, :branchname, :customercode,
-                    :accountno, :loanno, :totalofloan, :sa, :prem, :durationinsurance, :insurancestatus, :effectivedate,
-                    :expireddate, :customerstatus, :canceldate, :cancelreason, :canceldescription, :channel, :prefix,
-                    :nameth, :surnameth, :birthdate, :age, :weight, :height, :gender, :status, :nationid, :creditcardno,
-                    :expiredcreditcard, :address1, :address2, :addressoffice1, :addressoffice2, :nameofbenefit1, :nameofbenefit2,
-                    :nameofbenefit3, :nameofbenefit4, :relationship1, :relationship2, :relationship3, :relationship4,
-                    :hometel, :mobiletel, :officetel, :officercodesale, :salenameth, :managercode, :dateprintcert, :postbackdate,
-                    :cancelletterno, :printcancelletterdate, :partnercode, :partnername, :databasesource, :refname, :refnationid,
-                    :refcreditcardno, :facility, :uwdescription, :uwstatus, :tmksaledate, :coverage, :paidtodate, :extrarate,
-                    :voicetag, :deathdate, :customerloanapprovedate, :lob, :canceltransactiondate, :oldaccountno, :customeroccupationtext,
-                    :loaninstallment1stdue, :customercontactofficepay, :percentofbenefitciary1, :percentofbenefitciary2,
-                    :percentofbenefitciary3, :percentofbenefitciary4, :downplaneffectivedate, :date_sosover, :customerduration,
-                    :med, :customernation, :endorsedate, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate)
+                    (:productname, :policyno, :productcode, :certificateno, :saledate, :branchname, :customercode, 
+                    :accountno, :loanno, :totalofloan, :sa, :prem, :durationinsurance, :insurancestatus, :effectivedate, 
+                    :expireddate, :customerstatus, :canceldate, :cancelreason, :canceldescription, :channel, :prefix, 
+                    :nameth, :surnameth, :birthdate, :age, :weight, :height, :gender, :status, :nationid, :creditcardno, 
+                    :expiredcreditcard, :address1, :address2, :addressoffice1, :addressoffice2, :nameofbenefit1, :nameofbenefit2, 
+                    :nameofbenefit3, :nameofbenefit4, :relationship1, :relationship2, :relationship3, :relationship4, 
+                    :hometel, :mobiletel, :officetel, :officercodesale, :salenameth, :managercode, :dateprintcert, :postbackdate, 
+                    :cancelletterno, :printcancelletterdate, :partnercode, :partnername, :databasesource, :refname, :refnationid, 
+                    :refcreditcardno, :facility, :uwdescription, :uwstatus, :tmksaledate, :coverage, :paidtodate, :extrarate, 
+                    :voicetag, :deathdate, :customerloanapprovedate, :lob, :canceltransactiondate, :oldaccountno, :customeroccupationtext, 
+                    :loaninstallment1stdue, :customercontactofficepay, :percentofbenefitciary1, :percentofbenefitciary2, 
+                    :percentofbenefitciary3, :percentofbenefitciary4, :downplaneffectivedate, :date_sosover, :customerduration, 
+                    :med, :customernation, :endorsedate, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate,
+                    :lastpaydate, :lastreceiptno, :mode, :lastpayperiod)
                 ]]>
             </value>
         </property>
@@ -118,10 +119,11 @@
                 <![CDATA[
                     INSERT INTO tlp.customersa
                     VALUES
-                    (:customercode, :policyno, :sa_lifetpd, :sa_life, :sa_tpd, :sa_td, :sa_add, :sa_adb,
-                    :sa_ha, :sa_hb, :sa_me, :sa_pa, :sa_ph, :sa_ci, :flaglife, :flaglifetpd, :ia, :sa, :transdate,
-                    :mi_amount, :expiry_life, :expiry_tpd, :expiry_td, :expiry_add, :expiry_adb, :expiry_ha, :expiry_hb,
-                    :expiry_me, :expiry_pa, :expiry_ph, :expiry_ci, :sa_ma, :expiry_ma, :sa_mc, :expiry_mc)
+                    (:customercode, :policyno, :sa_lifetpd, :sa_life, :sa_tpd, :sa_td, :sa_add, :sa_adb, 
+                    :sa_ha, :sa_hb, :sa_me, :sa_pa, :sa_ph, :sa_ci, :flaglife, :flaglifetpd, :ia, :sa, :transdate, 
+                    :mi_amount, :expiry_life, :expiry_tpd, :expiry_td, :expiry_add, :expiry_adb, :expiry_ha, :expiry_hb, 
+                    :expiry_me, :expiry_pa, :expiry_ph, :expiry_ci, :sa_ma, :expiry_ma, :sa_mc, :expiry_mc,
+                    :sa_icu, :sa_fideath, :sa_fitpd, :sa_lsdeath, :sa_lstpd, :sa_cb, :sa_cp)
                 ]]>
             </value>
         </property>
@@ -154,8 +156,9 @@
                 <![CDATA[
                     INSERT INTO tlp.payment
                     VALUES
-                    (:partnercode, :policyno, :productcode, :customercode, :duedate, :senddate, :ob, :paymentdate, :premiumamt,
-                    :adjustpremium, :typeofpayment, :accno, :refund, :dateofrefund, :invoiceno, :monthenddate, :pay_date, :refund_amount, :collecteddate)
+                    (:partnercode, :policyno, :productcode, :customercode, :duedate, :senddate, :ob, :paymentdate, :premiumamt, 
+                    :adjustpremium, :typeofpayment, :accno, :refund, :dateofrefund, :invoiceno, :monthenddate, :pay_date, 
+                    :refund_amount, :collecteddate, :mode, :payperiod, :receiptno)
                 ]]>
             </value>
         </property>
@@ -188,10 +191,10 @@
                 <![CDATA[
                     INSERT INTO tlp.splitpremiumamount
                     VALUES
-                    (:productid, :grouppolicyno, :customercode, :totpremium, :lifepremium, :deathpremium,
-                    :tpdpremium, :ttdpremium, :tdpremium, :papremium, :adbpremium, :addpremium, :rccpremium,
+                    (:productid, :grouppolicyno, :customercode, :totpremium, :lifepremium, :deathpremium, 
+                    :tpdpremium, :ttdpremium, :tdpremium, :papremium, :adbpremium, :addpremium, :rccpremium, 
                     :mapremium, :mcpremium, :mepremium, :hbpremium, :hapremium, :hspremium, :icupremium,:ciptrmium,
-                    :fi_deathlum, :fi_tpdpremium, :ls_deathpremium, :ls_tpdpremium, :ddpremium, :lifetpdpremium, :duedate)
+                    :fi_deathlum, :fi_tpdpremium, :ls_deathpremium, :ls_tpdpremium, :ddpremium, :lifetpdpremium, :duedate, :receiptno)
                 ]]>
             </value>
         </property>

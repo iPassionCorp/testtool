@@ -123,6 +123,8 @@
             </bean>
         </property>
     </bean>
+	
+	<bean id="tlpCustomerInfoProcessor" class="th.co.ipassion.testtool.processor.tlp.CustomerInfoProcessor"/>
 
     <bean id="tlpCustomerInfoWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource" />
@@ -177,7 +179,8 @@
                         <property name="names"
                                   value="customercode,policyno,sa_lifetpd,sa_life,sa_tpd,sa_td,sa_add,sa_adb,sa_ha,sa_hb,sa_me,sa_pa,sa_ph,sa_ci,
 							flaglife,flaglifetpd,ia,sa,transdate,mi_amount,expiry_life,expiry_tpd,expiry_td,expiry_add,expiry_adb,
-							expiry_ha,expiry_hb,expiry_me,expiry_pa,expiry_ph,expiry_ci,sa_ma,expiry_ma,sa_mc,expiry_mc" />
+							expiry_ha,expiry_hb,expiry_me,expiry_pa,expiry_ph,expiry_ci,sa_ma,expiry_ma,sa_mc,expiry_mc,
+							sa_icu,sa_fideath,sa_fitpd,sa_lsdeath,sa_lstpd,sa_cb,sa_cp" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -198,7 +201,8 @@
                     (:customercode, :policyno, :sa_lifetpd, :sa_life, :sa_tpd, :sa_td, :sa_add, :sa_adb, 
                     :sa_ha, :sa_hb, :sa_me, :sa_pa, :sa_ph, :sa_ci, :flaglife, :flaglifetpd, :ia, :sa, :transdate, 
                     :mi_amount, :expiry_life, :expiry_tpd, :expiry_td, :expiry_add, :expiry_adb, :expiry_ha, :expiry_hb, 
-                    :expiry_me, :expiry_pa, :expiry_ph, :expiry_ci, :sa_ma, :expiry_ma, :sa_mc, :expiry_mc)
+                    :expiry_me, :expiry_pa, :expiry_ph, :expiry_ci, :sa_ma, :expiry_ma, :sa_mc, :expiry_mc,
+                    :sa_icu, :sa_fideath, :sa_fitpd, :sa_lsdeath, :sa_lstpd, :sa_cb, :sa_cp)
                 ]]>
             </value>
         </property>

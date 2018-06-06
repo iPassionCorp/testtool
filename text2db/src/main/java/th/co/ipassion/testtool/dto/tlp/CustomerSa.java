@@ -37,6 +37,56 @@ public class CustomerSa {
     private String sa_mc;
     private String expiry_mc;
     private String expiry_life;
+    private String sa_icu;
+    private String sa_fideath;
+    private String sa_fitpd;
+    private String sa_lsdeath;
+    private String sa_lstpd;
+    private String sa_cb;
+    private String sa_cp;
+    
+	public String getSa_icu() {
+		return sa_icu;
+	}
+	public void setSa_icu(String sa_icu) {
+		this.sa_icu = sa_icu;
+	}
+	public String getSa_fideath() {
+		return sa_fideath;
+	}
+	public void setSa_fideath(String sa_fideath) {
+		this.sa_fideath = sa_fideath;
+	}
+	public String getSa_fitpd() {
+		return sa_fitpd;
+	}
+	public void setSa_fitpd(String sa_fitpd) {
+		this.sa_fitpd = sa_fitpd;
+	}
+	public String getSa_lsdeath() {
+		return sa_lsdeath;
+	}
+	public void setSa_lsdeath(String sa_lsdeath) {
+		this.sa_lsdeath = sa_lsdeath;
+	}
+	public String getSa_lstpd() {
+		return sa_lstpd;
+	}
+	public void setSa_lstpd(String sa_lstpd) {
+		this.sa_lstpd = sa_lstpd;
+	}
+	public String getSa_cb() {
+		return sa_cb;
+	}
+	public void setSa_cb(String sa_cb) {
+		this.sa_cb = sa_cb;
+	}
+	public String getSa_cp() {
+		return sa_cp;
+	}
+	public void setSa_cp(String sa_cp) {
+		this.sa_cp = sa_cp;
+	}
 	public String getCustomercode() {
 		return customercode;
 	}
