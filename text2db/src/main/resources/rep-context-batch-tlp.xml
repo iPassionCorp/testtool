@@ -170,7 +170,7 @@
         <property name="sql">
             <value>
                 <![CDATA[
-                    SELECT * FROM tlp.splitpremiumamout
+                    SELECT * FROM tlp.splitpremiumamount
                 ]]>
             </value>
         </property>
