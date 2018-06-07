@@ -256,7 +256,7 @@
                     <bean
                             class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="names"
-                                  value="certno, duedate, transactiondate, partial, cancelreason2" />
+                                  value="certno, duedate, transactiondate, partial, cancelreason2, type" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -274,7 +274,7 @@
                 <![CDATA[
                     INSERT INTO tlpbilling.cancelrefund
                     VALUES
-                    (:certno, :duedate, :transactiondate, :partial, :cancelreason2)
+                    (:certno, :duedate, :transactiondate, :partial, :cancelreason2, :type)
                 ]]>
             </value>
         </property>

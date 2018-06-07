@@ -157,7 +157,7 @@
 
     <bean id="tlpCustomerSaReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_CustomerSA.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_CustomerSa.txt" />
         <property name="delegate" ref="tlpCustomerSaFlatFileItemReader" />
     </bean>
 

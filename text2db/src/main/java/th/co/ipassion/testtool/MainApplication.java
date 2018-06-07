@@ -1,5 +1,7 @@
 package th.co.ipassion.testtool;
 
+import java.util.Date;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionException;
@@ -20,10 +22,10 @@ public class MainApplication {
 	        Job job = (Job) context.getBean(args[i]);
 	        try {
 	            JobExecution execution = jobLauncher.run(job, new JobParameters());
-	            System.out.println("Job Exit Status : "+ execution.getStatus());
+	            System.out.println("Job Exit Status : "+ execution.getStatus() + " @ " + new Date());
 	      
 	        } catch (JobExecutionException e) {
-	            System.out.println("Job " + args[i] + " failed");
+	            System.out.println("Job " + args[i] + " failed @ " + new Date() );
 	            e.printStackTrace();
 	        } finally {
 	        	

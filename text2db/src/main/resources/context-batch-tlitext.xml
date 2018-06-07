@@ -965,38 +965,38 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
-    <bean id="tlitextOrctrlReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${tlitext.source.file.path}/orctrl.dat"/>
+	<bean id="tlitextOrctrlLineMapper"
+		class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+		<property name="fieldSetMapper">
+			<bean
+				class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+				<property name="prototypeBeanName" value="tlitextOrctrl" />
+			</bean>
+		</property>
+		<property name="lineTokenizer">
+			<bean
+				class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+				<property name="strict" value="false" />
+				<property name="names"
+					value="rpno,policyno,certno,effectivedate,payperiod,paydate,premium,extraprem,
+                                                sysdate,currentstatus,originalstatus,mode,time,requestdate,submitno,
+                                                graceperiod,printeddate,submitbranch,userid,reasoncode,moneyok" />
+				<property name="columns"
+					value="1-12,13-20,21-28,29-32,33-40,41-49,50-57,58-65,66-66,67-67,68-68,69-69,70-77,78-89,90-90,91-98,99-101,102-108,109-110,111-111" />
+			</bean>
+		</property>
+	</bean>
+
+<!--     <bean id="tlitextOrctrlReader1" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/orctrl2550.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
         </property>
-        <property name="lineMapper">
-            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-                <property name="fieldSetMapper">
-                    <bean
-                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-                        <property name="prototypeBeanName" value="tlitextOrctrl"/>
-                    </bean>
-                </property>
-                <property name="lineTokenizer">
-                    <bean
-                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
-                        <property name="strict" value="false"/>
-                        <property name="names"
-                                  value="rpno,policyno,certno,effectivedate,payperiod,paydate,premium,extraprem,
-                                                sysdate,currentstatus,originalstatus,mode,time,requestdate,submitno,
-                                                graceperiod,printeddate,submitbranch,userid,reasoncode,moneyok"/>
-                        <!--Add certno waiting for numbering of columns-->
-                        <property name="columns"
-                                  value="1-12,13-20,21-28,29-32,33-40,41-49,50-57,58-65,66-66,67-67,68-68,69-69,70-77,78-89,90-90,91-98,99-101,102-108,109-110,111-111"/>
-                    </bean>
-                </property>
-            </bean>
-        </property>
+        <property name="lineMapper" ref="tlitextOrctrlLineMapper"/>
     </bean>
 
-    <bean id="tlitextOrctrlWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+    <bean id="tlitextOrctrlWriter1" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource"/>
         <property name="itemSqlParameterSourceProvider">
             <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
@@ -1004,7 +1004,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         <property name="sql">
             <value>
                 <![CDATA[
-                    INSERT INTO tlitext.orctrl
+                    INSERT INTO tlitext.orctrl2550
                     VALUES
                     (:rpno,:policyno,:effectivedate,:payperiod,:paydate,:premium,:extraprem,
                     :sysdate,:currentstatus,:originalstatus,:mode,:time,:requestdate,:submitno,
@@ -1013,6 +1013,114 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
             </value>
         </property>
     </bean>
+
+    <bean id="tlitextOrctrlReader2" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/orctrl2549.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextOrctrlLineMapper"/>
+    </bean>
+
+    <bean id="tlitextOrctrlWriter2" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.orctrl2549
+                    VALUES
+                    (:rpno,:policyno,:effectivedate,:payperiod,:paydate,:premium,:extraprem,
+                    :sysdate,:currentstatus,:originalstatus,:mode,:time,:requestdate,:submitno,
+                    :graceperiod,:printeddate,:submitbranch,:userid,:reasoncode,:moneyok)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextOrctrlReader3" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/orctrl2548.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextOrctrlLineMapper"/>
+    </bean>
+
+    <bean id="tlitextOrctrlWriter3" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.orctrl2548
+                    VALUES
+                    (:rpno,:policyno,:effectivedate,:payperiod,:paydate,:premium,:extraprem,
+                    :sysdate,:currentstatus,:originalstatus,:mode,:time,:requestdate,:submitno,
+                    :graceperiod,:printeddate,:submitbranch,:userid,:reasoncode,:moneyok)
+                ]]>
+            </value>
+        </property>
+    </bean> -->
+
+<!--     <bean id="tlitextOrctrlReader4" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/orctrl2551.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextOrctrlLineMapper"/>
+    </bean>
+
+    <bean id="tlitextOrctrlWriter4" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.orctrl2551
+                    VALUES
+                    (:rpno,:policyno,:effectivedate,:payperiod,:paydate,:premium,:extraprem,
+                    :sysdate,:currentstatus,:originalstatus,:mode,:time,:requestdate,:submitno,
+                    :graceperiod,:printeddate,:submitbranch,:userid,:reasoncode,:moneyok)
+                ]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlitextOrctrlReader5" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${tlitext.source.file.path}/orctrl2552.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper" ref="tlitextOrctrlLineMapper"/>
+    </bean>
+
+    <bean id="tlitextOrctrlWriter5" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlitext.orctrl2552
+                    VALUES
+                    (:rpno,:policyno,:effectivedate,:payperiod,:paydate,:premium,:extraprem,
+                    :sysdate,:currentstatus,:originalstatus,:mode,:time,:requestdate,:submitno,
+                    :graceperiod,:printeddate,:submitbranch,:userid,:reasoncode,:moneyok)
+                ]]>
+            </value>
+        </property>
+    </bean> -->    
 
     <bean id="tlitextOrdmastReader" class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlitext.source.file.path}/ordmast.dat"/>

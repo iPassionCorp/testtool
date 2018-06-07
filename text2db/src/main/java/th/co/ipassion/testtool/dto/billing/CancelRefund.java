@@ -6,6 +6,8 @@ public class CancelRefund {
 	private String transactiondate;
 	private String partial;
 	private String cancelreason2;
+	private String type;
+	
 	public String getCertno() {
 		return certno;
 	}
@@ -35,6 +37,12 @@ public class CancelRefund {
 	}
 	public void setCancelreason2(String cancelreason2) {
 		this.cancelreason2 = cancelreason2;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }
