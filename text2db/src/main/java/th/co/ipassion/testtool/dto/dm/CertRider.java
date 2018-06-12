@@ -9,7 +9,8 @@ public class CertRider {
     private String extrapremium;
     private String riderstatus;
     private String riderstatusdate;
-    private String reserve;
+    private String effectivedate;
+    
 	public String getPolicyno() {
 		return policyno;
 	}
@@ -58,10 +59,11 @@ public class CertRider {
 	public void setRiderstatusdate(String riderstatusdate) {
 		this.riderstatusdate = riderstatusdate;
 	}
-	public String getReserve() {
-		return reserve;
+	public String getEffectivedate() {
+		return effectivedate;
 	}
-	public void setReserve(String reserve) {
-		this.reserve = reserve;
+	public void setEffectivedate(String effectivedate) {
+		this.effectivedate = effectivedate;
 	}
+
 }

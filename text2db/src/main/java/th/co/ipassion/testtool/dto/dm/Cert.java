@@ -47,7 +47,21 @@ public class Cert {
 	private String oldstatcert2;
 	private String oldstatcertdate1;
 	private String oldstatcertdate2;
+	private String package1;
+	private String duedate;
     
+	public String getPackage1() {
+		return package1;
+	}
+	public void setPackage1(String package1) {
+		this.package1 = package1;
+	}
+	public String getDuedate() {
+		return duedate;
+	}
+	public void setDuedate(String duedate) {
+		this.duedate = duedate;
+	}
 	public String getPolicyno() {
 		return policyno;
 	}
