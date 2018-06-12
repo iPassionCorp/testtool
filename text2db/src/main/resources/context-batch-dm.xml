@@ -38,6 +38,9 @@
     <bean id="dmRemark" class="th.co.ipassion.testtool.dto.dm.Remark" scope="prototype"/>
     <bean id="dmRider" class="th.co.ipassion.testtool.dto.dm.Rider" scope="prototype"/>
     <bean id="dmRprider" class="th.co.ipassion.testtool.dto.dm.Rprider" scope="prototype"/>
+	<bean id="dmClrctrl" class="th.co.ipassion.testtool.dto.dm.Clrctrl" scope="prototype"/>
+	<bean id="dmClrprider" class="th.co.ipassion.testtool.dto.dm.Clrprider" scope="prototype"/>
+
 
     <!--edm4gl-->
     <bean id="dmClaim" class="th.co.ipassion.testtool.dto.dm.Claim" scope="prototype"/>
@@ -2081,4 +2084,98 @@ xconsiderid,firstjobtype,firstjobcode,firstxconsiderid,firstofferdate"/>
             </value>
         </property>
     </bean>
+
+    <bean id="dmClrctrlReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${dm.source.file.path}/clrctrl.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmClrctrl" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="rpno, rpolicyno, rcertno, reffectivedate, rpayperiod, rpaydate, rpremium, rextraprem, rsysdate, 
+                                  rcurrentstatus,roriginalstatus, rmode, time, rrequestdate, rsubmitno, rgraceperiod, rprinteddate, rsubmitbranch, 
+                                  ruserid, rreasoncode, rmoneyok"/>
+                        <property name="columns"
+                                  value="1-12, 13-16, 17-24, 25-32, 33-36, 37-44, 45-53, 54-61, 62-69, 70-70, 71-71, 72-72, 73-73, 
+                                  74-81, 82-93, 94-94, 95-102, 103-105, 106-112, 113-114, 115-115"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmClrctrlWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.clrctrl
+                    VALUES
+                    (:rpno, :rpolicyno, :rcertno, :reffectivedate, :rpayperiod, :rpaydate, :rpremium, :rextraprem, :rsysdate, 
+                    :rcurrentstatus, :roriginalstatus, :rmode, :time, :rrequestdate, :rsubmitno, :rgraceperiod, :rprinteddate, :rsubmitbranch, 
+                    :ruserid, :rreasoncode, :rmoneyok)
+                ]]>
+            </value>
+        </property>
+    </bean>    
+
+    <bean id="dmClrpriderReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${dm.source.file.path}/clrprider.dat"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="dmClrprider" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="rpno, ridertype, riderpremium, extrapremium"/>
+                        <property name="columns"
+                                  value="1-12, 13-15, 16-24, 25-33"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dmClrpriderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO dm.clrprider
+                    VALUES
+                    (:rpno, :ridertype, :riderpremium, :extrapremium)
+                ]]>
+            </value>
+        </property>
+    </bean>
+    
 </beans>
