@@ -41,6 +41,7 @@ public class Cert {
     private String reserve;
 	private String mode;
 	private String payperiod;
+	private String duedate;
 	private String rpno;
 	private String statdate1;
 	private String oldstatcert1;
@@ -48,8 +49,14 @@ public class Cert {
 	private String oldstatcertdate1;
 	private String oldstatcertdate2;
 	private String package1;
-	private String duedate;
+	private String familyType;
     
+	public String getFamilyType() {
+		return familyType;
+	}
+	public void setFamilyType(String familyType) {
+		this.familyType = familyType;
+	}
 	public String getPackage1() {
 		return package1;
 	}
