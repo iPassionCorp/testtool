@@ -16,6 +16,7 @@
     <import resource="classpath:context-batch-tlp.xml"/>
     <import resource="classpath:context-batch-ktc.xml"/>
     <import resource="classpath:context-batch-billing.xml"/>
+    <import resource="classpath:context-batch-cc.xml"/>
     <import resource="classpath:rep-context-batch-tlitext.xml"/>
     <import resource="classpath:rep-context-batch-dm.xml"/>
     <import resource="classpath:rep-context-batch-tlp.xml"/>

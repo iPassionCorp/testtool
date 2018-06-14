@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<batch:job id="ccCustomerInfoJob">
+		<batch:step id="ccCustomerInfoStep1">
+			<batch:tasklet>
+				<batch:chunk reader="ccCustomerInfoReader" 
+				writer="ccCustomerInfoWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="ccCustomerSaJob">
+		<batch:step id="ccCustomerSaStep1">
+			<batch:tasklet>
+				<batch:chunk reader="ccCustomerSaReader" writer="ccCustomerSaWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="ccPaymentJob">
+		<batch:step id="ccPaymentStep1">
+			<batch:tasklet>
+				<batch:chunk reader="ccPaymentReader" writer="ccPaymentWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+
+	<batch:job id="ccSplitPremiumAmountJob">
+		<batch:step id="ccSplitPremiumAmountStep1">
+			<batch:tasklet>
+				<batch:chunk reader="ccSplitPremiumAmountReader" writer="ccSplitPremiumAmountWriter"
+					commit-interval="10000" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>
+	
+</beans>
