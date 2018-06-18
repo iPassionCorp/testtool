@@ -11,6 +11,7 @@
 
     <context:property-placeholder location="classpath:text2db.properties" />
 
+	<bean id="rpRider" class="th.co.ipassion.testtool.dto.tlp.Rprider" scope="prototype"/>
     <bean id="customerBalloon" class="th.co.ipassion.testtool.dto.tlp.CustomerBalloon" scope="prototype"/>
     <bean id="customerInfo" class="th.co.ipassion.testtool.dto.tlp.CustomerInfo" scope="prototype"/>
     <bean id="customerSa" class="th.co.ipassion.testtool.dto.tlp.CustomerSa" scope="prototype"/>
@@ -1068,6 +1069,52 @@
                     (:riderno,:policyno,:ridertype,:plancode,:statusnew,:statusold,:sa,
                     :premrider,:premextra,:premtotal,:mode,:covperiod,:effectivedate,
                     :startdate,:expdate,:issuedage,:attage,:statusdate,:endorsedate)]]>
+            </value>
+        </property>
+    </bean>
+
+    <bean id="tlpRpRiderReader"
+          class="org.springframework.batch.item.file.MultiResourceItemReader">
+        <property name="resources" value="${tlp.source.file.path}/**/*_RPrider.txt" />
+        <property name="delegate" ref="tlpRpRiderReaderFlatFileItemReader" />
+    </bean>
+
+    <bean id="tlpRpRiderReaderFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+        <property name="linesToSkip" value="1"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="rpRider" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="strict" value="true"/>
+                        <property name="names"
+                                  value="receiptNo, receiptDetail" />
+                        <property name="delimiter" value="|"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="tlpRpRiderWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO tlp.rprider
+                    VALUES
+                    (:receiptNo, :receiptDetail)]]>
             </value>
         </property>
     </bean>

@@ -10,7 +10,17 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Jobs for schema tlp -->
-	
+
+	<batch:job id="tlpRpRiderJob">
+		<batch:step id="tlpRpRiderStep1">
+			<batch:tasklet>
+				<batch:chunk reader="tlpRpRiderReader" writer="tlpRpRiderWriter" commit-interval="10000"/>
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref="jobListener" />
+		</batch:listeners>
+	</batch:job>	
 
 	<batch:job id="tlpCustomerBalloonJob">
 		<batch:step id="tlpCustomerBalloonStep1">
