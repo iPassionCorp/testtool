@@ -41,7 +41,6 @@
 
     <bean id="tlpCustomerBalloonFlatFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
         <property name="linesToSkip" value="1"/>
-        <property name="encoding" value ="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
         </property>
@@ -358,7 +357,6 @@
 
     <bean id="tlpClaimPaymentDetailReader"  class="org.springframework.batch.item.file.FlatFileItemReader">
         <property name="resource" value="${tlp.source.file.path}/Claim/SQL_TB_ClaimPaymentDetail.txt" />
-        <property name="encoding" value ="windows-874"/>
         <property name="linesToSkip" value="1"/>
         <property name="recordSeparatorPolicy">
             <bean class="th.co.ipassion.testtool.job.BlankLineRecordSeparatorPolicy"/>
