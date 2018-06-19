@@ -176,6 +176,7 @@ Program arguments `<see other arguments below this as you want>`
 * tlpPolicyPaidJob
 * tlpPolicyRiderJob
 * tlpSplitPremiumAmountJob
+* tlpRpRiderJob
 
 ##### schema Billing
 
@@ -183,6 +184,9 @@ Program arguments `<see other arguments below this as you want>`
 * billingHistoryExportJob
 * billingHistoryDownPlanJob
 * billingMemberMasterJob
+* billingSplitPremiumAmount2Job
+* billingPaidHistoryJob
+* billingCancelRefundJob
 
 ##### schema Ktc
 * soon
