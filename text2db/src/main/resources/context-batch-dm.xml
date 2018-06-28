@@ -351,7 +351,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve"/>
     </bean>
 
     <bean id="dmCertRiderReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/certrider.dat"/>
+        <property name="resource" value="${dm.source.file.path}/certrider1.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
@@ -364,9 +364,9 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve"/>
                     <bean
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="names"
-                                  value="policyno,certno,ridertype,sum,premium,extrapremium,riderstatus,riderstatusdate,effectivedate"/>
+                                  value="policyno,certno,ridertype,sum,premium,extrapremium,riderstatus,riderstatusdate,effectivedate,reserve"/>
                         <property name="columns"
-                                  value="1-4,5-12,13-15,16-24,25-34,35-44,45-45,46-53,54-61"/>
+                                  value="1-4,5-12,13-15,16-24,25-34,35-44,45-45,46-53,54-61,62-62"/>
                     </bean>
                 </property>
             </bean>
@@ -383,7 +383,7 @@ relationshipcode3,analist,prmiseno,prmiseno2,loantype,med,reserve"/>
                 <![CDATA[
                     INSERT INTO dm.certrider
                     VALUES
-                    (:policyno, :certno, :ridertype, :sum, :premium, :extrapremium, :riderstatus, :riderstatusdate, :effectivedate)
+                    (:policyno, :certno, :ridertype, :sum, :premium, :extrapremium, :riderstatus, :riderstatusdate, :effectivedate, :reserve)
                 ]]>
             </value>
         </property>
@@ -1081,7 +1081,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="strict" value="false"/>
                         <property name="names"
-                                  value="policyno,department,sequence"/>
+                                  value="policyno,department,sequence,message"/>
                         <property name="columns"
                                   value="1-8,9-10,11-13,14-113"/>
                     </bean>
@@ -1171,8 +1171,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="strict" value="false"/>
                         <property name="names"
-                                  value="rpno,seqno,ridertext,extrapremium"/>
-                        <!--Add certno waiting for numbering of columns-->
+                                  value="rpno,seqno,ridertext"/>
                         <property name="columns"
                                   value="1-12,13-13,14-136"/>
                     </bean>
@@ -1191,7 +1190,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 <![CDATA[
                     INSERT INTO dm.rprider
                     VALUES
-                    (:rpno,:seqno,:ridertext,:extrapremium)
+                    (:rpno,:seqno,:ridertext)
                 ]]>
             </value>
         </property>

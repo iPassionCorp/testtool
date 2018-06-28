@@ -10,7 +10,14 @@ public class CertRider {
     private String riderstatus;
     private String riderstatusdate;
     private String effectivedate;
+    private String reserve;
     
+	public String getReserve() {
+		return reserve;
+	}
+	public void setReserve(String reserve) {
+		this.reserve = reserve;
+	}
 	public String getPolicyno() {
 		return policyno;
 	}
