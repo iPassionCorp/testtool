@@ -30,7 +30,7 @@
     <bean id="dmName" class="th.co.ipassion.testtool.dto.dm.Name" scope="prototype"/>
     <bean id="dmPerson" class="th.co.ipassion.testtool.dto.dm.Person" scope="prototype"/>
     <bean id="dmPolicy" class="th.co.ipassion.testtool.dto.dm.Policy" scope="prototype"/>
-    <bean id="dmAddess" class="th.co.ipassion.testtool.dto.dm.Address" scope="prototype"/>
+    <bean id="dmAddress" class="th.co.ipassion.testtool.dto.dm.Address" scope="prototype"/>
     <bean id="dmBeneficiary" class="th.co.ipassion.testtool.dto.dm.Beneficiary" scope="prototype"/>
     <bean id="dmExtrapremium" class="th.co.ipassion.testtool.dto.dm.Extrapremium" scope="prototype"/>
     <bean id="dmOrctrl" class="th.co.ipassion.testtool.dto.dm.Orctrl" scope="prototype"/>
@@ -829,7 +829,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
     <bean id="dmAddressReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/address.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -873,7 +873,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="dmBeneficiaryReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/nbeneficiary.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="lineMapper">
             <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
@@ -897,6 +897,8 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
+	<bean id="dmBeneficiaryProcessor" class="th.co.ipassion.testtool.processor.dm.BeneficiaryProcessor"/>
+
     <bean id="dmBeneficiaryWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource"/>
         <property name="itemSqlParameterSourceProvider">
@@ -914,7 +916,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="dmExtrapremiumReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/extrapremium.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -958,7 +960,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="dmOrctrlReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/orctrl.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1061,7 +1063,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="dmRemarkReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/remark.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1088,6 +1090,8 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
         </property>
     </bean>
 
+	<bean id="dmRemarkProcessor" class="th.co.ipassion.testtool.processor.dm.RemarkProcessor"/>
+
     <bean id="dmRemarkWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
         <property name="dataSource" ref="dataSource"/>
         <property name="itemSqlParameterSourceProvider">
@@ -1098,14 +1102,14 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
                 <![CDATA[
                     INSERT INTO dm.remark
                     VALUES
-                    (:policyno,:department,:sequence)
+                    (:policyno,:department,:sequence,:message)
                 ]]>
             </value>
         </property>
     </bean>
 
     <bean id="dmRiderReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/rider.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
@@ -1149,7 +1153,7 @@ bankbranch,bankaccount,guardianbeneficiary,ispay,haveindicia,countrycode,claimpa
     </bean>
 
     <bean id="dmRpriderReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${dm.source.file.path}/"/>
+        <property name="resource" value="${dm.source.file.path}/rprider.dat"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>

@@ -1,7 +1,7 @@
 package th.co.ipassion.testtool.processor.dm;
 
 import org.springframework.batch.item.ItemProcessor;
-import th.co.ipassion.testtool.dto.tlitext.Remark;
+import th.co.ipassion.testtool.dto.dm.Remark;
 
 public class RemarkProcessor implements ItemProcessor<Remark, Remark> {
     public Remark process(Remark item) {

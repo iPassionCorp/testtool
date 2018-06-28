@@ -1,7 +1,7 @@
 package th.co.ipassion.testtool.processor.dm;
 
 import org.springframework.batch.item.ItemProcessor;
-import th.co.ipassion.testtool.dto.tlitext.Beneficiary;
+import th.co.ipassion.testtool.dto.dm.Beneficiary;
 
 public class BeneficiaryProcessor  implements ItemProcessor<Beneficiary, Beneficiary> {
     public Beneficiary process(Beneficiary item) {

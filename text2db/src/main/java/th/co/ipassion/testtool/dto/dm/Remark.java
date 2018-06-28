@@ -4,8 +4,17 @@ public class Remark {
     private String policyno;
     private String department;
     private String sequence;
+    private String message;
+    
+    public String getMessage() {
+		return message;
+	}
 
-    public String getPolicyno() {
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getPolicyno() {
         return policyno;
     }
 
