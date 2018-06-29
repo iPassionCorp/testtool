@@ -590,5 +590,50 @@
             <batch:listener ref="jobListener"/>
         </batch:listeners>
     </batch:job>
+
+    <batch:job id="dmConsumerHistJob">
+        <batch:step id="dmConsumerHistStep1">
+            <batch:tasklet>
+                <batch:chunk reader="dmConsumerHistReader" writer="dmConsumerHistWriter" commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="dmCrfTempJob">
+        <batch:step id="dmCrfTempStep1">
+            <batch:tasklet>
+                <batch:chunk reader="dmCrfTempReader" writer="dmCrfTempWriter" commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+    
+    <batch:job id="dmDownplanJob">
+        <batch:step id="dmDownplanStep1">
+            <batch:tasklet>
+                <batch:chunk reader="dmDownplanReader" writer="dmDownplanWriter" commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+    
+    <batch:job id="dmDownplanDetailJob">
+        <batch:step id="dmDownplanDetailStep1">
+            <batch:tasklet>
+                <batch:chunk reader="dmDownplanDetailReader" writer="dmDownplanDetailWriter" commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>        
+
     
 </beans>
