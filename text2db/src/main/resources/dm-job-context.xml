@@ -557,5 +557,38 @@
             <batch:listener ref="jobListener"/>
         </batch:listeners>
     </batch:job>        
+
+    <batch:job id="dmฺBillingPostJob">
+        <batch:step id="dmBillingPostStep1">
+            <batch:tasklet>
+                <batch:chunk reader="dmBillingPostReader" writer="dmBillingPostWriter" commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="dmCreditMortgageJob">
+        <batch:step id="dmCreditMortgageStep1">
+            <batch:tasklet>
+                <batch:chunk reader="dmCreditMortgageReader" writer="dmCreditMortgageWriter" commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
+    
+    <batch:job id="dmPartnerBillingJob">
+        <batch:step id="dmPartnerBillingStep1">
+            <batch:tasklet>
+                <batch:chunk reader="dmPartnerBillingReader" writer="dmPartnerBillingWriter" commit-interval="10000"/>
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener"/>
+        </batch:listeners>
+    </batch:job>
     
 </beans>
