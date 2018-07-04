@@ -2113,12 +2113,11 @@ xconsiderid,firstjobtype,firstjobcode,firstxconsiderid,firstofferdate"/>
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="strict" value="false"/>
                         <property name="names"
-                                  value="rpno, rpolicyno, rcertno, reffectivedate, rpayperiod, rpaydate, rpremium, rextraprem, rsysdate, 
+                                  value="rpno, rpolicyno, rcertno, reffectivedate, rpayperiod, rDueDate, rpaydate, rpremium, rextraprem, rsysdate, 
                                   rcurrentstatus,roriginalstatus, rmode, time, rrequestdate, rsubmitno, rgraceperiod, rprinteddate, rsubmitbranch, 
                                   ruserid, rreasoncode, rmoneyok"/>
                         <property name="columns"
-                                  value="1-12, 13-16, 17-24, 25-32, 33-36, 37-44, 45-53, 54-61, 62-69, 70-70, 71-71, 72-72, 73-73, 
-                                  74-81, 82-93, 94-94, 95-102, 103-105, 106-112, 113-114, 115-115"/>
+                                  value="1-12,13-16,17-24,25-32,33-36,37-44,45-52,53-61,62-69,70-77,78-78,79-79,80-80,81-81,82-89,90-101,102-102,103-110,111-113,114-120,121-122,123-123"/>
                     </bean>
                 </property>
             </bean>
@@ -2135,7 +2134,7 @@ xconsiderid,firstjobtype,firstjobcode,firstxconsiderid,firstofferdate"/>
                 <![CDATA[
                     INSERT INTO dm.clrctrl
                     VALUES
-                    (:rpno, :rpolicyno, :rcertno, :reffectivedate, :rpayperiod, :rpaydate, :rpremium, :rextraprem, :rsysdate, 
+                    (:rpno, :rpolicyno, :rcertno, :reffectivedate, :rpayperiod, :rDueDate, :rpaydate, :rpremium, :rextraprem, :rsysdate, 
                     :rcurrentstatus, :roriginalstatus, :rmode, :time, :rrequestdate, :rsubmitno, :rgraceperiod, :rprinteddate, :rsubmitbranch, 
                     :ruserid, :rreasoncode, :rmoneyok)
                 ]]>

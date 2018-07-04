@@ -6,6 +6,7 @@ public class Clrctrl {
 	private String rcertno;
 	private String reffectivedate;
 	private String rpayperiod;
+	private String rDueDate;
 	private String rpaydate;
 	private String rpremium;
 	private String rextraprem;
@@ -22,6 +23,12 @@ public class Clrctrl {
 	private String ruserid;
 	private String rreasoncode;
 	private String rmoneyok;
+	public String getrDueDate() {
+		return rDueDate;
+	}
+	public void setrDueDate(String rDueDate) {
+		this.rDueDate = rDueDate;
+	}
 	public String getRpno() {
 		return rpno;
 	}
