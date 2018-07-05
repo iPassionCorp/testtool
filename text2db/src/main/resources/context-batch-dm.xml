@@ -279,12 +279,12 @@
                             class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
                         <property name="names"
                                   value="policyno,certno,appno,reqdate,nameid,age,smi,lifesum,accidentsum,period,loan_term,lifepremium,extrapremium,tpdpremium,extratpdpremium,addpremium,
-                                em,tpd,effectivedate,maturedate,premiumdate,certyyyymm,statcer,statcer2,statdate2,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate,endownmentyear,deadcause,
-                                receiptflag,referenceno,reserve,mode,payperiod,duedate, rpno,statdate1, oldstatcert1,oldstatcert2,oldstatcertdate1,oldstatcertdate2, package1, familyType"/>
+                                em,tpd,effectivedate,maturedate,premiumdate,certyyyymm,statcer,statdate1,statcer2,statdate2,oldstatcert1,oldstatcert2,oldstatcertdate1,oldstatcertdate2,informdate1,paydate1,amount1,informdate2,paydate2,amount2,deaddate,endownmentyear,deadcause,
+                                receiptflag,referenceno,reserve,mode,payperiod,duedate, rpno, package, familyType"/>
                     	<property name="columns"
-                                  value="1-4,5-12,13-24,25-32,33-45,46-47,48-56,57-65,66-74,75-76,77-78,79-88,89-98,99-108,109-118,119-128,129-131,
-                                  132-135,136-143,144-151,152-159,160-165,166-166,167-174,175-175,176-183,184-184,185-185,186-193,194-201,202-209,
-                                  210-217,218-227,228-235,236-243,244-253,254-261,262-268,269-272,273-273,274-293,294-295,296-296,297-300,301-308,309-320,321-322,323-323" />
+                                  value="1-4,5-12,13-24,25-32,33-45,46-47,48-56,57-65,66-74,75-76,77-78,79-88,89-98,99-108,109-118,119-128,129-131,132-135,136-143,144-151,
+                                  152-159,160-165,166-166,167-174,175-175,176-183,184-184,185-185,186-193,194-201,202-209,210-217,218-227,228-235,236-243,244-253,254-261,
+                                  262-268,269-272,273-273,274-293,294-295,296-296,297-300,301-308,309-320,321-322,323-323" />
                     </bean>
                 </property>
             </bean>
@@ -303,9 +303,9 @@
                     VALUES
                     (:policyno, :certno, :appno, :reqdate, :nameid, :age, :smi, :lifesum, :accidentsum, :period, :loan_term, :lifepremium, 
                     :extrapremium, :tpdpremium, :extratpdpremium, :addpremium, :em, :tpd, :effectivedate, :maturedate, :premiumdate, :certyyyymm, 
-                    :statcer, :statcer2, :statdate2, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate, :endownmentyear, 
-                    :deadcause, :receiptflag, :referenceno, :reserve, :mode,:payperiod, :duedate, :rpno, :statdate1,
-                    :oldstatcert1,:oldstatcert2,:oldstatcertdate1,:oldstatcertdate2, :package1, :familyType)
+                    :statcer,:statdate1, :statcer2, :statdate2,:oldstatcert1,:oldstatcert2,:oldstatcertdate1,:oldstatcertdate2, :informdate1, :paydate1, :amount1, :informdate2, :paydate2, :amount2, :deaddate, :endownmentyear, 
+                    :deadcause, :receiptflag, :referenceno, :reserve, :mode,:payperiod, :duedate, :rpno, 
+                     :package1, :familyType)
                 ]]>
             </value>
         </property>
