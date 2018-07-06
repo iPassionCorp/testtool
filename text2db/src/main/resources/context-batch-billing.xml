@@ -279,5 +279,95 @@
             </value>
         </property>
     </bean>    
+
+	<bean id="billingBillingPost" class="th.co.ipassion.testtool.dto.dm.BillingPost" scope="prototype"/>
+ 
+    <bean id="billingBillingPostReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${billing.source.file.path}/billingpost.txt"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="billingBillingPost" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.FixedLengthTokenizer">
+                        <property name="strict" value="false"/>
+                        <property name="names"
+                                  value="partnercode, billingtype, policyno, cert, policytype, paystatus, duedate, payperiod, postdate, billingdate, paymentdate, premium, mode, status, statusdate, attemp, attempdate"/>
+                        <property name="columns"
+                                  value="1-3,4-5,6-9,10-17,18-18,19-19,20-27,28-33,34-41,42-49,50-57,58-67,68-68,69-69,70-77,78-79,80-87"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="billingBillingPostWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO billing.billingpost
+                    VALUES
+                    (:partnercode, :billingtype, :policyno, :cert, :policytype, :paystatus, :duedate, :payperiod, :postdate, 
+                    :billingdate, :paymentdate, :premium, :mode, :status, :statusdate, :attemp, :attempdate)
+                ]]>
+            </value>
+        </property>
+    </bean>   
     
+    <bean id="billingMrtaKtcReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="${billing.source.file.path}/mortgageKTC-2.txt"/>
+        <property name="encoding" value="windows-874"/>
+        <property name="recordSeparatorPolicy">
+            <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>
+        </property>
+        <property name="lineMapper">
+            <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+                <property name="fieldSetMapper">
+                    <bean
+                            class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+                        <property name="prototypeBeanName" value="billingBillingPost" />
+                    </bean>
+                </property>
+                <property name="lineTokenizer">
+                    <bean
+                            class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="names"
+                                  value="partnercode, billingtype, policyno, cert, policytype, paystatus, duedate, payperiod, postdate, billingdate, paymentdate, premium, mode, status, statusdate, attemp, attempdate" />
+                        <property name="delimiter" value=":"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="billingMrtaKtcWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="itemSqlParameterSourceProvider">
+            <bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </property>
+        <property name="sql">
+            <value>
+                <![CDATA[
+                    INSERT INTO billing.mortgagektc
+                    VALUES
+                    (:partnercode, :billingtype, :policyno, :cert, :policytype, :paystatus, :duedate, :payperiod, :postdate, 
+                    :billingdate, :paymentdate, :premium, :mode, :status, :statusdate, :attemp, :attempdate)
+                ]]>
+            </value>
+        </property>
+    </bean>    
+      
 </beans>

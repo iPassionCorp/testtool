@@ -82,5 +82,26 @@
         </batch:listeners>
     </batch:job>    
 
+    <batch:job id="billingBillingPostJob">
+        <batch:step id="billingBillingPostStep1">
+            <batch:tasklet>
+                <batch:chunk reader="billingBillingPostReader" writer="billingBillingPostWriter" commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
+
+    <batch:job id="billingMrtaKtcJob">
+        <batch:step id="billingMrtaKtcStep1">
+            <batch:tasklet>
+                <batch:chunk reader="billingMrtaKtcReader" writer="billingMrtaKtcWriter" commit-interval="10000" />
+            </batch:tasklet>
+        </batch:step>
+        <batch:listeners>
+            <batch:listener ref="jobListener" />
+        </batch:listeners>
+    </batch:job>
 
 </beans>
