@@ -328,7 +328,7 @@
     </bean>   
     
     <bean id="billingMrtaKtcReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-        <property name="resource" value="${billing.source.file.path}/mortgageKTC-2.txt"/>
+        <property name="resource" value="${billing.source.file.path}/mortgageKTC.txt"/>
         <property name="encoding" value="windows-874"/>
         <property name="recordSeparatorPolicy">
             <bean class="org.springframework.batch.item.file.separator.DefaultRecordSeparatorPolicy"/>

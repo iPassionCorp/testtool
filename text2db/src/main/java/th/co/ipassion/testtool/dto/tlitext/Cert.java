@@ -41,13 +41,34 @@ public class Cert {
     private String reserve;
 	private String mode;
 	private String payperiod;
+	private String duedate;
 	private String rpno;
 	private String statdate1;
 	private String oldstatcert1;
 	private String oldstatcert2;
 	private String oldstatcertdate1;
 	private String oldstatcertdate2;
+	private String package1;
+	private String familyType;
     
+	public String getDuedate() {
+		return duedate;
+	}
+	public void setDuedate(String duedate) {
+		this.duedate = duedate;
+	}
+	public String getPackage1() {
+		return package1;
+	}
+	public void setPackage1(String package1) {
+		this.package1 = package1;
+	}
+	public String getFamilyType() {
+		return familyType;
+	}
+	public void setFamilyType(String familyType) {
+		this.familyType = familyType;
+	}
 	public String getPolicyno() {
 		return policyno;
 	}

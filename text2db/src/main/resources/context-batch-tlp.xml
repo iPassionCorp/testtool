@@ -35,7 +35,7 @@
 
     <bean id="tlpCustomerBalloonReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
-        <property name="resources" value="${tlp.source.file.path}/**/Balloon/*_*.txt" />
+        <property name="resources" value="${tlp.source.file.path}/Balloon/*_*.txt" />
         <property name="delegate" ref="tlpCustomerBalloonFlatFileItemReader" />
     </bean>
 
@@ -81,7 +81,7 @@
 
     <bean id="tlpCustomerInfoReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_CustomerInfo.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*_CustomerInfo.txt" />
         <property name="delegate" ref="tlpCustomerInfoFlatFileItemReader" />
     </bean>
 
@@ -157,7 +157,7 @@
 
     <bean id="tlpCustomerSaReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_CustomerSA.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*_CustomerSA.txt" />
         <property name="delegate" ref="tlpCustomerSaFlatFileItemReader" />
     </bean>
 
@@ -179,8 +179,7 @@
                         <property name="names"
                                   value="customercode,policyno,sa_lifetpd,sa_life,sa_tpd,sa_td,sa_add,sa_adb,sa_ha,sa_hb,sa_me,sa_pa,sa_ph,sa_ci,
 							flaglife,flaglifetpd,ia,sa,transdate,mi_amount,expiry_life,expiry_tpd,expiry_td,expiry_add,expiry_adb,
-							expiry_ha,expiry_hb,expiry_me,expiry_pa,expiry_ph,expiry_ci,sa_ma,expiry_ma,sa_mc,expiry_mc,
-							sa_icu,sa_fideath,sa_fitpd,sa_lsdeath,sa_lstpd,sa_cb,sa_cp" />
+							expiry_ha,expiry_hb,expiry_me,expiry_pa,expiry_ph,expiry_ci,sa_ma,expiry_ma,sa_mc,expiry_mc" />
                         <property name="delimiter" value="|"/>
                     </bean>
                 </property>
@@ -201,8 +200,7 @@
                     (:customercode, :policyno, :sa_lifetpd, :sa_life, :sa_tpd, :sa_td, :sa_add, :sa_adb, 
                     :sa_ha, :sa_hb, :sa_me, :sa_pa, :sa_ph, :sa_ci, :flaglife, :flaglifetpd, :ia, :sa, :transdate, 
                     :mi_amount, :expiry_life, :expiry_tpd, :expiry_td, :expiry_add, :expiry_adb, :expiry_ha, :expiry_hb, 
-                    :expiry_me, :expiry_pa, :expiry_ph, :expiry_ci, :sa_ma, :expiry_ma, :sa_mc, :expiry_mc,
-                    :sa_icu, :sa_fideath, :sa_fitpd, :sa_lsdeath, :sa_lstpd, :sa_cb, :sa_cp)
+                    :expiry_me, :expiry_pa, :expiry_ph, :expiry_ci, :sa_ma, :expiry_ma, :sa_mc, :expiry_mc)
                 ]]>
             </value>
         </property>
@@ -210,7 +208,7 @@
 
     <bean id="tlpPaymentReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_Payment.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*_Payment.txt" />
         <property name="delegate" ref="tlpPaymentFlatFileItemReader" />
     </bean>
 
@@ -259,7 +257,7 @@
 
     <bean id="tlpSplitPremiumAmountReader"
           class="org.springframework.batch.item.file.MultiResourceItemReader">
-        <property name="resources" value="${tlp.source.file.path}/**/*_Enquire_SplitPremiumAmount.txt" />
+        <property name="resources" value="${tlp.source.file.path}/**/*_SplitPremiumAmount.txt" />
         <property name="delegate" ref="tlpSplitPremiumAmountFlatFileItemReader" />
     </bean>
 
